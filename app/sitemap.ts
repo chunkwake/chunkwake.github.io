@@ -10,6 +10,7 @@ const paths = [
   '/docs/plugins',
   '/docs/architecture',
   '/download',
+  '/support',
 ];
 
 export const dynamic = 'force-static';

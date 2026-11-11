@@ -17,6 +17,7 @@ export function SiteHeader({ lang, copy }: { lang: string; copy: SiteCopy }) {
           <Link href={`/${lang}/docs/migrating`}>{copy.nav.migration}</Link>
           <Link href={`/${lang}/docs/plugins`}>{copy.nav.plugins}</Link>
           <Link href={`/${lang}/download`}>{copy.nav.download}</Link>
+          <Link href={`/${lang}/support`}>{copy.nav.support}</Link>
           <a href={links.github} target="_blank" rel="noreferrer">
             {copy.nav.github}
             <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">

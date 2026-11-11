@@ -7,11 +7,13 @@ export function CopyButton({
   label = 'Copy',
   copiedLabel = 'Copied',
   className,
+  showLabel = false,
 }: {
   text: string;
   label?: string;
   copiedLabel?: string;
   className?: string;
+  showLabel?: boolean;
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -35,7 +37,11 @@ export function CopyButton({
           <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" strokeWidth="1.6" />
         </svg>
       )}
-      <span className="sr-only">{copied ? copiedLabel : label}</span>
+      {showLabel ? (
+        <span aria-hidden="true">{copied ? copiedLabel : label}</span>
+      ) : (
+        <span className="sr-only">{copied ? copiedLabel : label}</span>
+      )}
     </button>
   );
 }

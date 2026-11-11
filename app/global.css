@@ -1611,6 +1611,205 @@ button {
   font-size: 13.5px;
 }
 
+/* ─── Support ───────────────────────────────────────────────────────────── */
+
+.cw-support {
+  max-width: 1040px;
+}
+
+.cw-support-note {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.cw-support-badge {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cw-support-note p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.cw-donate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 14px;
+}
+
+.cw-donate-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.cw-donate-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cw-donate-mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #1b1b1b;
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.cw-donate-head h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.cw-donate-head > div > span {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--subtle);
+  text-transform: uppercase;
+}
+
+.cw-donate-qr {
+  align-self: center;
+  padding: 9px;
+  border-radius: 6px;
+  background: #e7e7e7;
+  line-height: 0;
+}
+
+.cw-donate-qr svg {
+  display: block;
+  width: 132px;
+  height: 132px;
+}
+
+.cw-donate-network {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: var(--subtle);
+}
+
+.cw-donate-network strong {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.cw-donate-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.cw-donate-field > span {
+  font-size: 9.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--subtle);
+}
+
+.cw-donate-field code {
+  display: block;
+  padding: 8px 9px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #1b1b1b;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.cw-donate-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  height: 28px;
+  padding: 0 9px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--subtle);
+  font-size: 10.5px;
+  cursor: pointer;
+  transition:
+    color 0.16s var(--cw-ease),
+    border-color 0.16s var(--cw-ease),
+    background 0.16s var(--cw-ease);
+}
+
+.cw-donate-copy:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: var(--panel-hover);
+}
+
+.cw-donate-copy .cw-copy-done {
+  color: var(--ready);
+}
+
+.cw-support-warning {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--partial);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--panel);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+@media (max-width: 560px) {
+  .cw-support-note {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .cw-donate-card {
+    padding: 16px;
+  }
+}
+
 /* ─── Docs (Fumadocs) ───────────────────────────────────────────────────── */
 
 #nd-docs-layout {

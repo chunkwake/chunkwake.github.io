@@ -12,6 +12,7 @@ export interface SiteCopy {
     migration: string;
     plugins: string;
     download: string;
+    support: string;
     github: string;
     menu: string;
   };
@@ -109,10 +110,24 @@ export interface SiteCopy {
       plugins: string;
       matrix: string;
       architecture: string;
+      support: string;
       license: string;
     };
     disclaimer: string;
     trademark: string;
+  };
+  support: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    only: string;
+    note: string;
+    network: string;
+    address: string;
+    scan: string;
+    copy: string;
+    copied: string;
+    warning: string;
   };
   download: {
     title: string;
@@ -151,6 +166,7 @@ const ru: SiteCopy = {
     migration: 'Миграция',
     plugins: 'Плагины',
     download: 'Скачать',
+    support: 'Поддержать',
     github: 'GitHub',
     menu: 'Меню',
   },
@@ -383,10 +399,25 @@ java/
       plugins: 'Разработка плагинов',
       matrix: 'Фич-матрица',
       architecture: 'Архитектура',
+      support: 'Поддержать проект',
       license: 'GPL-3.0',
     },
     disclaimer: 'Независимый проект. Не связан с Mojang Studios, Microsoft, PaperMC или Folia и не одобрен ими.',
     trademark: 'Minecraft — товарный знак Mojang Synergies AB.',
+  },
+  support: {
+    eyebrow: 'Поддержка',
+    title: 'Поддержать проект.',
+    lead: 'Если Chunkwake полезен, проект можно поддержать криптовалютой.',
+    only: 'Только пожертвования',
+    note: 'Только пожертвования: без подписок, аккаунтов и платёжных форм.',
+    network: 'Сеть',
+    address: 'Адрес',
+    scan: 'QR-код для сканирования',
+    copy: 'Скопировать адрес',
+    copied: 'Адрес скопирован',
+    warning:
+      'Отправляйте только указанную монету в указанной сети. Перевод в другой сети может быть потерян без возможности возврата.',
   },
   download: {
     title: 'Скачать Chunkwake',
@@ -428,6 +459,7 @@ const en: SiteCopy = {
     migration: 'Migration',
     plugins: 'Plugins',
     download: 'Download',
+    support: 'Support',
     github: 'GitHub',
     menu: 'Menu',
   },
@@ -660,10 +692,25 @@ java/
       plugins: 'Plugin development',
       matrix: 'Feature matrix',
       architecture: 'Architecture',
+      support: 'Support the project',
       license: 'GPL-3.0',
     },
     disclaimer: 'An independent project. Not affiliated with or endorsed by Mojang Studios, Microsoft, PaperMC or Folia.',
     trademark: 'Minecraft is a trademark of Mojang Synergies AB.',
+  },
+  support: {
+    eyebrow: 'Support',
+    title: 'Support the project.',
+    lead: 'If Chunkwake is useful to you, you can support the project with crypto.',
+    only: 'Donations only',
+    note: 'Donations only: no subscriptions, accounts or payment forms.',
+    network: 'Network',
+    address: 'Address',
+    scan: 'QR code to scan',
+    copy: 'Copy address',
+    copied: 'Address copied',
+    warning:
+      'Send only the listed coin on the listed network. A transfer on another network may be lost with no way to recover it.',
   },
   download: {
     title: 'Download Chunkwake',
