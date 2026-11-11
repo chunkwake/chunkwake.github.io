@@ -201,7 +201,7 @@ export async function ArchitectureSection({ copy }: { copy: SiteCopy }) {
   );
 }
 
-export function RoadmapSection({ copy }: { copy: SiteCopy }) {
+export function RoadmapSection({ lang, copy }: { lang: string; copy: SiteCopy }) {
   return (
     <section className="cw-section" data-reveal>
       <div className="cw-split-head">
@@ -224,6 +224,10 @@ export function RoadmapSection({ copy }: { copy: SiteCopy }) {
           </div>
         ))}
       </div>
+
+      <Link className="cw-roadmap-more" href={`/${lang}/status`}>
+        {copy.roadmap.more} <span aria-hidden="true">→</span>
+      </Link>
     </section>
   );
 }

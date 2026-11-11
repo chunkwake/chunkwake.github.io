@@ -88,6 +88,7 @@ export interface SiteCopy {
     title: string;
     lead: string;
     items: { tag: string; title: string; text: string }[];
+    more: string;
   };
   cta: {
     title: string;
@@ -111,6 +112,7 @@ export interface SiteCopy {
       matrix: string;
       architecture: string;
       benchmarks: string;
+      status: string;
       support: string;
       license: string;
     };
@@ -376,6 +378,7 @@ java/
       { tag: 'Event log', title: 'Мир как журнал событий', text: 'Откат и повтор изменений вместо резервных копий целиком.' },
       { tag: 'Panama', title: 'Мост на FFM с общей памятью', text: 'Следующее поколение границы между Rust и JVM.' },
     ],
+    more: 'Все этапы и текущий фокус',
   },
   cta: {
     title: 'Попробуй на своём сервере.',
@@ -399,6 +402,7 @@ java/
       matrix: 'Фич-матрица',
       architecture: 'Архитектура',
       benchmarks: 'Замеры',
+      status: 'Статус и этапы',
       support: 'Поддержать проект',
       license: 'GPL-3.0',
     },
@@ -667,6 +671,7 @@ java/
       { tag: 'Event log', title: 'The world as an event log', text: 'Rollback and replay instead of whole-world backups.' },
       { tag: 'Panama', title: 'An FFM bridge with shared memory', text: 'The next generation of the Rust/JVM boundary.' },
     ],
+    more: 'All milestones and current focus',
   },
   cta: {
     title: 'Try it on your server.',
@@ -690,6 +695,7 @@ java/
       matrix: 'Feature matrix',
       architecture: 'Architecture',
       benchmarks: 'Benchmarks',
+      status: 'Status and milestones',
       support: 'Support the project',
       license: 'GPL-3.0',
     },

@@ -1,0 +1,191 @@
+---
+title: Observability
+description: Dashboard, /top, Prometheus, tick profile and access to metrics.
+icon: Activity
+---
+
+The server samples load once per second and exposes it without external agents. The same snapshot is available in game, in the terminal, in a browser and in Prometheus.
+
+| Method | When to use it |
+|---|---|
+| `/top` in game | inspect load from chat without switching to the terminal |
+| `chunkwake top` | a one-off snapshot or `--watch` in another window |
+| `GET /` in a browser | live dashboard: 15-minute charts, cores, world, network |
+| `GET /metrics` | Prometheus and Grafana |
+| `GET /snapshot` | `chunkwake top` and the lab, JSON |
+| `GET /api/events` | the SSE stream behind the dashboard |
+| `GET /api/profile` | tick profile by subsystem, JSON |
+
+## Browser dashboard
+
+`http://127.0.0.1:25585/` shows the same load as `chunkwake top`, with charts. The page is embedded in the binary, uses no external libraries or CDN and works without internet.
+
+The page contains:
+
+- **KPIs** — TPS for 1/5/15 minutes, MSPT (last, p95, p99 and budget), machine and process load, RSS, players, simulated chunks.
+- **15-minute charts** — TPS with the target line, MSPT with p95 and budget, machine and server CPU, RSS, network in both directions, online players.
+- **Cores** — one bar per core: green up to 70 %, yellow up to 90 %, red above.
+- **Tick, world, network** — the same rows as the ANSI table in `chunkwake top`.
+
+Data arrives over `GET /api/events` (Server-Sent Events): the server sends a frame after every snapshot, the page does not poll. If the stream drops, the browser reconnects and the page falls back to `/api/snapshot`. History is 900 one-second points, also available as `GET /api/history`, so charts survive a reload.
+
+The dashboard listens on the same address as metrics (`metrics-bind`). By default that is loopback: the page and its numbers do not leave the machine.
+
+## Access and token
+
+On loopback no setup is needed: `chunkwake top` and a browser on the same machine work without a password. If `metrics-bind` points at the network, the server **will not start** the endpoint without a token and writes to the log:
+
+```text
+ERROR metrics disabled: metrics-bind=0.0.0.0 is reachable from the network,
+but metrics-token is empty; set one with `chunkwake config set metrics-token
+<long random string>` or bind to 127.0.0.1
+```
+
+Set a token of at least 16 characters with no spaces:
+
+```properties
+metrics-bind=0.0.0.0
+metrics-token=long-random-string
+```
+
+Access:
+
+- **browser** — open `http://address:25585/?token=...` once: the server sets the `cw_metrics` cookie (HttpOnly, SameSite=Strict) and redirects to `/` without the token in the address. Without a cookie or token the page shows a login form.
+- **`chunkwake top`** — reads the token from `server.properties` and sends it as `Authorization: Bearer`.
+- **Prometheus** — the same header in `scrape_configs`.
+
+DNS rebinding is blocked: if the browser sends `Origin`, it must point at the same host, otherwise the response is `403`. The token is compared byte by byte without early exit, so it cannot be guessed from timing.
+
+## What is measured
+
+**Tick.** An 18,000-tick ring buffer (15 minutes): TPS over 1/5/15-minute windows, average MSPT for the last minute, p50/p95/p99, the worst tick and the number of late ticks.
+
+**Process and machine.** Load per core, machine average, process share of one core, RSS and virtual memory, system memory.
+
+**World.** Players, mobs, items, arrows, experience orbs, simulated and known chunks, redstone/fluid/hopper queues, furnaces, campfires, generation tasks.
+
+**Network.** Bytes and packets in both directions, average and worst `keep_alive` RTT.
+
+**Memory breakdown.** `CHUNKWAKE_MEMSTATS=1` writes every 10 seconds to the log: in-memory columns, frame, mob and item caches, generator proto-chunks, height and structure-layout caches. `CHUNKWAKE_MEMSTATS_MI=1` adds mimalloc statistics after `mi_collect`.
+
+## `/top`
+
+```text
+/top            everything
+/top tick       tick only
+/top cpu        CPU only
+/top mem        memory
+/top world      world
+/top net        network
+```
+
+Each row is a separate element with a hover hint. The `█░` bar shows load: green up to 70 %, yellow up to 90 %, red above.
+
+## `chunkwake top`
+
+```console
+$ chunkwake top --dir ./server
+================= My Server · 26.3 · up 02:14:07 =================
+── TICK
+  rate      20/s  running   ticks 161234
+  TPS   now  20.0  1m  19.9  5m  20.0  15m  20.0
+  MSPT  last   0.31  1m avg   0.28  p50   0.21  p95   0.60  p99   1.10  max  12.40
+  budget  50.0 ms  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  0%
+...
+```
+
+| Flag | Default | What it does |
+|---|---|---|
+| `--dir PATH` | current directory | where to read `server.properties` with `metrics-*` |
+| `--host HOST` | `metrics-bind` | endpoint address |
+| `--port PORT` | `metrics-port` | endpoint port |
+| `--watch SEC` | — | redraw every SEC seconds |
+| `--json` | — | print the snapshot as JSON |
+| `--no-color` | — | no ANSI colours, for logs |
+
+## Settings
+
+```properties
+metrics-enabled=true
+metrics-bind=127.0.0.1
+metrics-port=25585
+metrics-token=
+```
+
+By default the endpoint listens on loopback only. `metrics-token` is needed only for an external `metrics-bind`.
+
+The page is served compressed (`gzip`) when the browser supports it: 80 KB becomes 24. A hidden tab closes the stream and does not pull frames. If `metrics-port` is busy, the server tries `25586` and `25587` and logs the port it uses. `chunkwake top` tries the same three ports.
+
+## Prometheus
+
+```text
+chunkwake_up
+chunkwake_tps{window="1m"|"5m"|"15m"}
+chunkwake_tick_rate
+chunkwake_tick_frozen
+chunkwake_mspt{quantile="0.5"|"0.95"|"0.99"|"max"}
+chunkwake_mspt_last
+chunkwake_ticks_total
+chunkwake_late_ticks_total
+chunkwake_process_cpu_percent
+chunkwake_process_rss_bytes
+chunkwake_process_threads
+chunkwake_system_cpu_percent
+chunkwake_system_memory_used_bytes
+chunkwake_system_memory_total_bytes
+chunkwake_cpu_core_percent{core="0"}
+chunkwake_players
+chunkwake_entities
+chunkwake_dropped_items
+chunkwake_chunks_simulated
+chunkwake_chunks_loaded
+chunkwake_chunkgen_pending
+chunkwake_network_bytes_total{direction="in"|"out"}
+chunkwake_network_packets_total{direction="in"|"out"}
+chunkwake_ping_milliseconds
+chunkwake_uptime_seconds
+```
+
+Example `prometheus.yml`:
+
+```yaml
+scrape_configs:
+  - job_name: chunkwake
+    static_configs:
+      - targets: ["127.0.0.1:25585"]
+```
+
+## Tick profile
+
+`/debug start` or `/perf start` writes `tick<TAB>MSPT` lines to `debug/profile-<time>.txt`; `/debug stop` returns the path. Recording is capped at five minutes of ticks.
+
+Separately, the server always samples a tick breakdown by subsystem — like `spark`, but without stacks:
+
+| Where | What you see |
+|---|---|
+| `GET /` → "Where the tick goes" | per-second stacked chart and group list |
+| `chunkwake top` | `PROFILE` section: groups, `ms/tick` and share |
+| `GET /api/profile` | JSON: 900 seconds as `{ at, ticks, total[18], max[18] }` |
+
+By default it shows groups, not internal phases:
+
+| Group | What is inside |
+|---|---|
+| Mobs and animals | AI, movement, spawning |
+| Hoppers and mechanisms | furnaces, campfires, pistons, redstone, fluids, plates |
+| Items and projectiles | dropped items, arrows, experience |
+| Sending to players | block and position packets |
+| Simulated chunks | chunk recalculation around players |
+| Plugins | plugin code in the tick |
+| Service | world clock and other small work |
+
+The exact 18 phases remain under the "Details" switch and in JSON. Time is shown in **ms per tick**, not as a per-second sum. Measurement is one `Instant` read per phase and two per tick, so the profile is always on, not only under `/debug start`.
+
+What it lacks compared with `spark`: call stacks, specific blocks and chunks. The breakdown answers "where does tick time go", not "which mob is slow". For that, use `/debug start` and the profile file.
+
+## Related
+
+- [Operations](/en/docs/running) — service, logs, backups and Velocity.
+- [Command reference](/en/docs/commands) — `/top`, `/perf` and `/debug`.
+- [Benchmarks](/en/benchmarks) — method and raw numbers.
+- [Source documentation](https://github.com/chunkwake/core/blob/ver/26.3/docs/observability.md) — `docs/observability.md` in the repository.

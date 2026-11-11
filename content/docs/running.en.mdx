@@ -60,6 +60,8 @@ World and game settings are marked `*` in the wizard: they are saved to `server.
 
 The metrics section configures the built-in dashboard: enabled flag, address, port and access token. While the address is `127.0.0.1`, the dashboard is reachable only from that machine and no token is needed. For an external address such as `0.0.0.0` the server refuses to start the endpoint without a token; the detail panel warns before saving. The token must be at least 16 characters with no spaces. Browser login: `http://address:25585/?token=...`, then the session is kept in a cookie.
 
+Details: [Observability](/en/docs/observability) — dashboard, `/top`, `chunkwake top`, Prometheus and tick profile.
+
 ## systemd service
 
 The ready-made unit is in [`contrib/systemd/chunkwake.service`](https://github.com/chunkwake/core/blob/ver/26.3/contrib/systemd/chunkwake.service). Create a user, copy the unit and adjust the paths.

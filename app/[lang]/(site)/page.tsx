@@ -25,7 +25,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       <FeaturesSection lang={lang} copy={copy} />
       <PluginsSection lang={lang} copy={copy} />
       <ArchitectureSection copy={copy} />
-      <RoadmapSection copy={copy} />
+      <RoadmapSection lang={lang} copy={copy} />
       <CtaSection lang={lang} copy={copy} />
     </>
   );
