@@ -1856,6 +1856,28 @@ button {
   opacity: 1;
 }
 
+#nd-sidebar > div:last-child {
+  padding: 8px 16px 14px;
+}
+
+#nd-sidebar > div:last-child > button {
+  margin-bottom: 2px;
+  padding: 4px 8px;
+  border-color: transparent;
+  background: transparent;
+}
+
+#nd-sidebar > div:last-child > button:hover {
+  background: var(--panel-hover);
+}
+
+#nd-sidebar > div:last-child > div {
+  gap: 2px;
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+}
+
 #nd-nav {
   background: rgba(24, 24, 24, 0.92);
   backdrop-filter: blur(10px);
