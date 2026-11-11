@@ -1226,12 +1226,18 @@ button {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 28px;
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
   padding: 28px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background:
     radial-gradient(ellipse 60% 100% at 0% 0%, rgba(166, 160, 146, 0.08), transparent 70%),
     var(--panel);
+}
+
+.cw-cta-inner > * {
+  min-width: 0;
 }
 
 .cw-cta-inner h2 {
@@ -3231,7 +3237,7 @@ html.cw-reveal-init [data-reveal].is-visible .cw-roadmap-item:nth-child(4) {
   }
 
   .cw-cta-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .cw-footer-inner {
@@ -3410,6 +3416,14 @@ html.cw-reveal-init [data-reveal].is-visible .cw-roadmap-item:nth-child(4) {
 
   .cw-hero-actions .cw-btn {
     flex: 1;
+  }
+
+  .cw-cta-inner {
+    padding: 20px 16px;
+  }
+
+  .cw-cta-inner h2 {
+    font-size: 22px;
   }
 
   .cw-feature-foot {
