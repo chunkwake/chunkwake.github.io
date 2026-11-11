@@ -5,6 +5,8 @@ import { i18nProvider } from 'fumadocs-ui/i18n';
 import { translations } from '@/lib/layout.shared';
 import { i18n } from '@/lib/i18n';
 import { getCopy } from '@/lib/dictionary';
+import { MetricaRouteTracker } from '@/components/metrica-route-tracker';
+import { YandexMetrika } from '@/components/yandex-metrika';
 import '@xyflow/react/dist/style.css';
 import '../global.css';
 
@@ -105,6 +107,8 @@ export default async function Layout({
         >
           {children}
         </RootProvider>
+        <YandexMetrika />
+        <MetricaRouteTracker />
       </body>
     </html>
   );
