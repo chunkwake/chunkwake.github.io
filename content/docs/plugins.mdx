@@ -1,0 +1,91 @@
+---
+title: Разработка плагинов
+description: paper-api.jar внутри процесса, события Paper и планировщики Folia.
+---
+
+## Как это работает
+
+Сервер поднимает JVM через JNI прямо внутри процесса `chunkwake`. В classpath лежит официальный `paper-api.jar` и наша реализация поведения — `api-impl`. Плагин видит `Bukkit.getServer()`, `JavaPlugin`, события и планировщики так же, как на Paper.
+
+Если на событие нет слушателей, Rust не отправляет его в JVM. Поэтому цена неиспользуемых событий близка к нулю.
+
+## plugin.yml
+
+```yaml
+name: HelloPlugin
+version: 1.0.0
+main: dev.chunkwake.hello.HelloPlugin
+api-version: "26.3"
+```
+
+Поддерживаются `plugin.yml` и `paper-plugin.yml`, включая `libraries:` из Maven, `loader` и `bootstrapper`.
+
+## События
+
+<CodeBlockTabs defaultValue="java">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="java"><LangIcon lang="java" /> Java</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="kotlin"><LangIcon lang="kotlin" /> Kotlin</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+
+  <CodeBlockTab value="java">
+
+```java
+public final class HelloPlugin extends JavaPlugin {
+  @Override
+  public void onEnable() {
+    getServer().getPluginManager().registerEvents(new Listener() {
+      @EventHandler(priority = EventPriority.NORMAL)
+      public void onJoin(PlayerJoinEvent event) {
+        event.getPlayer().sendMessage("chunkwake is awake");
+      }
+    }, this);
+  }
+}
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="kotlin">
+
+```kotlin
+class HelloPlugin : JavaPlugin() {
+  override fun onEnable() {
+    server.pluginManager.registerEvents(object : Listener() {
+      @EventHandler(priority = EventPriority.NORMAL)
+      fun onJoin(event: PlayerJoinEvent) {
+        event.player.sendMessage("chunkwake is awake")
+      }
+    }, this)
+  }
+}
+```
+
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+Порядок Bukkit/Paper событий сохраняется, включая отмену и подмену данных. Событие, которое в Paper стреляет после механики, здесь тоже стреляет после неё.
+
+## Планировщики Folia
+
+Для всех плагинов работают:
+
+- `GlobalRegionScheduler`;
+- `RegionScheduler`;
+- `AsyncScheduler`;
+- `EntityScheduler`.
+
+Обычные плагины при этом не отключаются, как в Folia. Плагины с `folia-supported: true` дополнительно получают модель регионов.
+
+## Данные и реестры
+
+Доступны `PersistentDataContainer`, `Metadatable`, реестры, теги, атрибуты и каналы плагинов. Ванильные классы `net.minecraft.*` лежат в classpath для плагинов, которым нужен NMS.
+
+> **Граница совместимости.** Плагины, которые лезут во внутренности CraftBukkit, Netty или `ServerLevel`, могут работать не полностью. Полностью повторить Java-сервер без Java-сервера нельзя, и это не обещается.
+
+## Отладка
+
+- `chunkwake doctor --dir ./server` проверяет Java и конфигурацию.
+- Логи JVM и моста пишутся в общий лог сервера.
+- `java/test-plugin` в репозитории — живой плагин для проверки событий.
+- Исходники реализации: [`java/api-impl`](https://github.com/chunkwake/core/tree/ver/26.3/java/api-impl) и [`crates/bridge`](https://github.com/chunkwake/core/tree/ver/26.3/crates/bridge).

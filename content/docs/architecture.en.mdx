@@ -1,0 +1,51 @@
+---
+title: Architecture
+description: Crates, the JNI bridge and the Rust/JVM boundary.
+---
+
+## Top level
+
+```
+client 26.3  ←→  net (Rust, tokio)
+                    │
+                    ├── world, worldgen, redstone, mobs
+                    │
+                    └── JNI bridge  ←→  JVM (paper-api + api-impl)
+                                              │
+                                              └── plugins/*.jar
+```
+
+Networking, the world and worldgen live in Rust. The JVM does not own the tick: it receives events and requests through the bridge. If there are no listeners, the event stays in Rust.
+
+## Crates
+
+| Crate | Responsibility |
+|---|---|
+| `protocol` | Packets 26.3, VarInt, NBT, text components |
+| `net` | Connections, game, commands, mechanics, events |
+| `worldgen` | Noise, biomes, surfaces, carvers, structures |
+| `world` | Chunks, palettes, Anvil, light |
+| `data` | Embedded game data |
+| `bridge` | JVM over JNI and the embedded API |
+| `server` | Binary, CLI, setup wizard, console, backups |
+| `metrics` | Metrics and dashboard |
+| `lab` | Vanilla comparison and benchmarks |
+| `bots` | Bot probes for packet parity |
+
+## Parity with vanilla
+
+- Mechanics are implemented from `server.jar` and Paper bytecode, not from the wiki.
+- The command tree is checked against `reports/commands.json`, packets against `reports/packets.json`.
+- Terrain and world hashes are compared with vanilla.
+- `chunkwake-lab` runs scenarios on both servers and builds a diff report.
+
+## Plans
+
+Not shipped yet, but described in `ARCHITECTURE.md`:
+
+- an STM tick: Paper semantics for plugins while executing in parallel;
+- dynamic islands instead of Folia's fixed regions;
+- the world as an event log with rollback and replay;
+- a Panama FFM bridge with shared memory instead of JNI.
+
+Details: [ARCHITECTURE.md](https://github.com/chunkwake/core/blob/ver/26.3/ARCHITECTURE.md).

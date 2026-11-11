@@ -1,0 +1,91 @@
+---
+title: Plugin development
+description: paper-api.jar in-process, Paper events and Folia schedulers.
+---
+
+## How it works
+
+The server starts a JVM through JNI inside the `chunkwake` process. The official `paper-api.jar` is on the classpath together with our behaviour implementation, `api-impl`. A plugin sees `Bukkit.getServer()`, `JavaPlugin`, events and schedulers exactly as it does on Paper.
+
+If an event has no listeners, Rust never sends it to the JVM, so unused events cost almost nothing.
+
+## plugin.yml
+
+```yaml
+name: HelloPlugin
+version: 1.0.0
+main: dev.chunkwake.hello.HelloPlugin
+api-version: "26.3"
+```
+
+Both `plugin.yml` and `paper-plugin.yml` are supported, including Maven `libraries:`, `loader` and `bootstrapper`.
+
+## Events
+
+<CodeBlockTabs defaultValue="java">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="java"><LangIcon lang="java" /> Java</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="kotlin"><LangIcon lang="kotlin" /> Kotlin</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+
+  <CodeBlockTab value="java">
+
+```java
+public final class HelloPlugin extends JavaPlugin {
+  @Override
+  public void onEnable() {
+    getServer().getPluginManager().registerEvents(new Listener() {
+      @EventHandler(priority = EventPriority.NORMAL)
+      public void onJoin(PlayerJoinEvent event) {
+        event.getPlayer().sendMessage("chunkwake is awake");
+      }
+    }, this);
+  }
+}
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="kotlin">
+
+```kotlin
+class HelloPlugin : JavaPlugin() {
+  override fun onEnable() {
+    server.pluginManager.registerEvents(object : Listener() {
+      @EventHandler(priority = EventPriority.NORMAL)
+      fun onJoin(event: PlayerJoinEvent) {
+        event.player.sendMessage("chunkwake is awake")
+      }
+    }, this)
+  }
+}
+```
+
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+Bukkit/Paper event order is preserved, including cancellation and data replacement. An event that fires after a mechanic on Paper fires after it here too.
+
+## Folia schedulers
+
+Every plugin gets:
+
+- `GlobalRegionScheduler`;
+- `RegionScheduler`;
+- `AsyncScheduler`;
+- `EntityScheduler`.
+
+Ordinary plugins are not disabled as they are on Folia. Plugins with `folia-supported: true` additionally get the region model.
+
+## Data and registries
+
+`PersistentDataContainer`, `Metadatable`, registries, tags, attributes and plugin channels are available. Vanilla `net.minecraft.*` classes are on the classpath for plugins that need NMS.
+
+> **Compatibility boundary.** Plugins that reach into CraftBukkit, Netty or `ServerLevel` internals may not work in full. Replicating a Java server without a Java server is not possible, and this is not promised.
+
+## Debugging
+
+- `chunkwake doctor --dir ./server` checks Java and configuration.
+- JVM and bridge logs go to the server log.
+- `java/test-plugin` in the repository is a live event test plugin.
+- Implementation sources: [`java/api-impl`](https://github.com/chunkwake/core/tree/ver/26.3/java/api-impl) and [`crates/bridge`](https://github.com/chunkwake/core/tree/ver/26.3/crates/bridge).

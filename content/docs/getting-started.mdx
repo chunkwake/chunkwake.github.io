@@ -1,0 +1,60 @@
+---
+title: Быстрый старт
+description: Сборка, настройка и первый запуск Chunkwake.
+---
+
+## Требования
+
+Для запуска сервера нужен один бинарник: данные игры и API плагинов встроены. `server.jar` и Java для запуска не нужны.
+
+- **Windows x86_64** или **Linux x86_64** (musl, статическая сборка);
+- **Java 25+** — только если вы запускаете плагины;
+- для сборки из исходников: Rust stable и JDK 21+.
+
+## Готовый бинарник
+
+CI собирает релизы под Windows и Linux. Пока публичных релизов нет, готовые артефакты лежат в [Actions](https://github.com/chunkwake/core/actions/workflows/ci.yml) — для скачивания нужен вход в GitHub.
+
+Когда появится первый тег, файлы будут на странице [Релизы](https://github.com/chunkwake/core/releases):
+
+```
+chunkwake-26.3.0-windows-x86_64.zip
+chunkwake-26.3.0-linux-x86_64.tar.gz
+SHA256SUMS
+```
+
+## Сборка из исходников
+
+```bash
+git clone https://github.com/chunkwake/core.git chunkwake
+cd chunkwake
+cargo build --release -p chunkwake-server
+```
+
+Бинарник появится в `target/release/chunkwake` (или `chunkwake.exe` на Windows). Данные игры встраиваются при сборке: `build.rs` берёт кэш или собирает его из официального `server.jar`.
+
+## Первый запуск
+
+```bash
+chunkwake setup --dir ./server    # мастер настройки в терминале
+chunkwake doctor --dir ./server   # проверка конфигурации, порта и Java
+chunkwake --dir ./server          # запуск
+```
+
+`setup` создаёт каталог состояния, `server.properties`, конфигурацию и структуру для плагинов. `doctor` проверяет, что бинарник полный, порт свободен, а Java для плагинов доступна.
+
+## Плагины
+
+Плагины кладутся в `server/plugins/`. Сервер найдёт Java в таком порядке:
+
+1. `java-path` в конфигурации;
+2. переменная окружения `CHUNKWAKE_JAVA`;
+3. `java` из `PATH`.
+
+Подойдёт Java 25+. Если Java нет, сервер запустится без плагинов.
+
+## Куда смотреть дальше
+
+- `chunkwake --help` — все команды CLI.
+- `chunkwake top` — разовый снимок нагрузки, `--watch` — обновление в терминале.
+- [docs/running.md](https://github.com/chunkwake/core/blob/ver/26.3/docs/running.md) — служба systemd, Windows-служба, логи, бэкапы и `CHUNKWAKE_HOME`.

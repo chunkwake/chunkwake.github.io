@@ -1,0 +1,36 @@
+---
+title: Introduction
+description: A Minecraft 26.3 server in Rust with Paper and Folia plugins.
+---
+
+**Chunkwake** is a Minecraft Java Edition 26.3 server core written from scratch in Rust. The engine, networking, world generation, lighting and storage run without a JVM. Plugins run in a real JVM inside the server process: the official `paper-api.jar` is on the classpath, so ordinary Paper plugins do not need a rewrite.
+
+> **Early stage.** Survival with world generation, redstone, mobs and plugins already works, but this is not yet a replacement for Paper on a live server. Back up your worlds.
+
+## Why another core
+
+A server owner usually has to choose: plugins **or** multithreading. Paper runs ordinary plugins but ticks on a single main thread. Folia scales by region but only accepts plugins marked `folia-supported`.
+
+Chunkwake tries to remove that choice:
+
+- a Rust engine with no GC pauses;
+- the real `paper-api.jar` and events in Paper order;
+- Folia schedulers available to every plugin;
+- one binary with game data and the API embedded.
+
+## Two rules
+
+1. **Compatibility beats speed.** If faster would mean "a plugin sees a different event order", Paper semantics win.
+2. **Vanilla is the reference.** Behaviour is checked against `server.jar` and Paper bytecode. A difference from vanilla is a bug.
+
+## Next
+
+- [Quick start](/en/docs/getting-started) — build and run the server.
+- [Migrating from Paper and Folia](/en/docs/migrating) — move worlds, plugins and settings.
+- [Plugin development](/en/docs/plugins) — API, events and schedulers.
+- [Architecture](/en/docs/architecture) — how Rust and the JVM live together.
+- [Feature matrix](/en/docs/feature-matrix) — what is ready, partial or missing.
+
+## Status
+
+<MatrixTotals />

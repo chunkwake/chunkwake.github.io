@@ -1,0 +1,38 @@
+{
+  "name": "chunkwake-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 8500",
+    "predev": "node scripts/sync-feature-matrix.mjs --cache",
+    "build": "next build",
+    "prebuild": "node scripts/sync-feature-matrix.mjs",
+    "postbuild": "node scripts/postbuild.mjs",
+    "preview": "serve out -p 8500",
+    "sync:matrix": "node scripts/sync-feature-matrix.mjs",
+    "types:check": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "@xyflow/react": "^12.12.1",
+    "cn": "^0.5.2",
+    "fumadocs-core": "16.18.4",
+    "fumadocs-mdx": "15.5.3",
+    "fumadocs-ui": "npm:@fumadocs/base-ui@16.18.4",
+    "lucide-react": "^1.70.0",
+    "next": "16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "shiki": "4.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/mdx": "^2.0.14",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "postcss": "^8.5.32",
+    "serve": "^14.2.7",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2"
+  }
+}

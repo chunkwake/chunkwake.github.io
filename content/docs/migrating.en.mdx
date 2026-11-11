@@ -1,0 +1,186 @@
+---
+title: Migrating from Paper and Folia
+description: Move your world, plugins and settings to Chunkwake, and keep a way back.
+---
+
+Chunkwake runs ordinary Paper and Folia plugins, reads and writes Anvil worlds both ways and uses the same `server.properties`. But this is not a one-file replacement: the core is different, some Paper settings are not imported, and NMS plugins must be checked individually.
+
+> **Copy first.** Do not migrate a live server without a backup and a test clone. Chunkwake is early-stage, and the feature matrix is honest about what is not ready.
+
+## What carries over
+
+- **Anvil worlds.** Regular `.mca` regions, `level.dat`, player data. Chunkwake reads and writes worlds that vanilla understands, in both directions.
+- **Plugins.** `plugins/*.jar`, `plugin.yml` and `paper-plugin.yml`, Maven `libraries:`, `loader` and `bootstrapper`.
+- **Events and schedulers.** Bukkit/Paper events in Paper order, plus `GlobalRegionScheduler`, `RegionScheduler`, `AsyncScheduler` and `EntityScheduler` for every plugin.
+- **`server.properties`.** Supported keys are read from the same file; some world and game settings are stored but not applied yet.
+- **Commands and permissions.** Vanilla command tree, `ops.json`, console and plugin permissions.
+
+## What does not migrate automatically
+
+| Item | What to do |
+|---|---|
+| `config/paper-global.yml`, `config/paper-world-defaults.yml`, `spigot.yml`, `bukkit.yml` | Not read. Move only supported values into `server.properties` and `chunkwake config set` |
+| Plugins reaching into NMS, CraftBukkit, Netty or `ServerLevel` | Test one by one. Vanilla classes are on the classpath, but full compatibility is not promised |
+| Legacy/BungeeCord forwarding | Not implemented. Use Velocity with `modern` forwarding |
+| Custom core patches and Paper forks | No equivalent; look for API behaviour or the feature matrix |
+| External plugin databases | Copy them separately; Chunkwake does not touch them |
+
+## Migration order
+
+### 1. Check plugins and features
+
+Open the [feature matrix](/en/docs/feature-matrix) and your plugin list. "Partial" and "not started" rows show what is not yet ready for a production server.
+
+Pay special attention to:
+
+- plugins with NMS/CraftBukkit;
+- plugins that assume one global thread;
+- plugins with their own scheduler and regional assumptions;
+- plugins that read Paper config files directly;
+- multiworld and custom dimensions.
+
+### 2. Make a full copy
+
+Stop Paper/Folia and copy the **entire** server directory, not just the world:
+
+```text
+server/
+├── world/
+├── world_nether/
+├── world_the_end/
+├── plugins/          # jars and per-plugin data folders
+├── server.properties
+├── ops.json
+├── whitelist.json
+├── banned-ips.json
+├── banned-players.json
+└── config/           # Paper configs: keep them, do not expect an import
+```
+
+You can also take a Chunkwake backup after the first start:
+
+```bash
+chunkwake backup create --dir /srv/chunkwake
+chunkwake backup verify <id> --dir /srv/chunkwake
+```
+
+Backups only run while the server is stopped.
+
+### 3. Install Chunkwake next to Paper
+
+Do not delete the Paper install. Put Chunkwake in a separate directory and keep the old server in place — that is your rollback plan.
+
+```bash
+mkdir /srv/chunkwake
+chunkwake setup --dir /srv/chunkwake
+```
+
+There is no public release yet: build the binary from source or take a CI artifact.
+
+```bash
+git clone https://github.com/chunkwake/core.git
+cd core
+cargo build --release -p chunkwake-server
+```
+
+Plugins need **Java 25+**. The server finds it through `java-path`, `CHUNKWAKE_JAVA` or `PATH`.
+
+### 4. Move the world
+
+Copy the world directories and `level.dat` into the Chunkwake directory. Names must match `level-name` in `server.properties`.
+
+```bash
+cp -a /srv/paper/world /srv/chunkwake/
+cp -a /srv/paper/world_nether /srv/chunkwake/
+cp -a /srv/paper/world_the_end /srv/chunkwake/
+```
+
+Chunkwake reads `.mca` with gzip, zlib, uncompressed and lz4, including external `c.X.Z.mcc` for large chunks. Writing is compatible with vanilla too.
+
+Never run two servers against the same world directory at the same time.
+
+### 5. Move plugins
+
+Copy `plugins/` as a whole, including config and database folders. Make sure Java 25+ is available for plugins.
+
+```bash
+cp -a /srv/paper/plugins /srv/chunkwake/
+```
+
+Plugins with `folia-supported: true` do not need a special switch: Folia schedulers are available to everyone. Ordinary Paper plugins are not disabled.
+
+### 6. Move settings
+
+You can copy `server.properties` as is, but not every key is applied. Check network, port, MOTD, `online-mode`, `level-name`, seed, compression and Java paths:
+
+```bash
+chunkwake config show --dir /srv/chunkwake
+chunkwake config set server-port 25565 --dir /srv/chunkwake
+chunkwake doctor --dir /srv/chunkwake
+```
+
+If the server runs behind Velocity, enable **modern forwarding only**:
+
+```properties
+online-mode=false
+velocity-enabled=true
+velocity-secret=<secret from forwarding.secret>
+```
+
+Legacy/BungeeCord forwarding is not supported. The backend port must be reachable only by the proxy.
+
+### 7. Start and verify
+
+```bash
+chunkwake doctor --dir /srv/chunkwake
+chunkwake --dir /srv/chunkwake
+```
+
+The first start extracts game data (≈27 MB) and the plugin API (≈37 MB). Later starts are fast.
+
+Check:
+
+- the server is visible in the list and accepts logins;
+- worlds, inventories, positions and player data are intact;
+- there are no chunk or light load errors;
+- core commands and permissions work;
+- plugins enabled, events fire, scheduler tasks run;
+- PDC, registries, tags and attributes read correctly;
+- Velocity login works, if used;
+- TPS and MSPT did not regress under your load.
+
+If a plugin crashes, disable it and retry. Do not migrate all plugins to the working environment at once.
+
+### 8. Keep a way back
+
+Do not delete the Paper install or backups until Chunkwake has run under real load for a few days.
+
+Rollback:
+
+1. Stop Chunkwake with `stop`.
+2. Restore the Paper directory and its `server.properties`.
+3. Start Paper on the same world.
+4. If Chunkwake already changed the world, restore the copy taken before migration.
+
+## Folia: what changes
+
+On Folia, ordinary plugins are disabled unless they declare `folia-supported`. On Chunkwake:
+
+- `GlobalRegionScheduler`, `RegionScheduler`, `AsyncScheduler` and `EntityScheduler` are available to everyone;
+- ordinary plugins keep working;
+- Folia's regional model is not forced on plugins that do not expect it.
+
+Still, code that assumes "one main thread for the whole world" or relies on ordering between regions needs testing.
+
+## Performance expectations
+
+On the project bench, Chunkwake starts in **0.6–0.9 s** versus **6.6–11.4 s** for vanilla, 20 bots joining gives p95 **11–26 ms** versus **845–860 ms**, and peak memory is **182–236 MiB** versus **845–929 MiB**. Details and caveats: [benchmark](/en#benchmark) and [docs/perf.md](https://github.com/chunkwake/core/blob/ver/26.3/docs/perf.md).
+
+Speed does not remove the need to verify behaviour: if a plugin sees a different event order, that is a bug, not an optimization.
+
+## If something goes wrong
+
+- `chunkwake doctor --dir ...` — config, port, Java, world integrity.
+- `logs/latest.log` — the main log; `logs/chunkwake.<date>.log` — daily files.
+- `chunkwake backup rollback --dir ...` — recover after an interrupted restore.
+- [Issues](https://github.com/chunkwake/core/issues) — include the version, plugin, steps and what vanilla does.

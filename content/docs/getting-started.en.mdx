@@ -1,0 +1,60 @@
+---
+title: Quick start
+description: Build, configure and run Chunkwake for the first time.
+---
+
+## Requirements
+
+The server runs from a single binary: game data and the plugin API are embedded. No `server.jar` or Java installation is required to start it.
+
+- **Windows x86_64** or **Linux x86_64** (musl, statically linked);
+- **Java 25+** — only if you run plugins;
+- to build from source: Rust stable and JDK 21+.
+
+## Prebuilt binary
+
+CI builds releases for Windows and Linux. There are no public releases yet, so prebuilt artifacts live in [Actions](https://github.com/chunkwake/core/actions/workflows/ci.yml) — downloading them requires a GitHub login.
+
+Once the first tag ships, files will appear on the [Releases](https://github.com/chunkwake/core/releases) page:
+
+```
+chunkwake-26.3.0-windows-x86_64.zip
+chunkwake-26.3.0-linux-x86_64.tar.gz
+SHA256SUMS
+```
+
+## Build from source
+
+```bash
+git clone https://github.com/chunkwake/core.git chunkwake
+cd chunkwake
+cargo build --release -p chunkwake-server
+```
+
+The binary appears at `target/release/chunkwake` (`chunkwake.exe` on Windows). Game data is embedded at build time: `build.rs` uses a cache or generates one from the official `server.jar`.
+
+## First run
+
+```bash
+chunkwake setup --dir ./server    # terminal setup wizard
+chunkwake doctor --dir ./server   # check config, port and Java
+chunkwake --dir ./server          # start
+```
+
+`setup` creates the state directory, `server.properties`, configuration and the plugin layout. `doctor` verifies that the binary is complete, the port is free and Java for plugins is available.
+
+## Plugins
+
+Plugins go into `server/plugins/`. The server looks for Java in this order:
+
+1. `java-path` in the configuration;
+2. the `CHUNKWAKE_JAVA` environment variable;
+3. `java` from `PATH`.
+
+Java 25+ works. Without Java, the server still starts, just without plugins.
+
+## Where to look next
+
+- `chunkwake --help` — all CLI commands.
+- `chunkwake top` — a one-off load snapshot, `--watch` updates it in the terminal.
+- [docs/running.md](https://github.com/chunkwake/core/blob/ver/26.3/docs/running.md) — systemd, Windows service, logs, backups and `CHUNKWAKE_HOME`.
