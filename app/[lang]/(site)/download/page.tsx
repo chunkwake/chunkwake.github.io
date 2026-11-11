@@ -3,14 +3,17 @@ import { DownloadPanel } from '@/components/download-panel';
 import { LangNotFound } from '@/components/lang-not-found';
 import { getCopy } from '@/lib/dictionary';
 import { isLang } from '@/lib/i18n';
+import { pageMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const copy = getCopy(lang);
-  return {
+  return pageMetadata({
+    lang,
+    path: '/download',
     title: copy.download.title,
     description: copy.download.lead,
-  };
+  });
 }
 
 export default async function DownloadPage({ params }: { params: Promise<{ lang: string }> }) {

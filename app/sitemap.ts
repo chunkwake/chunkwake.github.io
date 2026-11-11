@@ -5,6 +5,7 @@ const paths = [
   '',
   '/docs',
   '/docs/getting-started',
+  '/docs/faq',
   '/docs/migrating',
   '/docs/feature-matrix',
   '/docs/plugins',

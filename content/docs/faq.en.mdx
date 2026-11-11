@@ -1,0 +1,37 @@
+---
+title: Questions and answers
+description: A short take on readiness, plugins, Java, migration and releases.
+icon: CircleQuestionMark
+---
+
+## Can I put this on a production server?
+
+Chunkwake is early-stage. Make a backup and test it on a clone first. The [feature matrix](/en/docs/feature-matrix) shows what is ready and what is not.
+
+## Do ordinary Paper plugins work?
+
+Yes. Chunkwake loads `plugins/*.jar`, reads `plugin.yml` and `paper-plugin.yml`, and provides Paper-ordered events and Folia schedulers. Test plugins that reach into NMS, CraftBukkit or Netty one by one. Plugins need Java 25+.
+
+## Does the server itself need Java?
+
+No. The core is one binary with game data and the plugin API embedded. Java 25+ is only needed to run plugins. Building game data from `server.jar` needs JDK 21+.
+
+## Can I move my world, plugins and settings?
+
+Yes. Anvil worlds, `level.dat`, `server.properties` and plugins carry over. The step-by-step order, checks and rollback are in the [migration guide](/en/docs/migrating).
+
+## How is this different from Folia?
+
+On Folia, ordinary plugins are disabled unless they declare `folia-supported`. On Chunkwake, Folia schedulers are available to every plugin and the regional model is not forced on plugins that do not expect it. Code that assumes one main thread still needs testing.
+
+## How much faster is it?
+
+On the project bench, startup takes 0.6–0.9 s versus 6.6–11.4 s for vanilla, and 20 bots joining gives p95 11–26 ms versus 845–860 ms. Numbers depend on the world, plugins and hardware. See the [benchmark](/en#benchmark) and [docs/perf.md](https://github.com/chunkwake/core/blob/ver/26.3/docs/perf.md).
+
+## Where do I get a build?
+
+There is no public release yet. Build from source or take a CI artifact. Commands are on the [download page](/en/download).
+
+## How can I support the project?
+
+The [support page](/en/support) lists crypto addresses. There are no other methods yet.

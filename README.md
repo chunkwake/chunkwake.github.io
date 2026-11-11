@@ -24,9 +24,10 @@ pnpm preview      # http://localhost:8500
 
 ```
 app/(root)/            / → /ru/ (редирект) и глобальная 404
-app/[lang]/(site)      лендинг и страница загрузки
+app/[lang]/(site)      лендинг, загрузка и поддержка
 app/[lang]/docs        документация Fumadocs
 app/api/search         статический поисковый индекс
+app/manifest.ts        PWA-манифест
 content/docs           MDX, русский — базовый, английский — суффикс .en
 lib/i18n.ts            локали ru/en
 lib/dictionary.ts      тексты лендинга
@@ -34,7 +35,7 @@ lib/source.ts          источник документации
 components/            лендинг, логотип, шапка, футер, загрузка,
                        Shiki-код, Java/Kotlin-табы и React Flow-диаграмма
 source.config.ts       общая тема Shiki для MDX-кода
-public/                favicon, 404.html
+public/                favicon, OG-картинки, PWA-иконки, 404.html
 scripts/postbuild.mjs  копирует кастомный 404 и .nojekyll в out/
 ```
 
@@ -45,9 +46,10 @@ scripts/postbuild.mjs  копирует кастомный 404 и .nojekyll в o
 
 Фич-матрица синхронизируется автоматически: `scripts/sync-feature-matrix.mjs` забирает
 `core/docs/feature-matrix.md` при сборке и кладёт разобранный JSON в `content/data`.
-Если GitHub недоступен, сборка использует последнюю сохранённую копию. Остальной контент
-`core/docs` пока не синхронизируется: страницы `getting-started`, `plugins` и `architecture` —
-курированные версии исходной документации.
+Если GitHub недоступен, сборка использует последнюю сохранённую копию. `scripts/sync-docs-meta.mjs`
+собирает даты последних изменений страниц, а `pnpm images:generate` пересобирает OG-картинки
+и PWA-иконки. Остальной контент `core/docs` пока не синхронизируется: страницы `getting-started`,
+`plugins` и `architecture` — курированные версии исходной документации.
 
 ## Деплой
 
@@ -69,5 +71,4 @@ Workflow `.github/workflows/site.yml` собирает `out/` и публику�
 
 - синхронизация остального `core/docs` → MDX на сборке;
 - страница загрузки из GitHub Releases API;
-- английские переводы остальных страниц;
-- OG-картинки.
+- каталог совместимости плагинов.

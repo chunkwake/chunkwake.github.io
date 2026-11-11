@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 8500",
-    "predev": "node scripts/sync-feature-matrix.mjs --cache",
+    "predev": "node scripts/sync-feature-matrix.mjs --cache && node scripts/sync-docs-meta.mjs",
     "build": "next build",
-    "prebuild": "node scripts/sync-feature-matrix.mjs",
+    "prebuild": "node scripts/sync-feature-matrix.mjs && node scripts/sync-docs-meta.mjs && node scripts/generate-images.mjs",
     "postbuild": "node scripts/postbuild.mjs",
     "preview": "serve out -p 8500",
     "sync:matrix": "node scripts/sync-feature-matrix.mjs",
+    "sync:docs": "node scripts/sync-docs-meta.mjs",
+    "images:generate": "node scripts/generate-images.mjs",
     "types:check": "next typegen && tsc --noEmit"
   },
   "dependencies": {
@@ -26,6 +28,7 @@
     "shiki": "4.6.0"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/postcss": "^4.3.5",
     "@types/mdx": "^2.0.14",
     "@types/node": "^26.6.6",

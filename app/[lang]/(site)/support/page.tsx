@@ -6,6 +6,7 @@ import { donations } from '@/lib/donations';
 import { getCopy } from '@/lib/dictionary';
 import { isLang } from '@/lib/i18n';
 import { renderQr } from '@/lib/qr';
+import { pageMetadata } from '@/lib/seo';
 
 const marks = {
   btc: '₿',
@@ -16,10 +17,12 @@ const marks = {
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const copy = getCopy(lang);
-  return {
+  return pageMetadata({
+    lang,
+    path: '/support',
     title: copy.support.title,
     description: copy.support.lead,
-  };
+  });
 }
 
 export default async function SupportPage({ params }: { params: Promise<{ lang: string }> }) {
