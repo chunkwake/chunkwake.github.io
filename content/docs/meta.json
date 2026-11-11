@@ -1,4 +1,14 @@
 {
   "title": "Документация",
-  "pages": ["index", "getting-started", "migrating", "feature-matrix", "plugins", "architecture"]
+  "pages": [
+    "---Начало---",
+    "index",
+    "getting-started",
+    "---Миграция---",
+    "migrating",
+    "feature-matrix",
+    "---Разработка---",
+    "plugins",
+    "architecture"
+  ]
 }

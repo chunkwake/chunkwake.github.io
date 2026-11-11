@@ -1825,6 +1825,37 @@ button {
   border-radius: 4px;
 }
 
+#nd-sidebar p {
+  margin-top: 22px;
+  padding: 0 8px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--subtle);
+}
+
+#nd-sidebar p:first-of-type {
+  margin-top: 6px;
+}
+
+#nd-sidebar a[data-active] svg {
+  opacity: 0.65;
+  transition:
+    color 0.16s var(--cw-ease),
+    opacity 0.16s var(--cw-ease);
+}
+
+#nd-sidebar a[data-active]:hover svg {
+  opacity: 1;
+}
+
+#nd-sidebar a[data-active='true'] svg {
+  color: var(--accent);
+  opacity: 1;
+}
+
 #nd-nav {
   background: rgba(24, 24, 24, 0.92);
   backdrop-filter: blur(10px);
