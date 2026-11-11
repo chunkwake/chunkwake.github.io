@@ -22,7 +22,7 @@ export default async function SiteLayout({
       <SiteHeader lang={lang} copy={copy} />
       <main className="cw-main">{children}</main>
       <SiteFooter lang={lang} copy={copy} />
-      <StatusBar lang={lang} />
+      <StatusBar />
     </div>
   );
 }
