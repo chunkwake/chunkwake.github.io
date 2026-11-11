@@ -1,0 +1,63 @@
+---
+title: Command reference
+description: Implemented Chunkwake commands, permission levels and differences from vanilla.
+icon: Terminal
+---
+
+The command tree is declared once in `crates/net/src/play/commands/registry.rs`. The client `commands` packet, tab-complete suggestions and permission checks are generated from it, so the tree, permissions and execution cannot drift apart. Node shapes are checked against vanilla `reports/commands.json` 26.3.
+
+<CommandsReference lang="en" />
+
+## Command index
+
+A short list of names for search and navigation; descriptions and differences are in the cards above.
+
+- **Player and chat:** `help`, `list`, `me`, `say`, `msg` / `tell` / `w`, `teammsg` / `tm`, `team`, `tellraw`, `title`, `playsound` / `stopsound`, `give`, `clear`, `effect`, `xp`, `gamemode` / `defaultgamemode`, `kill`, `tp` / `teleport`, `damage`, `rotate`, `spawnpoint`, `tag`, `swing`, `spectate`, `ride`, `trigger`, `random`, `bossbar`, `enchant`, `spreadplayers`, `stopwatch`, `posteffect`, `attribute`, `waypoint`, `dialog`, `particle`, `item`, `loot`.
+- **World and blocks:** `setblock`, `fill`, `clone`, `summon`, `weather`, `gamerule`, `time`, `difficulty`, `seed`, `setworldspawn`, `worldborder`, `forceload`, `locate`, `fillbiome`, `place`.
+- **Data and scoreboard:** `scoreboard objectives`, `scoreboard players`, `data`, `execute`.
+- **Administration:** `op` / `deop`, `kick`, `whitelist`, `ban` / `ban-ip` / `banlist` / `pardon` / `pardon-ip`, `reload`, `tick`, `debug`, `perf`, `stop`, `version`, `save-all` / `save-off` / `save-on`, `publish` / `unpublish`, `transfer`, `setidletimeout`, `return`.
+- **Chunkwake extensions:** `tps`, `top`.
+
+## Permission levels
+
+Levels match vanilla. An operator receives level 3; the server owner receives level 4.
+
+| Level | Who | Vanilla group |
+|---|---|---|
+| 0 | everyone | — |
+| 2 | game master | `gamemasters` |
+| 3 | admin | `admins` |
+| 4 | server owner | `owners` |
+
+## Selectors
+
+`@s`, `@p`, `@r`, `@a`, `@e` and player names with arguments are supported:
+
+```text
+@a[distance=..20,gamemode=creative]
+@e[type=minecraft:cow,limit=5,sort=nearest,tag=farm]
+@p[x=0,y=64,z=0,dx=10,dy=10,dz=10]
+@a[name=Ali*,level=1..]
+```
+
+Supported arguments: `sort`, `limit`, `distance`, `dx`/`dy`/`dz`, `gamemode`, `name`, `tag`, `scores` and `rot`. `type=` distinguishes a mob from a player.
+
+## Not implemented yet
+
+`advancement`, `compute`, `datapack`, `fetchprofile`, `function`, `jfr`, `recipe`, `schedule`, `test`.
+
+Some of them need subsystems that do not exist yet: scoreboard in the tick, a data pack loader, a structure generator, player recipes. The `commands_parity.rs` test compares the tree with vanilla 26.3 and fails if this list drifts from the code.
+
+## Plugin commands
+
+The tree above is the core only. Plugins add commands dynamically: the client suggests literals and arguments from the `commands` packet, and the server answers `command_suggestion` with plugin command names and the `TabComplete` result. The list is extended, not replaced: an empty response does not wipe the tree.
+
+## Console
+
+The console accepts the same commands as chat, without `/`. `chunkwake` reads `stdin` line by line. `stop` shuts the server down, `top` writes a load snapshot to the log.
+
+## Related
+
+- [Operations](/en/docs/running) — service, logs, backups and Velocity.
+- [Feature matrix](/en/docs/feature-matrix) — what is ready, partial or missing.
+- [Source documentation](https://github.com/chunkwake/core/blob/ver/26.3/docs/commands.md) — `docs/commands.md` in the repository.

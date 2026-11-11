@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import {
   Beef,
@@ -13,7 +14,6 @@ import {
 } from 'lucide-react';
 import { benchmarks } from '@/lib/benchmarks';
 import type { Lang } from '@/lib/i18n';
-import { links } from '@/lib/shared';
 
 const icons = {
   startup: Rocket,
@@ -33,7 +33,7 @@ const ui = {
     chunkwake: 'Chunkwake',
     method:
       'Ryzen 9 7945HX, release, плоский мир, обзор 2, 20 ботов, разминка 20 с, замер 45 с, два прогона.',
-    source: 'Методика и сырые данные',
+    source: 'Полная методика и сырые данные',
     replay: 'Проиграть заново',
     lower: 'Ниже — лучше',
     speed: 'Анимация ускорена, пропорции между замерами сохранены.',
@@ -46,7 +46,7 @@ const ui = {
     chunkwake: 'Chunkwake',
     method:
       'Ryzen 9 7945HX, release, flat world, view distance 2, 20 bots, 20 s warmup, 45 s measurement, two runs.',
-    source: 'Method and raw data',
+    source: 'Full method and raw data',
     replay: 'Replay',
     lower: 'Lower is better',
     speed: 'Animation is accelerated; proportions between measurements are preserved.',
@@ -178,9 +178,9 @@ export function BenchmarkLab({ lang }: { lang: string }) {
           <Info size={12} aria-hidden="true" />
           <span>
             {metric.detail[lang === 'en' ? 'en' : 'ru']} {t.method} {t.speed}{' '}
-            <a href={links.perf} target="_blank" rel="noreferrer">
+            <Link href={`/${lang}/benchmarks`}>
               {t.source} ↗
-            </a>
+            </Link>
           </span>
         </div>
       </div>

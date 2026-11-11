@@ -3,8 +3,11 @@ import type { MetadataRoute } from 'next';
 const base = 'https://chunkwake.github.io';
 const paths = [
   '',
+  '/benchmarks',
   '/docs',
   '/docs/getting-started',
+  '/docs/running',
+  '/docs/commands',
   '/docs/faq',
   '/docs/migrating',
   '/docs/feature-matrix',

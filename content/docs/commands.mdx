@@ -1,0 +1,63 @@
+---
+title: Справочник команд
+description: Реализованные команды Chunkwake, уровни прав и отличия от ванили.
+icon: Terminal
+---
+
+Дерево команд объявлено один раз в `crates/net/src/play/commands/registry.rs`. Из него собираются пакет `commands` для клиента, подсказки tab-complete и проверка прав, поэтому дерево, права и выполнение не могут разойтись. Форма узлов сверяется с ванильным `reports/commands.json` 26.3.
+
+<CommandsReference lang="ru" />
+
+## Указатель команд
+
+Короткий список имён для поиска и перехода; описания и отличия — в карточках выше.
+
+- **Игрок и чат:** `help`, `list`, `me`, `say`, `msg` / `tell` / `w`, `teammsg` / `tm`, `team`, `tellraw`, `title`, `playsound` / `stopsound`, `give`, `clear`, `effect`, `xp`, `gamemode` / `defaultgamemode`, `kill`, `tp` / `teleport`, `damage`, `rotate`, `spawnpoint`, `tag`, `swing`, `spectate`, `ride`, `trigger`, `random`, `bossbar`, `enchant`, `spreadplayers`, `stopwatch`, `posteffect`, `attribute`, `waypoint`, `dialog`, `particle`, `item`, `loot`.
+- **Мир и блоки:** `setblock`, `fill`, `clone`, `summon`, `weather`, `gamerule`, `time`, `difficulty`, `seed`, `setworldspawn`, `worldborder`, `forceload`, `locate`, `fillbiome`, `place`.
+- **Данные и scoreboard:** `scoreboard objectives`, `scoreboard players`, `data`, `execute`.
+- **Администрирование:** `op` / `deop`, `kick`, `whitelist`, `ban` / `ban-ip` / `banlist` / `pardon` / `pardon-ip`, `reload`, `tick`, `debug`, `perf`, `stop`, `version`, `save-all` / `save-off` / `save-on`, `publish` / `unpublish`, `transfer`, `setidletimeout`, `return`.
+- **Расширения Chunkwake:** `tps`, `top`.
+
+## Уровни прав
+
+Уровни ванильные. Оператор получает уровень 3, владелец сервера — 4.
+
+| Уровень | Кто | В ванили |
+|---|---|---|
+| 0 | все | — |
+| 2 | гейм-мастер | `gamemasters` |
+| 3 | админ | `admins` |
+| 4 | владелец сервера | `owners` |
+
+## Селекторы
+
+Поддерживаются `@s`, `@p`, `@r`, `@a`, `@e` и имя игрока с аргументами:
+
+```text
+@a[distance=..20,gamemode=creative]
+@e[type=minecraft:cow,limit=5,sort=nearest,tag=farm]
+@p[x=0,y=64,z=0,dx=10,dy=10,dz=10]
+@a[name=Ali*,level=1..]
+```
+
+Разбираются `sort`, `limit`, `distance`, `dx`/`dy`/`dz`, `gamemode`, `name`, `tag`, `scores` и `rot`. `type=` отличает моба от игрока.
+
+## Чего пока нет
+
+`advancement`, `compute`, `datapack`, `fetchprofile`, `function`, `jfr`, `recipe`, `schedule`, `test`.
+
+Часть из них требует подсистем, которых ещё нет: scoreboard в тике, загрузчик датапаков, генератор структур, рецепты для игрока. Тест `commands_parity.rs` сверяет дерево с ванильным 26.3 и падает, если этот список разойдётся с кодом.
+
+## Команды плагинов
+
+Дерево выше — только ядро. Плагины добавляют свои команды динамически: клиент подсказывает литералы и аргументы из пакета `commands`, а на `command_suggestion` сервер отвечает именами команд плагинов и результатом `TabComplete`. Список дополняется, а не заменяется: пустой ответ не затирает дерево.
+
+## Консоль
+
+В консоли работают те же команды, что и в чате, без `/`. `chunkwake` читает `stdin` построчно. `stop` завершает сервер, `top` печатает снимок нагрузки в лог.
+
+## Связанное
+
+- [Эксплуатация](/ru/docs/running) — служба, логи, бэкапы и Velocity.
+- [Фич-матрица](/ru/docs/feature-matrix) — что готово, что частично и чего нет.
+- [Исходная документация](https://github.com/chunkwake/core/blob/ver/26.3/docs/commands.md) — `docs/commands.md` в репозитории.

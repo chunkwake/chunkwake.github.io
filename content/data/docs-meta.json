@@ -2,6 +2,8 @@
   "updated": {
     "content/docs/architecture.en.mdx": "2026-11-11T20:36:22+07:00",
     "content/docs/architecture.mdx": "2026-11-11T20:36:22+07:00",
+    "content/docs/commands.en.mdx": "2026-11-11T15:38:17.242Z",
+    "content/docs/commands.mdx": "2026-11-11T15:38:17.242Z",
     "content/docs/faq.en.mdx": "2026-11-11T21:18:30+07:00",
     "content/docs/faq.mdx": "2026-11-11T21:18:30+07:00",
     "content/docs/feature-matrix.en.mdx": "2026-11-11T20:36:22+07:00",
@@ -13,6 +15,8 @@
     "content/docs/migrating.en.mdx": "2026-11-11T21:41:41+07:00",
     "content/docs/migrating.mdx": "2026-11-11T21:41:41+07:00",
     "content/docs/plugins.en.mdx": "2026-11-11T20:36:22+07:00",
-    "content/docs/plugins.mdx": "2026-11-11T20:36:22+07:00"
+    "content/docs/plugins.mdx": "2026-11-11T20:36:22+07:00",
+    "content/docs/running.en.mdx": "2026-11-11T15:18:34.694Z",
+    "content/docs/running.mdx": "2026-11-11T15:18:04.408Z"
   }
 }

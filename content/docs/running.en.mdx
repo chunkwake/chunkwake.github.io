@@ -1,0 +1,182 @@
+---
+title: Operations
+description: First start, configuration, systemd, logs, backups and Velocity.
+icon: ServerCog
+---
+
+Installation, configuration, service management, logs and backups. For the shortest path from binary to a running server, see the [quick start](/en/docs/getting-started).
+
+## First start
+
+Game data and the plugin API are embedded in the binary: `server.jar` and Java are not needed to start. On first start the game data archive is extracted to `generated/26.3` (about 27 MB) and the API to `api/` (about 37 MB). This happens once; later starts are fast.
+
+```bash
+chunkwake setup --dir /srv/chunkwake
+chunkwake doctor --dir /srv/chunkwake
+chunkwake run --dir /srv/chunkwake
+```
+
+In Windows PowerShell:
+
+```powershell
+chunkwake setup --dir "C:\Minecraft\Chunkwake"
+chunkwake doctor --dir "C:\Minecraft\Chunkwake"
+chunkwake run --dir "C:\Minecraft\Chunkwake"
+```
+
+`setup` opens a full-screen wizard and needs a terminal. Where there is no terminal — SSH without `-t`, a container, an install script — use `chunkwake setup --yes --dir /path/to/server`. It writes the defaults; change them later with `config set`. An existing `server.properties` is not overwritten.
+
+`--dir` sets the directory for `server.properties` and the relative `vanilla-jar` and `generated-dir` paths. Pass it explicitly when running as a service.
+
+A new `server.properties` is created with `online-mode=true`, as in vanilla. With `online-mode=false` player names are not verified: disable verification only on a trusted local network or behind Velocity with modern forwarding.
+
+## State directory
+
+By default game data and the API live next to `server.properties`. The install can be read-only: binary in `/usr/local/bin`, state in `/var/lib/chunkwake`.
+
+```bash
+CHUNKWAKE_HOME=/var/lib/chunkwake chunkwake run --dir /srv/chunkwake
+```
+
+`CHUNKWAKE_HOME` moves `generated/` and `api/`. The world, `server.properties` and `logs/` stay in `--dir`.
+
+## Configuration
+
+The `setup` wizard has sections for network, server, startup, metrics, world and game. ←/→ or Tab switch sections, ↑/↓ select a field. Enter edits text; in a numeric field ↑/↓ change the value by 1, Shift+↑/↓ or PageUp/PageDown by 10. Enter or Space toggles flags. `D` checks values, the jar, Java and the port; `S` shows changes before writing.
+
+Settings can be changed without an editor:
+
+```bash
+chunkwake config show --dir /srv/chunkwake
+chunkwake config set server-port 25570 --dir /srv/chunkwake
+chunkwake doctor --dir /srv/chunkwake
+```
+
+World and game settings are marked `*` in the wizard: they are saved to `server.properties` and validated, but the current server does not apply them yet.
+
+`vanilla-jar` is optional. It is only needed to rebuild game data from the official `server.jar`. Java (`java-path` or `CHUNKWAKE_JAVA`) is required for data generation and for plugins, and plugins need **Java 25 or newer**.
+
+### Metrics
+
+The metrics section configures the built-in dashboard: enabled flag, address, port and access token. While the address is `127.0.0.1`, the dashboard is reachable only from that machine and no token is needed. For an external address such as `0.0.0.0` the server refuses to start the endpoint without a token; the detail panel warns before saving. The token must be at least 16 characters with no spaces. Browser login: `http://address:25585/?token=...`, then the session is kept in a cookie.
+
+## systemd service
+
+The ready-made unit is in [`contrib/systemd/chunkwake.service`](https://github.com/chunkwake/core/blob/ver/26.3/contrib/systemd/chunkwake.service). Create a user, copy the unit and adjust the paths.
+
+```bash
+useradd --system --home /srv/chunkwake --shell /usr/sbin/nologin chunkwake
+cp contrib/systemd/chunkwake.service /etc/systemd/system/
+systemctl enable --now chunkwake
+```
+
+The important parts:
+
+```ini
+[Service]
+Type=simple
+User=chunkwake
+Group=chunkwake
+WorkingDirectory=/srv/chunkwake
+ExecStart=/usr/local/bin/chunkwake run --dir /srv/chunkwake
+Environment=CHUNKWAKE_HOME=/var/lib/chunkwake
+StateDirectory=chunkwake
+KillSignal=SIGINT
+TimeoutStopSec=60
+Restart=on-failure
+RestartSec=5
+```
+
+`KillSignal=SIGINT` matters: the server treats Ctrl+C as a normal shutdown — it closes connections, unloads plugins and saves the world. If Java is not in `PATH`, add `Environment=CHUNKWAKE_JAVA=/usr/lib/jvm/temurin-25-jre/bin/java`.
+
+Service output goes to the journal, but only what reaches the console before logging is initialised. The main log is written by the server itself.
+
+## Windows service
+
+Register a service with `sc` or NSSM using:
+
+```text
+C:\Minecraft\Chunkwake\chunkwake.exe run --dir C:\Minecraft\Chunkwake
+```
+
+In NSSM, stop with a signal rather than killing the process: the server needs Ctrl+C to save the world.
+
+## Logs
+
+The server writes to the console and to `logs/` next to `server.properties`:
+
+- `latest.log` — the current run;
+- `chunkwake.<date>.log` — daily files kept for 14 days.
+
+If the directory cannot be created, the server keeps running and writes to the console only. Startup does not fail.
+
+## Backups
+
+Stop the server with `stop` and wait for the save confirmation. Backups are created only while the server is stopped: Chunkwake holds a directory lock while running.
+
+```bash
+chunkwake backup create --dir /srv/chunkwake
+chunkwake backup list --dir /srv/chunkwake
+chunkwake backup verify ID --dir /srv/chunkwake
+chunkwake backup restore ID --dir /srv/chunkwake
+```
+
+A backup includes `server.properties`, `ops.json`, the active world with player data and `plugins/` with plugin settings. `server.jar`, generated data and `backups/` are not copied. External plugin databases must be copied separately.
+
+Backups live in `<server directory>/backups/ID`. `restore` verifies checksums first, shows the directories it will replace and asks you to type `RESTORE ID`; before replacing anything it creates another copy of the current state. If a restore is interrupted, a normal start stops with a hint. Finish it with:
+
+```bash
+chunkwake backup resume --dir /srv/chunkwake
+chunkwake backup rollback --dir /srv/chunkwake
+```
+
+`doctor` checks world and player files and, on damage, points to the latest good backup.
+
+## Velocity and modern forwarding
+
+Only modern forwarding is supported; legacy/BungeeCord mode is not implemented.
+
+On the proxy, in `velocity.toml`:
+
+```toml
+player-info-forwarding-mode = "modern"
+```
+
+The secret is in `forwarding.secret` next to `velocity.toml` (or in the file from `forwarding-secret-file`). On the backend, in `server.properties`:
+
+```properties
+online-mode=false
+velocity-enabled=true
+velocity-secret=<the same secret as in forwarding.secret>
+```
+
+The secret can be written with:
+
+```bash
+chunkwake config set velocity-secret <secret> --dir /srv/chunkwake
+```
+
+The server refuses to start if `velocity-enabled=true` while the secret is empty or `online-mode=true`.
+
+The backend port must be reachable **only by the proxy** — loopback or firewall. With the secret, the server trusts the signed profile from Velocity, but that profile must not be reachable by clients directly.
+
+## Platforms
+
+Prebuilt binaries are produced for Windows x86_64 and Linux x86_64. The Linux build links against musl, not glibc: the same file runs on Debian, Ubuntu, Alpine and in containers without installed libraries. The artifact is named `chunkwake-26.3-<os>-<arch>` and contains `chunkwake` (`chunkwake.exe` on Windows), `README.md` and `LICENSE`.
+
+## Troubleshooting
+
+- `chunkwake doctor --dir ...` — configuration, port, Java, world files.
+- `logs/latest.log` — the main log; `logs/chunkwake.<date>.log` — daily files.
+- `chunkwake config show --dir ...` — what the server actually read.
+- `chunkwake backup rollback --dir ...` — recover after an interrupted restore.
+- Check that the port is not taken by another process and is reachable from outside.
+- Plugins: make sure Java 25+ is found and the jars are in `plugins/`.
+- [Issues](https://github.com/chunkwake/core/issues) — include the version, config without secrets, plugin, steps and what vanilla does.
+
+## Next
+
+- [Migrating from Paper and Folia](/en/docs/migrating) — move worlds, plugins and settings.
+- [Command reference](/en/docs/commands) — what works and how it differs from vanilla.
+- [Benchmarks](/en/benchmarks) — method, raw numbers and caveats.
+- [Docker: itzg/minecraft-server](/en/docs/migrating#docker-itzgminecraft-server) — run the native core in a container.

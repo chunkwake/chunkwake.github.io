@@ -1,0 +1,968 @@
+{
+  "source": "https://raw.githubusercontent.com/chunkwake/core/ver/26.3/docs/commands.md",
+  "fetchedAt": "2026-11-11",
+  "groups": [
+    {
+      "id": "player",
+      "title": { "ru": "Игрок и чат", "en": "Player and chat" },
+      "note": {
+        "ru": "Чат, инвентарь, эффекты, сущности и камера.",
+        "en": "Chat, inventory, effects, entities and the camera."
+      },
+      "commands": [
+        {
+          "name": "help",
+          "usage": "help [command]",
+          "level": 0,
+          "summary": {
+            "ru": "Список доступных команд или справка по одной команде.",
+            "en": "List available commands or show usage for one command."
+          },
+          "difference": {
+            "ru": "Без наведения и кликабельных ссылок.",
+            "en": "No hover or clickable links."
+          }
+        },
+        {
+          "name": "list",
+          "usage": "list [uuids]",
+          "level": 0,
+          "summary": {
+            "ru": "Игроки онлайн.",
+            "en": "Online players."
+          },
+          "difference": {
+            "ru": "`uuids` печатает UUID рядом с именем.",
+            "en": "`uuids` prints the UUID next to each name."
+          }
+        },
+        {
+          "name": "me",
+          "usage": "me <action>",
+          "level": 0,
+          "summary": {
+            "ru": "Действие от своего имени в чате.",
+            "en": "An action in chat under your name."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "say",
+          "usage": "say <message>",
+          "level": 2,
+          "summary": {
+            "ru": "Сообщение от имени сервера.",
+            "en": "A message from the server."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "msg / tell / w",
+          "usage": "msg <targets> <message>",
+          "level": 0,
+          "summary": {
+            "ru": "Личное сообщение игроку.",
+            "en": "Private message to a player."
+          },
+          "difference": {
+            "ru": "Нет истории и `/socialspy`.",
+            "en": "No message history or `/socialspy`."
+          }
+        },
+        {
+          "name": "teammsg / tm",
+          "usage": "teammsg <message>",
+          "level": 0,
+          "summary": {
+            "ru": "Сообщение участникам своей команды.",
+            "en": "Message to your team."
+          },
+          "difference": {
+            "ru": "Только участникам команды отправителя; без команды — `commands.teammsg.failed`.",
+            "en": "Only the sender's team; without a team it returns `commands.teammsg.failed`."
+          }
+        },
+        {
+          "name": "team",
+          "usage": "team add|remove|list|modify ...",
+          "level": 2,
+          "summary": {
+            "ru": "Состав, цвет, префикс и столкновения команды.",
+            "en": "Team members, colour, prefix and collisions."
+          },
+          "difference": {
+            "ru": "Дружественный огонь не влияет на урон: боя команд нет.",
+            "en": "Friendly fire does not affect damage: team combat is not implemented."
+          }
+        },
+        {
+          "name": "tellraw",
+          "usage": "tellraw <targets> <message>",
+          "level": 2,
+          "summary": {
+            "ru": "Отправить текстовый компонент в чат.",
+            "en": "Send a text component to chat."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "title",
+          "usage": "title <targets> title|subtitle|actionbar|times|clear|reset ...",
+          "level": 2,
+          "summary": {
+            "ru": "Показать заголовок, подзаголовок или action bar.",
+            "en": "Show a title, subtitle or action bar."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "playsound / stopsound",
+          "usage": "playsound <sound> <source> <targets> [pos] [volume] [pitch] [minVolume]",
+          "level": 2,
+          "summary": {
+            "ru": "Проиграть или остановить звук.",
+            "en": "Play or stop a sound."
+          },
+          "difference": {
+            "ru": "Категория (`master`…`ui`) работает; дальше `volume * 16` звук слышен с `minVolume`, `0` — не отправляется. `/stopsound <targets> [<source>] [<sound>]`, `*` — без категории.",
+            "en": "Categories (`master`…`ui`) work; beyond `volume * 16` the sound plays with `minVolume`, `0` sends nothing. `/stopsound <targets> [<source>] [<sound>]`, `*` means no category."
+          }
+        },
+        {
+          "name": "give",
+          "usage": "give <targets> <item> [count]",
+          "level": 2,
+          "summary": {
+            "ru": "Выдать предмет в инвентарь.",
+            "en": "Give an item to a player."
+          },
+          "difference": {
+            "ru": "Чары, имя, lore, `custom_data` и износ; остальные компоненты сохраняются для сравнения, но клиенту не уходят.",
+            "en": "Enchantments, name, lore, `custom_data` and damage; other components are stored for comparison but not sent to the client."
+          }
+        },
+        {
+          "name": "clear",
+          "usage": "clear <targets> [item] [maxCount]",
+          "level": 2,
+          "summary": {
+            "ru": "Очистить инвентарь.",
+            "en": "Clear an inventory."
+          },
+          "difference": {
+            "ru": "Совпадают только заданные компоненты; `#тег` снимает все предметы тега.",
+            "en": "Only matching components are cleared; `#tag` removes every item in the tag."
+          }
+        },
+        {
+          "name": "effect",
+          "usage": "effect give|clear <targets> <effect> [seconds] [amplifier] [hideParticles]",
+          "level": 2,
+          "summary": {
+            "ru": "Выдать или снять эффект.",
+            "en": "Apply or remove an effect."
+          },
+          "difference": {
+            "ru": "Поддерживаются `infinite` и `hideParticles`.",
+            "en": "`infinite` and `hideParticles` are supported."
+          }
+        },
+        {
+          "name": "xp",
+          "usage": "xp add|set|query <targets> <amount> [points|levels]",
+          "level": 2,
+          "summary": {
+            "ru": "Выдать, установить или показать опыт.",
+            "en": "Add, set or query experience."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "gamemode / defaultgamemode",
+          "usage": "gamemode <mode> [target]",
+          "level": 2,
+          "summary": {
+            "ru": "Сменить режим игры.",
+            "en": "Change the game mode."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "kill",
+          "usage": "kill [targets]",
+          "level": 2,
+          "summary": {
+            "ru": "Убить сущность.",
+            "en": "Kill an entity."
+          },
+          "difference": {
+            "ru": "Работает и для мобов, и для предметов.",
+            "en": "Works on mobs and item entities too."
+          }
+        },
+        {
+          "name": "tp / teleport",
+          "usage": "tp <targets> <location> [<rotation>]",
+          "level": 2,
+          "summary": {
+            "ru": "Телепортировать сущность, в том числе через `^` и `facing`.",
+            "en": "Teleport an entity, including `^` and `facing`."
+          },
+          "difference": {
+            "ru": "`^` считается от взгляда исполнителя; без углов поворот не сбрасывается.",
+            "en": "`^` is relative to the executor's view; without angles the rotation is kept."
+          }
+        },
+        {
+          "name": "damage",
+          "usage": "damage <target> <amount> [type] [at <location>|by <entity>]",
+          "level": 2,
+          "summary": {
+            "ru": "Нанести урон.",
+            "en": "Deal damage."
+          },
+          "difference": {
+            "ru": "`fall`, `out_of_world`, `starve`, `magic`, `wither`, `arrow`; неизвестный тип — обычный урон.",
+            "en": "`fall`, `out_of_world`, `starve`, `magic`, `wither`, `arrow`; unknown types become ordinary damage."
+          }
+        },
+        {
+          "name": "rotate",
+          "usage": "rotate <target> <rotation>",
+          "level": 2,
+          "summary": {
+            "ru": "Повернуть сущность.",
+            "en": "Rotate an entity."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "spawnpoint",
+          "usage": "spawnpoint [targets] [pos] [angle]",
+          "level": 2,
+          "summary": {
+            "ru": "Установить точку возрождения.",
+            "en": "Set a respawn point."
+          },
+          "difference": {
+            "ru": "Пишется в сохранение игрока (`SpawnX`/`Y`/`Z`).",
+            "en": "Stored in the player save (`SpawnX`/`Y`/`Z`)."
+          }
+        },
+        {
+          "name": "tag",
+          "usage": "tag <targets> add|remove|list <name>",
+          "level": 2,
+          "summary": {
+            "ru": "Добавить, снять или показать метки сущности.",
+            "en": "Add, remove or list entity tags."
+          },
+          "difference": {
+            "ru": "До 1024 меток; селектор `tag=` их видит.",
+            "en": "Up to 1024 tags; the `tag=` selector sees them."
+          }
+        },
+        {
+          "name": "swing",
+          "usage": "swing <targets> mainhand|offhand",
+          "level": 2,
+          "summary": {
+            "ru": "Проиграть взмах руки.",
+            "en": "Play an arm swing."
+          },
+          "difference": {
+            "ru": "`mainhand`/`offhand`, анимации `none`/`whack`/`stab`; для предмета и снаряда — `notliving`.",
+            "en": "`mainhand`/`offhand`, animations `none`/`whack`/`stab`; items and projectiles return `notliving`."
+          }
+        },
+        {
+          "name": "spectate",
+          "usage": "spectate <target> [player]",
+          "level": 2,
+          "summary": {
+            "ru": "Переключить камеру наблюдателя.",
+            "en": "Switch to a spectator camera."
+          },
+          "difference": {
+            "ru": "Только в режиме spectator; клиенту уходит `set_camera`.",
+            "en": "Spectator mode only; sends `set_camera`."
+          }
+        },
+        {
+          "name": "ride",
+          "usage": "ride <target> mount|dismount <vehicle>",
+          "level": 2,
+          "summary": {
+            "ru": "Посадить или снять пассажира.",
+            "en": "Mount or dismount a passenger."
+          },
+          "difference": {
+            "ru": "Пассажир не садится на игрока и не замыкает круг; клиенту уходит `set_passengers`.",
+            "en": "A passenger cannot mount a player or close a loop; sends `set_passengers`."
+          }
+        },
+        {
+          "name": "trigger",
+          "usage": "trigger <objective> add|set <value>",
+          "level": 0,
+          "summary": {
+            "ru": "Изменить свой trigger-счёт.",
+            "en": "Change your trigger score."
+          },
+          "difference": {
+            "ru": "Работает после `scoreboard players enable`; повтор без enable — `unprimed`.",
+            "en": "Works after `scoreboard players enable`; without it the result is `unprimed`."
+          }
+        },
+        {
+          "name": "random",
+          "usage": "random value|roll <range> [sequence]",
+          "level": 0,
+          "summary": {
+            "ru": "Случайное число.",
+            "en": "Random number."
+          },
+          "difference": {
+            "ru": "`roll` пишет в чат, `value` возвращает число; последовательность помнит семя, пока сервер запущен. Генератор не совпадает побитово с ванильным `RandomSequence`.",
+            "en": "`roll` prints to chat, `value` returns a number; the sequence keeps its seed until restart. The generator is not bit-identical to vanilla `RandomSequence`."
+          }
+        },
+        {
+          "name": "bossbar",
+          "usage": "bossbar add|set|remove|list ...",
+          "level": 2,
+          "summary": {
+            "ru": "Создать и настроить полоску босса.",
+            "en": "Create and configure a boss bar."
+          },
+          "difference": {
+            "ru": "Зрители задаются `set players`; при входе и возрождении полоска приходит снова. Небо, музыка и туман не включаются.",
+            "en": "Viewers are set with `set players`; the bar returns on join and respawn. Sky, music and fog are not implemented."
+          }
+        },
+        {
+          "name": "enchant",
+          "usage": "enchant <targets> <enchantment> [level]",
+          "level": 2,
+          "summary": {
+            "ru": "Наложить чары на предмет в руке.",
+            "en": "Enchant the held item."
+          },
+          "difference": {
+            "ru": "Уровень `0` снимает чары; несовместимые не заменяются; книга пишет `stored_enchantments`.",
+            "en": "Level `0` removes enchantments; incompatible ones are not replaced; a book stores `stored_enchantments`."
+          }
+        },
+        {
+          "name": "spreadplayers",
+          "usage": "spreadplayers <center> <spreadDistance> <maxRange> <respectTeams> <targets>",
+          "level": 2,
+          "summary": {
+            "ru": "Разбросать сущности по области.",
+            "en": "Spread entities across an area."
+          },
+          "difference": {
+            "ru": "Высота — поверхность `motion_blocking` уже загруженного чанка; `under` не ищет пещеры ниже.",
+            "en": "Height is the `motion_blocking` surface of a loaded chunk; `under` does not search caves below."
+          }
+        },
+        {
+          "name": "stopwatch",
+          "usage": "stopwatch create|query ...",
+          "level": 2,
+          "summary": {
+            "ru": "Секундомер.",
+            "en": "Stopwatch."
+          },
+          "difference": {
+            "ru": "Считает реальное время, не тики; `query` для `execute store` отдаёт `floor(секунды × scale)`.",
+            "en": "Counts real time, not ticks; `query` for `execute store` returns `floor(seconds × scale)`."
+          }
+        },
+        {
+          "name": "posteffect",
+          "usage": "posteffect <targets> <effect>",
+          "level": 2,
+          "summary": {
+            "ru": "Экранный эффект.",
+            "en": "Screen effect."
+          },
+          "difference": {
+            "ru": "Игроку уходит полный список `post_effects`.",
+            "en": "Sends the full `post_effects` list."
+          }
+        },
+        {
+          "name": "attribute",
+          "usage": "attribute <target> <attribute> get|base|modifier ...",
+          "level": 2,
+          "summary": {
+            "ru": "База и модификаторы атрибута.",
+            "en": "Attribute base and modifiers."
+          },
+          "difference": {
+            "ru": "Игрок — набор игрока, моб — набор моба; пакет `update_attributes`. Спринт сессии в `get` не входит.",
+            "en": "Players use the player set, mobs the mob set; sends `update_attributes`. Session sprint is not included in `get`."
+          }
+        },
+        {
+          "name": "waypoint",
+          "usage": "waypoint modify <targets> color|style ...",
+          "level": 2,
+          "summary": {
+            "ru": "Цвет и стиль путевой точки.",
+            "en": "Waypoint colour and style."
+          },
+          "difference": {
+            "ru": "Точка есть у игрока; моб и предмет — `argument.waypoint.invalid`. Команда точку не создаёт; клиенту уходит `waypoint`.",
+            "en": "Only players have a waypoint; mobs and items return `argument.waypoint.invalid`. The command does not create one; sends `waypoint`."
+          }
+        },
+        {
+          "name": "dialog",
+          "usage": "dialog clear|show <targets>",
+          "level": 2,
+          "summary": {
+            "ru": "Закрыть диалог.",
+            "en": "Close a dialog."
+          },
+          "difference": {
+            "ru": "`clear` шлёт пустой `clear_dialog`. `show` отвечает «не найден»: реестра диалогов нет.",
+            "en": "`clear` sends an empty `clear_dialog`. `show` returns not found: there is no dialog registry."
+          }
+        },
+        {
+          "name": "particle",
+          "usage": "particle <name> [pos] [delta] [speed] [count] [force|normal] [viewers]",
+          "level": 2,
+          "summary": {
+            "ru": "Частицы для игроков рядом.",
+            "en": "Particles for nearby players."
+          },
+          "difference": {
+            "ru": "Простые типы (`flame`, `heart`, …) уходят `level_particles`. `dust` принимает `<r> <g> <b> <scale>`. `block`, `item`, `vibration` и прочие — `particle.invalidOptions`. Дальше 32 блоков нужна `force` (до 512).",
+            "en": "Simple types (`flame`, `heart`, …) use `level_particles`. `dust` takes `<r> <g> <b> <scale>`. `block`, `item`, `vibration` and similar return `particle.invalidOptions`. Beyond 32 blocks `force` is required (up to 512)."
+          }
+        },
+        {
+          "name": "item",
+          "usage": "item replace entity <targets> <slots> with <item> [count]",
+          "level": 2,
+          "summary": {
+            "ru": "Положить предмет в слот.",
+            "en": "Put an item into a slot."
+          },
+          "difference": {
+            "ru": "Только `replace entity`. Слоты: `weapon`, `weapon.mainhand`, `weapon.offhand`, `weapon.*`, `armor.head`…`armor.feet`, `armor.*`, `hotbar.N`, `inventory.N`, `container.N`. У моба слотов нет. Ветки `block`, `from`, `modify`, `fill`, `override` не объявлены.",
+            "en": "Only `replace entity`. Slots: `weapon`, `weapon.mainhand`, `weapon.offhand`, `weapon.*`, `armor.head`…`armor.feet`, `armor.*`, `hotbar.N`, `inventory.N`, `container.N`. Mobs have no slots. `block`, `from`, `modify`, `fill` and `override` are not declared."
+          }
+        },
+        {
+          "name": "loot",
+          "usage": "loot give|spawn|insert|replace ...",
+          "level": 2,
+          "summary": {
+            "ru": "Выдать или выбросить добычу по таблице.",
+            "en": "Give or drop loot from a table."
+          },
+          "difference": {
+            "ru": "`give players … loot`, `spawn <pos> loot`, `insert <pos> loot`, `replace block <pos> <slot> [count] loot`. Ключ — путь от `loot_table`. `kill`, `fish`, `mine` требуют источник урона или удочку. `replace entity` не объявлен.",
+            "en": "`give players … loot`, `spawn <pos> loot`, `insert <pos> loot`, `replace block <pos> <slot> [count] loot`. The key is a path under `loot_table`. `kill`, `fish` and `mine` need a damage source or a fishing rod. `replace entity` is not declared."
+          }
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "title": { "ru": "Мир и блоки", "en": "World and blocks" },
+      "note": {
+        "ru": "Блоки, время, погода, границы и поиск структур.",
+        "en": "Blocks, time, weather, borders and structure search."
+      },
+      "commands": [
+        {
+          "name": "setblock",
+          "usage": "setblock <pos> <block> [destroy|keep|replace|strict]",
+          "level": 2,
+          "summary": {
+            "ru": "Поставить блок.",
+            "en": "Place a block."
+          },
+          "difference": {
+            "ru": "`keep` не трогает не-воздух, `destroy` дропает, `strict` падает без изменения.",
+            "en": "`keep` leaves non-air blocks alone, `destroy` drops the old block, `strict` fails without changing anything."
+          }
+        },
+        {
+          "name": "fill",
+          "usage": "fill <from> <to> <block> [destroy|hollow|keep|outline|replace|strict]",
+          "level": 2,
+          "summary": {
+            "ru": "Залить область блоками.",
+            "en": "Fill an area with blocks."
+          },
+          "difference": {
+            "ru": "Предел 32 768 блоков; `destroy` дропает; фильтр `replace` принимает имя и `#тег` блока.",
+            "en": "Limit is 32,768 blocks; `destroy` drops blocks; the `replace` filter accepts a block name or `#tag`."
+          }
+        },
+        {
+          "name": "clone",
+          "usage": "clone <begin> <end> <destination> [replace|masked|filtered] [normal|force|move]",
+          "level": 2,
+          "summary": {
+            "ru": "Скопировать область блоков.",
+            "en": "Copy a block region."
+          },
+          "difference": {
+            "ru": "`replace`/`masked`/`filtered`, `normal`/`force`/`move`; `strict` не будит соседей; чанк должен быть загружен; только текущее измерение.",
+            "en": "`replace`/`masked`/`filtered`, `normal`/`force`/`move`; `strict` does not wake neighbours; the chunk must be loaded; current dimension only."
+          }
+        },
+        {
+          "name": "summon",
+          "usage": "summon <entity> [pos] [nbt]",
+          "level": 2,
+          "summary": {
+            "ru": "Призвать моба.",
+            "en": "Summon a mob."
+          },
+          "difference": {
+            "ru": "В мире четыре моба: корова, свинья, овца, курица.",
+            "en": "Four mobs exist in the world: cow, pig, sheep and chicken."
+          }
+        },
+        {
+          "name": "weather",
+          "usage": "weather clear|rain|thunder [duration]",
+          "level": 2,
+          "summary": {
+            "ru": "Установить погоду.",
+            "en": "Set the weather."
+          },
+          "difference": {
+            "ru": "Дождь виден, но тик осадков не считается.",
+            "en": "Rain is visible, but precipitation is not ticked."
+          }
+        },
+        {
+          "name": "gamerule",
+          "usage": "gamerule <rule> [value]",
+          "level": 2,
+          "summary": {
+            "ru": "Показать или изменить правило мира.",
+            "en": "Show or change a world rule."
+          },
+          "difference": {
+            "ru": "59 правил 26.3; тик читает часть.",
+            "en": "59 rules from 26.3; the tick reads a subset."
+          }
+        },
+        {
+          "name": "time",
+          "usage": "time set|add|query <value>",
+          "level": 2,
+          "summary": {
+            "ru": "Установить, добавить или показать время.",
+            "en": "Set, add or query time."
+          },
+          "difference": {
+            "ru": "`query` возвращает `time` и `gametime`, как в 26.3 (`daytime` ещё принимается).",
+            "en": "`query` returns `time` and `gametime` as in 26.3 (`daytime` is still accepted)."
+          }
+        },
+        {
+          "name": "difficulty",
+          "usage": "difficulty [peaceful|easy|normal|hard]",
+          "level": 2,
+          "summary": {
+            "ru": "Установить сложность.",
+            "en": "Set the difficulty."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "seed",
+          "usage": "seed",
+          "level": 2,
+          "summary": {
+            "ru": "Показать зерно мира.",
+            "en": "Show the world seed."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "setworldspawn",
+          "usage": "setworldspawn [pos] [angle]",
+          "level": 2,
+          "summary": {
+            "ru": "Установить точку появления мира.",
+            "en": "Set the world spawn."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "worldborder",
+          "usage": "worldborder add|center|damage|get|set|warning ...",
+          "level": 2,
+          "summary": {
+            "ru": "Настроить границу мира.",
+            "en": "Configure the world border."
+          },
+          "difference": {
+            "ru": "Центр, диаметр, предупреждение и урон хранятся и уходят клиенту; урон на кромке пока не считается.",
+            "en": "Centre, diameter, warning and damage are stored and sent to the client; edge damage is not applied yet."
+          }
+        },
+        {
+          "name": "forceload",
+          "usage": "forceload add|remove|query ...",
+          "level": 2,
+          "summary": {
+            "ru": "Держать чанк в симуляции.",
+            "en": "Keep a chunk in the simulation."
+          },
+          "difference": {
+            "ru": "Очередь подгрузки с диска отдельно не ведётся.",
+            "en": "The disk load queue is not maintained separately."
+          }
+        },
+        {
+          "name": "locate",
+          "usage": "locate biome|poi|structure <id>",
+          "level": 2,
+          "summary": {
+            "ru": "Найти биом, точку интереса или структуру.",
+            "en": "Find a biome, point of interest or structure."
+          },
+          "difference": {
+            "ru": "Биом: радиус 4096, шаг 32, высота — поверхность столбца. Структуры: деревни, аванпосты, заброшенные лагеря, пустынные пирамиды, джунглевые храмы, хижины, иглу, кораблекрушения, шахты, океанский монумент, крепость, лесной особняк, руины портала, океанские руины и камеры испытаний; остальные id — «не найдено». `poi` не создаёт чанки, радиус 256.",
+            "en": "Biome: radius 4096, step 32, height is the column surface. Structures: villages, outposts, abandoned camps, desert pyramids, jungle temples, witch huts, igloos, shipwrecks, mineshafts, ocean monuments, strongholds, woodland mansions, ruined portals, ocean ruins and trial chambers; other ids return not found. `poi` does not create chunks and uses radius 256."
+          }
+        },
+        {
+          "name": "fillbiome",
+          "usage": "fillbiome <from> <to> <biome>",
+          "level": 2,
+          "summary": {
+            "ru": "Заменить биом в области.",
+            "en": "Replace the biome in an area."
+          },
+          "difference": {
+            "ru": "Чанки должны быть загружены; клиенту уходит `chunks_biomes`; объём ограничен `max_block_modifications`.",
+            "en": "Chunks must be loaded; sends `chunks_biomes`; volume is limited by `max_block_modifications`."
+          }
+        },
+        {
+          "name": "place",
+          "usage": "place template <id> <pos> [rotation] [mirror]",
+          "level": 2,
+          "summary": {
+            "ru": "Построить структуру из шаблона.",
+            "en": "Place a structure template."
+          },
+          "difference": {
+            "ru": "Только `template`. Шаблоны берутся из `data/minecraft/structure`. Блоки ставятся как `setblock replace`, блочные сущности не заполняются. `integrity` и `seed` отвечают, что процессоров нет. `feature`, `jigsaw`, `structure` не объявлены.",
+            "en": "Only `template`. Templates come from `data/minecraft/structure`. Blocks are placed as `setblock replace`; block entities are not filled. `integrity` and `seed` report that processors are unavailable. `feature`, `jigsaw` and `structure` are not declared."
+          }
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "title": { "ru": "Данные и scoreboard", "en": "Data and scoreboard" },
+      "note": {
+        "ru": "Счёт, NBT и цепочки `execute`.",
+        "en": "Scores, NBT and `execute` chains."
+      },
+      "commands": [
+        {
+          "name": "scoreboard objectives",
+          "usage": "scoreboard objectives add|remove|list|modify ...",
+          "level": 2,
+          "summary": {
+            "ru": "Управлять целями счёта.",
+            "en": "Manage score objectives."
+          },
+          "difference": {
+            "ru": "`modify` — `displayname`, `rendertype` и `numberformat` (`blank`, `fixed`, `styled`; голое слово сбрасывает формат). Формат цели уходит в `set_objective`.",
+            "en": "`modify` supports `displayname`, `rendertype` and `numberformat` (`blank`, `fixed`, `styled`; a bare word resets the format). The objective format is sent in `set_objective`."
+          }
+        },
+        {
+          "name": "scoreboard players",
+          "usage": "scoreboard players get|set|add|remove|reset|enable|display ...",
+          "level": 2,
+          "summary": {
+            "ru": "Управлять значениями счёта.",
+            "en": "Manage score values."
+          },
+          "difference": {
+            "ru": "`display numberformat` хранится на счёте и в `set_score` не пишется; `enable` открывает цель `trigger`.",
+            "en": "`display numberformat` is stored on the score and is not written to `set_score`; `enable` opens a `trigger` objective."
+          }
+        },
+        {
+          "name": "data",
+          "usage": "data get|merge|modify ...",
+          "level": 2,
+          "summary": {
+            "ru": "Читать и изменять NBT блока или сущности.",
+            "en": "Read and change block or entity NBT."
+          },
+          "difference": {
+            "ru": "Путь `Foo.Bar[0]`, `merge`, `modify set|merge|append|prepend|insert`.",
+            "en": "Path `Foo.Bar[0]`, `merge`, `modify set|merge|append|prepend|insert`."
+          }
+        },
+        {
+          "name": "execute",
+          "usage": "execute ... run <command>",
+          "level": 2,
+          "summary": {
+            "ru": "Цепочка контекстов и выполнение команды.",
+            "en": "Chain execution contexts and run a command."
+          },
+          "difference": {
+            "ru": "`align`, `anchored`, `on`, `store` в счёт и NBT блока или сущности; `summon` продолжает от новой сущности; `if`/`unless` — `biome`, `blocks`, `data`, `loaded`, `items`, `slots`, `score matches`; `positioned over` ставит Y по карте высот.",
+            "en": "`align`, `anchored`, `on`, `store` into scores and block or entity NBT; `summon` continues from the new entity; `if`/`unless` support `biome`, `blocks`, `data`, `loaded`, `items`, `slots` and `score matches`; `positioned over` sets Y from the heightmap."
+          }
+        }
+      ]
+    },
+    {
+      "id": "admin",
+      "title": { "ru": "Администрирование", "en": "Administration" },
+      "note": {
+        "ru": "Права, баны, тик, сохранение и остановка.",
+        "en": "Permissions, bans, ticking, saving and shutdown."
+      },
+      "commands": [
+        {
+          "name": "op / deop",
+          "usage": "op <targets>",
+          "level": 3,
+          "summary": {
+            "ru": "Выдать или снять права оператора.",
+            "en": "Grant or revoke operator rights."
+          },
+          "difference": {
+            "ru": "`ops.json` ванили.",
+            "en": "Uses vanilla `ops.json`."
+          }
+        },
+        {
+          "name": "kick",
+          "usage": "kick <targets> [reason]",
+          "level": 3,
+          "summary": {
+            "ru": "Выгнать игрока.",
+            "en": "Kick a player."
+          },
+          "difference": {
+            "ru": "Причина попадает в ответ.",
+            "en": "The reason is included in the response."
+          }
+        },
+        {
+          "name": "whitelist",
+          "usage": "whitelist add|remove|list|on|off|reload",
+          "level": 3,
+          "summary": {
+            "ru": "Управлять белым списком.",
+            "en": "Manage the whitelist."
+          },
+          "difference": {
+            "ru": "Включённый список проверяется при входе; оператор проходит.",
+            "en": "When enabled, the list is checked on login; operators pass."
+          }
+        },
+        {
+          "name": "ban / ban-ip / banlist / pardon / pardon-ip",
+          "usage": "ban <targets> [reason]",
+          "level": 3,
+          "summary": {
+            "ru": "Баны по имени и IP.",
+            "en": "Bans by name and IP."
+          },
+          "difference": {
+            "ru": "Имя и IP проверяются при входе.",
+            "en": "Name and IP are checked on login."
+          }
+        },
+        {
+          "name": "reload",
+          "usage": "reload",
+          "level": 2,
+          "summary": {
+            "ru": "Перечитать `ops.json`.",
+            "en": "Reload `ops.json`."
+          },
+          "difference": {
+            "ru": "Датапаков нет.",
+            "en": "There are no data packs."
+          }
+        },
+        {
+          "name": "tick",
+          "usage": "tick query|rate|freeze|step|sprint ...",
+          "level": 3,
+          "summary": {
+            "ru": "Управлять тиком сервера.",
+            "en": "Control the server tick."
+          },
+          "difference": {
+            "ru": "`sprint` ускоряет цикл.",
+            "en": "`sprint` accelerates the loop."
+          }
+        },
+        {
+          "name": "debug",
+          "usage": "debug start|stop",
+          "level": 3,
+          "summary": {
+            "ru": "Профиль тика.",
+            "en": "Tick profile."
+          },
+          "difference": {
+            "ru": "Пишет MSPT по тикам в `debug/profile-*.txt`, не `spark`.",
+            "en": "Writes per-tick MSPT to `debug/profile-*.txt`, not `spark`."
+          }
+        },
+        {
+          "name": "perf",
+          "usage": "perf start|stop",
+          "level": 4,
+          "summary": {
+            "ru": "Снимок нагрузки и профиль.",
+            "en": "Load snapshot and profile."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "stop",
+          "usage": "stop",
+          "level": 4,
+          "summary": {
+            "ru": "Сохранить мир и выйти.",
+            "en": "Save the world and shut down."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "version",
+          "usage": "version",
+          "level": 2,
+          "summary": {
+            "ru": "Версия сервера.",
+            "en": "Server version."
+          },
+          "difference": { "ru": "", "en": "" }
+        },
+        {
+          "name": "save-all / save-off / save-on",
+          "usage": "save-all [flush]",
+          "level": 4,
+          "summary": {
+            "ru": "Управлять автосохранением.",
+            "en": "Control autosaving."
+          },
+          "difference": {
+            "ru": "`save-all` просит автосейв вне расписания.",
+            "en": "`save-all` requests an autosave outside the schedule."
+          }
+        },
+        {
+          "name": "publish / unpublish",
+          "usage": "publish [allowCommands] [gamemode] [port]",
+          "level": 4,
+          "summary": {
+            "ru": "Публикация в LAN.",
+            "en": "Publish to LAN."
+          },
+          "difference": {
+            "ru": "Только флаг, UPnP не трогаем.",
+            "en": "Only the flag is set; UPnP is not touched."
+          }
+        },
+        {
+          "name": "transfer",
+          "usage": "transfer <hostname> [port] [players]",
+          "level": 3,
+          "summary": {
+            "ru": "Переслать игрока на другой сервер.",
+            "en": "Transfer a player to another server."
+          },
+          "difference": {
+            "ru": "Клиенту уходит `transfer`, затем сессия закрывается.",
+            "en": "The client receives `transfer`, then the session closes."
+          }
+        },
+        {
+          "name": "setidletimeout",
+          "usage": "setidletimeout <minutes>",
+          "level": 3,
+          "summary": {
+            "ru": "Таймаут простоя.",
+            "en": "Idle timeout."
+          },
+          "difference": {
+            "ru": "Нет игровых пакетов дольше N минут — сессия закрывается; `0` выключает таймаут.",
+            "en": "No game packets for N minutes closes the session; `0` disables the timeout."
+          }
+        },
+        {
+          "name": "return",
+          "usage": "return <value>",
+          "level": 2,
+          "summary": {
+            "ru": "Выйти из функции.",
+            "en": "Return from a function."
+          },
+          "difference": {
+            "ru": "Функций нет: любая форма отвечает, что команда работает только внутри функции.",
+            "en": "There are no functions: every form reports that the command works only inside a function."
+          }
+        }
+      ]
+    },
+    {
+      "id": "extra",
+      "title": { "ru": "Расширения Chunkwake", "en": "Chunkwake extensions" },
+      "note": {
+        "ru": "Команды, которых нет в ванили.",
+        "en": "Commands that do not exist in vanilla."
+      },
+      "commands": [
+        {
+          "name": "tps",
+          "usage": "tps",
+          "level": 0,
+          "summary": {
+            "ru": "Строка TPS и MSPT.",
+            "en": "TPS and MSPT line."
+          },
+          "difference": {
+            "ru": "Расширение Chunkwake; формат рассчитан на `chunkwake-lab`.",
+            "en": "Chunkwake extension; the format is consumed by `chunkwake-lab`."
+          },
+          "extension": true
+        },
+        {
+          "name": "top",
+          "usage": "top [cpu|tick|mem|world|net]",
+          "level": 2,
+          "summary": {
+            "ru": "Снимок нагрузки.",
+            "en": "Load snapshot."
+          },
+          "difference": {
+            "ru": "Расширение Chunkwake.",
+            "en": "Chunkwake extension."
+          },
+          "extension": true
+        }
+      ]
+    }
+  ]
+}

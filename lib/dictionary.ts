@@ -110,6 +110,7 @@ export interface SiteCopy {
       plugins: string;
       matrix: string;
       architecture: string;
+      benchmarks: string;
       support: string;
       license: string;
     };
@@ -397,6 +398,7 @@ java/
       plugins: 'Разработка плагинов',
       matrix: 'Фич-матрица',
       architecture: 'Архитектура',
+      benchmarks: 'Замеры',
       support: 'Поддержать проект',
       license: 'GPL-3.0',
     },
@@ -687,6 +689,7 @@ java/
       plugins: 'Plugin development',
       matrix: 'Feature matrix',
       architecture: 'Architecture',
+      benchmarks: 'Benchmarks',
       support: 'Support the project',
       license: 'GPL-3.0',
     },

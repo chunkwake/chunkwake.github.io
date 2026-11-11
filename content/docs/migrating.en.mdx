@@ -26,6 +26,12 @@ Chunkwake runs ordinary Paper and Folia plugins, reads and writes Anvil worlds b
 | Custom core patches and Paper forks | No equivalent; look for API behaviour or the feature matrix |
 | External plugin databases | Copy them separately; Chunkwake does not touch them |
 
+## Migration checklist
+
+Tick the completed items. Progress is stored locally in your browser and is not sent anywhere. The items follow the migration order below.
+
+<MigrationChecklist lang="en" />
+
 ## Migration order
 
 ### 1. Check plugins and features
@@ -218,7 +224,7 @@ Still, code that assumes "one main thread for the whole world" or relies on orde
 
 ## Performance expectations
 
-On the project bench, Chunkwake starts in **0.6–0.9 s** versus **6.6–11.4 s** for vanilla, 20 bots joining gives p95 **11–26 ms** versus **845–860 ms**, and peak memory is **182–236 MiB** versus **845–929 MiB**. Details and caveats: [benchmark](/en#benchmark) and [docs/perf.md](https://github.com/chunkwake/core/blob/ver/26.3/docs/perf.md).
+On the project bench, Chunkwake starts in **0.6–0.9 s** versus **6.6–11.4 s** for vanilla, 20 bots joining gives p95 **11–26 ms** versus **845–860 ms**, and peak memory is **182–236 MiB** versus **845–929 MiB**. Details and caveats: [benchmarks](/en/benchmarks) and [docs/perf.md](https://github.com/chunkwake/core/blob/ver/26.3/docs/perf.md).
 
 Speed does not remove the need to verify behaviour: if a plugin sees a different event order, that is a bug, not an optimization.
 

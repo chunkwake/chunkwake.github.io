@@ -1,0 +1,182 @@
+---
+title: Эксплуатация
+description: Первый запуск, конфигурация, systemd, логи, бэкапы и Velocity.
+icon: ServerCog
+---
+
+Установка, настройка, служба, логи и резервные копии. Короткий путь от бинарника до работающего сервера — в [быстром старте](/ru/docs/getting-started).
+
+## Первый запуск
+
+Данные игры и API плагинов встроены в бинарник: `server.jar` и Java для запуска не нужны. При первом старте архив распаковывается в `generated/26.3` (около 27 МБ), API — в `api/` (около 37 МБ). Это происходит один раз, дальше запуск быстрый.
+
+```bash
+chunkwake setup --dir /srv/chunkwake
+chunkwake doctor --dir /srv/chunkwake
+chunkwake run --dir /srv/chunkwake
+```
+
+В Windows PowerShell:
+
+```powershell
+chunkwake setup --dir "C:\Minecraft\Chunkwake"
+chunkwake doctor --dir "C:\Minecraft\Chunkwake"
+chunkwake run --dir "C:\Minecraft\Chunkwake"
+```
+
+`setup` открывает полноэкранный мастер и требует терминал. Там, где терминала нет — по SSH без `-t`, в контейнере, в сценарии установки, — используйте `chunkwake setup --yes --dir /path/to/server`. Он запишет значения по умолчанию; позже их можно менять через `config set`. Существующий `server.properties` не перезаписывается.
+
+`--dir` задаёт каталог для `server.properties` и относительных путей `vanilla-jar` и `generated-dir`. При запуске как службы передавайте его явно.
+
+Новый `server.properties` создаётся с `online-mode=true`, как в ванили. При `online-mode=false` имена игроков не проверяются: выключайте проверку только в доверенной локальной сети или за Velocity с modern forwarding.
+
+## Каталог состояния
+
+По умолчанию данные игры и API лежат рядом с `server.properties`. Установку можно держать только для чтения: бинарник в `/usr/local/bin`, состояние в `/var/lib/chunkwake`.
+
+```bash
+CHUNKWAKE_HOME=/var/lib/chunkwake chunkwake run --dir /srv/chunkwake
+```
+
+`CHUNKWAKE_HOME` переносит `generated/` и `api/`. Мир, `server.properties` и `logs/` остаются в `--dir`.
+
+## Конфигурация
+
+Мастер `setup` показывает разделы «Сеть», «Сервер», «Запуск», «Метрики», «Мир» и «Игра». Стрелки ←/→ или Tab переключают разделы, ↑/↓ выбирают поле. Enter редактирует текст; в числовом поле ↑/↓ меняют значение на 1, Shift+↑/↓ или PageUp/PageDown — на 10. Enter или Space переключает флаги. `D` проверяет значения, jar, Java и порт, `S` показывает изменения перед записью.
+
+Настройки можно менять без редактора:
+
+```bash
+chunkwake config show --dir /srv/chunkwake
+chunkwake config set server-port 25570 --dir /srv/chunkwake
+chunkwake doctor --dir /srv/chunkwake
+```
+
+Настройки мира и игры в мастере помечены `*`: они сохраняются в `server.properties` и проверяются, но текущий сервер их пока не применяет.
+
+Поле `vanilla-jar` необязательно. Оно нужно только для пересборки данных из официального `server.jar`. Java (`java-path` или `CHUNKWAKE_JAVA`) требуется для генерации данных и для плагинов, причём для плагинов — **Java 25 или новее**.
+
+### Метрики
+
+Раздел «Метрики» настраивает встроенный дашборд: включение, адрес, порт и токен доступа. Пока адрес `127.0.0.1`, дашборд открыт только с этой машины и токен не нужен. Для внешнего адреса вроде `0.0.0.0` сервер не запустит эндпоинт без токена: панель предупредит об этом до сохранения. Токен — не короче 16 символов, без пробелов. Вход в браузере: `http://адрес:25585/?token=...`, дальше держится на куке.
+
+## Служба systemd
+
+Готовый юнит лежит в [`contrib/systemd/chunkwake.service`](https://github.com/chunkwake/core/blob/ver/26.3/contrib/systemd/chunkwake.service). Создайте пользователя, скопируйте юнит и поправьте пути.
+
+```bash
+useradd --system --home /srv/chunkwake --shell /usr/sbin/nologin chunkwake
+cp contrib/systemd/chunkwake.service /etc/systemd/system/
+systemctl enable --now chunkwake
+```
+
+Основное из юнита:
+
+```ini
+[Service]
+Type=simple
+User=chunkwake
+Group=chunkwake
+WorkingDirectory=/srv/chunkwake
+ExecStart=/usr/local/bin/chunkwake run --dir /srv/chunkwake
+Environment=CHUNKWAKE_HOME=/var/lib/chunkwake
+StateDirectory=chunkwake
+KillSignal=SIGINT
+TimeoutStopSec=60
+Restart=on-failure
+RestartSec=5
+```
+
+`KillSignal=SIGINT` важен: сервер обрабатывает Ctrl+C как штатную остановку — закрывает соединения, выгружает плагины и сохраняет мир. Если Java не в `PATH`, добавьте `Environment=CHUNKWAKE_JAVA=/usr/lib/jvm/temurin-25-jre/bin/java`.
+
+Логи службы идут в journal, но только то, что попало в консоль до инициализации логов. Основной лог сервер пишет сам.
+
+## Служба Windows
+
+Зарегистрируйте службу через `sc` или NSSM с командой:
+
+```text
+C:\Minecraft\Chunkwake\chunkwake.exe run --dir C:\Minecraft\Chunkwake
+```
+
+В NSSM укажите остановку сигналом, а не убийством процесса: сервер должен получить Ctrl+C и сохранить мир.
+
+## Логи
+
+Сервер пишет лог в консоль и в файл `logs/` рядом с `server.properties`:
+
+- `latest.log` — текущий запуск;
+- `chunkwake.<дата>.log` — суточные файлы, хранятся 14 дней.
+
+Если каталог создать не удалось, сервер работает и пишет только в консоль. Запуск не падает.
+
+## Резервные копии
+
+Остановите сервер командой `stop` и дождитесь сообщения об успешном сохранении. Копии создаются только при остановленном сервере: на время работы Chunkwake удерживает блокировку каталога.
+
+```bash
+chunkwake backup create --dir /srv/chunkwake
+chunkwake backup list --dir /srv/chunkwake
+chunkwake backup verify ID --dir /srv/chunkwake
+chunkwake backup restore ID --dir /srv/chunkwake
+```
+
+В копию входят `server.properties`, `ops.json`, активный мир с данными игроков и `plugins/` с настройками плагинов. `server.jar`, сгенерированные данные и `backups/` не копируются. Внешние базы данных плагинов нужно копировать отдельно.
+
+Копии лежат в `<каталог сервера>/backups/ID`. `restore` сначала проверяет контрольные суммы, показывает заменяемые каталоги и просит ввести `RESTORE ID`; перед заменой создаёт ещё одну копию текущего состояния. Если восстановление прервалось, обычный запуск остановится с подсказкой. Завершите его так:
+
+```bash
+chunkwake backup resume --dir /srv/chunkwake
+chunkwake backup rollback --dir /srv/chunkwake
+```
+
+`doctor` проверяет файлы мира и игроков и при повреждении подсказывает последнюю исправную копию.
+
+## Velocity и modern forwarding
+
+Поддерживается только modern forwarding; legacy/BungeeCord-режим не реализован.
+
+На прокси в `velocity.toml`:
+
+```toml
+player-info-forwarding-mode = "modern"
+```
+
+Секрет лежит в `forwarding.secret` рядом с `velocity.toml` (или в файле из `forwarding-secret-file`). На backend в `server.properties`:
+
+```properties
+online-mode=false
+velocity-enabled=true
+velocity-secret=<тот же секрет, что в forwarding.secret>
+```
+
+Секрет можно записать командой:
+
+```bash
+chunkwake config set velocity-secret <секрет> --dir /srv/chunkwake
+```
+
+Сервер откажется стартовать, если `velocity-enabled=true`, а секрет пуст или `online-mode=true`.
+
+Backend-порт должен быть доступен **только прокси** — loopback или firewall. С секретом сервер доверяет подписанному профилю от Velocity, но напрямую клиенту этот профиль передавать нельзя.
+
+## Платформы
+
+Готовые бинарники собираются под Windows x86_64 и Linux x86_64. Linux-сборка линкуется с musl, а не с glibc: тот же файл работает на Debian, Ubuntu, Alpine и в контейнерах без установленных библиотек. Артефакт называется `chunkwake-26.3-<os>-<arch>`; внутри `chunkwake` (`chunkwake.exe` на Windows), `README.md` и `LICENSE`.
+
+## Если что-то пошло не так
+
+- `chunkwake doctor --dir ...` — конфигурация, порт, Java, файлы мира.
+- `logs/latest.log` — обычный лог; `logs/chunkwake.<дата>.log` — суточные файлы.
+- `chunkwake config show --dir ...` — что сервер реально прочитал.
+- `chunkwake backup rollback --dir ...` — вернуть состояние после прерванного восстановления.
+- Проверьте, что порт не занят другим процессом и доступен извне.
+- Плагины: убедитесь, что Java 25+ найдена и jar'ы лежат в `plugins/`.
+- [Issues](https://github.com/chunkwake/core/issues) — приложите версию, конфигурацию без секретов, плагин, шаги и поведение ванили.
+
+## Дальше
+
+- [Миграция с Paper и Folia](/ru/docs/migrating) — перенос мира, плагинов и настроек.
+- [Справочник команд](/ru/docs/commands) — что уже работает и чем отличается от ванили.
+- [Замеры](/ru/benchmarks) — методика, сырые числа и оговорки.
+- [Docker: itzg/minecraft-server](/ru/docs/migrating#docker-itzgminecraft-server) — запуск нативного ядра в контейнере.

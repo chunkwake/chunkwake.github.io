@@ -3,6 +3,7 @@ import { DownloadPanel } from '@/components/download-panel';
 import { LangNotFound } from '@/components/lang-not-found';
 import { getCopy } from '@/lib/dictionary';
 import { isLang } from '@/lib/i18n';
+import { releaseData } from '@/lib/release';
 import { pageMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -28,7 +29,7 @@ export default async function DownloadPage({ params }: { params: Promise<{ lang:
         <h1>{copy.download.title}</h1>
         <p>{copy.download.lead}</p>
       </header>
-      <DownloadPanel copy={copy} />
+      <DownloadPanel copy={copy} release={releaseData.release} lang={lang} />
     </div>
   );
 }
