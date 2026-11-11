@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import QRCode from 'qrcode';
+import type { CSSProperties } from 'react';
 import { CopyButton } from '@/components/copy-button';
 import { LangNotFound } from '@/components/lang-not-found';
 import { donations } from '@/lib/donations';
 import { getCopy } from '@/lib/dictionary';
 import { isLang } from '@/lib/i18n';
+import { renderQr } from '@/lib/qr';
 
 const marks = {
   btc: '₿',
@@ -27,18 +28,10 @@ export default async function SupportPage({ params }: { params: Promise<{ lang: 
   const copy = getCopy(lang);
   const s = copy.support;
 
-  const cards = await Promise.all(
-    donations.map(async (donation) => ({
-      ...donation,
-      qr: await QRCode.toString(donation.address, {
-        type: 'svg',
-        margin: 1,
-        width: 144,
-        errorCorrectionLevel: 'M',
-        color: { dark: '#181818', light: '#e7e7e7' },
-      }),
-    })),
-  );
+  const cards = donations.map((donation) => ({
+    ...donation,
+    qr: renderQr(donation.address, donation.palette),
+  }));
 
   return (
     <div className="cw-page cw-support">
@@ -48,14 +41,20 @@ export default async function SupportPage({ params }: { params: Promise<{ lang: 
         <p>{s.lead}</p>
       </header>
 
-      <div className="cw-support-note">
-        <span className="cw-support-badge">{s.only}</span>
-        <p>{s.note}</p>
-      </div>
-
       <div className="cw-donate-grid">
         {cards.map((donation) => (
-          <article className={`cw-donate-card is-${donation.id}`} key={donation.id}>
+          <article
+            className={`cw-donate-card is-${donation.id}`}
+            key={donation.id}
+            style={
+              {
+                '--donate-accent': donation.palette.accent,
+                '--donate-ink': donation.palette.ink,
+                '--donate-paper': donation.palette.paper,
+                '--donate-glow': donation.palette.glow,
+              } as CSSProperties
+            }
+          >
             <div className="cw-donate-head">
               <span className="cw-donate-mark" aria-hidden="true">
                 {marks[donation.id]}
@@ -66,12 +65,12 @@ export default async function SupportPage({ params }: { params: Promise<{ lang: 
               </div>
             </div>
 
-            <div
-              className="cw-donate-qr"
-              role="img"
-              aria-label={`${s.scan}: ${donation.address}`}
-              dangerouslySetInnerHTML={{ __html: donation.qr }}
-            />
+            <div className="cw-donate-qr" role="img" aria-label={`${s.scan}: ${donation.address}`}>
+              <div className="cw-donate-qr-svg" dangerouslySetInnerHTML={{ __html: donation.qr }} />
+              <span className="cw-donate-qr-badge" aria-hidden="true">
+                {marks[donation.id]}
+              </span>
+            </div>
 
             <div className="cw-donate-network">
               {s.network}: <strong>{donation.network}</strong>

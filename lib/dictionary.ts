@@ -120,8 +120,6 @@ export interface SiteCopy {
     eyebrow: string;
     title: string;
     lead: string;
-    only: string;
-    note: string;
     network: string;
     address: string;
     scan: string;
@@ -408,16 +406,13 @@ java/
   support: {
     eyebrow: 'Поддержка',
     title: 'Поддержать проект.',
-    lead: 'Если Chunkwake полезен, проект можно поддержать криптовалютой.',
-    only: 'Только пожертвования',
-    note: 'Только пожертвования: без подписок, аккаунтов и платёжных форм.',
+    lead: 'Если проект полезен, поддержите его криптовалютой.',
     network: 'Сеть',
     address: 'Адрес',
     scan: 'QR-код для сканирования',
     copy: 'Скопировать адрес',
     copied: 'Адрес скопирован',
-    warning:
-      'Отправляйте только указанную монету в указанной сети. Перевод в другой сети может быть потерян без возможности возврата.',
+    warning: 'Переводите только указанную монету в указанной сети.',
   },
   download: {
     title: 'Скачать Chunkwake',
@@ -701,16 +696,13 @@ java/
   support: {
     eyebrow: 'Support',
     title: 'Support the project.',
-    lead: 'If Chunkwake is useful to you, you can support the project with crypto.',
-    only: 'Donations only',
-    note: 'Donations only: no subscriptions, accounts or payment forms.',
+    lead: 'If the project is useful, support it with crypto.',
     network: 'Network',
     address: 'Address',
     scan: 'QR code to scan',
     copy: 'Copy address',
     copied: 'Address copied',
-    warning:
-      'Send only the listed coin on the listed network. A transfer on another network may be lost with no way to recover it.',
+    warning: 'Send only the listed coin on the listed network.',
   },
   download: {
     title: 'Download Chunkwake',
