@@ -163,6 +163,49 @@ chunkwake --dir /srv/chunkwake
 3. Запустите Paper на том же мире.
 4. Если мир уже изменён Chunkwake, восстановите копию, снятую до миграции.
 
+## Docker: itzg/minecraft-server
+
+Образ `itzg/minecraft-server:java25` умеет запускать кастомный сервер через `TYPE=CUSTOM`, но по умолчанию запускает его как Java-jar. Chunkwake — нативный бинарник, поэтому образу нужно явно включить native-режим:
+
+```yaml
+services:
+  chunkwake:
+    image: itzg/minecraft-server:java25
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: "CUSTOM"
+      FAMILY: "NATIVE"
+      CUSTOM_SERVER: "/data/chunkwake"
+      ENABLE_RCON: "false"
+    volumes:
+      - ./data:/data
+```
+
+1. Соберите Linux-бинарник и положите его в `./data/chunkwake`.
+2. Сделайте файл исполняемым: `chmod +x data/chunkwake`.
+3. Запустите `docker compose up -d` и смотрите `docker compose logs -f`.
+
+`CUSTOM_SERVER` может быть URL на сам бинарник. Ссылку на `.tar.gz` не используйте: образ скачает архив и попробует запустить его как файл.
+
+Почему так:
+
+- `TYPE=CUSTOM` включает ветку кастомного сервера;
+- `FAMILY=NATIVE` заставляет `start-finalExec` запускать файл напрямую, а не через `java -jar`;
+- `ENABLE_RCON=false` — RCON в Chunkwake пока нет;
+- `java25` в образе нужен для плагинов, ядро работает без JVM;
+- `EULA=TRUE` требует сам образ.
+
+Оговорки:
+
+- `FAMILY=NATIVE` — внутренняя ветка образа для нативных серверов (так работает Pumpkin). После обновления образа проверьте запуск.
+- Файл должен быть доступен пользователю контейнера (UID 1000) и исполняемым.
+- Образ создаёт `server.properties` и `eula.txt`; Chunkwake читает поддерживаемые ключи.
+- Не запускайте два сервера на одном `/data`.
+
 ## Folia: что меняется
 
 В Folia обычные плагины отключаются и требуют `folia-supported`. В Chunkwake:

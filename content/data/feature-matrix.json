@@ -1,8 +1,8 @@
 {
   "source": "https://raw.githubusercontent.com/chunkwake/core/ver/26.3/docs/feature-matrix.md",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-11T14:17:49.532Z",
-  "sha256": "036ce53af451cebe2a603f274e163df40660f2460f6ab545715a1f7cac642e4b",
+  "fetchedAt": "2026-11-11T14:39:46.885Z",
+  "sha256": "2f19af7a9a9ad5a9ff1538aa36ac2ffe50f78fa7fb9ac0e6d071600065affd7c",
   "totals": {
     "ready": 70,
     "partial": 35,
@@ -417,7 +417,7 @@
           "name": "Экипировка мобов",
           "status": "partial",
           "stage": "M7",
-          "note": "`Mob.populateDefaultEquipmentSlots` как в ванили: шанс брони `0.15 × specialMultiplier`, материал 0..=5, порядок `HEAD, CHEST, LEGS, FEET`, обрыв с шансом 0.25 (0.1 на сложной), три попытки апгрейда материала по 0.1087. Зомби со сложной сложностью в 5 % (иначе 1 %) берёт железный меч, копьё или лопату, скелет всегда с луком. 26.3 хранит снаряжение в NBT `equipment` (mainhand, offhand, feet, legs, chest, head) и `drop_chances` (только отличия от 0.085), старый формат `HandItems`/`ArmorItems`/`DropChances` читается как запасной. `set_equipment` уходит при спавне, загрузке из `entities/*.mca` и после `/data merge entity`. Смерть по `Mob.dropCustomDeathLoot`: шанс слота плюс `0.01 × Добыча`, без убийцы игроком выпадает только «сохраняемое» (`> 1`), дамагабельные предметы теряют прочность `maxDamage − random.nextInt(1 + random.nextInt(max(maxDamage − 3, 1)))`. Проверка — [`zombie_equipment_probe`](../crates/bots/examples/zombie_equipment_probe.rs); юнит-тесты `equipment_population_matches_vanilla`, `mob_nbt_keeps_equipment_and_drop_chances`, `mob_nbt_reads_legacy_hand_and_armor_items`. Нет: зачарований на снаряжении (`populateDefaultEquipmentEnchantments`), `/summon` с NBT пока не применяет `equipment`, плагинам снаряжение не отдаётся"
+          "note": "`Mob.populateDefaultEquipmentSlots` как в ванили: шанс брони `0.15 × specialMultiplier`, материал 0..=5, порядок `HEAD, CHEST, LEGS, FEET`, обрыв с шансом 0.25 (0.1 на сложной), три попытки апгрейда материала по 0.1087. Зомби со сложной сложностью в 5 % (иначе 1 %) берёт железный меч, копьё или лопату, скелет всегда с луком. 26.3 хранит снаряжение в NBT `equipment` (mainhand, offhand, feet, legs, chest, head) и `drop_chances` (только отличия от 0.085), старый формат `HandItems`/`ArmorItems`/`DropChances` читается как запасной. `set_equipment` уходит при спавне, загрузке из `entities/*.mca` и после `/data merge entity`. `/summon <entity> <pos> <nbt>` применяет NBT как `SummonCommand.createEntity` с `finalize = false`: `equipment`, `drop_chances`, `Health` (с обрезкой по максимуму), `CustomName`, `active_effects` (заменяет список), `IsBaby`/`Age` и `PersistenceRequired`; случайной экипировки при этом нет, а `/summon` без NBT вызывает `finalizeSpawn` и получает её. Смерть по `Mob.dropCustomDeathLoot`: шанс слота плюс `0.01 × Добыча`, без убийцы игроком выпадает только «сохраняемое» (`> 1`), дамагабельные предметы теряют прочность `maxDamage − random.nextInt(1 + random.nextInt(max(maxDamage − 3, 1)))`. Проверка — [`zombie_equipment_probe`](../crates/bots/examples/zombie_equipment_probe.rs); юнит-тесты `equipment_population_matches_vanilla`, `mob_nbt_keeps_equipment_and_drop_chances`, `mob_nbt_reads_legacy_hand_and_armor_items`. Нет: зачарований на снаряжении (`populateDefaultEquipmentEnchantments`), плагинам снаряжение не отдаётся"
         },
         {
           "id": "section-3-row-7",

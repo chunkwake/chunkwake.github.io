@@ -163,6 +163,49 @@ Rollback:
 3. Start Paper on the same world.
 4. If Chunkwake already changed the world, restore the copy taken before migration.
 
+## Docker: itzg/minecraft-server
+
+The `itzg/minecraft-server:java25` image can run a custom server with `TYPE=CUSTOM`, but by default it starts it as a Java jar. Chunkwake is a native binary, so the image needs native mode explicitly:
+
+```yaml
+services:
+  chunkwake:
+    image: itzg/minecraft-server:java25
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: "CUSTOM"
+      FAMILY: "NATIVE"
+      CUSTOM_SERVER: "/data/chunkwake"
+      ENABLE_RCON: "false"
+    volumes:
+      - ./data:/data
+```
+
+1. Build the Linux binary and put it at `./data/chunkwake`.
+2. Make it executable: `chmod +x data/chunkwake`.
+3. Run `docker compose up -d` and follow `docker compose logs -f`.
+
+`CUSTOM_SERVER` can also be a URL to the binary itself. Do not point it at a `.tar.gz`: the image downloads the archive and tries to run it as a file.
+
+Why these settings:
+
+- `TYPE=CUSTOM` selects the image's custom-server path;
+- `FAMILY=NATIVE` makes `start-finalExec` run the file directly instead of through `java -jar`;
+- `ENABLE_RCON=false` disables RCON, which Chunkwake does not implement yet;
+- `java25` in the image is for plugins; the core itself does not need a JVM;
+- `EULA=TRUE` is required by the image itself.
+
+Caveats:
+
+- `FAMILY=NATIVE` is the image's internal path for native servers (currently used by Pumpkin). Re-check startup after image updates.
+- The file must be readable and executable by the container user (UID 1000).
+- The image creates `server.properties` and `eula.txt`; Chunkwake reads the supported keys.
+- Do not run two servers against the same `/data`.
+
 ## Folia: what changes
 
 On Folia, ordinary plugins are disabled unless they declare `folia-supported`. On Chunkwake:
