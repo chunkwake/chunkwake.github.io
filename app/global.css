@@ -3099,10 +3099,14 @@ button {
 .cw-bench-foot a {
   color: var(--accent);
   white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(166, 160, 146, 0.45);
 }
 
 .cw-bench-foot a:hover {
   color: var(--accent-hover);
+  text-decoration-color: currentColor;
 }
 
 @keyframes cw-bar-grow {
