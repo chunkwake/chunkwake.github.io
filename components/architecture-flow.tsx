@@ -13,6 +13,7 @@ import {
   type Node,
   type NodeProps,
 } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 import type { SiteCopy } from '@/lib/dictionary';
 
 type ArchNodeData = {

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { CommandLine } from '@/components/command-line';
 import { CodeBlock } from '@/components/code-block';
 import { CodeTabsServer } from '@/components/code-tabs-server';
-import { ArchitectureFlow } from '@/components/architecture-flow';
+import { LazyArchitectureFlow } from '@/components/lazy-architecture-flow';
 import type { SiteCopy } from '@/lib/dictionary';
 import { featureMatrix } from '@/lib/feature-matrix';
 import { links } from '@/lib/shared';
@@ -193,7 +193,7 @@ export async function ArchitectureSection({ copy }: { copy: SiteCopy }) {
             <span className="cw-window-title">runtime graph</span>
             <span className="cw-window-lang">{copy.architecture.hoverHint}</span>
           </div>
-          <ArchitectureFlow nodes={copy.architecture.nodes} />
+          <LazyArchitectureFlow nodes={copy.architecture.nodes} />
           <div className="cw-flow-note">{copy.architecture.footnote}</div>
         </div>
       </div>

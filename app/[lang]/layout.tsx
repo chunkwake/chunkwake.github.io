@@ -1,14 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
-import { RootProvider } from 'fumadocs-ui/provider/next';
-import { i18nProvider } from 'fumadocs-ui/i18n';
-import { translations } from '@/lib/layout.shared';
-import { i18n } from '@/lib/i18n';
 import { getCopy } from '@/lib/dictionary';
-import DefaultSearchDialog from '@/components/search';
+import { i18n } from '@/lib/i18n';
 import { MetricaRouteTracker } from '@/components/metrica-route-tracker';
 import { YandexMetrika } from '@/components/yandex-metrika';
-import '@xyflow/react/dist/style.css';
 import '../global.css';
 
 const inter = Inter({
@@ -21,6 +16,7 @@ const mono = JetBrains_Mono({
   subsets: ['latin', 'cyrillic'],
   variable: '--font-mono',
   display: 'swap',
+  preload: false,
 });
 
 export const dynamicParams = false;
@@ -101,13 +97,7 @@ export default async function Layout({
       suppressHydrationWarning
     >
       <body className="cw-body">
-        <RootProvider
-          i18n={i18nProvider(translations, lang)}
-          theme={{ enabled: false }}
-          search={{ enabled: true, SearchDialog: DefaultSearchDialog }}
-        >
-          {children}
-        </RootProvider>
+        {children}
         <YandexMetrika />
         <MetricaRouteTracker />
       </body>

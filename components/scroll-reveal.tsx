@@ -28,13 +28,7 @@ export function ScrollReveal() {
       },
     );
 
-    for (const item of items) {
-      if (item.getBoundingClientRect().top < window.innerHeight * 0.92) {
-        item.classList.add('is-visible');
-      } else {
-        observer.observe(item);
-      }
-    }
+    for (const item of items) observer.observe(item);
 
     return () => {
       observer.disconnect();
