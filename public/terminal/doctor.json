@@ -32,11 +32,11 @@
       "at": 260
     }
   ],
-  "capturedAt": "2026-11-13T02:21:42.210Z",
+  "capturedAt": "2026-11-13T02:34:18.714Z",
   "core": {
     "repo": "chunkwake/core",
     "branch": "ver/26.3",
-    "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+    "coreSha": "38562e49bdee16fc0fd5d61ed74b0e3550058338"
   },
   "binary": {
     "version": "26.3",

@@ -35,16 +35,22 @@ for (let i = 2; i < process.argv.length; i += 1) {
   }
 }
 
-const coreDir = args.get('core') || process.env.CHUNKWAKE_CORE || 'E:\\paper_rust';
-const binary =
+const coreDir = path.resolve(
+  args.get('core') || process.env.CHUNKWAKE_CORE || 'E:\\paper_rust',
+);
+// Resolve before spawning: console sessions run with cwd set to the throwaway
+// server directory, so a relative binary path would otherwise be looked up
+// there instead of the repository root.
+const binary = path.resolve(
   args.get('binary') ||
-  process.env.CHUNKWAKE_BIN ||
-  path.join(
-    coreDir,
-    'target',
-    process.platform === 'win32' ? 'debug' : 'debug',
-    process.platform === 'win32' ? 'chunkwake.exe' : 'chunkwake',
-  );
+    process.env.CHUNKWAKE_BIN ||
+    path.join(
+      coreDir,
+      'target',
+      'debug',
+      process.platform === 'win32' ? 'chunkwake.exe' : 'chunkwake',
+    ),
+);
 const outDir = path.resolve(root, args.get('out') || 'public/terminal');
 const fixture = path.resolve(
   args.get('dir') || path.join(os.tmpdir(), 'chunkwake-terminal-fixture'),
@@ -148,8 +154,9 @@ function runSetup() {
     env,
     encoding: 'utf8',
   });
+  if (result.error) throw new Error(`setup failed: ${result.error.message}`);
   if (result.status !== 0) {
-    throw new Error(`setup failed: ${result.stderr || result.stdout}`);
+    throw new Error(`setup failed: ${result.stderr || result.stdout || `exit ${result.status}`}`);
   }
 }
 
@@ -159,8 +166,11 @@ function setConfig(key, value) {
     env,
     encoding: 'utf8',
   });
+  if (result.error) throw new Error(`config set ${key} failed: ${result.error.message}`);
   if (result.status !== 0) {
-    throw new Error(`config set ${key} failed: ${result.stderr || result.stdout}`);
+    throw new Error(
+      `config set ${key} failed: ${result.stderr || result.stdout || `exit ${result.status}`}`,
+    );
   }
 }
 
@@ -303,6 +313,9 @@ async function recordServer(session) {
   const startedAt = Date.now();
   const events = [];
   let rl;
+
+  // Drain stderr so a chatty warning cannot fill the pipe and stall startup.
+  child.stderr.resume();
 
   try {
     rl = await waitForReady(child);

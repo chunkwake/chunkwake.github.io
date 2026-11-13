@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T02:22:28.381Z",
+  "generatedAt": "2026-11-13T02:34:18.728Z",
   "demos": [
     {
       "id": "cli-help",
@@ -82,11 +82,11 @@
         "ru": "Doctor проверяет порт, встроенные данные и Java для плагинов.",
         "en": "Doctor checks the port, embedded data and Java for plugins."
       },
-      "capturedAt": "2026-11-13T02:21:42.210Z",
+      "capturedAt": "2026-11-13T02:34:18.714Z",
       "core": {
         "repo": "chunkwake/core",
         "branch": "ver/26.3",
-        "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+        "coreSha": "38562e49bdee16fc0fd5d61ed74b0e3550058338"
       },
       "binary": {
         "version": "26.3",

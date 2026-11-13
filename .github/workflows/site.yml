@@ -32,7 +32,9 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # Queue instead of cancelling: an hourly no-op check must not abort a deploy
+  # that is already uploading a fresh artifact.
+  cancel-in-progress: false
 
 jobs:
   check:
