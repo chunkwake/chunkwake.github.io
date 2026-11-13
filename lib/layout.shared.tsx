@@ -1,6 +1,7 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import { uiTranslations } from 'fumadocs-ui/i18n';
 import { Download } from 'lucide-react';
+import { DocsSearchTrigger } from '@/components/docs-search';
 import { Logo } from '@/components/logo';
 import { i18n, type Lang } from './i18n';
 import { gitConfig, links } from './shared';
@@ -71,6 +72,12 @@ export function docsOptions(locale: string): BaseLayoutProps {
     },
     githubUrl: links.github,
     themeSwitch: { enabled: false },
+    searchToggle: {
+      components: {
+        sm: <DocsSearchTrigger />,
+        lg: <DocsSearchTrigger full />,
+      },
+    },
     links: [
       {
         type: 'icon',

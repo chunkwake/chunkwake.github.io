@@ -22,7 +22,7 @@ const ui = {
     showAll: 'Весь вывод',
     loading: 'Загружаю запись…',
     error: 'Не удалось загрузить запись. Попробуйте ещё раз.',
-    idle: 'Реальный вывод Chunkwake. Нажмите «Запустить».',
+    idleHint: 'Нажмите «Запустить», чтобы проиграть ввод и вывод.',
     recorded: 'Записано',
     transcript: 'Текст сессии',
     badge: 'реальная запись',
@@ -38,7 +38,7 @@ const ui = {
     showAll: 'Full output',
     loading: 'Loading recording…',
     error: 'Could not load the recording. Try again.',
-    idle: 'Real Chunkwake output. Press Play.',
+    idleHint: 'Press Play to replay the input and output.',
     recorded: 'Recorded',
     transcript: 'Session text',
     badge: 'real recording',
@@ -60,10 +60,14 @@ export function TerminalDemo({
   id,
   lang,
   title,
+  preview,
+  previewPrompt = '$',
 }: {
   id: string;
   lang: 'ru' | 'en';
   title?: string;
+  preview?: string;
+  previewPrompt?: string;
 }) {
   const t = ui[lang];
   const [data, setData] = useState<TerminalDemoData | null>(null);
@@ -136,7 +140,7 @@ export function TerminalDemo({
         await waitWhilePaused(token);
         if (token !== runRef.current) return;
 
-        const gap = Math.max(24, Math.min(event.at - lastAt, 360));
+        const gap = Math.max(8, Math.min(event.at - lastAt, 40));
         if (!reduced) await sleep(gap / speedRef.current);
         if (token !== runRef.current) return;
 
@@ -148,7 +152,9 @@ export function TerminalDemo({
               if (token !== runRef.current) return;
               await waitWhilePaused(token);
               setTyping(event.text.slice(0, index));
-              await sleep(14 / speedRef.current);
+              // Typing is intentionally slower than output: it should read as
+              // someone entering a command, not a flicker.
+              await sleep(42 / speedRef.current);
             }
             setTyping(null);
             setLines((previous) => [...previous, { type: 'input', text: event.text }]);
@@ -158,7 +164,7 @@ export function TerminalDemo({
             ...previous,
             { type: 'output', text: event.text, level: event.level },
           ]);
-          if (!reduced) await sleep(36 / speedRef.current);
+          if (!reduced) await sleep(3 / speedRef.current);
         }
 
         lastAt = event.at;
@@ -238,7 +244,7 @@ export function TerminalDemo({
     : null;
 
   return (
-    <div className="cw-term-demo">
+    <div className={`cw-term-demo${status === 'idle' ? ' is-idle' : ''}`}>
       <div className="cw-term-head">
         <span className="cw-window-dots" aria-hidden="true">
           <i />
@@ -263,13 +269,14 @@ export function TerminalDemo({
       <div className="cw-term-screen" ref={screenRef} role="log" aria-live="off">
         {status === 'idle' ? (
           <div className="cw-term-idle">
-            <button type="button" className="cw-term-start" onClick={start}>
-              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                <path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor" />
-              </svg>
-              {t.play}
-            </button>
-            <p>{t.idle}</p>
+            <div className="cw-term-idle-line">
+              <span className="cw-term-prompt" aria-hidden="true">
+                {previewPrompt}
+              </span>
+              <span className="cw-term-idle-command">{preview ?? '…'}</span>
+              <span className="cw-term-caret" aria-hidden="true" />
+            </div>
+            <p className="cw-term-idle-hint">{t.idleHint}</p>
           </div>
         ) : null}
 

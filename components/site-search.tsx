@@ -4,14 +4,13 @@ import dynamic from 'next/dynamic';
 import { useCallback, useState } from 'react';
 import { useSearchHotkeys } from '@/lib/use-search-hotkeys';
 
-const SiteSearchRuntime = dynamic(() => import('./site-search-runtime'), {
+const SearchDialog = dynamic(() => import('./search-dialog'), {
   ssr: false,
 });
 
 export function SiteSearch({ lang, label }: { lang: string; label: string }) {
   const [open, setOpen] = useState(false);
   const openSearch = useCallback(() => setOpen(true), []);
-  const closeSearch = useCallback(() => setOpen(false), []);
 
   useSearchHotkeys(openSearch, !open);
 
@@ -31,7 +30,9 @@ export function SiteSearch({ lang, label }: { lang: string; label: string }) {
         </svg>
         <kbd className="cw-search-kbd">/</kbd>
       </button>
-      {open ? <SiteSearchRuntime lang={lang} onClose={closeSearch} /> : null}
+      {open ? (
+        <SearchDialog open onOpenChange={setOpen} lang={lang === 'en' ? 'en' : 'ru'} />
+      ) : null}
     </>
   );
 }
