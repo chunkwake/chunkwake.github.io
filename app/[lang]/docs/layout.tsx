@@ -5,6 +5,7 @@ import { i18nProvider } from 'fumadocs-ui/i18n';
 import { docsOptions, translations } from '@/lib/layout.shared';
 import { i18n, isLang } from '@/lib/i18n';
 import { LangNotFound } from '@/components/lang-not-found';
+import { DocsSearchHotkeys } from '@/components/docs-search-hotkeys';
 import LazySearchDialog from '@/components/lazy-search-dialog';
 
 export default async function Layout({
@@ -21,8 +22,13 @@ export default async function Layout({
     <RootProvider
       i18n={i18nProvider(translations, lang)}
       theme={{ enabled: false }}
-      search={{ enabled: true, SearchDialog: LazySearchDialog }}
+      search={{
+        enabled: true,
+        SearchDialog: LazySearchDialog,
+        hotKey: [{ key: '__search_disabled__', display: '/' }],
+      }}
     >
+      <DocsSearchHotkeys />
       <DocsLayout {...docsOptions(lang)} tree={source.getPageTree(lang)}>
         {children}
       </DocsLayout>

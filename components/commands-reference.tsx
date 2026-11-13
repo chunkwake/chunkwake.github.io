@@ -228,6 +228,11 @@ export function CommandsReference({ lang }: { lang: string }) {
                         {command.extension ? (
                           <span className="cw-command-ext">{t.extension}</span>
                         ) : null}
+                        {command.untranslated && locale === 'en' ? (
+                          <span className="cw-command-untranslated" title="English description pending">
+                            RU
+                          </span>
+                        ) : null}
                         <span className={`cw-command-level level-${command.level}`}>
                           L{command.level} · {t.levels[command.level]}
                         </span>

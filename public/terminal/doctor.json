@@ -1,0 +1,46 @@
+{
+  "id": "doctor",
+  "shell": "cli",
+  "prompt": "$",
+  "title": {
+    "ru": "Проверка перед запуском",
+    "en": "Preflight check"
+  },
+  "description": {
+    "ru": "Doctor проверяет порт, встроенные данные и Java для плагинов.",
+    "en": "Doctor checks the port, embedded data and Java for plugins."
+  },
+  "events": [
+    {
+      "type": "input",
+      "text": "chunkwake doctor --dir ./server",
+      "at": 0
+    },
+    {
+      "type": "output",
+      "text": "✓  Ready to start · Minecraft 26.3 (protocol 777)",
+      "at": 120
+    },
+    {
+      "type": "output",
+      "text": "   Listen address  127.0.0.1:25565",
+      "at": 190
+    },
+    {
+      "type": "output",
+      "text": "   Vanilla data    embedded",
+      "at": 260
+    }
+  ],
+  "capturedAt": "2026-11-13T02:21:42.210Z",
+  "core": {
+    "repo": "chunkwake/core",
+    "branch": "ver/26.3",
+    "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+  },
+  "binary": {
+    "version": "26.3",
+    "profile": "debug"
+  },
+  "fixture": "flat world, no players"
+}

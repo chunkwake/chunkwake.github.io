@@ -5,6 +5,7 @@ import { FeatureMatrix } from './feature-matrix';
 import { LangIcon } from './lang-icon';
 import { MatrixTotals } from './matrix-totals';
 import { MigrationChecklist } from './migration-checklist';
+import { TerminalDemo } from './terminal-demo';
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
@@ -14,6 +15,7 @@ export function getMDXComponents(components?: MDXComponents) {
     LangIcon,
     MatrixTotals,
     MigrationChecklist,
+    TerminalDemo,
     ...components,
   } satisfies MDXComponents;
 }

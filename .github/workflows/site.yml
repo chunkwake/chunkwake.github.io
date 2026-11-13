@@ -17,9 +17,10 @@ on:
       - 'postcss.config.mjs'
       - 'tsconfig.json'
       - '.github/workflows/site.yml'
-  # Refresh the feature matrix even when the site code has not changed.
+  # Refresh matrix, commands and releases when core moves. The check job below
+  # skips the build when the deployed snapshot already points at this commit.
   schedule:
-    - cron: '17 3 * * *'
+    - cron: '23 * * * *'
   workflow_dispatch:
   repository_dispatch:
     types: [core-docs, release]
@@ -34,8 +35,47 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.compare.outputs.changed }}
+    steps:
+      - name: Compare core commit with the deployed snapshot
+        id: compare
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          core_sha=$(git ls-remote https://github.com/chunkwake/core.git refs/heads/ver/26.3 | cut -f1)
+          deployed=$(curl -fsSL --retry 2 --max-time 15 \
+            "https://chunkwake.github.io/data/source.json?t=$(date +%s)" \
+            | jq -r '.coreSha // empty' 2>/dev/null || true)
+          deployed_tag=$(curl -fsSL --retry 2 --max-time 15 \
+            "https://chunkwake.github.io/data/source.json?t=$(date +%s)" \
+            | jq -r '.releaseTag // empty' 2>/dev/null || true)
+          release_tag=$(curl -fsSL --max-time 15 \
+            -H 'Accept: application/vnd.github+json' \
+            https://api.github.com/repos/chunkwake/core/releases/latest \
+            | jq -r '.tag_name // empty' 2>/dev/null || true)
+
+          echo "core=${core_sha:-missing} deployed=${deployed:-missing}"
+          echo "release=${release_tag:-none} deployed_release=${deployed_tag:-none}"
+
+          changed=false
+          if [ -z "$deployed" ] || [ "$core_sha" != "$deployed" ]; then changed=true; fi
+          if [ -n "$release_tag" ] && [ "$release_tag" != "$deployed_tag" ]; then changed=true; fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: check
+    if: needs.check.result != 'success' || needs.check.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v5

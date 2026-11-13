@@ -1,0 +1,246 @@
+{
+  "id": "cli-help",
+  "shell": "cli",
+  "prompt": "$",
+  "title": {
+    "ru": "CLI целиком",
+    "en": "The whole CLI"
+  },
+  "description": {
+    "ru": "Все команды установки, диагностики, бэкапов и наблюдения.",
+    "en": "Setup, diagnostics, backups and observability in one place."
+  },
+  "events": [
+    {
+      "type": "input",
+      "text": "chunkwake --help",
+      "at": 0
+    },
+    {
+      "type": "output",
+      "text": "Chunkwake  ·  Minecraft 26.3 server",
+      "at": 120
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 190
+    },
+    {
+      "type": "output",
+      "text": "USAGE",
+      "at": 260
+    },
+    {
+      "type": "output",
+      "text": "  chunkwake [--dir PATH] [COMMAND]",
+      "at": 330
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 400
+    },
+    {
+      "type": "output",
+      "text": "COMMANDS",
+      "at": 470
+    },
+    {
+      "type": "output",
+      "text": "  setup                   Configure the server interactively",
+      "at": 540
+    },
+    {
+      "type": "output",
+      "text": "  doctor                  Check settings, jar, Java, and port",
+      "at": 610
+    },
+    {
+      "type": "output",
+      "text": "  top                     Show live load once (CPU, TPS, MSPT, memory)",
+      "at": 680
+    },
+    {
+      "type": "output",
+      "text": "  config show             Show the current settings",
+      "at": 750
+    },
+    {
+      "type": "output",
+      "text": "  config set KEY VALUE    Change one setting",
+      "at": 820
+    },
+    {
+      "type": "output",
+      "text": "  backup create           Create an offline backup",
+      "at": 890
+    },
+    {
+      "type": "output",
+      "text": "  backup list             List completed backups",
+      "at": 960
+    },
+    {
+      "type": "output",
+      "text": "  backup verify ID        Check backup checksums",
+      "at": 1030
+    },
+    {
+      "type": "output",
+      "text": "  backup restore ID       Restore a backup (requires confirmation)",
+      "at": 1100
+    },
+    {
+      "type": "output",
+      "text": "  backup resume           Finish an interrupted restore",
+      "at": 1170
+    },
+    {
+      "type": "output",
+      "text": "  backup rollback         Undo an interrupted restore",
+      "at": 1240
+    },
+    {
+      "type": "output",
+      "text": "  run                     Start the server (default)",
+      "at": 1310
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 1380
+    },
+    {
+      "type": "output",
+      "text": "OPTIONS",
+      "at": 1450
+    },
+    {
+      "type": "output",
+      "text": "  --dir PATH              Server directory (default: current directory)",
+      "at": 1520
+    },
+    {
+      "type": "output",
+      "text": "  -h, --help              Show this help",
+      "at": 1590
+    },
+    {
+      "type": "output",
+      "text": "  -V, --version           Show the Chunkwake and Minecraft versions",
+      "at": 1660
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 1730
+    },
+    {
+      "type": "output",
+      "text": "SETUP OPTIONS",
+      "at": 1800
+    },
+    {
+      "type": "output",
+      "text": "  --yes                   Write the default settings without a terminal",
+      "at": 1870
+    },
+    {
+      "type": "output",
+      "text": "                          (for SSH without -t, containers and scripts)",
+      "at": 1940
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 2010
+    },
+    {
+      "type": "output",
+      "text": "BACKUP RESTORE OPTIONS",
+      "at": 2080
+    },
+    {
+      "type": "output",
+      "text": "  --yes                   Skip the interactive confirmation",
+      "at": 2150
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 2220
+    },
+    {
+      "type": "output",
+      "text": "TOP OPTIONS",
+      "at": 2290
+    },
+    {
+      "type": "output",
+      "text": "  --host HOST             Metrics address (default: metrics-bind, then 127.0.0.1)",
+      "at": 2360
+    },
+    {
+      "type": "output",
+      "text": "  --port PORT             Metrics port (default: metrics-port, then 25585)",
+      "at": 2430
+    },
+    {
+      "type": "output",
+      "text": "  --watch SEC             Redraw every SEC seconds until Ctrl+C",
+      "at": 2500
+    },
+    {
+      "type": "output",
+      "text": "  --json                  Print the raw snapshot instead of a table",
+      "at": 2570
+    },
+    {
+      "type": "output",
+      "text": "  --no-color              Plain text without ANSI colours",
+      "at": 2640
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 2710
+    },
+    {
+      "type": "output",
+      "text": "EXAMPLES",
+      "at": 2780
+    },
+    {
+      "type": "output",
+      "text": "  chunkwake setup --dir ./server",
+      "at": 2850
+    },
+    {
+      "type": "output",
+      "text": "  chunkwake config set server-port 25570 --dir ./server",
+      "at": 2920
+    },
+    {
+      "type": "output",
+      "text": "  chunkwake doctor --dir ./server",
+      "at": 2990
+    },
+    {
+      "type": "output",
+      "text": "  chunkwake top --dir ./server --watch 2",
+      "at": 3060
+    }
+  ],
+  "capturedAt": "2026-11-13T02:21:42.176Z",
+  "core": {
+    "repo": "chunkwake/core",
+    "branch": "ver/26.3",
+    "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+  },
+  "binary": {
+    "version": "26.3",
+    "profile": "debug"
+  },
+  "fixture": "flat world, no players"
+}

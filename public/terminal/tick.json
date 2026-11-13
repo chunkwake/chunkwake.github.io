@@ -1,0 +1,128 @@
+{
+  "id": "tick",
+  "shell": "console",
+  "prompt": ">",
+  "title": {
+    "ru": "TPS и снимок нагрузки",
+    "en": "TPS and load snapshot"
+  },
+  "description": {
+    "ru": "Две команды Chunkwake: короткая строка и полный снимок по подсистемам.",
+    "en": "Two Chunkwake commands: a short line and a full breakdown by subsystem."
+  },
+  "events": [
+    {
+      "type": "input",
+      "text": "tps",
+      "at": 0
+    },
+    {
+      "type": "output",
+      "level": "info",
+      "text": "TPS: 19.8 MSPT: 0.0 interval: 39.7 ms",
+      "at": 140
+    },
+    {
+      "type": "input",
+      "text": "top",
+      "at": 698
+    },
+    {
+      "type": "output",
+      "level": "info",
+      "text": "A Chunkwake Server · 26.3 up 00:00:01",
+      "at": 838
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 918
+    },
+    {
+      "type": "output",
+      "text": "TICK",
+      "at": 998
+    },
+    {
+      "type": "output",
+      "text": "TPS  20.0 /  20.0 /  20.0 /  20.0  now 1m 5m 15m",
+      "at": 1078
+    },
+    {
+      "type": "output",
+      "text": "MSPT  0.02  p50  0.01  p99  0.07  max  0.07  avg p50 p99 worst",
+      "at": 1158
+    },
+    {
+      "type": "output",
+      "text": "CPU",
+      "at": 1238
+    },
+    {
+      "type": "output",
+      "text": "███░░░░░░░░░░░░░░░░░ system   14%",
+      "at": 1318
+    },
+    {
+      "type": "output",
+      "text": " 42  15  16  13  16   0  20   8",
+      "at": 1398
+    },
+    {
+      "type": "output",
+      "text": " 15  25   3  13  11   9  88   0",
+      "at": 1478
+    },
+    {
+      "type": "output",
+      "text": " 49  19   2   2   2  21   6   8",
+      "at": 1558
+    },
+    {
+      "type": "output",
+      "text": "  0   0  22   8   1   5   3   3",
+      "at": 1638
+    },
+    {
+      "type": "output",
+      "text": "MEMORY",
+      "at": 1718
+    },
+    {
+      "type": "output",
+      "text": "rss 177.3 MiB  host 48%",
+      "at": 1798
+    },
+    {
+      "type": "output",
+      "text": "WORLD",
+      "at": 1878
+    },
+    {
+      "type": "output",
+      "text": "players 0/20  mobs 0  items 0  chunks 0",
+      "at": 1958
+    },
+    {
+      "type": "output",
+      "text": "NET",
+      "at": 2038
+    },
+    {
+      "type": "output",
+      "text": "ping —",
+      "at": 2118
+    }
+  ],
+  "capturedAt": "2026-11-13T02:22:22.435Z",
+  "core": {
+    "repo": "chunkwake/core",
+    "branch": "ver/26.3",
+    "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+  },
+  "binary": {
+    "version": "26.3",
+    "profile": "debug"
+  },
+  "fixture": "flat world, no players"
+}

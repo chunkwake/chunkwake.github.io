@@ -1,0 +1,81 @@
+{
+  "id": "world",
+  "shell": "console",
+  "prompt": ">",
+  "title": {
+    "ru": "Время, сид и блоки",
+    "en": "Time, seed and blocks"
+  },
+  "description": {
+    "ru": "Ванильные команды на настоящем плоском мире, без подключённого клиента.",
+    "en": "Vanilla commands against a real flat world, with no client attached."
+  },
+  "events": [
+    {
+      "type": "input",
+      "text": "time set day",
+      "at": 0
+    },
+    {
+      "type": "output",
+      "level": "info",
+      "text": "Set the time to 1000",
+      "at": 140
+    },
+    {
+      "type": "input",
+      "text": "seed",
+      "at": 697
+    },
+    {
+      "type": "output",
+      "level": "info",
+      "text": "Seed: -7797401742150275533",
+      "at": 837
+    },
+    {
+      "type": "input",
+      "text": "setblock 0 64 0 stone",
+      "at": 1382
+    },
+    {
+      "type": "output",
+      "level": "info",
+      "text": "Changed the block at 0, 64, 0",
+      "at": 1522
+    },
+    {
+      "type": "input",
+      "text": "fill 0 64 0 2 64 2 glass",
+      "at": 2099
+    },
+    {
+      "type": "output",
+      "level": "info",
+      "text": "Successfully filled 9 block(s)",
+      "at": 2239
+    },
+    {
+      "type": "input",
+      "text": "save-all",
+      "at": 2797
+    },
+    {
+      "type": "output",
+      "level": "info",
+      "text": "Saved the game",
+      "at": 2937
+    }
+  ],
+  "capturedAt": "2026-11-13T02:22:28.368Z",
+  "core": {
+    "repo": "chunkwake/core",
+    "branch": "ver/26.3",
+    "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+  },
+  "binary": {
+    "version": "26.3",
+    "profile": "debug"
+  },
+  "fixture": "flat world, no players"
+}

@@ -9,6 +9,8 @@ export type CommandEntry = {
   summary: { ru: string; en: string };
   difference: { ru: string; en: string };
   extension?: boolean;
+  /** A new core command whose card still uses the Russian description. */
+  untranslated?: boolean;
 };
 
 export type CommandGroup = {

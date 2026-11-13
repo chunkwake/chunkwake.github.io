@@ -1,0 +1,211 @@
+{
+  "id": "config",
+  "shell": "cli",
+  "prompt": "$",
+  "title": {
+    "ru": "Текущие настройки",
+    "en": "Current settings"
+  },
+  "description": {
+    "ru": "Что записано в server.properties и какие значения ждут своей очереди.",
+    "en": "What is written to server.properties and which values are reserved."
+  },
+  "events": [
+    {
+      "type": "input",
+      "text": "chunkwake config show --dir ./server",
+      "at": 0
+    },
+    {
+      "type": "output",
+      "text": "Chunkwake  ·  Current settings",
+      "at": 120
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 190
+    },
+    {
+      "type": "output",
+      "text": "server-ip=127.0.0.1",
+      "at": 260
+    },
+    {
+      "type": "output",
+      "text": "server-port=25565",
+      "at": 330
+    },
+    {
+      "type": "output",
+      "text": "enable-status=true",
+      "at": 400
+    },
+    {
+      "type": "output",
+      "text": "motd=A Chunkwake Server",
+      "at": 470
+    },
+    {
+      "type": "output",
+      "text": "max-players=20",
+      "at": 540
+    },
+    {
+      "type": "output",
+      "text": "online-mode=false",
+      "at": 610
+    },
+    {
+      "type": "output",
+      "text": "velocity-enabled=false",
+      "at": 680
+    },
+    {
+      "type": "output",
+      "text": "velocity-secret=",
+      "at": 750
+    },
+    {
+      "type": "output",
+      "text": "network-compression-threshold=256",
+      "at": 820
+    },
+    {
+      "type": "output",
+      "text": "vanilla-jar=",
+      "at": 890
+    },
+    {
+      "type": "output",
+      "text": "java-path=java",
+      "at": 960
+    },
+    {
+      "type": "output",
+      "text": "generated-dir=generated",
+      "at": 1030
+    },
+    {
+      "type": "output",
+      "text": "log-level=info",
+      "at": 1100
+    },
+    {
+      "type": "output",
+      "text": "",
+      "at": 1170
+    },
+    {
+      "type": "output",
+      "text": "# Saved for future versions; no effect yet",
+      "at": 1240
+    },
+    {
+      "type": "output",
+      "text": "level-name=world",
+      "at": 1310
+    },
+    {
+      "type": "output",
+      "text": "level-seed=",
+      "at": 1380
+    },
+    {
+      "type": "output",
+      "text": "level-type=minecraft:flat",
+      "at": 1450
+    },
+    {
+      "type": "output",
+      "text": "generator-settings=",
+      "at": 1520
+    },
+    {
+      "type": "output",
+      "text": "view-distance=8",
+      "at": 1590
+    },
+    {
+      "type": "output",
+      "text": "simulation-distance=6",
+      "at": 1660
+    },
+    {
+      "type": "output",
+      "text": "region-file-compression=deflate",
+      "at": 1730
+    },
+    {
+      "type": "output",
+      "text": "memory-profile=auto",
+      "at": 1800
+    },
+    {
+      "type": "output",
+      "text": "gamemode=survival",
+      "at": 1870
+    },
+    {
+      "type": "output",
+      "text": "difficulty=easy",
+      "at": 1940
+    },
+    {
+      "type": "output",
+      "text": "hardcore=false",
+      "at": 2010
+    },
+    {
+      "type": "output",
+      "text": "pvp=true",
+      "at": 2080
+    },
+    {
+      "type": "output",
+      "text": "white-list=false",
+      "at": 2150
+    },
+    {
+      "type": "output",
+      "text": "allow-flight=false",
+      "at": 2220
+    },
+    {
+      "type": "output",
+      "text": "spawn-protection=16",
+      "at": 2290
+    },
+    {
+      "type": "output",
+      "text": "metrics-enabled=true",
+      "at": 2360
+    },
+    {
+      "type": "output",
+      "text": "metrics-bind=127.0.0.1",
+      "at": 2430
+    },
+    {
+      "type": "output",
+      "text": "metrics-port=25585",
+      "at": 2500
+    },
+    {
+      "type": "output",
+      "text": "metrics-token=",
+      "at": 2570
+    }
+  ],
+  "capturedAt": "2026-11-13T02:21:42.234Z",
+  "core": {
+    "repo": "chunkwake/core",
+    "branch": "ver/26.3",
+    "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+  },
+  "binary": {
+    "version": "26.3",
+    "profile": "debug"
+  },
+  "fixture": "flat world, no players"
+}

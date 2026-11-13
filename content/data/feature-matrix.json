@@ -1,12 +1,12 @@
 {
   "source": "https://raw.githubusercontent.com/chunkwake/core/ver/26.3/docs/feature-matrix.md",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-12T16:04:45.623Z",
-  "sha256": "2e5f1a442d36ee566f28e61065fb65863657303d12cb01d1fb75cb6b9ddfa8f4",
+  "fetchedAt": "2026-11-13T02:25:16.320Z",
+  "sha256": "4d55648942776494ea789dbd38ada9e008c8002023a32123944c9c25398a5321",
   "totals": {
     "ready": 70,
-    "partial": 37,
-    "missing": 5,
+    "partial": 38,
+    "missing": 4,
     "unknown": 0,
     "total": 112
   },
@@ -682,8 +682,8 @@
       "title": "Не начато",
       "counts": {
         "ready": 1,
-        "partial": 4,
-        "missing": 2,
+        "partial": 5,
+        "missing": 1,
         "unknown": 0,
         "total": 7
       },
@@ -721,14 +721,14 @@
           "name": "Жители, торговля, рейды",
           "status": "partial",
           "stage": "M7",
-          "note": "`Villager` (`minecraft:villager`) с `VillagerData` (тип/профессия/уровень 1-5 по опыту 10/70/150/250) и `Offers.Recipes` в NBT; ПКМ без приседа открывает `merchant` (слоты 0-1 покупка, 2 результат, 3-38 инвентарь), `select_trade` выбирает сделку, клик по результату проводит обмен (цена списывается, товар в курсор, `uses += 1`, `Xp += xp`), `merchant_offers` обновляет окно; фермер: 20 пшеницы / 26 картофеля → изумруд, изумруд → 6 хлеба / 4 пирога; `/summon` с NBT, `data get`, `/kill` и сохранение в `entities/*.mca`; проверка — [`villager_probe`](../crates/bots/examples/villager_probe.rs) (20 пшеницы → изумруд, `Xp=2`, `uses=1`, затем изумруд → хлеб). Нет: `Brain`/профессии по точкам интереса, пополнения запасов по рабочим блокам, странствующего торговца, рейдов и разбойников"
+          "note": "`Villager` (`minecraft:villager`) с `VillagerData` (тип/профессия/уровень 1-5 по опыту 10/70/150/250) и `Offers.Recipes` в NBT; ПКМ без приседа открывает `merchant` (слоты 0-1 покупка, 2 результат, 3-38 инвентарь), `select_trade` выбирает сделку, клик по результату проводит обмен (цена списывается, товар в курсор, `uses += 1`, `Xp += xp`), `merchant_offers` обновляет окно; фермер: 20 пшеницы / 26 картофеля → изумруд, изумруд → 6 хлеба / 4 пирога; `/summon` с NBT, `data get`, `/kill` и сохранение в `entities/*.mca`; проверка — [`villager_probe`](../crates/bots/examples/villager_probe.rs) (20 пшеницы → изумруд, `Xp=2`, `uses=1`, затем изумруд → хлеб). Пополнение запасов: раз в 300 тиков проверяется рабочий блок профессии в кубе ±2 (компостер, лектерна, бочка, кузнечный стол и т.д.), затем по `shouldRestock` (`LastRestock` + 12000, до 2 раз в день, `+2400` между) сбрасываются `uses`, растёт `demand`, играется звук работы и `happy_villager`, `RestocksToday` пишется в NBT. Странствующий торговец (`minecraft:wandering_trader`): 2 покупки + 2 редких + 5 обычных сделок из наборов `TradeSets.WANDERING_TRADER_*`, `DespawnDelay` с исчезновением, опыт 3 + nextInt(4) сферами, своё окно и `data get`; проверки — [`restock_probe`](../crates/bots/examples/restock_probe.rs) (сделка → `uses:1` → пополнение у компостера → `RestocksToday=1`; торговец: покупка хлеба, исчезновение по `DespawnDelay`). Нет: `Brain`/профессии по точкам интереса без готового NBT, рейдов и разбойников"
         },
         {
           "id": "section-7-row-6",
           "name": "Статистика, достижения, книга рецептов",
-          "status": "missing",
+          "status": "partial",
           "stage": "M7",
-          "note": "`award_stats`, `stats/<uuid>.json`, `advancements/<uuid>.json` и триггеры, `/advancement`, `/recipe`, `place_recipe`"
+          "note": "`award_stat` по ключу (`stat_type`, значение): пакет `award_stats` при изменении и полный набор при входе; счётчики `minecraft:used` (ПКМ предметом/по блоку), `minecraft:custom` — `traded_with_villager`, `talked_to_villager`, `fish_caught`; хранение в `stats/<uuid>.json` в ванильном формате `{\"stats\":{...},\"DataVersion\":...}` с загрузкой при входе; проверки — [`stats_probe`](../crates/bots/examples/stats_probe.rs) (used/торговля/рыбалка, reconnect) и [`stats_load_probe`](../crates/bots/examples/stats_load_probe.rs) (после перезапуска `traded=1`, `fish=1`). Достижения: загрузка всех 1866 определений из `data/minecraft/advancement/**/*.json` (parent, display, requirements, criteria), раскладка дерева, полный `update_advancements` при входе и точечные обновления; триггеры `villager_trade`, `fishing_rod_hooked` (фильтр по предмету), `consume_item`; прогресс в `advancements/<uuid>.json` (критерии с временем, загрузка при входе); команда `/advancement grant|revoke <targets> everything|only|from|through|until`; проверка — [`advancement_probe`](../crates/bots/examples/advancement_probe.rs) (дерево 1866, grant/revoke, торговля, рыбалка, сохранение и вход). Книга рецептов: загрузка 1681 рецепта из `data/minecraft/recipe/**/*.json` (shaped/shapeless, плавка/копчение/костёр, камнерез, кузнечное улучшение) с `RecipeDisplayId` по порядку id; пакеты `recipe_book_add`/`recipe_book_remove`/`recipe_book_settings`, `recipe_book_seen_recipe`, `place_ghost_recipe`; `/recipe give|take <targets> <recipe|*>`; `place_recipe` раскладывает ингредиенты в сетку 2×2/3×3, печь, камнерез и кузнечный стол; знания (`recipeBook.recipes`/`toBeDisplayed` и настройки) пишутся в `playerdata` и приходят при входе; проверка — [`recipe_probe`](../crates/bots/examples/recipe_probe.rs) (give/take, `*` 1681, раскладка и крафт досок, ghost, сохранение). Нет: отображений `crafting_transmute`/`crafting_dye`/`crafting_imbue`/`smithing_trim` и остальных категорий статистики (mined/crafted/broken/killed, play_time) и триггеров достижений (кроме трёх)"
         },
         {
           "id": "section-7-row-7",

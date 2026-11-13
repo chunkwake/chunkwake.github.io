@@ -1,10 +1,13 @@
 {
   "source": "https://raw.githubusercontent.com/chunkwake/core/ver/26.3/docs/commands.md",
-  "fetchedAt": "2026-11-11",
+  "fetchedAt": "2026-11-13T02:23:03.878Z",
   "groups": [
     {
       "id": "player",
-      "title": { "ru": "Игрок и чат", "en": "Player and chat" },
+      "title": {
+        "ru": "Игрок и чат",
+        "en": "Player and chat"
+      },
       "note": {
         "ru": "Чат, инвентарь, эффекты, сущности и камера.",
         "en": "Chat, inventory, effects, entities and the camera."
@@ -44,7 +47,10 @@
             "ru": "Действие от своего имени в чате.",
             "en": "An action in chat under your name."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "say",
@@ -54,7 +60,10 @@
             "ru": "Сообщение от имени сервера.",
             "en": "A message from the server."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "msg / tell / w",
@@ -103,7 +112,10 @@
             "ru": "Отправить текстовый компонент в чат.",
             "en": "Send a text component to chat."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "title",
@@ -113,7 +125,10 @@
             "ru": "Показать заголовок, подзаголовок или action bar.",
             "en": "Show a title, subtitle or action bar."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "playsound / stopsound",
@@ -175,7 +190,10 @@
             "ru": "Выдать, установить или показать опыт.",
             "en": "Add, set or query experience."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "gamemode / defaultgamemode",
@@ -185,7 +203,10 @@
             "ru": "Сменить режим игры.",
             "en": "Change the game mode."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "kill",
@@ -234,7 +255,10 @@
             "ru": "Повернуть сущность.",
             "en": "Rotate an entity."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "spawnpoint",
@@ -474,7 +498,10 @@
     },
     {
       "id": "world",
-      "title": { "ru": "Мир и блоки", "en": "World and blocks" },
+      "title": {
+        "ru": "Мир и блоки",
+        "en": "World and blocks"
+      },
       "note": {
         "ru": "Блоки, время, погода, границы и поиск структур.",
         "en": "Blocks, time, weather, borders and structure search."
@@ -579,7 +606,10 @@
             "ru": "Установить сложность.",
             "en": "Set the difficulty."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "seed",
@@ -589,7 +619,10 @@
             "ru": "Показать зерно мира.",
             "en": "Show the world seed."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "setworldspawn",
@@ -599,7 +632,10 @@
             "ru": "Установить точку появления мира.",
             "en": "Set the world spawn."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "worldborder",
@@ -670,7 +706,10 @@
     },
     {
       "id": "data",
-      "title": { "ru": "Данные и scoreboard", "en": "Data and scoreboard" },
+      "title": {
+        "ru": "Данные и scoreboard",
+        "en": "Data and scoreboard"
+      },
       "note": {
         "ru": "Счёт, NBT и цепочки `execute`.",
         "en": "Scores, NBT and `execute` chains."
@@ -732,7 +771,10 @@
     },
     {
       "id": "admin",
-      "title": { "ru": "Администрирование", "en": "Administration" },
+      "title": {
+        "ru": "Администрирование",
+        "en": "Administration"
+      },
       "note": {
         "ru": "Права, баны, тик, сохранение и остановка.",
         "en": "Permissions, bans, ticking, saving and shutdown."
@@ -837,7 +879,10 @@
             "ru": "Снимок нагрузки и профиль.",
             "en": "Load snapshot and profile."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "stop",
@@ -847,7 +892,10 @@
             "ru": "Сохранить мир и выйти.",
             "en": "Save the world and shut down."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "version",
@@ -857,7 +905,10 @@
             "ru": "Версия сервера.",
             "en": "Server version."
           },
-          "difference": { "ru": "", "en": "" }
+          "difference": {
+            "ru": "",
+            "en": ""
+          }
         },
         {
           "name": "save-all / save-off / save-on",
@@ -928,7 +979,10 @@
     },
     {
       "id": "extra",
-      "title": { "ru": "Расширения Chunkwake", "en": "Chunkwake extensions" },
+      "title": {
+        "ru": "Расширения Chunkwake",
+        "en": "Chunkwake extensions"
+      },
       "note": {
         "ru": "Команды, которых нет в ванили.",
         "en": "Commands that do not exist in vanilla."

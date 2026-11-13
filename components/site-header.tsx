@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Logo } from './logo';
 import { LocaleSwitch } from './locale-switch';
+import { SiteSearch } from './site-search';
 import type { SiteCopy } from '@/lib/dictionary';
 import { links } from '@/lib/shared';
 
@@ -27,6 +28,7 @@ export function SiteHeader({ lang, copy }: { lang: string; copy: SiteCopy }) {
         </nav>
 
         <div className="cw-header-side">
+          <SiteSearch lang={lang} label={lang === 'en' ? 'Search' : 'Поиск'} />
           <span className="cw-stage" title="Early stage">
             <span className="cw-stage-dot" />
             early

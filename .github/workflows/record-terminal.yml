@@ -1,0 +1,86 @@
+name: Record terminal demos
+
+# Re-record the checked-in sessions from a real binary. The hourly site build
+# already refreshes matrix, commands and releases; this job is heavier because
+# it compiles Chunkwake and starts a throwaway server, so it runs weekly.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '41 4 * * 1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: terminal-recordings
+  cancel-in-progress: true
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v5
+
+      - name: Checkout core
+        uses: actions/checkout@v5
+        with:
+          repository: chunkwake/core
+          ref: ver/26.3
+          path: _core
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: _core -> target
+
+      - name: Cache vanilla data
+        uses: actions/cache@v6
+        with:
+          path: |
+            _core/server.jar
+            _core/generated
+            _core/target/vanilla-cache
+          key: vanilla-26.3-Linux-${{ hashFiles('_core/crates/datacache/**', '_core/crates/data/build.rs') }}
+
+      - name: Download server.jar
+        working-directory: _core
+        run: bash .github/scripts/fetch-vanilla-jar.sh "26.3"
+
+      - name: Build Chunkwake
+        working-directory: _core
+        env:
+          CHUNKWAKE_JAR: ${{ github.workspace }}/_core/server.jar
+          CHUNKWAKE_API_BUNDLE: none
+        run: cargo build -p chunkwake-server
+
+      - name: Record sessions
+        run: node scripts/record-terminal.mjs --binary _core/target/debug/chunkwake --core _core
+
+      - name: Commit recordings
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/terminal
+          if git diff --cached --quiet; then
+            echo 'terminal recordings unchanged'
+            exit 0
+          fi
+          git commit -m 'Refresh terminal recordings'
+          git push

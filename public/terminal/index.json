@@ -1,0 +1,143 @@
+{
+  "generatedAt": "2026-11-13T02:22:28.381Z",
+  "demos": [
+    {
+      "id": "cli-help",
+      "shell": "cli",
+      "prompt": "$",
+      "title": {
+        "ru": "CLI целиком",
+        "en": "The whole CLI"
+      },
+      "description": {
+        "ru": "Все команды установки, диагностики, бэкапов и наблюдения.",
+        "en": "Setup, diagnostics, backups and observability in one place."
+      },
+      "capturedAt": "2026-11-13T02:21:42.176Z",
+      "core": {
+        "repo": "chunkwake/core",
+        "branch": "ver/26.3",
+        "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+      },
+      "binary": {
+        "version": "26.3",
+        "profile": "debug"
+      }
+    },
+    {
+      "id": "config",
+      "shell": "cli",
+      "prompt": "$",
+      "title": {
+        "ru": "Текущие настройки",
+        "en": "Current settings"
+      },
+      "description": {
+        "ru": "Что записано в server.properties и какие значения ждут своей очереди.",
+        "en": "What is written to server.properties and which values are reserved."
+      },
+      "capturedAt": "2026-11-13T02:21:42.234Z",
+      "core": {
+        "repo": "chunkwake/core",
+        "branch": "ver/26.3",
+        "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+      },
+      "binary": {
+        "version": "26.3",
+        "profile": "debug"
+      }
+    },
+    {
+      "id": "console",
+      "shell": "console",
+      "prompt": ">",
+      "title": {
+        "ru": "Консоль сервера",
+        "en": "Server console"
+      },
+      "description": {
+        "ru": "Консоль принимает те же команды, что и чат, без слэша.",
+        "en": "The console accepts the same commands as chat, without the slash."
+      },
+      "capturedAt": "2026-11-13T02:22:18.643Z",
+      "core": {
+        "repo": "chunkwake/core",
+        "branch": "ver/26.3",
+        "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+      },
+      "binary": {
+        "version": "26.3",
+        "profile": "debug"
+      }
+    },
+    {
+      "id": "doctor",
+      "shell": "cli",
+      "prompt": "$",
+      "title": {
+        "ru": "Проверка перед запуском",
+        "en": "Preflight check"
+      },
+      "description": {
+        "ru": "Doctor проверяет порт, встроенные данные и Java для плагинов.",
+        "en": "Doctor checks the port, embedded data and Java for plugins."
+      },
+      "capturedAt": "2026-11-13T02:21:42.210Z",
+      "core": {
+        "repo": "chunkwake/core",
+        "branch": "ver/26.3",
+        "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+      },
+      "binary": {
+        "version": "26.3",
+        "profile": "debug"
+      }
+    },
+    {
+      "id": "tick",
+      "shell": "console",
+      "prompt": ">",
+      "title": {
+        "ru": "TPS и снимок нагрузки",
+        "en": "TPS and load snapshot"
+      },
+      "description": {
+        "ru": "Две команды Chunkwake: короткая строка и полный снимок по подсистемам.",
+        "en": "Two Chunkwake commands: a short line and a full breakdown by subsystem."
+      },
+      "capturedAt": "2026-11-13T02:22:22.435Z",
+      "core": {
+        "repo": "chunkwake/core",
+        "branch": "ver/26.3",
+        "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+      },
+      "binary": {
+        "version": "26.3",
+        "profile": "debug"
+      }
+    },
+    {
+      "id": "world",
+      "shell": "console",
+      "prompt": ">",
+      "title": {
+        "ru": "Время, сид и блоки",
+        "en": "Time, seed and blocks"
+      },
+      "description": {
+        "ru": "Ванильные команды на настоящем плоском мире, без подключённого клиента.",
+        "en": "Vanilla commands against a real flat world, with no client attached."
+      },
+      "capturedAt": "2026-11-13T02:22:28.368Z",
+      "core": {
+        "repo": "chunkwake/core",
+        "branch": "ver/26.3",
+        "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+      },
+      "binary": {
+        "version": "26.3",
+        "profile": "debug"
+      }
+    }
+  ]
+}
