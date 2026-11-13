@@ -25,25 +25,25 @@
     {
       "type": "input",
       "text": "help",
-      "at": 699
+      "at": 673
     },
     {
       "type": "output",
       "level": "info",
       "text": "Available commands (89):",
-      "at": 839
+      "at": 813
     },
     {
       "type": "output",
       "text": "advancement, attribute, ban, ban-ip, banlist, bossbar, clear, clone, damage, data, debug, defaultgamemode, deop, dialog, difficulty, effect, enchant, execute, experience, fill, fillbiome, forceload, gamemode, gamerule, give, help, item, kick, kill, list, locate, loot, me, msg, op, pardon, pardon-ip, particle, perf, place, playsound, posteffect, publish, random, recipe, reload, return, ride, rotate, save-all, save-off, save-on, say, scoreboard, seed, setblock, setidletimeout, setworldspawn, spawnpoint, spectate, spreadplayers, stop, stopsound, stopwatch, summon, swing, tag, team, teammsg, teleport, tell, tellraw, tick, time, title, tm, top, tp, tps, transfer, trigger, unpublish, version, w, waypoint, weather, whitelist, worldborder, xp",
-      "at": 919
+      "at": 893
     }
   ],
-  "capturedAt": "2026-11-13T02:22:18.643Z",
+  "capturedAt": "2026-11-13T02:39:22.478Z",
   "core": {
     "repo": "chunkwake/core",
     "branch": "ver/26.3",
-    "coreSha": "ef12dd66378e32298456ed08deebd240c614a691"
+    "coreSha": "cebc4c516d7f1264e5f9c4aacce9157e2108dbb9"
   },
   "binary": {
     "version": "26.3",
