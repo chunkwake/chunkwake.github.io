@@ -4,6 +4,8 @@ const base = 'https://chunkwake.github.io';
 const paths = [
   '',
   '/benchmarks',
+  '/compatibility',
+  '/changelog',
   '/status',
   '/docs',
   '/docs/getting-started',
@@ -14,6 +16,7 @@ const paths = [
   '/docs/migrating',
   '/docs/feature-matrix',
   '/docs/plugins',
+  '/docs/lab',
   '/docs/architecture',
   '/download',
   '/support',

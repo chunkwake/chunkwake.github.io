@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStaticSearch } from 'fumadocs-core/search/client';
+import commandsData from '@/content/data/commands.json';
 
 type RawItem = {
   id: string;
@@ -16,10 +17,20 @@ type RawItem = {
 type Row = {
   id: string;
   url: string;
-  kind: 'page' | 'heading' | 'text' | 'link';
+  kind: 'page' | 'heading' | 'text' | 'link' | 'command';
   title: string;
   crumb?: string;
   snippet?: string;
+};
+
+type CommandGroup = {
+  id: string;
+  title: Record<'ru' | 'en', string>;
+  commands: {
+    name: string;
+    usage: string;
+    summary: Record<'ru' | 'en', string>;
+  }[];
 };
 
 const quickLinks = {
@@ -27,6 +38,8 @@ const quickLinks = {
     ['Документация', '/ru/docs'],
     ['Быстрый старт', '/ru/docs/getting-started'],
     ['Справочник команд', '/ru/docs/commands'],
+    ['Совместимость', '/ru/compatibility'],
+    ['Журнал изменений', '/ru/changelog'],
     ['Наблюдаемость', '/ru/docs/observability'],
     ['Замеры', '/ru/benchmarks'],
     ['Статус', '/ru/status'],
@@ -36,6 +49,8 @@ const quickLinks = {
     ['Documentation', '/en/docs'],
     ['Getting started', '/en/docs/getting-started'],
     ['Command reference', '/en/docs/commands'],
+    ['Compatibility', '/en/compatibility'],
+    ['Changelog', '/en/changelog'],
     ['Observability', '/en/docs/observability'],
     ['Benchmarks', '/en/benchmarks'],
     ['Status', '/en/status'],
@@ -56,6 +71,7 @@ const ui = {
     closeKey: 'закрыть',
     results: 'результатов',
     linksLabel: 'быстрых ссылок',
+    commandLabel: 'команда',
     error: 'Поиск недоступен. Попробуйте ещё раз.',
   },
   en: {
@@ -70,6 +86,7 @@ const ui = {
     closeKey: 'close',
     results: 'results',
     linksLabel: 'quick links',
+    commandLabel: 'command',
     error: 'Search is unavailable. Try again.',
   },
 } as const;
@@ -84,6 +101,39 @@ function flattenItems(items: RawItem[]): RawItem[] {
     }
   }
   return flat;
+}
+
+function commandRows(query: string, lang: 'ru' | 'en', label: string): Row[] {
+  const needle = query.trim().toLowerCase().replace(/^[/>]\s*/, '');
+  if (!needle) return [];
+
+  const groups = (commandsData as { groups: CommandGroup[] }).groups;
+  const matches: { score: number; row: Row }[] = [];
+
+  for (const group of groups) {
+    for (const command of group.commands) {
+      const name = command.name.toLowerCase();
+      const score = name === needle ? 0 : name.startsWith(needle) ? 1 : name.includes(needle) ? 2 : -1;
+      if (score < 0) continue;
+
+      matches.push({
+        score,
+        row: {
+          id: `command-${command.name}`,
+          url: `/${lang}/docs/commands`,
+          kind: 'command',
+          title: `/${command.name}`,
+          crumb: `${label} · ${group.title[lang]}`,
+          snippet: command.summary[lang],
+        },
+      });
+    }
+  }
+
+  return matches
+    .sort((a, b) => a.score - b.score || a.row.title.localeCompare(b.row.title))
+    .slice(0, 6)
+    .map((match) => match.row);
 }
 
 function toRows(items: RawItem[], lang: 'ru' | 'en'): Row[] {
@@ -159,7 +209,9 @@ export default function SearchDialog({
     [lang],
   );
 
-  const displayRows = search.trim() ? rows : links;
+  const commandHits = useMemo(() => commandRows(search, lang, t.commandLabel), [search, lang, t.commandLabel]);
+
+  const displayRows = search.trim() ? [...commandHits, ...rows] : links;
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -301,7 +353,7 @@ export default function SearchDialog({
             onClick={() => openRow(row)}
           >
             <span className="cw-search-row-icon" aria-hidden="true">
-              {row.kind === 'link' ? '→' : row.kind === 'heading' ? '#' : '¶'}
+              {row.kind === 'link' ? '→' : row.kind === 'command' ? '›' : row.kind === 'heading' ? '#' : '¶'}
             </span>
             <span className="cw-search-row-main">
               <span className="cw-search-row-title">{row.title}</span>

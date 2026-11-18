@@ -21,7 +21,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     <>
       <Hero lang={lang} copy={copy} />
       <BenchmarkLab lang={lang} />
-      <CompatibilitySection copy={copy} />
+      <CompatibilitySection lang={lang} copy={copy} />
       <FeaturesSection lang={lang} copy={copy} />
       <PluginsSection lang={lang} copy={copy} />
       <ArchitectureSection copy={copy} />

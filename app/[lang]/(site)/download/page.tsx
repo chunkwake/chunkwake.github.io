@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DataFreshness } from '@/components/data-freshness';
 import { DownloadPanel } from '@/components/download-panel';
 import { LangNotFound } from '@/components/lang-not-found';
 import { getCopy } from '@/lib/dictionary';
@@ -28,6 +29,7 @@ export default async function DownloadPage({ params }: { params: Promise<{ lang:
         <div className="cw-eyebrow">download</div>
         <h1>{copy.download.title}</h1>
         <p>{copy.download.lead}</p>
+        <DataFreshness lang={lang} />
       </header>
       <DownloadPanel copy={copy} release={releaseData.release} lang={lang} />
     </div>

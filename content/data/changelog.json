@@ -1,0 +1,647 @@
+{
+  "source": "chunkwake/core",
+  "branch": "ver/26.3",
+  "fetchedAt": "2026-11-18T07:06:16.540Z",
+  "items": [
+    {
+      "sha": "bb290f71cb60af74a995cf8fe958c1a628dbe76e",
+      "shortSha": "bb290f71",
+      "date": "2026-11-18T06:42:00Z",
+      "category": "core",
+      "title": "выровнять play.rs (CI cargo fmt --all --check)",
+      "url": "https://github.com/chunkwake/core/commit/bb290f71cb60af74a995cf8fe958c1a628dbe76e"
+    },
+    {
+      "sha": "f2112f60bf92e0264e72727e897e952713e578c9",
+      "shortSha": "f2112f60",
+      "date": "2026-11-18T06:29:39Z",
+      "category": "api",
+      "title": "свойства блоков WorldEdit и запуск без ошибки PlatformReadyEvent",
+      "url": "https://github.com/chunkwake/core/commit/f2112f60bf92e0264e72727e897e952713e578c9"
+    },
+    {
+      "sha": "302ffa4cf7522da0e93ed0ceef5e039eb728e2c4",
+      "shortSha": "302ffa4c",
+      "date": "2026-11-18T06:15:58Z",
+      "category": "api",
+      "title": "WorldEdit //set работает — proxy equals и блок-адаптер",
+      "url": "https://github.com/chunkwake/core/commit/302ffa4cf7522da0e93ed0ceef5e039eb728e2c4"
+    },
+    {
+      "sha": "53533f1618f7a65676e933dcad3acb282a0c0a07",
+      "shortSha": "53533f16",
+      "date": "2026-11-18T06:05:21Z",
+      "category": "api",
+      "title": "настоящий CraftHumanEntity и SimplePluginManager — LuckPerms заработал",
+      "url": "https://github.com/chunkwake/core/commit/53533f1618f7a65676e933dcad3acb282a0c0a07"
+    },
+    {
+      "sha": "4acd4f1145e88d7042d481005811a23fd8ccedbf",
+      "shortSha": "4acd4f11",
+      "date": "2026-11-18T05:12:35Z",
+      "category": "api",
+      "title": "Paper-маркеры для PaperLib — WorldEdit команды заработали",
+      "url": "https://github.com/chunkwake/core/commit/4acd4f1145e88d7042d481005811a23fd8ccedbf"
+    },
+    {
+      "sha": "09049a74f0dcde6d9163d2fdee861c3aa9b69f67",
+      "shortSha": "09049a74",
+      "date": "2026-11-18T04:58:11Z",
+      "category": "perf",
+      "title": "живые замеры 1000 мобов против Paper 26.3 и Velocity-прокси",
+      "url": "https://github.com/chunkwake/core/commit/09049a74f0dcde6d9163d2fdee861c3aa9b69f67"
+    },
+    {
+      "sha": "a9e2592499ee446f51b0e3a53baae66091bd2933",
+      "shortSha": "a9e25924",
+      "date": "2026-11-17T18:02:27Z",
+      "category": "api",
+      "title": "события плагинов, OfflinePlayer, Player-мелочи и время мира",
+      "url": "https://github.com/chunkwake/core/commit/a9e2592499ee446f51b0e3a53baae66091bd2933"
+    },
+    {
+      "sha": "fef16c19769d6afe1603ee18795173fc95ba7544",
+      "shortSha": "fef16c19",
+      "date": "2026-11-17T17:36:54Z",
+      "category": "api",
+      "title": "org.json.simple для плагинов (Vault) + живые прогоны 4 плагинов",
+      "url": "https://github.com/chunkwake/core/commit/fef16c19769d6afe1603ee18795173fc95ba7544"
+    },
+    {
+      "sha": "b2fbebd084671b23557c386e1758e59d01d9be9d",
+      "shortSha": "b2fbebd0",
+      "date": "2026-11-17T17:29:02Z",
+      "category": "api",
+      "title": "ItemStack serializeAsBytes/deserializeItem и профиль манекена",
+      "url": "https://github.com/chunkwake/core/commit/b2fbebd084671b23557c386e1758e59d01d9be9d"
+    },
+    {
+      "sha": "ef74596063ebadc1c7bb2e16b6072a02dfbba7f8",
+      "shortSha": "ef745960",
+      "date": "2026-11-17T17:04:56Z",
+      "category": "api",
+      "title": "SkinParts, mannequin-позы/описание и критерии статистик",
+      "url": "https://github.com/chunkwake/core/commit/ef74596063ebadc1c7bb2e16b6072a02dfbba7f8"
+    },
+    {
+      "sha": "8367335f4064c52a7be62fe48719195eb656e51f",
+      "shortSha": "8367335f",
+      "date": "2026-11-17T16:57:28Z",
+      "category": "plugins",
+      "title": "правки блоков до входа игрока больше не теряются",
+      "url": "https://github.com/chunkwake/core/commit/8367335f4064c52a7be62fe48719195eb656e51f"
+    },
+    {
+      "sha": "0c1a9a5b227cf50e0df92de8a5d3615aa3065b0d",
+      "shortSha": "0c1a9a5b",
+      "date": "2026-11-17T16:17:42Z",
+      "category": "plugins",
+      "title": "EssentialsX 2.22.0 включается, legacy-материалы и rollEnchantmentOffers",
+      "url": "https://github.com/chunkwake/core/commit/0c1a9a5b227cf50e0df92de8a5d3615aa3065b0d"
+    },
+    {
+      "sha": "6e700bcd2230a84ee2d13ecbeccc61d47f056ea7",
+      "shortSha": "6e700bcd",
+      "date": "2026-11-17T15:28:09Z",
+      "category": "api",
+      "title": "CombatEntry через InternalAPIBridge",
+      "url": "https://github.com/chunkwake/core/commit/6e700bcd2230a84ee2d13ecbeccc61d47f056ea7"
+    },
+    {
+      "sha": "85359c0b83dd4d589b0eb49b4f2f87479698e6b8",
+      "shortSha": "85359c0b",
+      "date": "2026-11-17T15:26:50Z",
+      "category": "api",
+      "title": "EntityType.hasDefaultAttributes/getDefaultAttributes",
+      "url": "https://github.com/chunkwake/core/commit/85359c0b83dd4d589b0eb49b4f2f87479698e6b8"
+    },
+    {
+      "sha": "22608dbb9ddd43b8dc9288b30911e28eb5f9b744",
+      "shortSha": "22608dbb",
+      "date": "2026-11-17T15:14:59Z",
+      "category": "api",
+      "title": "PersistentDataKey.of через InternalAPIBridge",
+      "url": "https://github.com/chunkwake/core/commit/22608dbb9ddd43b8dc9288b30911e28eb5f9b744"
+    },
+    {
+      "sha": "37f4d915d13e236be84803f7ca39733402ff3410",
+      "shortSha": "37f4d915",
+      "date": "2026-11-17T15:12:10Z",
+      "category": "api",
+      "title": "damage effect и occupancy через InternalAPIBridge",
+      "url": "https://github.com/chunkwake/core/commit/37f4d915d13e236be84803f7ca39733402ff3410"
+    },
+    {
+      "sha": "b4de643c0966241e12ee12dc4edbac468c6bfea8",
+      "shortSha": "b4de643c",
+      "date": "2026-11-17T15:09:12Z",
+      "category": "api",
+      "title": "EntityType.translationKey и getSpawnCategory по ванильному MobCategory",
+      "url": "https://github.com/chunkwake/core/commit/b4de643c0966241e12ee12dc4edbac468c6bfea8"
+    },
+    {
+      "sha": "472a1e3cda0fcf3ab2b80fbd1290d52153842f70",
+      "shortSha": "472a1e3c",
+      "date": "2026-11-17T15:09:12Z",
+      "category": "villagers",
+      "title": "releaseAllPois при смерти, пробы голема/размножения/сделки",
+      "url": "https://github.com/chunkwake/core/commit/472a1e3cda0fcf3ab2b80fbd1290d52153842f70"
+    },
+    {
+      "sha": "76d84ac84337d8ccb77a55e6740ed480e3ae3cd3",
+      "shortSha": "76d84ac8",
+      "date": "2026-11-16T14:28:14Z",
+      "category": "villagers",
+      "title": "железный голем по согласию, yes/no сделки, pitch праздника",
+      "url": "https://github.com/chunkwake/core/commit/76d84ac84337d8ccb77a55e6740ed480e3ae3cd3"
+    },
+    {
+      "sha": "ee897f3d4d53b27ce76c8533e50491f7ea54b9ae",
+      "shortSha": "ee897f3d",
+      "date": "2026-11-16T13:58:20Z",
+      "category": "villagers",
+      "title": "ambient/hurt/death звуки и голосовой pitch (Mob.getVoicePitch)",
+      "url": "https://github.com/chunkwake/core/commit/ee897f3d4d53b27ce76c8533e50491f7ea54b9ae"
+    },
+    {
+      "sha": "9623f23655ffd39ea084980041491ae51d6502dc",
+      "shortSha": "9623f236",
+      "date": "2026-11-16T13:36:53Z",
+      "category": "villagers",
+      "title": "настоящие block loot-таблицы культур и разделение loot::Ctx",
+      "url": "https://github.com/chunkwake/core/commit/9623f23655ffd39ea084980041491ae51d6502dc"
+    },
+    {
+      "sha": "495918ade56bdc70f3389925ff0cfba08130b63c",
+      "shortSha": "495918ad",
+      "date": "2026-11-16T13:17:40Z",
+      "category": "villagers",
+      "title": "entity-события 13/14/42 и лут культур при Harvest",
+      "url": "https://github.com/chunkwake/core/commit/495918ade56bdc70f3389925ff0cfba08130b63c"
+    },
+    {
+      "sha": "31168912abd052721c69aca1eeca9e5c60602bb7",
+      "shortSha": "31168912",
+      "date": "2026-11-16T12:23:36Z",
+      "category": "villagers",
+      "title": "события VillagerMakeLove (18/12/13) и Reader::i32",
+      "url": "https://github.com/chunkwake/core/commit/31168912abd052721c69aca1eeca9e5c60602bb7"
+    },
+    {
+      "sha": "a5aef22f779b4feb356fa41181c8a86e3c7a682e",
+      "shortSha": "a5aef22f",
+      "date": "2026-11-16T11:15:57Z",
+      "category": "villagers",
+      "title": "звук работы по профессии и детерминированные фазы пробы",
+      "url": "https://github.com/chunkwake/core/commit/a5aef22f779b4feb356fa41181c8a86e3c7a682e"
+    },
+    {
+      "sha": "6c77ebd816ccb32dee081b91264a31f5ec892014",
+      "shortSha": "6c77ebd8",
+      "date": "2026-11-16T10:22:05Z",
+      "category": "villagers",
+      "title": "SecondaryPoiSensor по профессии (только фермер)",
+      "url": "https://github.com/chunkwake/core/commit/6c77ebd816ccb32dee081b91264a31f5ec892014"
+    },
+    {
+      "sha": "77b4db3f4a89579a95c92aa3dc46deb33e0eafe0",
+      "shortSha": "77b4db3f",
+      "date": "2026-11-16T09:40:36Z",
+      "category": "villagers",
+      "title": "ShowTradesToPlayer по Paper 26.3 (900/40, цикл предметов)",
+      "url": "https://github.com/chunkwake/core/commit/77b4db3f4a89579a95c92aa3dc46deb33e0eafe0"
+    },
+    {
+      "sha": "87df984111d9ccd806ad0f5defcba96fb1a200ec",
+      "shortSha": "87df9841",
+      "date": "2026-11-16T09:23:52Z",
+      "category": "villagers",
+      "title": "meet/idle-пакеты, /tp для жителей и детерминированная проба",
+      "url": "https://github.com/chunkwake/core/commit/87df984111d9ccd806ad0f5defcba96fb1a200ec"
+    },
+    {
+      "sha": "ca5b4ad0f56ff5492b4e815d345c25a2e2cbdebb",
+      "shortSha": "ca5b4ad0",
+      "date": "2026-11-16T07:21:47Z",
+      "category": "villagers",
+      "title": "приоритеты Brain, look-пакет и размножение (1:1 с Paper 26.3)",
+      "url": "https://github.com/chunkwake/core/commit/ca5b4ad0f56ff5492b4e815d345c25a2e2cbdebb"
+    },
+    {
+      "sha": "5f4127861ed3aeb78773cd2b5e13059ad4ba4e4a",
+      "shortSha": "5f412786",
+      "date": "2026-11-16T05:40:09Z",
+      "category": "villagers",
+      "title": "look-пакет и GiveGiftToHero, изолированные пробы",
+      "url": "https://github.com/chunkwake/core/commit/5f4127861ed3aeb78773cd2b5e13059ad4ba4e4a"
+    },
+    {
+      "sha": "8b40e0e011c2794ac74e8f1ec26b586afcd2215d",
+      "shortSha": "8b40e0e0",
+      "date": "2026-11-15T17:33:42Z",
+      "category": "villagers",
+      "title": "точные длительности work/meet/rest по ваниле 26.3",
+      "url": "https://github.com/chunkwake/core/commit/8b40e0e011c2794ac74e8f1ec26b586afcd2215d"
+    },
+    {
+      "sha": "3cadd91a74f9b141f233eef3a22b1a2b094da852",
+      "shortSha": "3cadd91a",
+      "date": "2026-11-15T16:16:56Z",
+      "category": "villagers",
+      "title": "веса meet/rest RunOne и перевыбор по завершении",
+      "url": "https://github.com/chunkwake/core/commit/3cadd91a74f9b141f233eef3a22b1a2b094da852"
+    },
+    {
+      "sha": "dc7c869fcfe5f629a3da7989abc9429d0d7083b7",
+      "shortSha": "dc7c869f",
+      "date": "2026-11-15T15:53:30Z",
+      "category": "villagers",
+      "title": "веса RunOne/GateBehavior и SECONDARY_JOB_SITE",
+      "url": "https://github.com/chunkwake/core/commit/dc7c869fcfe5f629a3da7989abc9429d0d7083b7"
+    },
+    {
+      "sha": "645dceb1836c3a7ded22f0c74a17e925ed212030",
+      "shortSha": "645dceb1",
+      "date": "2026-11-15T15:33:56Z",
+      "category": "villagers",
+      "title": "HarvestFarmland, UseBonemeal, Restock и кошки",
+      "url": "https://github.com/chunkwake/core/commit/645dceb1836c3a7ded22f0c74a17e925ed212030"
+    },
+    {
+      "sha": "3ea40f2ffd8c543e8ae893ca000816e5a0ff7760",
+      "shortSha": "3ea40f2f",
+      "date": "2026-11-15T14:46:02Z",
+      "category": "villagers",
+      "title": "JumpOnBed и точный MoveToSkySeeingSpot",
+      "url": "https://github.com/chunkwake/core/commit/3ea40f2ffd8c543e8ae893ca000816e5a0ff7760"
+    },
+    {
+      "sha": "3192cb16aab998b26d84d34f752e74c489711e38",
+      "shortSha": "3192cb16",
+      "date": "2026-11-15T14:25:21Z",
+      "category": "villagers",
+      "title": "празднование победы над рейдом",
+      "url": "https://github.com/chunkwake/core/commit/3192cb16aab998b26d84d34f752e74c489711e38"
+    },
+    {
+      "sha": "52307acd7b08edb7b47099048efc7ef9f02acf1d",
+      "shortSha": "52307acd",
+      "date": "2026-11-15T13:53:45Z",
+      "category": "villagers",
+      "title": "поведение при рейдах (SetRaidStatus)",
+      "url": "https://github.com/chunkwake/core/commit/52307acd7b08edb7b47099048efc7ef9f02acf1d"
+    },
+    {
+      "sha": "4a0ee8a5b676e33bed0a3cd3eee19319e9ca4161",
+      "shortSha": "4a0ee8a5",
+      "date": "2026-11-15T13:37:59Z",
+      "category": "villagers",
+      "title": "детские игры и обмен еды в обе стороны",
+      "url": "https://github.com/chunkwake/core/commit/4a0ee8a5b676e33bed0a3cd3eee19319e9ca4161"
+    },
+    {
+      "sha": "97b85ef00f52512cd148681ac4656a064b07c8c8",
+      "shortSha": "97b85ef0",
+      "date": "2026-11-15T12:38:56Z",
+      "category": "villagers",
+      "title": "размножение (VillagerMakeLove)",
+      "url": "https://github.com/chunkwake/core/commit/97b85ef00f52512cd148681ac4656a064b07c8c8"
+    },
+    {
+      "sha": "1bfb8393e80243bc1f781d65be684d3936e8e18d",
+      "shortSha": "1bfb8393",
+      "date": "2026-11-15T11:54:36Z",
+      "category": "villagers",
+      "title": "паника (VillagerPanicTrigger/CalmDown)",
+      "url": "https://github.com/chunkwake/core/commit/1bfb8393e80243bc1f781d65be684d3936e8e18d"
+    },
+    {
+      "sha": "c786ca8f291d606ac6af1ecb63ab7b56800a0136",
+      "shortSha": "c786ca8f",
+      "date": "2026-11-15T11:36:15Z",
+      "category": "villagers",
+      "title": "ShowTradesToPlayer и обмен едой/requestedItems",
+      "url": "https://github.com/chunkwake/core/commit/c786ca8f291d606ac6af1ecb63ab7b56800a0136"
+    },
+    {
+      "sha": "18da794a6c0dd0252f5cf2c309e6d6359b2b8cdd",
+      "shortSha": "18da794a",
+      "date": "2026-11-15T10:59:31Z",
+      "category": "villagers",
+      "title": "TradeWithVillager (слухи) и кулдаун дверей",
+      "url": "https://github.com/chunkwake/core/commit/18da794a6c0dd0252f5cf2c309e6d6359b2b8cdd"
+    },
+    {
+      "sha": "f8516b49bcd62e377dfad0fa92b37f21d684378b",
+      "shortSha": "f8516b49",
+      "date": "2026-11-15T10:29:29Z",
+      "category": "villagers",
+      "title": "двери по узлам пути и безопасное вставание с кровати",
+      "url": "https://github.com/chunkwake/core/commit/f8516b49bcd62e377dfad0fa92b37f21d684378b"
+    },
+    {
+      "sha": "f1fdf45aace0ad2db74d42e3998aceb3a2c9651d",
+      "shortSha": "f1fdf45a",
+      "date": "2026-11-15T10:00:53Z",
+      "category": "villagers",
+      "title": "стек целей и линия видимости сенсора",
+      "url": "https://github.com/chunkwake/core/commit/f1fdf45aace0ad2db74d42e3998aceb3a2c9651d"
+    },
+    {
+      "sha": "215bae611355f81a8ef61affaac8364b1f1e7439",
+      "shortSha": "215bae61",
+      "date": "2026-11-15T09:46:04Z",
+      "category": "villagers",
+      "title": "сенсор соседей и социальные встречи у колокола",
+      "url": "https://github.com/chunkwake/core/commit/215bae611355f81a8ef61affaac8364b1f1e7439"
+    },
+    {
+      "sha": "9ea314b4e371edb12a65496c4292be56cda2f906",
+      "shortSha": "9ea314b4",
+      "date": "2026-11-15T09:29:50Z",
+      "category": "villagers",
+      "title": "двери, сон с кулдауном и вставанием по кровати",
+      "url": "https://github.com/chunkwake/core/commit/9ea314b4e371edb12a65496c4292be56cda2f906"
+    },
+    {
+      "sha": "4e50f5c6c99d721eb9250d2bbb222e9f6bee1a13",
+      "shortSha": "4e50f5c6",
+      "date": "2026-11-15T08:50:39Z",
+      "category": "villagers",
+      "title": "сон в кровати, занятость и пробуждение",
+      "url": "https://github.com/chunkwake/core/commit/4e50f5c6c99d721eb9250d2bbb222e9f6bee1a13"
+    },
+    {
+      "sha": "c5b8a56333a7512065ea9b02ac0af30a33a47104",
+      "shortSha": "c5b8a563",
+      "date": "2026-11-15T08:26:56Z",
+      "category": "villagers",
+      "title": "расписание дня и прогулки к точкам интереса",
+      "url": "https://github.com/chunkwake/core/commit/c5b8a56333a7512065ea9b02ac0af30a33a47104"
+    },
+    {
+      "sha": "28ccaeeab68ebb765a23066f3c296fa63d00f2f5",
+      "shortSha": "28ccaeea",
+      "date": "2026-11-15T08:06:32Z",
+      "category": "core",
+      "title": "точные зачарования по EnchantmentHelper",
+      "url": "https://github.com/chunkwake/core/commit/28ccaeeab68ebb765a23066f3c296fa63d00f2f5"
+    },
+    {
+      "sha": "bc32d4745e0b65fe341b1bee4fbd2681d3424f46",
+      "shortSha": "bc32d474",
+      "date": "2026-11-15T07:46:54Z",
+      "category": "core",
+      "title": "карты исследователя у картографа",
+      "url": "https://github.com/chunkwake/core/commit/bc32d4745e0b65fe341b1bee4fbd2681d3424f46"
+    },
+    {
+      "sha": "ce3273d419039aebe5866207d7a47cc3292ae0ac",
+      "shortSha": "ce3273d4",
+      "date": "2026-11-15T07:11:32Z",
+      "category": "villagers",
+      "title": "сделки всех профессий и уровней по TradeSet",
+      "url": "https://github.com/chunkwake/core/commit/ce3273d419039aebe5866207d7a47cc3292ae0ac"
+    },
+    {
+      "sha": "9dcd48cc06b69739be70e6030d7a4b3a41a833ed",
+      "shortSha": "9dcd48cc",
+      "date": "2026-11-15T06:24:38Z",
+      "category": "core",
+      "title": "узоры ominous banner у знамени капитана",
+      "url": "https://github.com/chunkwake/core/commit/9dcd48cc06b69739be70e6030d7a4b3a41a833ed"
+    },
+    {
+      "sha": "d3b4715972566cdbc9bb43d0a25a4e61e9ff87f6",
+      "shortSha": "d3b47159",
+      "date": "2026-11-15T06:03:16Z",
+      "category": "villagers",
+      "title": "репутация (gossip) и подарки железного голема",
+      "url": "https://github.com/chunkwake/core/commit/d3b4715972566cdbc9bb43d0a25a4e61e9ff87f6"
+    },
+    {
+      "sha": "2577ce1d5c61927fdfedd73ce3364658116ba54f",
+      "shortSha": "2577ce1d",
+      "date": "2026-11-15T04:47:57Z",
+      "category": "core",
+      "title": "фазы полёта и дыхание по фазам",
+      "url": "https://github.com/chunkwake/core/commit/2577ce1d5c61927fdfedd73ce3364658116ba54f"
+    },
+    {
+      "sha": "3165fe0ee806bad1b902be2677096f0fde7437d3",
+      "shortSha": "3165fe0e",
+      "date": "2026-11-15T04:14:19Z",
+      "category": "core",
+      "title": "скидка в торговле и подарки жителей",
+      "url": "https://github.com/chunkwake/core/commit/3165fe0ee806bad1b902be2677096f0fde7437d3"
+    },
+    {
+      "sha": "060d7ed544408ba8ddb6648056073930862ea66d",
+      "shortSha": "060d7ed5",
+      "date": "2026-11-15T03:52:49Z",
+      "category": "core",
+      "title": "ездовые раввагеры и призыв vexes",
+      "url": "https://github.com/chunkwake/core/commit/060d7ed544408ba8ddb6648056073930862ea66d"
+    },
+    {
+      "sha": "c8384ab205160459624ac5e0e118c7ec33095fec",
+      "shortSha": "c8384ab2",
+      "date": "2026-11-14T17:29:10Z",
+      "category": "core",
+      "title": "знамя капитана, Bad Omen и лечение ведьмами",
+      "url": "https://github.com/chunkwake/core/commit/c8384ab205160459624ac5e0e118c7ec33095fec"
+    },
+    {
+      "sha": "c95bc8392b4793acd213e3e87918900f198f19a0",
+      "shortSha": "c95bc839",
+      "date": "2026-11-14T16:34:45Z",
+      "category": "core",
+      "title": "AreaEffectCloud и флакон dragon_breath",
+      "url": "https://github.com/chunkwake/core/commit/c95bc8392b4793acd213e3e87918900f198f19a0"
+    },
+    {
+      "sha": "b936200b8e1b7b334972c940a62e62d27f088a7e",
+      "shortSha": "b936200b",
+      "date": "2026-11-14T16:19:59Z",
+      "category": "core",
+      "title": "тьма и звуковой удар (sonic boom)",
+      "url": "https://github.com/chunkwake/core/commit/b936200b8e1b7b334972c940a62e62d27f088a7e"
+    },
+    {
+      "sha": "4afe15b8b306abf98d947ec6fe457d24cf367b0b",
+      "shortSha": "4afe15b8",
+      "date": "2026-11-14T15:47:32Z",
+      "category": "core",
+      "title": "группы разбойников и герой деревни",
+      "url": "https://github.com/chunkwake/core/commit/4afe15b8b306abf98d947ec6fe457d24cf367b0b"
+    },
+    {
+      "sha": "d8d6ce0000cdab59c65fdaec220f8bc3f52b6fbc",
+      "shortSha": "d8d6ce00",
+      "date": "2026-11-14T14:57:16Z",
+      "category": "core",
+      "title": "Скалк-визгун и страж",
+      "url": "https://github.com/chunkwake/core/commit/d8d6ce0000cdab59c65fdaec220f8bc3f52b6fbc"
+    },
+    {
+      "sha": "77e975e66ef33f1e6d12057f53798940912b1302",
+      "shortSha": "77e975e6",
+      "date": "2026-11-14T14:44:42Z",
+      "category": "core",
+      "title": "расползание скалка при смерти моба",
+      "url": "https://github.com/chunkwake/core/commit/77e975e66ef33f1e6d12057f53798940912b1302"
+    },
+    {
+      "sha": "cfa0890d6b906ecd72d9445ecf4a3bd8a2388251",
+      "shortSha": "cfa0890d",
+      "date": "2026-11-14T14:29:18Z",
+      "category": "commands",
+      "title": "advancement/recipe через resource_key (фикс краша клиента)",
+      "url": "https://github.com/chunkwake/core/commit/cfa0890d6b906ecd72d9445ecf4a3bd8a2388251"
+    },
+    {
+      "sha": "50c741d15cafaa98730b5e2e902f638e7f83a145",
+      "shortSha": "50c741d1",
+      "date": "2026-11-14T14:21:56Z",
+      "category": "core",
+      "title": "дыхание dragon_breath и лечение кристаллами",
+      "url": "https://github.com/chunkwake/core/commit/50c741d15cafaa98730b5e2e902f638e7f83a145"
+    },
+    {
+      "sha": "9129baa8f793e87e3f4af08bed0ca816ab563b42",
+      "shortSha": "9129baa8",
+      "date": "2026-11-14T14:08:25Z",
+      "category": "core",
+      "title": "полёт, контактный урон, босс-бар и анимация возрождения",
+      "url": "https://github.com/chunkwake/core/commit/9129baa8f793e87e3f4af08bed0ca816ab563b42"
+    },
+    {
+      "sha": "2081f8bd36f434d04d1f0fe3496dc0f2a6bc1224",
+      "shortSha": "2081f8bd",
+      "date": "2026-11-14T13:29:07Z",
+      "category": "core",
+      "title": "полёт, черепа, босс-бар и взрыв при смерти",
+      "url": "https://github.com/chunkwake/core/commit/2081f8bd36f434d04d1f0fe3496dc0f2a6bc1224"
+    },
+    {
+      "sha": "5a37d07970cd80ccb5c1a9c907b4528de051520d",
+      "shortSha": "5a37d079",
+      "date": "2026-11-14T12:28:45Z",
+      "category": "core",
+      "title": "метаданные окисления и превращение в статую",
+      "url": "https://github.com/chunkwake/core/commit/5a37d07970cd80ccb5c1a9c907b4528de051520d"
+    },
+    {
+      "sha": "48a04f5e3f0d84c14ff9d1158fc9f31e59d604eb",
+      "shortSha": "48a04f5e",
+      "date": "2026-11-14T12:04:18Z",
+      "category": "core",
+      "title": "вибрации по секциям, задержка, шерсть и частица vibration",
+      "url": "https://github.com/chunkwake/core/commit/48a04f5e3f0d84c14ff9d1158fc9f31e59d604eb"
+    },
+    {
+      "sha": "f09c7cfc2fedc2837fb4738ef797252853bc4d65",
+      "shortSha": "f09c7cfc",
+      "date": "2026-11-14T11:34:48Z",
+      "category": "core",
+      "title": "рамка, conduit_power и урон враждебным мобам",
+      "url": "https://github.com/chunkwake/core/commit/f09c7cfc2fedc2837fb4738ef797252853bc4d65"
+    },
+    {
+      "sha": "a16e6d3c70da2632124c7477c4688892135e3a11",
+      "shortSha": "a16e6d3c",
+      "date": "2026-11-14T11:13:31Z",
+      "category": "core",
+      "title": "босс-бар event.minecraft.raid и прогресс по здоровью волны",
+      "url": "https://github.com/chunkwake/core/commit/a16e6d3c70da2632124c7477c4688892135e3a11"
+    },
+    {
+      "sha": "2a27218e389b2e36e7ab261e4233a6f6f9db31b7",
+      "shortSha": "2a27218e",
+      "date": "2026-11-14T10:03:23Z",
+      "category": "core",
+      "title": "Bad Omen, волны разбойников и статистики raid_trigger/raid_win",
+      "url": "https://github.com/chunkwake/core/commit/2a27218e389b2e36e7ab261e4233a6f6f9db31b7"
+    },
+    {
+      "sha": "3de29d7b17930f3c0b1e542a5d9ace8ebecad22e",
+      "shortSha": "3de29d7b",
+      "date": "2026-11-14T09:41:13Z",
+      "category": "core",
+      "title": "окисление и порядок stats/advancements при входе",
+      "url": "https://github.com/chunkwake/core/commit/3de29d7b17930f3c0b1e542a5d9ace8ebecad22e"
+    },
+    {
+      "sha": "20059198858e62e75fc59fc28ccc690394091aa5",
+      "shortSha": "20059198",
+      "date": "2026-11-14T09:15:40Z",
+      "category": "core",
+      "title": "склейка основания голема и свойства в execute if block",
+      "url": "https://github.com/chunkwake/core/commit/20059198858e62e75fc59fc28ccc690394091aa5"
+    },
+    {
+      "sha": "647ca229c84463ae00b8201047b1e0dc0f24f767",
+      "shortSha": "647ca229",
+      "date": "2026-11-14T08:58:21Z",
+      "category": "core",
+      "title": "using_item для щита и корректный progress в update_advancements",
+      "url": "https://github.com/chunkwake/core/commit/647ca229c84463ae00b8201047b1e0dc0f24f767"
+    },
+    {
+      "sha": "edbd21ad964ec09052198481893750c37a245b70",
+      "shortSha": "edbd21ad",
+      "date": "2026-11-14T08:34:28Z",
+      "category": "core",
+      "title": "using_item для лука, еды, зелий и трезубца",
+      "url": "https://github.com/chunkwake/core/commit/edbd21ad964ec09052198481893750c37a245b70"
+    },
+    {
+      "sha": "1935591806c95bace154dba804b2859f435d859e",
+      "shortSha": "19355918",
+      "date": "2026-11-14T08:02:15Z",
+      "category": "core",
+      "title": "offsetX/Y/Z в conditions.location",
+      "url": "https://github.com/chunkwake/core/commit/1935591806c95bace154dba804b2859f435d859e"
+    },
+    {
+      "sha": "86472987d3a9691e54b9027a86ec4df0b8b11608",
+      "shortSha": "86472987",
+      "date": "2026-11-14T07:36:47Z",
+      "category": "core",
+      "title": "block.nbt в location-предикате",
+      "url": "https://github.com/chunkwake/core/commit/86472987d3a9691e54b9027a86ec4df0b8b11608"
+    },
+    {
+      "sha": "43293c2d2533a45511f0fb683a9efdc56961e79e",
+      "shortSha": "43293c2d",
+      "date": "2026-11-14T07:03:52Z",
+      "category": "core",
+      "title": "явный Верхний мир и чистое измерение после дракона",
+      "url": "https://github.com/chunkwake/core/commit/43293c2d2533a45511f0fb683a9efdc56961e79e"
+    },
+    {
+      "sha": "4d2609dc7b3a3b6b2db65375a50d5b0ad51cceeb",
+      "shortSha": "4d2609dc",
+      "date": "2026-11-14T06:35:12Z",
+      "category": "core",
+      "title": "block.state в location-предикате",
+      "url": "https://github.com/chunkwake/core/commit/4d2609dc7b3a3b6b2db65375a50d5b0ad51cceeb"
+    },
+    {
+      "sha": "cd1619881d411e9dd2bae231b0689a597425faf1",
+      "shortSha": "cd161988",
+      "date": "2026-11-14T05:45:11Z",
+      "category": "core",
+      "title": "using_item, looking_at и вид Parrot",
+      "url": "https://github.com/chunkwake/core/commit/cd1619881d411e9dd2bae231b0689a597425faf1"
+    },
+    {
+      "sha": "3cdd1f559bfa4b689dcb315909a7c05bf41a9d4c",
+      "shortSha": "3cdd1f55",
+      "date": "2026-11-13T18:24:53Z",
+      "category": "core",
+      "title": "возрождение дракона Края",
+      "url": "https://github.com/chunkwake/core/commit/3cdd1f559bfa4b689dcb315909a7c05bf41a9d4c"
+    }
+  ]
+}

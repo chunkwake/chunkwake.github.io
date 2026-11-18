@@ -17,7 +17,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   return <div className="cw-eyebrow">{children}</div>;
 }
 
-export function CompatibilitySection({ copy }: { copy: SiteCopy }) {
+export function CompatibilitySection({ lang, copy }: { lang: string; copy: SiteCopy }) {
   return (
     <section className="cw-section" data-reveal>
       <div className="cw-split-head">
@@ -61,7 +61,12 @@ export function CompatibilitySection({ copy }: { copy: SiteCopy }) {
           </tbody>
         </table>
       </div>
-      <p className="cw-fine">{copy.compat.note}</p>
+      <p className="cw-fine">
+        {copy.compat.note}{' '}
+        <Link href={`/${lang}/compatibility`}>
+          {lang === 'en' ? 'Verified plugins and versions' : 'Проверенные плагины и версии'} →
+        </Link>
+      </p>
     </section>
   );
 }

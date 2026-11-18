@@ -1,0 +1,104 @@
+---
+title: Laboratory
+description: "chunkwake-lab: vanilla comparison, load profiles, reports and reproducing the benchmarks."
+icon: FlaskConical
+---
+
+`chunkwake-lab` is a separate binary for end-to-end checks and measurements. It starts Chunkwake and a real `server.jar` side by side, connects bots and compares behaviour, MSPT, TPS and memory.
+
+The lab is not part of the release server: it is a development and verification tool.
+
+## Build
+
+```bash
+cargo build -p chunkwake-lab
+cargo build --release -p chunkwake-server
+```
+
+Pass the release binary (`target/release/chunkwake`) to `--chunkwake`: benchmarks run on it, because a debug build distorts MSPT.
+
+## TUI
+
+Run `target/debug/chunkwake-lab` without arguments:
+
+```bash
+chunkwake-lab
+```
+
+`Compare` is selected by default: one scenario on both servers. The Chunkwake path already points at the release build.
+
+- `↑` / `↓` selects a field, `←` / `→` changes options and numbers;
+- `Enter` edits a path or toggles a flag;
+- `Tab` jumps to the "Start test" row;
+- load fields are only shown in `Bench` mode.
+
+Chunkwake and vanilla progress is shown in two columns.
+
+## Modes
+
+| Mode | What it does |
+|---|---|
+| `Compare` | one scenario on Chunkwake and vanilla, differences checked against expected ones |
+| `Smoke` | one scenario on Chunkwake only |
+| `Bench` | load with a given bot count and repetitions on both servers |
+
+## Commands
+
+```bash
+chunkwake-lab smoke --chunkwake ./target/release/chunkwake --jar ./server.jar
+chunkwake-lab compare --chunkwake ./target/release/chunkwake --accept-vanilla-eula
+chunkwake-lab bench --chunkwake ./target/release/chunkwake \
+  --profile movement --bots 20 --duration 30 --accept-vanilla-eula
+chunkwake-lab bench --chunkwake ./target/release/chunkwake \
+  --profile all --bots 10 --warmup 5 --duration 10 --repetitions 1
+```
+
+On Windows use `target\debug\chunkwake-lab.exe` and `target\release\chunkwake.exe`.
+
+`--jar` is optional: without it the lab downloads `server.jar` from the Mojang manifest into `target/chunkwake-lab/cache/26.3/` and verifies its size and SHA-1. A missing file at the given path is downloaded there too.
+
+Java is selected in this order: `--java PATH` → `CHUNKWAKE_JAVA` from the environment or `.env` → `java` on `PATH`. Minecraft 26.3 needs Java 25 or newer, and the lab checks it before starting.
+
+## Load profiles
+
+| Profile | Load |
+|---|---|
+| `join-burst` | every bot joins at once |
+| `movement` | movement in a circle |
+| `exploration` | moving between chunks |
+| `redstone` | 64 lamps and 64 wires on 128 switchable supports |
+| `cows` | 2500 cows in a 50 × 50 grid |
+| `all` | behaviour and persistence checks, then all five profiles |
+
+Each profile gets its own world. `--repetitions` sets the number of repeats; the full behaviour check runs once.
+
+## Report
+
+Every run creates a `target/chunkwake-lab/<id>/` directory:
+
+- `report.html` — charts, checks and log search;
+- `report.md` — tables;
+- `report.json` — data for CI;
+- full logs from both servers.
+
+ECharts is loaded from a CDN, so charts need internet access. Tables, data and logs are embedded in the HTML and stay available offline.
+
+`Compare` lists known differences from `crates/lab/expected-differences.json` with their reason. A new difference or a scenario error exits with code `1`; bad arguments or a preparation error exit with `2`.
+
+## Useful flags
+
+| Flag | What it does |
+|---|---|
+| `--work-dir PATH` | changes the run and cache directory |
+| `--generated-cache PATH` | reuse prepared Chunkwake data to speed up runs |
+| `--keep-worlds` | keep test worlds after the run |
+| `--java PATH` | explicit Java path |
+| `--accept-vanilla-eula` | explicit agreement with the Minecraft EULA for the vanilla server |
+
+The first comparative run requires `--accept-vanilla-eula`; the choice is remembered in the working directory. Read the [Minecraft EULA](https://www.minecraft.net/en-us/eula) before agreeing.
+
+## How to read the result
+
+Speed alone does not prove compatibility. World settings that Chunkwake does not apply yet cannot be treated as equivalent to vanilla, and behaviour differences matter more than an MSPT gap. That is why `Compare` checks both behaviour and persistence, while `Bench` answers only "how much does a tick cost".
+
+Numbers from this bench live on the [benchmarks page](/en/benchmarks).

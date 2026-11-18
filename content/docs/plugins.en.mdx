@@ -19,7 +19,7 @@ main: dev.chunkwake.hello.HelloPlugin
 api-version: "26.3"
 ```
 
-Both `plugin.yml` and `paper-plugin.yml` are supported, including Maven `libraries:`, `loader` and `bootstrapper`.
+Both `plugin.yml` and `paper-plugin.yml` are supported, including Maven `libraries:`, `loader` and `bootstrapper`. Libraries are resolved before the main class is created and cached in `libraries/` next to the server. Commands registered through the lifecycle event land in the shared `CommandMap`, which is how `/bluemap` works.
 
 ## Events
 
@@ -80,13 +80,17 @@ Ordinary plugins are not disabled as they are on Folia. Plugins with `folia-supp
 
 ## Data and registries
 
-`PersistentDataContainer`, `Metadatable`, registries, tags, attributes and plugin channels are available. Vanilla `net.minecraft.*` classes are on the classpath for plugins that need NMS.
+`PersistentDataContainer` (typed NBT as JSON through `custom_data`), `Metadatable`, registries, tags, attributes and plugin channels are available. Vanilla `net.minecraft.*` classes are on the classpath for plugins that need NMS.
 
 > **Compatibility boundary.** Plugins that reach into CraftBukkit, Netty or `ServerLevel` internals may not work in full. Replicating a Java server without a Java server is not possible, and this is not promised.
+
+What has already been verified on a live server, with versions and limits, is on the [plugin compatibility page](/en/compatibility).
 
 ## Debugging
 
 - `chunkwake doctor --dir ./server` checks Java and configuration.
 - JVM and bridge logs go to the server log.
-- `java/test-plugin` in the repository is a live event test plugin.
+- An unimplemented method does not kill `onEnable`: it returns an empty value of the right type and logs `api: <interface>.<method>` once. Those lines are the list of gaps.
+- `CHUNKWAKE_API_STRICT=1` enables strict mode: an exception is thrown instead of a soft value. It is meant for tests, not normal runs.
+- `java/test-plugin` in the repository is a live plugin for events and schedulers.
 - Implementation sources: [`java/api-impl`](https://github.com/chunkwake/core/tree/ver/26.3/java/api-impl) and [`crates/bridge`](https://github.com/chunkwake/core/tree/ver/26.3/crates/bridge).

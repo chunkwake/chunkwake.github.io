@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight, CircleDot, Compass, Flag } from 'lucide-react';
+import { DataFreshness } from '@/components/data-freshness';
 import { featureMatrix } from '@/lib/feature-matrix';
 import type { Lang } from '@/lib/i18n';
 import {
@@ -113,6 +114,7 @@ export function StatusReport({ lang }: { lang: string }) {
         <div className="cw-eyebrow">{t.eyebrow}</div>
         <h1>{meta.title}</h1>
         <p>{meta.description}</p>
+        <DataFreshness lang={locale} note />
       </header>
 
       <div className="cw-status-summary">

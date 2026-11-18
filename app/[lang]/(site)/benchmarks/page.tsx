@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { BenchmarkReport } from '@/components/benchmark-report';
+import { DataFreshness } from '@/components/data-freshness';
 import { LangNotFound } from '@/components/lang-not-found';
 import { benchmarkPageMeta } from '@/lib/benchmark-meta';
 import { isLang } from '@/lib/i18n';
@@ -23,6 +24,7 @@ export default async function BenchmarksPage({ params }: { params: Promise<{ lan
   return (
     <div className="cw-page cw-bench-page-wrap">
       <BenchmarkReport lang={lang} />
+      <DataFreshness lang={lang} className="cw-bench-freshness" />
     </div>
   );
 }

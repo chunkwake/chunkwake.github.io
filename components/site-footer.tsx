@@ -35,7 +35,10 @@ export function SiteFooter({ lang, copy }: { lang: string; copy: SiteCopy }) {
           <Link href={`/${lang}/docs/migrating`}>{f.links.migration}</Link>
           <Link href={`/${lang}/docs/plugins`}>{f.links.plugins}</Link>
           <Link href={`/${lang}/docs/feature-matrix`}>{f.links.matrix}</Link>
+          <Link href={`/${lang}/docs/lab`}>{lang === 'en' ? 'Laboratory' : 'Лаборатория'}</Link>
           <Link href={`/${lang}/docs/architecture`}>{f.links.architecture}</Link>
+          <Link href={`/${lang}/compatibility`}>{lang === 'en' ? 'Compatibility' : 'Совместимость'}</Link>
+          <Link href={`/${lang}/changelog`}>{lang === 'en' ? 'Changelog' : 'Журнал'}</Link>
           <Link href={`/${lang}/benchmarks`}>{f.links.benchmarks}</Link>
           <Link href={`/${lang}/status`}>{f.links.status}</Link>
           <Link href={`/${lang}/support`}>{f.links.support}</Link>

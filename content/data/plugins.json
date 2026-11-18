@@ -1,0 +1,247 @@
+{
+  "source": "chunkwake/core docs/feature-matrix.md",
+  "testedAt": "2026-11-18",
+  "coreSha": "302ffa4c",
+  "plugins": [
+    {
+      "id": "bluemap",
+      "name": "BlueMap",
+      "version": "5.29",
+      "status": "works",
+      "kind": "map",
+      "url": "https://bluemap.bluecolored.de/",
+      "summary": {
+        "ru": "Включается, загружает ресурсы Mojang, поднимает веб-сервер и рендерит карту мира.",
+        "en": "Enables, downloads Mojang resources, starts its web server and renders the world map."
+      },
+      "details": {
+        "ru": [
+          "Библиотека `com.flowpowered:flow-math` из `plugin.yml` резолвится до создания main-класса.",
+          "`/bluemap` регистрируется через lifecycle-событие и виден в игре.",
+          "Живой прогон: `maps/world/tiles` — 66 тайлов на 1.1 МБ, карта не чёрная."
+        ],
+        "en": [
+          "`com.flowpowered:flow-math` from `plugin.yml` is resolved before the main class is created.",
+          "`/bluemap` is registered through the lifecycle event and is available in game.",
+          "Live run: `maps/world/tiles` produced 66 tiles totalling 1.1 MB, and the map is not black."
+        ]
+      },
+      "limits": {
+        "ru": ["Для рендера нужен `accept-download: true` в `plugins/BlueMap/core.conf` и принятая EULA Minecraft."],
+        "en": ["Rendering needs `accept-download: true` in `plugins/BlueMap/core.conf` and an accepted Minecraft EULA."]
+      }
+    },
+    {
+      "id": "luckperms",
+      "name": "LuckPerms",
+      "version": "5.5.71",
+      "status": "works",
+      "kind": "permissions",
+      "url": "https://luckperms.net/",
+      "summary": {
+        "ru": "Включается, выдаёт и проверяет права, команды `/lp` отвечают.",
+        "en": "Enables, grants and checks permissions, and `/lp` commands respond."
+      },
+      "details": {
+        "ru": [
+          "Игрок — настоящий `CraftHumanEntity` с полем `perm`, а `getPluginManager()` возвращает `SimplePluginManager`, как ожидает инъектор LuckPerms.",
+          "Живой прогон: `/lp user boater info`, `permission set test.node true`, `permission check test.node`.",
+          "Вход больше не блокируется: `denying login` исчез."
+        ],
+        "en": [
+          "The player is a real `CraftHumanEntity` with a `perm` field, and `getPluginManager()` returns `SimplePluginManager` as the LuckPerms injector expects.",
+          "Live run: `/lp user boater info`, `permission set test.node true`, `permission check test.node`.",
+          "Login is no longer denied: the `denying login` message is gone."
+        ]
+      },
+      "limits": {
+        "ru": ["Дерево команд у клиента пока не учитывает права, выданные плагином."],
+        "en": ["The command tree sent to clients does not yet account for plugin-granted permissions."]
+      }
+    },
+    {
+      "id": "worldedit",
+      "name": "WorldEdit",
+      "version": "7.4.6",
+      "status": "works",
+      "kind": "world",
+      "url": "https://enginehub.org/worldedit/",
+      "summary": {
+        "ru": "Команды регистрируются и меняют блоки: выделение, размер, `//set`, состояния блоков.",
+        "en": "Registers commands and edits blocks: selection, size, `//set`, block states."
+      },
+      "details": {
+        "ru": [
+          "PaperLib видит Paper-маркеры, поэтому WorldEdit выбирает Bukkit-платформу без NMS.",
+          "Живой прогон: `//pos 0,0,0 4,4,4` → `//size` (125 блоков) → `//set stone` → `Operation completed (125 blocks affected)`.",
+          "Состояния работают: `//set oak_stairs[facing=east,half=top]` затронул 27 блоков, проверка `execute if block` подтвердила результат."
+        ],
+        "en": [
+          "PaperLib sees the Paper markers, so WorldEdit picks the Bukkit platform without NMS.",
+          "Live run: `//pos 0,0,0 4,4,4` → `//size` (125 blocks) → `//set stone` → `Operation completed (125 blocks affected)`.",
+          "Block states work: `//set oak_stairs[facing=east,half=top]` changed 27 blocks and `execute if block` confirmed the result."
+        ]
+      },
+      "limits": {
+        "ru": ["NMS-адаптера нет: часть внутренних путей WorldEdit работает через лёгкий Bukkit-адаптер."],
+        "en": ["There is no NMS adapter: some internal WorldEdit paths go through a lightweight Bukkit adapter."]
+      }
+    },
+    {
+      "id": "essentialsx",
+      "name": "EssentialsX",
+      "version": "2.22.0",
+      "status": "works",
+      "kind": "gameplay",
+      "url": "https://essentialsx.net/",
+      "summary": {
+        "ru": "Загружается, инициализирует Paper-провайдеры и включается вместе с Vault.",
+        "en": "Loads, initialises Paper providers and enables alongside Vault."
+      },
+      "details": {
+        "ru": [
+          "`Essentials enabled in 558 ms`, затем `2 of 2 enabled`.",
+          "Провайдеры `Paper Container Provider`, `Paper Serialization Provider`, `Paper Tick Count Provider` поднимаются без исключений.",
+          "`PluginEnableEvent` и `PluginDisableEvent` отправляются, поэтому `PermissionsHandler` пересобирается.",
+          "Находит `Vault Compatibility Layer` для экономики."
+        ],
+        "en": [
+          "`Essentials enabled in 558 ms`, then `2 of 2 enabled`.",
+          "The `Paper Container Provider`, `Paper Serialization Provider` and `Paper Tick Count Provider` start without exceptions.",
+          "`PluginEnableEvent` and `PluginDisableEvent` are delivered, so `PermissionsHandler` is rebuilt.",
+          "It finds the `Vault Compatibility Layer` for economy."
+        ]
+      },
+      "limits": {
+        "ru": ["Отдельные команды и модули, которым нужен нереализованный API, могут работать частично."],
+        "en": ["Individual commands and modules that need an unimplemented API may work partially."]
+      }
+    },
+    {
+      "id": "vault",
+      "name": "Vault",
+      "version": "1.7.3-b131",
+      "status": "works",
+      "kind": "api",
+      "url": "https://github.com/MilkBowl/Vault",
+      "summary": {
+        "ru": "Включается, `ServicesManager` и сервис экономики доступны другим плагинам.",
+        "en": "Enables; `ServicesManager` and the economy service are available to other plugins."
+      },
+      "details": {
+        "ru": [
+          "`4 of 4 enabled` в совместном прогоне с EssentialsX и PlaceholderAPI.",
+          "`org.json.simple` добавлен как в CraftBukkit — без него Vault падал на проверке обновлений."
+        ],
+        "en": [
+          "`4 of 4 enabled` in a joint run with EssentialsX and PlaceholderAPI.",
+          "`org.json.simple` is bundled as in CraftBukkit; without it Vault failed in its update check."
+        ]
+      },
+      "limits": {
+        "ru": ["Плагины экономики, которые глубже заходят в CraftBukkit, нужно проверять отдельно."],
+        "en": ["Economy plugins that reach deeper into CraftBukkit need separate testing."]
+      }
+    },
+    {
+      "id": "placeholderapi",
+      "name": "PlaceholderAPI",
+      "version": "2.12.3",
+      "status": "works",
+      "kind": "api",
+      "url": "https://github.com/PlaceholderAPI/PlaceholderAPI",
+      "summary": {
+        "ru": "Включается, регистрирует команды, `/papi` отвечает справкой.",
+        "en": "Enables, registers its commands and `/papi` returns help."
+      },
+      "details": {
+        "ru": [
+          "Совместный прогон с EssentialsX и Vault: `4 of 4 enabled in 3419 ms`.",
+          "После этого прогона в логе нет предупреждений `api: <метод> is not implemented`."
+        ],
+        "en": [
+          "Joint run with EssentialsX and Vault: `4 of 4 enabled in 3419 ms`.",
+          "That run logged no `api: <method> is not implemented` warnings."
+        ]
+      },
+      "limits": {
+        "ru": ["Расширения, которым нужен NMS или события из непокрытых пакетов, могут не включиться."],
+        "en": ["Expansions that need NMS or events from uncovered packages may not enable."]
+      }
+    },
+    {
+      "id": "viaversion",
+      "name": "ViaVersion",
+      "version": "5.12.2",
+      "status": "works",
+      "kind": "protocol",
+      "url": "https://viaversion.com/",
+      "summary": {
+        "ru": "Загружается как встроенная библиотека, трансляция протокола идёт через via-мост.",
+        "en": "Loads as a bundled library; protocol translation goes through the via bridge."
+      },
+      "details": {
+        "ru": [
+          "В логе: `ViaVersion loaded as a library`.",
+          "Мост отдаёт версию клиента через `ProtocolVersion`."
+        ],
+        "en": [
+          "Log line: `ViaVersion loaded as a library`.",
+          "The bridge exposes the client version through `ProtocolVersion`."
+        ]
+      },
+      "limits": {
+        "ru": ["Живыми клиентами старых версий не проверялось."],
+        "en": ["Not yet verified with live clients on older versions."]
+      }
+    },
+    {
+      "id": "protocollib",
+      "name": "ProtocolLib",
+      "version": "5.4.0",
+      "status": "unsupported",
+      "kind": "protocol",
+      "url": "https://github.com/dmulloy2/ProtocolLib",
+      "summary": {
+        "ru": "Не загружается: плагину нужны NMS-классы Mojang, которых в Chunkwake нет.",
+        "en": "Does not load: the plugin needs Mojang NMS classes that Chunkwake does not have."
+      },
+      "details": {
+        "ru": ["Ошибка: `Unable to find network.EnumProtocol`."],
+        "en": ["Error: `Unable to find network.EnumProtocol`."]
+      },
+      "limits": {
+        "ru": ["Это ожидаемое ограничение подхода без Java-сервера, а не ошибка конкретной сборки."],
+        "en": ["This is an expected limit of the no-Java-server approach, not a bug in a specific build."]
+      }
+    },
+    {
+      "id": "velocity",
+      "name": "Velocity",
+      "version": "4.3.1",
+      "status": "works",
+      "kind": "proxy",
+      "url": "https://papermc.io/software/velocity",
+      "summary": {
+        "ru": "Прокси с modern forwarding: игрок входит через Velocity, backend получает UUID и имя.",
+        "en": "Proxy with modern forwarding: a player joins through Velocity and the backend receives the UUID and name."
+      },
+      "details": {
+        "ru": [
+          "`velocity-enabled=true`, `velocity-secret`, `online-mode=false`.",
+          "HMAC-SHA256 `velocity:player_info` проверяется, версия 1–4.",
+          "Живой прогон: `[connected player] boater ... has connected`, backend выполнил команды игрока."
+        ],
+        "en": [
+          "`velocity-enabled=true`, `velocity-secret`, `online-mode=false`.",
+          "HMAC-SHA256 `velocity:player_info` is verified, versions 1–4.",
+          "Live run: `[connected player] boater ... has connected`, and the backend executed the player's commands."
+        ]
+      },
+      "limits": {
+        "ru": ["Legacy/BungeeCord forwarding не поддерживается — только modern."],
+        "en": ["Legacy/BungeeCord forwarding is not supported, only modern."]
+      }
+    }
+  ]
+}

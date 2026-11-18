@@ -19,7 +19,7 @@ main: dev.chunkwake.hello.HelloPlugin
 api-version: "26.3"
 ```
 
-Поддерживаются `plugin.yml` и `paper-plugin.yml`, включая `libraries:` из Maven, `loader` и `bootstrapper`.
+Поддерживаются `plugin.yml` и `paper-plugin.yml`, включая `libraries:` из Maven, `loader` и `bootstrapper`. Библиотеки резолвятся до создания main-класса и кэшируются в `libraries/` рядом с сервером. Команды, зарегистрированные через lifecycle-событие, попадают в общий `CommandMap` — так работает `/bluemap`.
 
 ## События
 
@@ -80,13 +80,17 @@ class HelloPlugin : JavaPlugin() {
 
 ## Данные и реестры
 
-Доступны `PersistentDataContainer`, `Metadatable`, реестры, теги, атрибуты и каналы плагинов. Ванильные классы `net.minecraft.*` лежат в classpath для плагинов, которым нужен NMS.
+Доступны `PersistentDataContainer` (типизированный NBT в JSON через `custom_data`), `Metadatable`, реестры, теги, атрибуты и каналы плагинов. Ванильные классы `net.minecraft.*` лежат в classpath для плагинов, которым нужен NMS.
 
 > **Граница совместимости.** Плагины, которые лезут во внутренности CraftBukkit, Netty или `ServerLevel`, могут работать не полностью. Полностью повторить Java-сервер без Java-сервера нельзя, и это не обещается.
+
+Что уже проверено на живом сервере, с версиями и ограничениями — на странице [совместимости плагинов](/ru/compatibility).
 
 ## Отладка
 
 - `chunkwake doctor --dir ./server` проверяет Java и конфигурацию.
 - Логи JVM и моста пишутся в общий лог сервера.
-- `java/test-plugin` в репозитории — живой плагин для проверки событий.
+- Нереализованный метод не убивает `onEnable`: возвращается пустое значение нужного типа, а в лог один раз пишется `api: <интерфейс>.<метод>`. Список таких строк — готовый список нехваток.
+- `CHUNKWAKE_API_STRICT=1` включает строгий режим: вместо мягкого значения бросается исключение. Нужен для тестов, не для обычного запуска.
+- `java/test-plugin` в репозитории — живой плагин для проверки событий и планировщиков.
 - Исходники реализации: [`java/api-impl`](https://github.com/chunkwake/core/tree/ver/26.3/java/api-impl) и [`crates/bridge`](https://github.com/chunkwake/core/tree/ver/26.3/crates/bridge).

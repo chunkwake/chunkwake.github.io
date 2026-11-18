@@ -126,6 +126,29 @@ const compressionRows = [
   { level: '9', data: '83', sectors: '110', compress: '2020', decompress: '38–67' },
 ];
 
+const liveRows: { metric: Record<Lang, string>; chunkwake: Record<Lang, string>; paper: Record<Lang, string> }[] = [
+  {
+    metric: { ru: 'Время тика, среднее', en: 'Tick time, average' },
+    chunkwake: { ru: '1.2 мс', en: '1.2 ms' },
+    paper: { ru: '7.6 мс', en: '7.6 ms' },
+  },
+  {
+    metric: { ru: 'Хвост тика', en: 'Tick tail' },
+    chunkwake: { ru: 'не замерялся', en: 'not measured' },
+    paper: { ru: 'P95 9.5 · P99 10.8 мс', en: 'P95 9.5 · P99 10.8 ms' },
+  },
+  {
+    metric: { ru: 'TPS', en: 'TPS' },
+    chunkwake: { ru: '20.0', en: '20.0' },
+    paper: { ru: '20.0', en: '20.0' },
+  },
+  {
+    metric: { ru: 'Java и память', en: 'Java and memory' },
+    chunkwake: { ru: 'JVM не нужна', en: 'no JVM needed' },
+    paper: { ru: 'JDK 25, `-Xms2G -Xmx2G`', en: 'JDK 25, `-Xms2G -Xmx2G`' },
+  },
+];
+
 const copy = {
   ru: {
     eyebrow: 'Замеры',
@@ -143,7 +166,7 @@ const copy = {
     hardware: [
       ['CPU', 'Ryzen 9 7945HX'],
       ['ОС', 'Windows 11'],
-      ['Сборка', '`release`, HEAD d3b74fd'],
+      ['Сборка', '`release`, стенд 10.11.2026'],
       ['Мир', 'плоский, обзор 2'],
       ['Боты', '20'],
       ['Разминка / замер', '20 с / 45 с'],
@@ -163,6 +186,12 @@ const copy = {
     chunkwake: 'Chunkwake',
     vanilla: 'Ваниль 26.3',
     startup: 'Запуск сервера: Chunkwake 0.6–0.9 с, ваниль 6.6–11.4 с.',
+    liveTitle: '1000 мобов против Paper',
+    liveLead:
+      'Отдельный живой прогон на той же машине: плоский мир, `view-distance=5`, `simulation-distance=5`, 1000 коров с включённым AI, без плагинов.',
+    liveColumns: { metric: 'Показатель', chunkwake: 'Chunkwake release', paper: 'Paper 26.3' },
+    liveNote:
+      'Paper — build 253, JDK 25, `-Xms2G -Xmx2G`; Chunkwake — release-сборка без JVM, debug даёт 6.0 мс. Это ~6× меньше времени тика при одинаковом TPS; хвост у Chunkwake в этом прогоне не снимался.',
     findingsTitle: 'Что нашли по ходу',
     findings: [
       'В плоском мире днём появлялись зомби, скелеты, криперы и пауки и убивали ботов: 172 смерти против 30 у ванили. Свет незагруженного столбца читался как 0, а не из шаблона; затемнение неба считалось не по `day.json`. После исправления обе проверки проходят, смертей нет.',
@@ -212,8 +241,8 @@ chunkwake-lab bench --chunkwake target/release/chunkwake \\
     links: [
       { label: 'docs/perf.md — сырые замеры', href: links.perf },
       {
-        label: 'docs/lab.md — лаборатория',
-        href: 'https://github.com/chunkwake/core/blob/ver/26.3/docs/lab.md',
+        label: 'Лаборатория — как воспроизвести',
+        href: '/ru/docs/lab',
       },
     ],
     sourceNote:
@@ -235,7 +264,7 @@ chunkwake-lab bench --chunkwake target/release/chunkwake \\
     hardware: [
       ['CPU', 'Ryzen 9 7945HX'],
       ['OS', 'Windows 11'],
-      ['Build', '`release`, HEAD d3b74fd'],
+      ['Build', '`release`, bench of 2026-11-10'],
       ['World', 'flat, view distance 2'],
       ['Bots', '20'],
       ['Warmup / measurement', '20 s / 45 s'],
@@ -255,6 +284,12 @@ chunkwake-lab bench --chunkwake target/release/chunkwake \\
     chunkwake: 'Chunkwake',
     vanilla: 'Vanilla 26.3',
     startup: 'Server startup: Chunkwake 0.6–0.9 s, vanilla 6.6–11.4 s.',
+    liveTitle: '1000 mobs versus Paper',
+    liveLead:
+      'A separate live run on the same machine: flat world, `view-distance=5`, `simulation-distance=5`, 1000 cows with AI enabled, no plugins.',
+    liveColumns: { metric: 'Metric', chunkwake: 'Chunkwake release', paper: 'Paper 26.3' },
+    liveNote:
+      'Paper is build 253 with JDK 25 and `-Xms2G -Xmx2G`; Chunkwake is a release build without a JVM, while a debug build gives 6.0 ms. That is about 6× less tick time at the same TPS; the tail was not sampled for Chunkwake in this run.',
     findingsTitle: 'What the runs found',
     findings: [
       'During the day, zombies, skeletons, creepers and spiders spawned in the flat world and killed bots: 172 deaths versus 30 for vanilla. Light in an unloaded flat-world column read as 0 instead of the template value, and sky darkening used the wrong timeline. After the fix both checks pass and Chunkwake has no deaths.',
@@ -304,8 +339,8 @@ chunkwake-lab bench --chunkwake target/release/chunkwake \\
     links: [
       { label: 'docs/perf.md — raw measurements', href: links.perf },
       {
-        label: 'docs/lab.md — the lab',
-        href: 'https://github.com/chunkwake/core/blob/ver/26.3/docs/lab.md',
+        label: 'Laboratory — how to reproduce',
+        href: '/en/docs/lab',
       },
     ],
     sourceNote:
@@ -415,6 +450,37 @@ export function BenchmarkReport({ lang }: { lang: string }) {
           </table>
         </div>
         <p className="cw-bench-startup">{t.startup}</p>
+      </section>
+
+      <section className="cw-bench-section">
+        <div className="cw-bench-section-head">
+          <div>
+            <h2>{t.liveTitle}</h2>
+            <p>{renderInline(t.liveLead)}</p>
+          </div>
+          <Cpu size={18} aria-hidden="true" />
+        </div>
+        <div className="cw-table-wrap cw-bench-table-wrap">
+          <table className="cw-table cw-bench-table">
+            <thead>
+              <tr>
+                <th>{t.liveColumns.metric}</th>
+                <th>{t.liveColumns.chunkwake}</th>
+                <th>{t.liveColumns.paper}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {liveRows.map((row) => (
+                <tr key={row.metric.ru}>
+                  <td>{row.metric[locale]}</td>
+                  <td>{renderInline(row.chunkwake[locale])}</td>
+                  <td>{renderInline(row.paper[locale])}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="cw-bench-note">{renderInline(t.liveNote)}</p>
       </section>
 
       <section className="cw-bench-section">

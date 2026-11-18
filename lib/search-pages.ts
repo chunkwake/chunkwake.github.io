@@ -1,8 +1,10 @@
 import { copy } from '@/lib/dictionary';
 import { benchmarkPageMeta } from '@/lib/benchmark-meta';
+import changelog from '@/content/data/changelog.json';
 import { featureMatrix } from '@/lib/feature-matrix';
 import type { Lang } from '@/lib/i18n';
 import { milestones, statusPageMeta } from '@/lib/milestones';
+import { pluginData, pluginStatusLabels } from '@/lib/plugins';
 import { releaseData } from '@/lib/release';
 
 type StaticSearchPage = {
@@ -167,6 +169,47 @@ function statusPages(locale: Lang): StaticSearchPage[] {
   ];
 }
 
+function compatibilityPages(locale: Lang): StaticSearchPage[] {
+  const ru = locale === 'ru';
+  return [
+    page(
+      locale,
+      '/compatibility',
+      ru ? 'Совместимость плагинов' : 'Plugin compatibility',
+      ru
+        ? 'Плагины Paper, проверенные на живом сервере Chunkwake, с версиями и ограничениями.'
+        : 'Paper plugins verified on a live Chunkwake server, with versions and limits.',
+      [
+        ...pluginData.plugins.map(
+          (plugin) =>
+            `${plugin.name} ${plugin.version}: ${pluginStatusLabels[plugin.status][locale]}. ${plugin.summary[locale]}`,
+        ),
+        ru
+          ? 'Как проверяем: релизная сборка, реальный сервер с plugins/*.jar, лог включения, команды плагина и результат в мире.'
+          : 'How we test: a release build, a real server with plugins/*.jar, the enable log, plugin commands and the result in the world.',
+        ru
+          ? 'Граница совместимости: плагины, которые заходят во внутренности CraftBukkit, Netty или ServerLevel, могут работать не полностью.'
+          : 'Compatibility boundary: plugins that reach into CraftBukkit, Netty or ServerLevel internals may not work fully.',
+      ],
+    ),
+  ];
+}
+
+function changelogPages(locale: Lang): StaticSearchPage[] {
+  const items = (changelog as { items: { date: string; title: string }[] }).items;
+  return [
+    page(
+      locale,
+      '/changelog',
+      locale === 'ru' ? 'Журнал разработки' : 'Development log',
+      locale === 'ru'
+        ? 'Коммиты ядра Chunkwake: плагины, редстоун, жители, производительность и API.'
+        : 'Chunkwake core commits: plugins, redstone, villagers, performance and API.',
+      items.slice(0, 40).map((item) => `${item.date.slice(0, 10)} ${item.title}`),
+    ),
+  ];
+}
+
 export function getStaticSearchPages(): StaticSearchPage[] {
   return (['ru', 'en'] as const).flatMap((locale) => [
     ...homePages(locale),
@@ -174,5 +217,7 @@ export function getStaticSearchPages(): StaticSearchPage[] {
     ...downloadPages(locale),
     ...supportPages(locale),
     ...statusPages(locale),
+    ...compatibilityPages(locale),
+    ...changelogPages(locale),
   ]);
 }

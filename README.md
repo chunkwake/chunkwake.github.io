@@ -46,7 +46,8 @@
 - наблюдаемость: дашборд, `/top`, Prometheus, профиль тика;
 - интерактивная фич-матрица и миграционный чеклист;
 - страница замеров с методикой и сырыми числами;
-- статус и этапы разработки;
+- совместимость плагинов с версиями и ограничениями;
+- журнал коммитов ядра и статус разработки;
 - загрузка из GitHub Releases и поддержка проекта.
 
 Сайт собирается в статику и публикуется на GitHub Pages. Серверной части, базы данных и пользовательских аккаунтов нет.
@@ -62,7 +63,10 @@
 | [`/ru/docs/observability/`](https://chunkwake.github.io/ru/docs/observability/) | дашборд, `/top`, `chunkwake top`, Prometheus, профиль тика |
 | [`/ru/docs/migrating/`](https://chunkwake.github.io/ru/docs/migrating/) | миграция с Paper/Folia, Docker и интерактивный чеклист |
 | [`/ru/docs/feature-matrix/`](https://chunkwake.github.io/ru/docs/feature-matrix/) | матрица механик, синхронизируется из core |
+| [`/ru/docs/lab/`](https://chunkwake.github.io/ru/docs/lab/) | `chunkwake-lab`: сравнение с ванилью, профили, отчёты |
 | [`/ru/benchmarks/`](https://chunkwake.github.io/ru/benchmarks/) | железо, методика, таблицы, оговорки, воспроизведение |
+| [`/ru/compatibility/`](https://chunkwake.github.io/ru/compatibility/) | проверенные плагины, версии, ограничения |
+| [`/ru/changelog/`](https://chunkwake.github.io/ru/changelog/) | коммиты ядра и журнал разработки |
 | [`/ru/status/`](https://chunkwake.github.io/ru/status/) | этапы M0–M10, текущий фокус, исследовательские направления |
 | [`/ru/download/`](https://chunkwake.github.io/ru/download/) | релизы, платформы, размеры, SHA-256 |
 | [`/ru/support/`](https://chunkwake.github.io/ru/support/) | поддержка криптовалютой, без подписок и аккаунтов |
@@ -72,10 +76,14 @@
 ### Возможности сайта
 
 - **RU / EN** — русский базовый, английский через суффикс `.en`.
-- **Поиск по всему сайту** — документация, команды, бенчмарки, загрузка, поддержка и статус; `/` или `Ctrl/Cmd+K` на любой странице.
+- **Поиск по всему сайту** — документация, команды, совместимость, журнал, бенчмарки, загрузка, поддержка и статус; `/` или `Ctrl/Cmd+K` на любой странице. Команды находятся по имени и ведут в справочник.
 - **Записи терминала** — реальный вывод `doctor`, консоли, `tps`, `top` и ванильных команд с кнопкой воспроизведения.
 - **Фич-матрица** — список и доска, поиск, фильтры, детали с заметками.
 - **Справочник команд** — поиск, фильтры по разделам и уровням прав, отметки расширений Chunkwake.
+- **Совместимость плагинов** — таблица проверенных версий со статусом, деталями и ограничениями.
+- **Журнал разработки** — коммиты `ver/26.3` с датами, категориями и ссылками на GitHub.
+- **Лаборатория** — как воспроизвести замеры: TUI, профили, отчёты и флаги.
+- **Свежесть данных** — commit core, из которого собран сайт, и время снимка.
 - **Чеклист миграции** — 20 пунктов с сохранением в `localStorage`.
 - **Загрузка из Releases** — платформы, размеры и SHA-256 из GitHub API.
 - **PWA и OG** — манифест, иконки, картинки для соцсетей.
@@ -90,7 +98,7 @@ pnpm install
 pnpm dev          # http://localhost:8500
 ```
 
-`predev` синхронизирует матрицу, команды, даты документации, релизы и commit core. `prebuild` делает то же самое и дополнительно собирает OG-картинки и PWA-иконки. Если сеть недоступна, используется последняя сохранённая копия.
+`predev` синхронизирует матрицу, команды, даты документации, релизы, commit core и журнал коммитов. `prebuild` делает то же самое и дополнительно собирает OG-картинки и PWA-иконки. Если сеть недоступна, используется последняя сохранённая копия.
 
 Workflow сайта проверяет `ver/26.3` раз в час и пересобирает страницы только когда commit или релиз изменились. Записи терминала обновляются отдельным workflow `record-terminal.yml`.
 
@@ -108,6 +116,7 @@ pnpm preview      # http://localhost:8500 поверх out/
 pnpm sync:matrix     # feature-matrix.md → content/data/feature-matrix.json
 pnpm sync:commands   # commands.md → content/data/commands.json
 pnpm sync:source     # commit ver/26.3 → content/data/source.json
+pnpm sync:changelog  # последние коммиты core → content/data/changelog.json
 pnpm terminal:record # перезаписать public/terminal/ с локального бинарника
 pnpm sync:docs       # даты последних изменений docs
 pnpm sync:release    # последний GitHub Release → content/data/release.json
@@ -143,9 +152,12 @@ components/
 ├── commands-reference.tsx  поиск и фильтры команд
 ├── migration-checklist.tsx чеклист с localStorage
 ├── benchmark-report.tsx    страница замеров
+├── plugin-compat.tsx       совместимость плагинов
+├── changelog.tsx           журнал коммитов
+├── data-freshness.tsx      commit core и время снимка
 ├── status-report.tsx       этапы и текущий фокус
 ├── download-panel.tsx      релизы, платформы, SHA-256
-├── search.tsx              клиент статического поиска
+├── search-dialog.tsx       компактный палитр поиска
 └── mdx.tsx                 компоненты, доступные в MDX
 
 content/
@@ -158,6 +170,8 @@ lib/
 ├── source.ts               источник документации
 ├── i18n.ts                 локали ru/en
 ├── dictionary.ts           тексты лендинга и страниц
+├── plugins.ts              совместимость плагинов
+├── core-source.ts          снимок core и ссылка на коммит
 ├── benchmarks.ts           данные бенчмарк-лаборатории
 ├── milestones.ts           этапы, состояния и счётчики
 ├── release.ts              типы и форматирование релизов
@@ -167,6 +181,7 @@ scripts/
 ├── sync-feature-matrix.mjs синхронизация фич-матрицы
 ├── sync-docs-meta.mjs      даты изменения документации
 ├── sync-releases.mjs       GitHub Releases и SHA-256
+├── sync-changelog.mjs      последние коммиты core
 ├── generate-images.mjs     OG и PWA-иконки
 └── postbuild.mjs           404.html и .nojekyll
 
@@ -197,6 +212,7 @@ Fumadocs собирает из этого боковую панель, хлеб�
 - `migrating` — миграция;
 - `feature-matrix` — фич-матрица;
 - `plugins` — разработка плагинов;
+- `lab` — лаборатория и воспроизведение замеров;
 - `architecture` — устройство ядра;
 - `faq` — вопросы и ответы.
 
@@ -248,7 +264,9 @@ flowchart LR
 |---|---|---|
 | `sync-feature-matrix.mjs` | тянет `core/docs/feature-matrix.md`, разбирает таблицы в JSON | последний `content/data/feature-matrix.json` |
 | `sync-docs-meta.mjs` | собирает даты последних изменений MDX | mtime файла |
+| `sync-source.mjs` | `git ls-remote` → commit `ver/26.3` для гейта и блока свежести | последний `content/data/source.json` |
 | `sync-releases.mjs` | берёт последний Release, ассеты, размеры, SHA-256 из `digest` или `SHA256SUMS` | последний `content/data/release.json` |
+| `sync-changelog.mjs` | последние 80 коммитов `ver/26.3` через GitHub API | последний `content/data/changelog.json` |
 | `generate-images.mjs` | рисует OG-картинки и PWA-иконки | уже готовые файлы в `public/` |
 | `postbuild.mjs` | копирует `404.html` и создаёт `.nojekyll` | — |
 
@@ -259,8 +277,9 @@ flowchart LR
 Поиск работает **полностью в браузере**:
 
 1. `/api/search` отдаёт статический индекс.
-2. `components/search.tsx` использует `useStaticSearch` из Fumadocs.
+2. `components/search-dialog.tsx` использует `useStaticSearch` из Fumadocs.
 3. Индекс загружается один раз, запросы выполняются локально.
+4. Команды из `content/data/commands.json` подмешиваются на клиенте: имя, раздел и краткое описание, без ожидания индекса.
 
 > [!IMPORTANT]
 > В статическом экспорте нельзя использовать серверный `useFetchSearch`: `/api/search?query=...` вернёт весь индекс, а не результаты. Клиент должен быть на `useStaticSearch`.
@@ -268,7 +287,7 @@ flowchart LR
 `app/api/search/route.ts` собирает индекс из двух источников:
 
 - всех страниц документации;
-- статических страниц сайта: главная, бенчмарки, загрузка, поддержка, статус.
+- статических страниц сайта: главная, бенчмарки, совместимость, журнал, загрузка, поддержка, статус.
 
 Поэтому глобальный поиск находит не только документацию, но и, например, `Ryzen`, `USDT` или `M7`.
 
@@ -307,8 +326,10 @@ Workflow [`.github/workflows/site.yml`](.github/workflows/site.yml):
 
 Workflow также запускается:
 
-- по расписанию — чтобы обновлять фич-матрицу;
+- по расписанию — чтобы обновлять фич-матрицу, команды, релизы и журнал;
 - по `repository_dispatch` типа `core-docs` и `release`.
+
+GitHub не гарантирует точный час: scheduled-запуски приходят с задержкой, иногда в 5–10 раз реже. Поэтому сайт показывает commit и время снимка, из которого он собран, а гейт по `source.json` не даёт собирать одно и то же дважды.
 
 ## Проверка перед релизом
 
@@ -322,6 +343,7 @@ pnpm build
 Вручную:
 
 - открыть RU и EN версии новых страниц;
+- проверить `/compatibility` и `/changelog` на обоих языках;
 - проверить поиск на собранной статике, а не только в dev;
 - пройти по ссылкам из документации и футера;
 - проверить пустое состояние загрузки, если релиза ещё нет;
@@ -346,8 +368,8 @@ Pull request'ы и issue приветствуются.
 
 - релизный workflow в core: тег → архивы → `SHA256SUMS` → GitHub Release;
 - синхронизация оставшихся `core/docs` в MDX на сборке;
-- каталог совместимости плагинов;
-- changelog из GitHub Releases;
+- автоматическое обновление каталога совместимости из проверок core;
+- RSS или JSON-лента для журнала коммитов;
 - больше целей Метрики: загрузки, переходы в GitHub, поиск команд.
 
 ## Лицензия
