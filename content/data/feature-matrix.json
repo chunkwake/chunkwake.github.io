@@ -1,8 +1,8 @@
 {
   "source": "https://raw.githubusercontent.com/chunkwake/core/ver/26.3/docs/feature-matrix.md",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-23T07:56:57.477Z",
-  "sha256": "4f5d970d027bf50b08a7fab47affb139d49041ad0e18b023550a5a937b821327",
+  "fetchedAt": "2026-11-23T12:30:57.268Z",
+  "sha256": "d0573ebc595b0f89bc6c9c1db707e962055283ba0b8e0a5d5190ac2052279918",
   "totals": {
     "ready": 70,
     "partial": 39,

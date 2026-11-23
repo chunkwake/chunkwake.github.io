@@ -1,8 +1,56 @@
 {
   "source": "chunkwake/core",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-23T07:57:03.907Z",
+  "fetchedAt": "2026-11-23T12:31:05.274Z",
   "items": [
+    {
+      "sha": "e4fff76430b166529b7838667d84fb0d40ee8d91",
+      "shortSha": "e4fff764",
+      "date": "2026-11-23T11:31:24Z",
+      "category": "core",
+      "title": "Расширить gate Folia-плагинами и зафиксировать CE WorldBorder/CraftEntity фиксы",
+      "url": "https://github.com/chunkwake/core/commit/e4fff76430b166529b7838667d84fb0d40ee8d91"
+    },
+    {
+      "sha": "fdea9c065c7076c4e236151c749b9a878ce3da8d",
+      "shortSha": "fdea9c06",
+      "date": "2026-11-23T11:13:04Z",
+      "category": "docs",
+      "title": "CE data pack восстановлен",
+      "url": "https://github.com/chunkwake/core/commit/fdea9c065c7076c4e236151c749b9a878ce3da8d"
+    },
+    {
+      "sha": "89d777b74e10e06ff048d1db1e7f4a382fd07d15",
+      "shortSha": "89d777b7",
+      "date": "2026-11-23T11:12:36Z",
+      "category": "core",
+      "title": "восстановить data pack через генератор NMS-стабов",
+      "url": "https://github.com/chunkwake/core/commit/89d777b74e10e06ff048d1db1e7f4a382fd07d15"
+    },
+    {
+      "sha": "65b7bd0b3e9250dd043ea87d2d24a23aa3da37d1",
+      "shortSha": "65b7bd0b",
+      "date": "2026-11-23T08:50:25Z",
+      "category": "core",
+      "title": "сгенерировать ShapedRecipePattern",
+      "url": "https://github.com/chunkwake/core/commit/65b7bd0b3e9250dd043ea87d2d24a23aa3da37d1"
+    },
+    {
+      "sha": "31e27820dab926cd0a5a2fa0d3ebaab08d6f1a1c",
+      "shortSha": "31e27820",
+      "date": "2026-11-23T08:42:33Z",
+      "category": "core",
+      "title": "Восстановить 83/83 plugin gate и добавить NMS-генератор",
+      "url": "https://github.com/chunkwake/core/commit/31e27820dab926cd0a5a2fa0d3ebaab08d6f1a1c"
+    },
+    {
+      "sha": "2d530a5bf7fe8161965ef256a339ca90ae30a5ab",
+      "shortSha": "2d530a5b",
+      "date": "2026-11-23T08:03:41Z",
+      "category": "core",
+      "title": "Добавить сканер NMS-ссылок плагинов",
+      "url": "https://github.com/chunkwake/core/commit/2d530a5bf7fe8161965ef256a339ca90ae30a5ab"
+    },
     {
       "sha": "3ac3f18398b6136389f695fc8b04242d0b5e9aea",
       "shortSha": "3ac3f183",
@@ -594,54 +642,6 @@
       "category": "api",
       "title": "CraftEngine proxy coverage 132->135/504 (MutableBlockPos, StreamCodec.unit, TagKey.create + more members); bot verifies WorldEdit /we version; 79/82",
       "url": "https://github.com/chunkwake/core/commit/6ad7b0a16e0dab8d78f39c244d5230812d339619"
-    },
-    {
-      "sha": "a473213022c7308d0cd51994a3e7d6a01dc72ebc",
-      "shortSha": "a4732130",
-      "date": "2026-11-21T07:33:57Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 124->132/504 (NBT merge, DataComponents, RegistryOps, ResourceKey, CraftParticle); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/a473213022c7308d0cd51994a3e7d6a01dc72ebc"
-    },
-    {
-      "sha": "b0e0a17306c9ab50686dceef3044a7cf1340433b",
-      "shortSha": "b0e0a173",
-      "date": "2026-11-20T18:00:30Z",
-      "category": "api",
-      "title": "close 11 CraftEngine proxy gaps (CraftServer/CraftWorld/CraftEntity/Registry/Holder/NBT/Direction); bot verifies Multiverse /mv list and PAPI /papi parse; 79/82",
-      "url": "https://github.com/chunkwake/core/commit/b0e0a17306c9ab50686dceef3044a7cf1340433b"
-    },
-    {
-      "sha": "444853155ecfac0fc3882ff072b4462cd85f56a2",
-      "shortSha": "44485315",
-      "date": "2026-11-20T17:49:07Z",
-      "category": "api",
-      "title": "Player.getItemInHand (GriefPrevention /claim) and air-instead-of-null for hands/armor; bot runs /claim and /claimslist; 79/82",
-      "url": "https://github.com/chunkwake/core/commit/444853155ecfac0fc3882ff072b4462cd85f56a2"
-    },
-    {
-      "sha": "521df59912a9722283bb77b7f80401270b8d863b",
-      "shortSha": "521df599",
-      "date": "2026-11-20T17:34:34Z",
-      "category": "core",
-      "title": "Attribute/legacy enchants (EliteMobs), mob max health from attribute, applyComponentsAndValidate; bot runs /elitemobs; 79/82",
-      "url": "https://github.com/chunkwake/core/commit/521df59912a9722283bb77b7f80401270b8d863b"
-    },
-    {
-      "sha": "c67e366d443bb9a7a711918130b68e1e48f1788d",
-      "shortSha": "c67e366d",
-      "date": "2026-11-20T17:05:09Z",
-      "category": "api",
-      "title": "EliteMobs/LevelledMobs/BetonQuest/ExecutableItems+SCore (numbers, bossbar, SynchedEntityData, ServerConnection.channels); bot runs /maintenance; 78/81",
-      "url": "https://github.com/chunkwake/core/commit/c67e366d443bb9a7a711918130b68e1e48f1788d"
-    },
-    {
-      "sha": "fdcd4bc4e25b4a0d6aee4a2523cebd25e55ecf72",
-      "shortSha": "fdcd4bc4",
-      "date": "2026-11-20T16:41:10Z",
-      "category": "api",
-      "title": "CommandAPI end-to-end (bootstrap Bukkit-null parity, NMS command stubs, MessageComponentSerializer, player identity); bot runs /cprobe -> CPROBE_OK; 74/76",
-      "url": "https://github.com/chunkwake/core/commit/fdcd4bc4e25b4a0d6aee4a2523cebd25e55ecf72"
     }
   ]
 }

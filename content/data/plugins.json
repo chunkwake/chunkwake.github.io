@@ -108,8 +108,8 @@
         ]
       },
       "limits": {
-        "ru": ["Для рендера нужен `accept-download: true` в `plugins/BlueMap/core.conf` и принятая EULA Minecraft."],
-        "en": ["Rendering needs `accept-download: true` in `plugins/BlueMap/core.conf` and an accepted Minecraft EULA."]
+        "ru": [],
+        "en": []
       }
     },
     {
