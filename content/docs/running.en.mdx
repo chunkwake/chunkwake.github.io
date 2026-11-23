@@ -60,7 +60,7 @@ World and game settings are marked `*` in the wizard: they are saved to `server.
 
 ### Memory and tick
 
-`memory-profile=auto|low|normal` selects the number of threads and cache limits. `low` is verified on a 20 blocks/s flight with view distance 10: lower memory, almost the full view kept. `auto` picks a mode for the hardware, `normal` is the default.
+`memory-profile=auto|low|normal` selects the number of threads and cache limits. `auto` (the default) enables `low` when less than 2 GiB of memory is available or there are at most two cores. `low` is verified on a 20 blocks/s flight with view distance 10: lower memory, almost the full view kept. `normal` is the regular profile without the memory savings.
 
 Late ticks are caught up in a burst instead of being dropped: TPS does not lose a tick permanently. `/tick query` prints `p50/p95/p99/max`, `/mspt` prints avg/min/max over 5 s, 10 s and 1 min.
 
