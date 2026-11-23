@@ -1,647 +1,647 @@
 {
   "source": "chunkwake/core",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-18T07:06:16.540Z",
+  "fetchedAt": "2026-11-23T07:09:57.789Z",
   "items": [
     {
-      "sha": "bb290f71cb60af74a995cf8fe958c1a628dbe76e",
-      "shortSha": "bb290f71",
-      "date": "2026-11-18T06:42:00Z",
+      "sha": "8b3165d81046f196b2e5577b21fd0453950d7488",
+      "shortSha": "8b3165d8",
+      "date": "2026-11-23T06:56:36Z",
       "category": "core",
-      "title": "выровнять play.rs (CI cargo fmt --all --check)",
-      "url": "https://github.com/chunkwake/core/commit/bb290f71cb60af74a995cf8fe958c1a628dbe76e"
+      "title": "BlockStateProvider codec и RecipeMap constructors",
+      "url": "https://github.com/chunkwake/core/commit/8b3165d81046f196b2e5577b21fd0453950d7488"
     },
     {
-      "sha": "f2112f60bf92e0264e72727e897e952713e578c9",
-      "shortSha": "f2112f60",
-      "date": "2026-11-18T06:29:39Z",
+      "sha": "dd27ab447ae2840e9097b2472478fe61e32c79ec",
+      "shortSha": "dd27ab44",
+      "date": "2026-11-23T06:45:09Z",
+      "category": "core",
+      "title": "не ограничивать общий кэш компонентов предметов",
+      "url": "https://github.com/chunkwake/core/commit/dd27ab447ae2840e9097b2472478fe61e32c79ec"
+    },
+    {
+      "sha": "5f499e620e405c828430e4c97a4d7552a38a3e8a",
+      "shortSha": "5f499e62",
+      "date": "2026-11-23T06:44:07Z",
+      "category": "core",
+      "title": "не читать gzip-NBT больше предела в память",
+      "url": "https://github.com/chunkwake/core/commit/5f499e620e405c828430e4c97a4d7552a38a3e8a"
+    },
+    {
+      "sha": "723ba4991750e688e8b68b22893e3ef346238a6b",
+      "shortSha": "723ba499",
+      "date": "2026-11-23T06:41:40Z",
+      "category": "core",
+      "title": "проверить слоты креатива и ограничить кэш компонентов",
+      "url": "https://github.com/chunkwake/core/commit/723ba4991750e688e8b68b22893e3ef346238a6b"
+    },
+    {
+      "sha": "687c5aa4e59116493434253ba68c5d3f207739a8",
+      "shortSha": "687c5aa4",
+      "date": "2026-11-23T06:41:31Z",
+      "category": "core",
+      "title": "закрыть zip-slip и распаковку NBT без предела",
+      "url": "https://github.com/chunkwake/core/commit/687c5aa4e59116493434253ba68c5d3f207739a8"
+    },
+    {
+      "sha": "cd2c418e4d4b5e021333916b003f2fbae33843dd",
+      "shortSha": "cd2c418e",
+      "date": "2026-11-23T06:39:27Z",
+      "category": "core",
+      "title": "BlockStateProvider.CODEC",
+      "url": "https://github.com/chunkwake/core/commit/cd2c418e4d4b5e021333916b003f2fbae33843dd"
+    },
+    {
+      "sha": "3f09fe7c95c5c9615224035ce43871d9fc5047b2",
+      "shortSha": "3f09fe7c",
+      "date": "2026-11-23T06:29:54Z",
+      "category": "core",
+      "title": "WeightedList.nonEmptyCodec",
+      "url": "https://github.com/chunkwake/core/commit/3f09fe7c95c5c9615224035ce43871d9fc5047b2"
+    },
+    {
+      "sha": "d26a39457b985a2fe527f99bc6e274b47e529516",
+      "shortSha": "d26a3945",
+      "date": "2026-11-23T06:23:24Z",
+      "category": "core",
+      "title": "ExtraCodecs, WeightedList, RecipeMap и поля RecipeManager",
+      "url": "https://github.com/chunkwake/core/commit/d26a39457b985a2fe527f99bc6e274b47e529516"
+    },
+    {
+      "sha": "38f19e94ecf5c4ac791139c128ef01b8bc27d4a9",
+      "shortSha": "38f19e94",
+      "date": "2026-11-23T06:12:43Z",
+      "category": "core",
+      "title": "BlockStateProvider и RecipeManager proxy methods",
+      "url": "https://github.com/chunkwake/core/commit/38f19e94ecf5c4ac791139c128ef01b8bc27d4a9"
+    },
+    {
+      "sha": "ba6bf12171b7fc1a93c4dd5851da6959bbdd8f5f",
+      "shortSha": "ba6bf121",
+      "date": "2026-11-23T06:01:12Z",
+      "category": "core",
+      "title": "placement filter/biome, sound type и SoundEvent#getLocation",
+      "url": "https://github.com/chunkwake/core/commit/ba6bf12171b7fc1a93c4dd5851da6959bbdd8f5f"
+    },
+    {
+      "sha": "469b2e83a72a5595a6cf699832d311655c416726",
+      "shortSha": "469b2e83",
+      "date": "2026-11-23T05:39:06Z",
+      "category": "core",
+      "title": "PlacementContext и ItemCost stream codec/fields",
+      "url": "https://github.com/chunkwake/core/commit/469b2e83a72a5595a6cf699832d311655c416726"
+    },
+    {
+      "sha": "e3bfa5c1eb0f87261dcc146bdebee5fd974b0f59",
+      "shortSha": "e3bfa5c1",
+      "date": "2026-11-23T05:21:38Z",
+      "category": "core",
+      "title": "PlacementFilter и ItemCost constructor",
+      "url": "https://github.com/chunkwake/core/commit/e3bfa5c1eb0f87261dcc146bdebee5fd974b0f59"
+    },
+    {
+      "sha": "9b09fa0bbdeedc989306a78b39953cf85eca0684",
+      "shortSha": "9b09fa0b",
+      "date": "2026-11-23T05:14:56Z",
+      "category": "core",
+      "title": "добавить NMS-стабы loot/feature/item cost",
+      "url": "https://github.com/chunkwake/core/commit/9b09fa0bbdeedc989306a78b39953cf85eca0684"
+    },
+    {
+      "sha": "ebef72a5f6cda3f7106e47d09fa31139d4f65e6a",
+      "shortSha": "ebef72a5",
+      "date": "2026-11-23T04:24:28Z",
+      "category": "core",
+      "title": "Release+Burst A/B, точный tick counter, CE-стабы и fence collision",
+      "url": "https://github.com/chunkwake/core/commit/ebef72a5f6cda3f7106e47d09fa31139d4f65e6a"
+    },
+    {
+      "sha": "ae9275e004bcea3c72a6dbd891f4144d5e842605",
+      "shortSha": "ae9275e0",
+      "date": "2026-11-22T15:46:14Z",
+      "category": "core",
+      "title": "Добавить p99/TPS A/B и терминальные execute-условия",
+      "url": "https://github.com/chunkwake/core/commit/ae9275e004bcea3c72a6dbd891f4144d5e842605"
+    },
+    {
+      "sha": "0156d3555be2909bfcd9db5c43b4d99c943e07b7",
+      "shortSha": "0156d355",
+      "date": "2026-11-22T14:04:16Z",
+      "category": "docs",
+      "title": "clarify FoliaProbe is integrated into test plugin",
+      "url": "https://github.com/chunkwake/core/commit/0156d3555be2909bfcd9db5c43b4d99c943e07b7"
+    },
+    {
+      "sha": "1030cf74083fa573b5fcf4eaef62fffa21cee178",
+      "shortSha": "1030cf74",
+      "date": "2026-11-22T14:03:41Z",
+      "category": "core",
+      "title": "count Folia global/region/async completions; gate with Chunky Folia build",
+      "url": "https://github.com/chunkwake/core/commit/1030cf74083fa573b5fcf4eaef62fffa21cee178"
+    },
+    {
+      "sha": "999e4e56417e4638ff1bfdd38977a2d06abf60ec",
+      "shortSha": "999e4e56",
+      "date": "2026-11-22T13:56:37Z",
+      "category": "core",
+      "title": "shape multiplayer CE blocks by carrier state and add Paper registry event provider",
+      "url": "https://github.com/chunkwake/core/commit/999e4e56417e4638ff1bfdd38977a2d06abf60ec"
+    },
+    {
+      "sha": "56d8071e3cad3a470e9f15f8175a3cbf565e5bca",
+      "shortSha": "56d8071e",
+      "date": "2026-11-22T13:04:31Z",
+      "category": "core",
+      "title": "persist full CraftEngine custom block states (facing/lit) across restarts; verify table_lamp parity",
+      "url": "https://github.com/chunkwake/core/commit/56d8071e3cad3a470e9f15f8175a3cbf565e5bca"
+    },
+    {
+      "sha": "6d98948173f3eec6ceca0d0160023b243a3c0288",
+      "shortSha": "6d989481",
+      "date": "2026-11-22T12:54:54Z",
+      "category": "core",
+      "title": "load CE block states/properties and reach topaz_ore placement, drops and persistence parity",
+      "url": "https://github.com/chunkwake/core/commit/6d98948173f3eec6ceca0d0160023b243a3c0288"
+    },
+    {
+      "sha": "2eda3d0c47ff1a815627c86e5327051af1f3fd62",
+      "shortSha": "2eda3d0c",
+      "date": "2026-11-22T10:20:13Z",
+      "category": "core",
+      "title": "CraftEngine 26.9.2 now loads and enables on Chunkwake (83/83); populate item/particle/trim/feature stubs and make Bukkit ItemStack a CraftItemStack; content packs still fail at item wrapping",
+      "url": "https://github.com/chunkwake/core/commit/2eda3d0c47ff1a815627c86e5327051af1f3fd62"
+    },
+    {
+      "sha": "d9588ea424cda124a70e6f54c1935326223a36ca",
+      "shortSha": "d9588ea4",
+      "date": "2026-11-22T09:33:39Z",
+      "category": "core",
+      "title": "advance CraftEngine load through blocks/recipes/packets and registry layers; add Paper-vs-Chunkwake CEProbe parity evidence; CE still fails at vanilla item registry",
+      "url": "https://github.com/chunkwake/core/commit/d9588ea424cda124a70e6f54c1935326223a36ca"
+    },
+    {
+      "sha": "1e64c18fc8d9ca2422e8f56c1d6843e4e4b616ed",
+      "shortSha": "1e64c18f",
+      "date": "2026-11-22T07:34:43Z",
+      "category": "core",
+      "title": "complete block-state/registry/entity surface so CraftEngine 26.9.2 loads; expanded gate 82/82, base 27/27, no LOADERR",
+      "url": "https://github.com/chunkwake/core/commit/1e64c18fc8d9ca2422e8f56c1d6843e4e4b616ed"
+    },
+    {
+      "sha": "6d939264b29704bb37a8fc2595dda151fbb1d857",
+      "shortSha": "6d939264",
+      "date": "2026-11-22T06:03:52Z",
+      "category": "core",
+      "title": "real 26.3 block-state surface, version.json, cause-chain logging; gates 82/82 and 27/27, CraftEngine still needs full BlockStateBase proxy surface",
+      "url": "https://github.com/chunkwake/core/commit/6d939264b29704bb37a8fc2595dda151fbb1d857"
+    },
+    {
+      "sha": "e31ec61be0a1da7afbc6c7e3da484a1e277f1172",
+      "shortSha": "e31ec61b",
+      "date": "2026-11-22T05:23:20Z",
+      "category": "core",
+      "title": "prefer paper-plugin.yml, isolate plugin resources, add geantyref and Bukkit legacy enum aliases; expanded gate 82/82, base 27/27",
+      "url": "https://github.com/chunkwake/core/commit/e31ec61be0a1da7afbc6c7e3da484a1e277f1172"
+    },
+    {
+      "sha": "60f5cd51aa2aae647e3897664ae60be84967415e",
+      "shortSha": "60f5cd51",
+      "date": "2026-11-22T04:38:55Z",
+      "category": "docs",
+      "title": "Paper 26.3 oracle run - MiniMOTD/LevelledMobs enable on Paper but fail on Chunkwake; EntityType.valueOf(ENDER_CRYSTAL) works only with Paper runtime-patched API, public paper-api jars (209/248) lack it",
+      "url": "https://github.com/chunkwake/core/commit/60f5cd51aa2aae647e3897664ae60be84967415e"
+    },
+    {
+      "sha": "828010c1846a1c8da0832dd56a2d7d2959bcf073",
+      "shortSha": "828010c1",
+      "date": "2026-11-22T04:22:29Z",
+      "category": "core",
+      "title": "Typed.isOccluding via Rust full-cube flags; VanillaArgumentProvider.rotation/resource via Bukkit RegistryAccess; no api 'is not implemented' warnings left in gate; 79/82, base 26/27, 59 java tests",
+      "url": "https://github.com/chunkwake/core/commit/828010c1846a1c8da0832dd56a2d7d2959bcf073"
+    },
+    {
+      "sha": "c7fcfa9b32e6cac7b183b3a826bb4806082c7dc0",
+      "shortSha": "c7fcfa9b",
+      "date": "2026-11-22T04:04:24Z",
+      "category": "core",
+      "title": "World.isChunkLoaded/getEntitiesByClasses via Rust chunkloaded; CE blocker confirmed external (BlockReflections needs BlockStateBase.is(Block), absent in 26.3); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/c7fcfa9b32e6cac7b183b3a826bb4806082c7dc0"
+    },
+    {
+      "sha": "a21d2bf622775f3ce29c283487efd7ffe6747f88",
+      "shortSha": "a21d2bf6",
+      "date": "2026-11-21T17:28:43Z",
+      "category": "docs",
+      "title": "BlockStateBase scoped layer iterated to is\\/getLightBlock; CE proxy set targets a different NMS version (members missing/ambiguous in 26.3), stubs reverted, dist green",
+      "url": "https://github.com/chunkwake/core/commit/a21d2bf622775f3ce29c283487efd7ffe6747f88"
+    },
+    {
+      "sha": "20bd05a194f733ea381df327d05a105ca15c76ac",
+      "shortSha": "20bd05a1",
+      "date": "2026-11-21T17:24:08Z",
+      "category": "docs",
+      "title": "scoped BlockStateBase layer bound up to BlockStateBaseProxy#is\\; 26.3 signature mismatch (is(TagKey,Predicate) vs is(Object)), stubs reverted, dist green",
+      "url": "https://github.com/chunkwake/core/commit/20bd05a194f733ea381df327d05a105ca15c76ac"
+    },
+    {
+      "sha": "ab8fd88d1a9c90d6eb9a36ccd7bb014f83cbee76",
+      "shortSha": "ab8fd88d",
+      "date": "2026-11-21T17:18:41Z",
+      "category": "docs",
+      "title": "scoped BlockStateBase experiment (proxy bound up to CollisionContext/getShape, then missing VoxelShape/pathfinder NMS types) reverted; CraftEngine blocker confirmed at NMS-subsystem level",
+      "url": "https://github.com/chunkwake/core/commit/ab8fd88d1a9c90d6eb9a36ccd7bb014f83cbee76"
+    },
+    {
+      "sha": "acaed0f6a416b20e8ac0a02b5e4e3c99aac7d6ac",
+      "shortSha": "acaed0f6",
+      "date": "2026-11-21T17:12:44Z",
+      "category": "docs",
+      "title": "rerun gates after VanillaArgumentProvider/entity-save changes (expanded 79/82, base 26/27, panics 0, P2 263/241), no regressions",
+      "url": "https://github.com/chunkwake/core/commit/acaed0f6a416b20e8ac0a02b5e4e3c99aac7d6ac"
+    },
+    {
+      "sha": "ee433a619f350a07eaa2a7fac121966e58ac4616",
+      "shortSha": "ee433a61",
+      "date": "2026-11-21T17:08:39Z",
+      "category": "docs",
+      "title": "CraftEngine BlockBehaviour\\ documented as hard NMS blocker (80 proxy methods, 27 cache fields); dist OK, P2 263/241; heavy gates deferred",
+      "url": "https://github.com/chunkwake/core/commit/ee433a619f350a07eaa2a7fac121966e58ac4616"
+    },
+    {
+      "sha": "042f6ae05e016c728de245504da58bba163c1a2a",
+      "shortSha": "042f6ae0",
+      "date": "2026-11-21T17:07:15Z",
       "category": "api",
-      "title": "свойства блоков WorldEdit и запуск без ошибки PlatformReadyEvent",
-      "url": "https://github.com/chunkwake/core/commit/f2112f60bf92e0264e72727e897e952713e578c9"
+      "title": "real VanillaArgumentProvider player/players/playerProfiles (Bukkit-based resolver, limit/distance options), generated via GenProviders; entity-save gate numbers recorded (fmt/clippy 0, 953 tests)",
+      "url": "https://github.com/chunkwake/core/commit/042f6ae05e016c728de245504da58bba163c1a2a"
     },
     {
-      "sha": "302ffa4cf7522da0e93ed0ceef5e039eb728e2c4",
-      "shortSha": "302ffa4c",
-      "date": "2026-11-18T06:15:58Z",
-      "category": "api",
-      "title": "WorldEdit //set работает — proxy equals и блок-адаптер",
-      "url": "https://github.com/chunkwake/core/commit/302ffa4cf7522da0e93ed0ceef5e039eb728e2c4"
+      "sha": "661ade43d1b7a4389e01658b25214b6ab8ca22b2",
+      "shortSha": "661ade43",
+      "date": "2026-11-21T17:04:19Z",
+      "category": "core",
+      "title": "save per dimension, clear stale entity chunks, dedupe UUIDs on load (44/44 unique after restart, tags/PDC kept); fmt+clippy green",
+      "url": "https://github.com/chunkwake/core/commit/661ade43d1b7a4389e01658b25214b6ab8ca22b2"
     },
     {
-      "sha": "53533f1618f7a65676e933dcad3acb282a0c0a07",
-      "shortSha": "53533f16",
-      "date": "2026-11-18T06:05:21Z",
-      "category": "api",
-      "title": "настоящий CraftHumanEntity и SimplePluginManager — LuckPerms заработал",
-      "url": "https://github.com/chunkwake/core/commit/53533f1618f7a65676e933dcad3acb282a0c0a07"
-    },
-    {
-      "sha": "4acd4f1145e88d7042d481005811a23fd8ccedbf",
-      "shortSha": "4acd4f11",
-      "date": "2026-11-18T05:12:35Z",
-      "category": "api",
-      "title": "Paper-маркеры для PaperLib — WorldEdit команды заработали",
-      "url": "https://github.com/chunkwake/core/commit/4acd4f1145e88d7042d481005811a23fd8ccedbf"
-    },
-    {
-      "sha": "09049a74f0dcde6d9163d2fdee861c3aa9b69f67",
-      "shortSha": "09049a74",
-      "date": "2026-11-18T04:58:11Z",
+      "sha": "9cdb871317cbec08bba70cacfb7bebd643529d0e",
+      "shortSha": "9cdb8713",
+      "date": "2026-11-21T16:57:05Z",
       "category": "perf",
-      "title": "живые замеры 1000 мобов против Paper 26.3 и Velocity-прокси",
-      "url": "https://github.com/chunkwake/core/commit/09049a74f0dcde6d9163d2fdee861c3aa9b69f67"
+      "title": "reproducible A/B vs Paper 26.3 (flat, bot, 200/1000 cows + redstone): Chunkwake 4.5-4.7/6.6-7.7/7.8-8.9 ms vs Paper 5.0-5.9/11.0-15.8/10.3-10.4; add /mspt command and bot CMD_FILE/wait/HOLD_MS harness",
+      "url": "https://github.com/chunkwake/core/commit/9cdb871317cbec08bba70cacfb7bebd643529d0e"
     },
     {
-      "sha": "a9e2592499ee446f51b0e3a53baae66091bd2933",
-      "shortSha": "a9e25924",
-      "date": "2026-11-17T18:02:27Z",
+      "sha": "20cce204e874238877a1c8b3c67955ce205a308a",
+      "shortSha": "20cce204",
+      "date": "2026-11-21T15:30:59Z",
+      "category": "core",
+      "title": "mob scoreboard tags + persistent data container (NBT Tags/BukkitValues, Entity API), verified across restart; fix in-game /stop actually shutting down; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/20cce204e874238877a1c8b3c67955ce205a308a"
+    },
+    {
+      "sha": "6f290078c2ab994d8b20ff710be91e5aac2931a5",
+      "shortSha": "6f290078",
+      "date": "2026-11-21T15:01:22Z",
+      "category": "core",
+      "title": "instrument component + MusicInstrumentMeta (dynamic registry from RegistryData::SYNCHRONIZED) and ItemFactory.createItemStack via Rust item parser; bot+NBT verified; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/6f290078c2ab994d8b20ff710be91e5aac2931a5"
+    },
+    {
+      "sha": "9428afe5f1e8d2d948868ee1409507da5cde7158",
+      "shortSha": "9428afe5",
+      "date": "2026-11-21T14:43:34Z",
+      "category": "core",
+      "title": "potion_contents and fireworks components end-to-end (PotionMeta base type, FireworkMeta effects/power), NBT+bot verified; instrument blocked by dynamic registry; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/9428afe5f1e8d2d948868ee1409507da5cde7158"
+    },
+    {
+      "sha": "682012f2ea29412afe1eab7c3e2be2942832da11",
+      "shortSha": "682012f2",
+      "date": "2026-11-21T14:15:54Z",
+      "category": "core",
+      "title": "block solidity from Rust for Typed.isSolid; item_model/tooltip_style/tooltip_display/glint/item_name components end-to-end (NBT verified); commit bench+world_setup; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/682012f2ea29412afe1eab7c3e2be2942832da11"
+    },
+    {
+      "sha": "a39b7476209db3ce2cee280c749fde60d55f5af5",
+      "shortSha": "a39b7476",
+      "date": "2026-11-21T13:47:12Z",
+      "category": "core",
+      "title": "implement UnsafeValues.getMainLevelName, ItemFactory.getDefaultLeatherColor, Plugin.getDefaultWorldGenerator; document Typed.isSolid recursion (reverted); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/a39b7476209db3ce2cee280c749fde60d55f5af5"
+    },
+    {
+      "sha": "3aa5587fec7ed08fee1fa7f6f6892b3ad8d94468",
+      "shortSha": "3aa5587f",
+      "date": "2026-11-21T13:29:08Z",
+      "category": "core",
+      "title": "real World PVP/difficulty/weather/spawn + stored enchantments (Paper API), bot /worldstate verifies; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/3aa5587fec7ed08fee1fa7f6f6892b3ad8d94468"
+    },
+    {
+      "sha": "2c2a7197b51d97aabc9797cfd8edcdb71b2dba11",
+      "shortSha": "2c2a7197",
+      "date": "2026-11-21T13:14:13Z",
       "category": "api",
-      "title": "события плагинов, OfflinePlayer, Player-мелочи и время мира",
-      "url": "https://github.com/chunkwake/core/commit/a9e2592499ee446f51b0e3a53baae66091bd2933"
+      "title": "CraftEngine proxies 261->263 (BonemealSource/BonemealableBlock 26.3, WorldlyContainerHolder); DataComponents 26.3 + OminousBottleAmplifier fixes EconomyShopGUI ominous WARN; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/2c2a7197b51d97aabc9797cfd8edcdb71b2dba11"
     },
     {
-      "sha": "fef16c19769d6afe1603ee18795173fc95ba7544",
-      "shortSha": "fef16c19",
-      "date": "2026-11-17T17:36:54Z",
+      "sha": "389e46896c49babd2314ec02b0d03966937bd9da",
+      "shortSha": "389e4689",
+      "date": "2026-11-21T12:40:04Z",
+      "category": "core",
+      "title": "rebuild drop index only when chunk membership changes; tick/mobs -4.8% median in A/B (4/5 runs, p<0.05); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/389e46896c49babd2314ec02b0d03966937bd9da"
+    },
+    {
+      "sha": "c806a4891abe3c327cfc693d5e90c86ab91dc8e5",
+      "shortSha": "c806a489",
+      "date": "2026-11-21T12:08:14Z",
       "category": "api",
-      "title": "org.json.simple для плагинов (Vault) + живые прогоны 4 плагинов",
-      "url": "https://github.com/chunkwake/core/commit/fef16c19769d6afe1603ee18795173fc95ba7544"
+      "title": "CraftEngine proxy member batch (RESOLVABLE_PROFILE, soundEvent aliases, LootData); bench: block_read -9.4%, block_write -7.5%, idle +3%; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/c806a4891abe3c327cfc693d5e90c86ab91dc8e5"
     },
     {
-      "sha": "b2fbebd084671b23557c386e1758e59d01d9be9d",
-      "shortSha": "b2fbebd0",
-      "date": "2026-11-17T17:29:02Z",
+      "sha": "2e8917b30f6ad88736df16f9e342c9d43c2888a6",
+      "shortSha": "2e8917b3",
+      "date": "2026-11-21T12:01:22Z",
       "category": "api",
-      "title": "ItemStack serializeAsBytes/deserializeItem и профиль манекена",
-      "url": "https://github.com/chunkwake/core/commit/b2fbebd084671b23557c386e1758e59d01d9be9d"
+      "title": "CraftEngine proxy coverage 259->261/504 (UseItemOn ctor order, SynchedEntityData.set/packAll, EntityDataSerializers fields); bot verifies /libertybans; tick bench 56.4ns idle (no gain); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/2e8917b30f6ad88736df16f9e342c9d43c2888a6"
     },
     {
-      "sha": "ef74596063ebadc1c7bb2e16b6072a02dfbba7f8",
-      "shortSha": "ef745960",
-      "date": "2026-11-17T17:04:56Z",
+      "sha": "c319d38b0e7da266753760d68f697963dfd94150",
+      "shortSha": "c319d38b",
+      "date": "2026-11-21T11:47:55Z",
       "category": "api",
-      "title": "SkinParts, mannequin-позы/описание и критерии статистик",
-      "url": "https://github.com/chunkwake/core/commit/ef74596063ebadc1c7bb2e16b6072a02dfbba7f8"
+      "title": "CraftEngine proxy coverage 257->259/504 (full Pose enum, BlockStateParser+BlockResult, TeamColor/DataSlot/RecipeType, typed event factory); bot verifies /viaversion; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/c319d38b0e7da266753760d68f697963dfd94150"
     },
     {
-      "sha": "8367335f4064c52a7be62fe48719195eb656e51f",
-      "shortSha": "8367335f",
-      "date": "2026-11-17T16:57:28Z",
-      "category": "plugins",
-      "title": "правки блоков до входа игрока больше не теряются",
-      "url": "https://github.com/chunkwake/core/commit/8367335f4064c52a7be62fe48719195eb656e51f"
-    },
-    {
-      "sha": "0c1a9a5b227cf50e0df92de8a5d3615aa3065b0d",
-      "shortSha": "0c1a9a5b",
-      "date": "2026-11-17T16:17:42Z",
-      "category": "plugins",
-      "title": "EssentialsX 2.22.0 включается, legacy-материалы и rollEnchantmentOffers",
-      "url": "https://github.com/chunkwake/core/commit/0c1a9a5b227cf50e0df92de8a5d3615aa3065b0d"
-    },
-    {
-      "sha": "6e700bcd2230a84ee2d13ecbeccc61d47f056ea7",
-      "shortSha": "6e700bcd",
-      "date": "2026-11-17T15:28:09Z",
+      "sha": "944bfc781fd1306672ff88bab797e3ddcc3bdd3c",
+      "shortSha": "944bfc78",
+      "date": "2026-11-21T11:41:12Z",
       "category": "api",
-      "title": "CombatEntry через InternalAPIBridge",
-      "url": "https://github.com/chunkwake/core/commit/6e700bcd2230a84ee2d13ecbeccc61d47f056ea7"
+      "title": "CraftEngine proxy coverage 255->257/504 (PositionPath, UpdateAttributes packet, passenger/equipment setters, block-event packets); bot verifies /ess; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/944bfc781fd1306672ff88bab797e3ddcc3bdd3c"
     },
     {
-      "sha": "85359c0b83dd4d589b0eb49b4f2f87479698e6b8",
-      "shortSha": "85359c0b",
-      "date": "2026-11-17T15:26:50Z",
+      "sha": "e91a1f1b20e395460a43e7aa52908ec8f43b0b2b",
+      "shortSha": "e91a1f1b",
+      "date": "2026-11-21T11:29:28Z",
       "category": "api",
-      "title": "EntityType.hasDefaultAttributes/getDefaultAttributes",
-      "url": "https://github.com/chunkwake/core/commit/85359c0b83dd4d589b0eb49b4f2f87479698e6b8"
+      "title": "CraftEngine proxy coverage 252->255/504 (Pose enum, chunk unsaved/dimension, CraftBlockStates, Entity/LivingEntity members); bot verifies /tabtps; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/e91a1f1b20e395460a43e7aa52908ec8f43b0b2b"
     },
     {
-      "sha": "22608dbb9ddd43b8dc9288b30911e28eb5f9b744",
-      "shortSha": "22608dbb",
-      "date": "2026-11-17T15:14:59Z",
+      "sha": "d76edf2ed05932a16f1134a3a7565679641047c1",
+      "shortSha": "d76edf2e",
+      "date": "2026-11-21T11:21:37Z",
       "category": "api",
-      "title": "PersistentDataKey.of через InternalAPIBridge",
-      "url": "https://github.com/chunkwake/core/commit/22608dbb9ddd43b8dc9288b30911e28eb5f9b744"
+      "title": "CraftEngine proxy coverage 248->252/504 (CraftInventory/Merchant wrappers, LoginPacket, ServerCommonPacketListener, Advancements packet); bot verifies /ajlb; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/d76edf2ed05932a16f1134a3a7565679641047c1"
     },
     {
-      "sha": "37f4d915d13e236be84803f7ca39733402ff3410",
-      "shortSha": "37f4d915",
-      "date": "2026-11-17T15:12:10Z",
+      "sha": "e150cf8f0d457e3124b9e294d2ee32643058aa99",
+      "shortSha": "e150cf8f",
+      "date": "2026-11-21T11:13:34Z",
       "category": "api",
-      "title": "damage effect и occupancy через InternalAPIBridge",
-      "url": "https://github.com/chunkwake/core/commit/37f4d915d13e236be84803f7ca39733402ff3410"
+      "title": "CraftEngine proxy coverage 243->248/504 (CraftChunk/Block/EventFactory/MagicNumbers, ByteBufCodecs.trackDepth, Hashed classes); bot verifies /sr; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/e150cf8f0d457e3124b9e294d2ee32643058aa99"
     },
     {
-      "sha": "b4de643c0966241e12ee12dc4edbac468c6bfea8",
-      "shortSha": "b4de643c",
-      "date": "2026-11-17T15:09:12Z",
+      "sha": "98aea770f355899691672faa6c130d0e7925c4c1",
+      "shortSha": "98aea770",
+      "date": "2026-11-21T11:06:39Z",
       "category": "api",
-      "title": "EntityType.translationKey и getSpawnCategory по ванильному MobCategory",
-      "url": "https://github.com/chunkwake/core/commit/b4de643c0966241e12ee12dc4edbac468c6bfea8"
+      "title": "CraftEngine proxy coverage 232->243/504 (advancements/display/chat-type/translatable classes); bot verifies /holograms; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/98aea770f355899691672faa6c130d0e7925c4c1"
     },
     {
-      "sha": "472a1e3cda0fcf3ab2b80fbd1290d52153842f70",
-      "shortSha": "472a1e3c",
-      "date": "2026-11-17T15:09:12Z",
-      "category": "villagers",
-      "title": "releaseAllPois при смерти, пробы голема/размножения/сделки",
-      "url": "https://github.com/chunkwake/core/commit/472a1e3cda0fcf3ab2b80fbd1290d52153842f70"
+      "sha": "2101628c0c568c4429f8d1e020d64e00a33879e5",
+      "shortSha": "2101628c",
+      "date": "2026-11-21T11:00:14Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 225->232/504 (map/light/chunk-update/book/tags packets, MapId, PDC.put); bot verifies /grim; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/2101628c0c568c4429f8d1e020d64e00a33879e5"
     },
     {
-      "sha": "76d84ac84337d8ccb77a55e6740ed480e3ae3cd3",
-      "shortSha": "76d84ac8",
-      "date": "2026-11-16T14:28:14Z",
-      "category": "villagers",
-      "title": "железный голем по согласию, yes/no сделки, pitch праздника",
-      "url": "https://github.com/chunkwake/core/commit/76d84ac84337d8ccb77a55e6740ed480e3ae3cd3"
+      "sha": "1b37b9b97586e4e170c148836a9e21fa2737aa8a",
+      "shortSha": "1b37b9b9",
+      "date": "2026-11-21T10:46:47Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 213->225/504 (sound/take-item/resourcepack/creative/login packets + SoundSource/MobEffectInstance); bot verifies /plan; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/1b37b9b97586e4e170c148836a9e21fa2737aa8a"
     },
     {
-      "sha": "ee897f3d4d53b27ce76c8533e50491f7ea54b9ae",
-      "shortSha": "ee897f3d",
-      "date": "2026-11-16T13:58:20Z",
-      "category": "villagers",
-      "title": "ambient/hurt/death звуки и голосовой pitch (Mob.getVoicePitch)",
-      "url": "https://github.com/chunkwake/core/commit/ee897f3d4d53b27ce76c8533e50491f7ea54b9ae"
+      "sha": "8e5c9f2d048d2b4679fe5647fdea85cbbc3776b7",
+      "shortSha": "8e5c9f2d",
+      "date": "2026-11-21T10:39:40Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 209->213/504 (MoveEntity/Teleport/Respawn/PlayerTeam packets); bot verifies /chunky; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/8e5c9f2d048d2b4679fe5647fdea85cbbc3776b7"
     },
     {
-      "sha": "9623f23655ffd39ea084980041491ae51d6502dc",
-      "shortSha": "9623f236",
-      "date": "2026-11-16T13:36:53Z",
-      "category": "villagers",
-      "title": "настоящие block loot-таблицы культур и разделение loot::Ctx",
-      "url": "https://github.com/chunkwake/core/commit/9623f23655ffd39ea084980041491ae51d6502dc"
+      "sha": "14ed659340fd7a1218c35f0143cd879b8a6bffdb",
+      "shortSha": "14ed6593",
+      "date": "2026-11-21T10:30:18Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 199->209/504 (title/actionbar/health/book/chat packets, MobEffect); bot verifies /imageframe; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/14ed659340fd7a1218c35f0143cd879b8a6bffdb"
     },
     {
-      "sha": "495918ade56bdc70f3389925ff0cfba08130b63c",
-      "shortSha": "495918ad",
-      "date": "2026-11-16T13:17:40Z",
-      "category": "villagers",
-      "title": "entity-события 13/14/42 и лут культур при Harvest",
-      "url": "https://github.com/chunkwake/core/commit/495918ade56bdc70f3389925ff0cfba08130b63c"
+      "sha": "6d8b4e225ed4938adf897074ace081b04088a6bc",
+      "shortSha": "6d8b4e22",
+      "date": "2026-11-21T10:21:31Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 195->199/504 (EntityType/ArmorStand/Orientation/MapItemSavedData, Pose/Level/Chunk members); bot verifies /bq; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/6d8b4e225ed4938adf897074ace081b04088a6bc"
     },
     {
-      "sha": "31168912abd052721c69aca1eeca9e5c60602bb7",
-      "shortSha": "31168912",
-      "date": "2026-11-16T12:23:36Z",
-      "category": "villagers",
-      "title": "события VillagerMakeLove (18/12/13) и Reader::i32",
-      "url": "https://github.com/chunkwake/core/commit/31168912abd052721c69aca1eeca9e5c60602bb7"
+      "sha": "ed01d90e34d1c5c294e4a0020a008398915363a8",
+      "shortSha": "ed01d90e",
+      "date": "2026-11-21T10:06:23Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 192->195/504 (ClientInformation, WorldlyContainer/ResultContainer, Pose/SoundEvent/menu members); bot verifies /ei; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/ed01d90e34d1c5c294e4a0020a008398915363a8"
     },
     {
-      "sha": "a5aef22f779b4feb356fa41181c8a86e3c7a682e",
-      "shortSha": "a5aef22f",
-      "date": "2026-11-16T11:15:57Z",
-      "category": "villagers",
-      "title": "звук работы по профессии и детерминированные фазы пробы",
-      "url": "https://github.com/chunkwake/core/commit/a5aef22f779b4feb356fa41181c8a86e3c7a682e"
+      "sha": "a6a0506f836cf3e01a99e799e3bd4f03df6db2b7",
+      "shortSha": "a6a0506f",
+      "date": "2026-11-21T09:49:22Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 183->192/504 (container/open-screen/event packets, ClientInformation); bot verifies /dm list; gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/a6a0506f836cf3e01a99e799e3bd4f03df6db2b7"
     },
     {
-      "sha": "6c77ebd816ccb32dee081b91264a31f5ec892014",
-      "shortSha": "6c77ebd8",
-      "date": "2026-11-16T10:22:05Z",
-      "category": "villagers",
-      "title": "SecondaryPoiSensor по профессии (только фермер)",
-      "url": "https://github.com/chunkwake/core/commit/6c77ebd816ccb32dee081b91264a31f5ec892014"
+      "sha": "4b6fca333cf80ca8669bcf1c3c351fdbe026812a",
+      "shortSha": "4b6fca33",
+      "date": "2026-11-21T09:36:49Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 180->183/504 (BundlePacket/PacketSendListener/ByteBufCodecs); bot verifies /papi list (27 hooks); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/4b6fca333cf80ca8669bcf1c3c351fdbe026812a"
     },
     {
-      "sha": "77b4db3f4a89579a95c92aa3dc46deb33e0eafe0",
-      "shortSha": "77b4db3f",
-      "date": "2026-11-16T09:40:36Z",
-      "category": "villagers",
-      "title": "ShowTradesToPlayer по Paper 26.3 (900/40, цикл предметов)",
-      "url": "https://github.com/chunkwake/core/commit/77b4db3f4a89579a95c92aa3dc46deb33e0eafe0"
+      "sha": "8f70029a12fe0d3605624f1f543cd33f891239e2",
+      "shortSha": "8f70029a",
+      "date": "2026-11-21T09:28:35Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 169->180/504 (HolderOwner/HolderGetter chain, DataComponentGetter, registry/packet members); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/8f70029a12fe0d3605624f1f543cd33f891239e2"
     },
     {
-      "sha": "87df984111d9ccd806ad0f5defcba96fb1a200ec",
-      "shortSha": "87df9841",
-      "date": "2026-11-16T09:23:52Z",
-      "category": "villagers",
-      "title": "meet/idle-пакеты, /tp для жителей и детерминированная проба",
-      "url": "https://github.com/chunkwake/core/commit/87df984111d9ccd806ad0f5defcba96fb1a200ec"
+      "sha": "96396f585316739628b3fcf441e26cc0db36ab83",
+      "shortSha": "96396f58",
+      "date": "2026-11-21T09:19:25Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 165->169/504 (packets, Container, registries, recipe/attribute members); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/96396f585316739628b3fcf441e26cc0db36ab83"
     },
     {
-      "sha": "ca5b4ad0f56ff5492b4e815d345c25a2e2cbdebb",
-      "shortSha": "ca5b4ad0",
-      "date": "2026-11-16T07:21:47Z",
-      "category": "villagers",
-      "title": "приоритеты Brain, look-пакет и размножение (1:1 с Paper 26.3)",
-      "url": "https://github.com/chunkwake/core/commit/ca5b4ad0f56ff5492b4e815d345c25a2e2cbdebb"
+      "sha": "b8d62d479cd629a1d118bf75806f9ceb7b18a115",
+      "shortSha": "b8d62d47",
+      "date": "2026-11-21T09:08:49Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 161->165/504 (chat/sign packets, Fluid/Fluids, registries/packets fields); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/b8d62d479cd629a1d118bf75806f9ceb7b18a115"
     },
     {
-      "sha": "5f4127861ed3aeb78773cd2b5e13059ad4ba4e4a",
-      "shortSha": "5f412786",
-      "date": "2026-11-16T05:40:09Z",
-      "category": "villagers",
-      "title": "look-пакет и GiveGiftToHero, изолированные пробы",
-      "url": "https://github.com/chunkwake/core/commit/5f4127861ed3aeb78773cd2b5e13059ad4ba4e4a"
+      "sha": "49fc12884ceef86fb0b759efe4c1e97e74a626dd",
+      "shortSha": "49fc1288",
+      "date": "2026-11-21T09:01:15Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 157->161/504 (Inventory/DyeColor/ImposterProtoChunk/PalettedContainer + members); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/49fc12884ceef86fb0b759efe4c1e97e74a626dd"
     },
     {
-      "sha": "8b40e0e011c2794ac74e8f1ec26b586afcd2215d",
-      "shortSha": "8b40e0e0",
-      "date": "2026-11-15T17:33:42Z",
-      "category": "villagers",
-      "title": "точные длительности work/meet/rest по ваниле 26.3",
-      "url": "https://github.com/chunkwake/core/commit/8b40e0e011c2794ac74e8f1ec26b586afcd2215d"
+      "sha": "c737a58468dea0f117b4386f9c134a3d2d4f3b82",
+      "shortSha": "c737a584",
+      "date": "2026-11-21T08:52:46Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 149->157/504 (Registry/Slot/Chunk/Generator/DimensionType/BlockHitResult members); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/c737a58468dea0f117b4386f9c134a3d2d4f3b82"
     },
     {
-      "sha": "3cadd91a74f9b141f233eef3a22b1a2b094da852",
-      "shortSha": "3cadd91a",
-      "date": "2026-11-15T16:16:56Z",
-      "category": "villagers",
-      "title": "веса meet/rest RunOne и перевыбор по завершении",
-      "url": "https://github.com/chunkwake/core/commit/3cadd91a74f9b141f233eef3a22b1a2b094da852"
+      "sha": "22eb7b8f4cdf831034625c72e94994691cc29452",
+      "shortSha": "22eb7b8f",
+      "date": "2026-11-21T08:44:47Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 143->149/504 (Holder.is, ChunkPos/Level/Vec3/AABB, Slot/Player/ServerLevel/Scoreboard members); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/22eb7b8f4cdf831034625c72e94994691cc29452"
     },
     {
-      "sha": "dc7c869fcfe5f629a3da7989abc9429d0d7083b7",
-      "shortSha": "dc7c869f",
-      "date": "2026-11-15T15:53:30Z",
-      "category": "villagers",
-      "title": "веса RunOne/GateBehavior и SECONDARY_JOB_SITE",
-      "url": "https://github.com/chunkwake/core/commit/dc7c869fcfe5f629a3da7989abc9429d0d7083b7"
+      "sha": "e5125bb1bb71d660001d047a4960ec3d81417adb",
+      "shortSha": "e5125bb1",
+      "date": "2026-11-21T08:25:28Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 135->143/504 (particles, chat Style/CODEC, DamageSource, Item/Player/Slot members); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/e5125bb1bb71d660001d047a4960ec3d81417adb"
     },
     {
-      "sha": "645dceb1836c3a7ded22f0c74a17e925ed212030",
-      "shortSha": "645dceb1",
-      "date": "2026-11-15T15:33:56Z",
-      "category": "villagers",
-      "title": "HarvestFarmland, UseBonemeal, Restock и кошки",
-      "url": "https://github.com/chunkwake/core/commit/645dceb1836c3a7ded22f0c74a17e925ed212030"
+      "sha": "6ad7b0a16e0dab8d78f39c244d5230812d339619",
+      "shortSha": "6ad7b0a1",
+      "date": "2026-11-21T08:18:30Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 132->135/504 (MutableBlockPos, StreamCodec.unit, TagKey.create + more members); bot verifies WorldEdit /we version; 79/82",
+      "url": "https://github.com/chunkwake/core/commit/6ad7b0a16e0dab8d78f39c244d5230812d339619"
     },
     {
-      "sha": "3ea40f2ffd8c543e8ae893ca000816e5a0ff7760",
-      "shortSha": "3ea40f2f",
-      "date": "2026-11-15T14:46:02Z",
-      "category": "villagers",
-      "title": "JumpOnBed и точный MoveToSkySeeingSpot",
-      "url": "https://github.com/chunkwake/core/commit/3ea40f2ffd8c543e8ae893ca000816e5a0ff7760"
+      "sha": "a473213022c7308d0cd51994a3e7d6a01dc72ebc",
+      "shortSha": "a4732130",
+      "date": "2026-11-21T07:33:57Z",
+      "category": "api",
+      "title": "CraftEngine proxy coverage 124->132/504 (NBT merge, DataComponents, RegistryOps, ResourceKey, CraftParticle); gates 79/82, base 26/27",
+      "url": "https://github.com/chunkwake/core/commit/a473213022c7308d0cd51994a3e7d6a01dc72ebc"
     },
     {
-      "sha": "3192cb16aab998b26d84d34f752e74c489711e38",
-      "shortSha": "3192cb16",
-      "date": "2026-11-15T14:25:21Z",
-      "category": "villagers",
-      "title": "празднование победы над рейдом",
-      "url": "https://github.com/chunkwake/core/commit/3192cb16aab998b26d84d34f752e74c489711e38"
+      "sha": "b0e0a17306c9ab50686dceef3044a7cf1340433b",
+      "shortSha": "b0e0a173",
+      "date": "2026-11-20T18:00:30Z",
+      "category": "api",
+      "title": "close 11 CraftEngine proxy gaps (CraftServer/CraftWorld/CraftEntity/Registry/Holder/NBT/Direction); bot verifies Multiverse /mv list and PAPI /papi parse; 79/82",
+      "url": "https://github.com/chunkwake/core/commit/b0e0a17306c9ab50686dceef3044a7cf1340433b"
     },
     {
-      "sha": "52307acd7b08edb7b47099048efc7ef9f02acf1d",
-      "shortSha": "52307acd",
-      "date": "2026-11-15T13:53:45Z",
-      "category": "villagers",
-      "title": "поведение при рейдах (SetRaidStatus)",
-      "url": "https://github.com/chunkwake/core/commit/52307acd7b08edb7b47099048efc7ef9f02acf1d"
+      "sha": "444853155ecfac0fc3882ff072b4462cd85f56a2",
+      "shortSha": "44485315",
+      "date": "2026-11-20T17:49:07Z",
+      "category": "api",
+      "title": "Player.getItemInHand (GriefPrevention /claim) and air-instead-of-null for hands/armor; bot runs /claim and /claimslist; 79/82",
+      "url": "https://github.com/chunkwake/core/commit/444853155ecfac0fc3882ff072b4462cd85f56a2"
     },
     {
-      "sha": "4a0ee8a5b676e33bed0a3cd3eee19319e9ca4161",
-      "shortSha": "4a0ee8a5",
-      "date": "2026-11-15T13:37:59Z",
-      "category": "villagers",
-      "title": "детские игры и обмен еды в обе стороны",
-      "url": "https://github.com/chunkwake/core/commit/4a0ee8a5b676e33bed0a3cd3eee19319e9ca4161"
-    },
-    {
-      "sha": "97b85ef00f52512cd148681ac4656a064b07c8c8",
-      "shortSha": "97b85ef0",
-      "date": "2026-11-15T12:38:56Z",
-      "category": "villagers",
-      "title": "размножение (VillagerMakeLove)",
-      "url": "https://github.com/chunkwake/core/commit/97b85ef00f52512cd148681ac4656a064b07c8c8"
-    },
-    {
-      "sha": "1bfb8393e80243bc1f781d65be684d3936e8e18d",
-      "shortSha": "1bfb8393",
-      "date": "2026-11-15T11:54:36Z",
-      "category": "villagers",
-      "title": "паника (VillagerPanicTrigger/CalmDown)",
-      "url": "https://github.com/chunkwake/core/commit/1bfb8393e80243bc1f781d65be684d3936e8e18d"
-    },
-    {
-      "sha": "c786ca8f291d606ac6af1ecb63ab7b56800a0136",
-      "shortSha": "c786ca8f",
-      "date": "2026-11-15T11:36:15Z",
-      "category": "villagers",
-      "title": "ShowTradesToPlayer и обмен едой/requestedItems",
-      "url": "https://github.com/chunkwake/core/commit/c786ca8f291d606ac6af1ecb63ab7b56800a0136"
-    },
-    {
-      "sha": "18da794a6c0dd0252f5cf2c309e6d6359b2b8cdd",
-      "shortSha": "18da794a",
-      "date": "2026-11-15T10:59:31Z",
-      "category": "villagers",
-      "title": "TradeWithVillager (слухи) и кулдаун дверей",
-      "url": "https://github.com/chunkwake/core/commit/18da794a6c0dd0252f5cf2c309e6d6359b2b8cdd"
-    },
-    {
-      "sha": "f8516b49bcd62e377dfad0fa92b37f21d684378b",
-      "shortSha": "f8516b49",
-      "date": "2026-11-15T10:29:29Z",
-      "category": "villagers",
-      "title": "двери по узлам пути и безопасное вставание с кровати",
-      "url": "https://github.com/chunkwake/core/commit/f8516b49bcd62e377dfad0fa92b37f21d684378b"
-    },
-    {
-      "sha": "f1fdf45aace0ad2db74d42e3998aceb3a2c9651d",
-      "shortSha": "f1fdf45a",
-      "date": "2026-11-15T10:00:53Z",
-      "category": "villagers",
-      "title": "стек целей и линия видимости сенсора",
-      "url": "https://github.com/chunkwake/core/commit/f1fdf45aace0ad2db74d42e3998aceb3a2c9651d"
-    },
-    {
-      "sha": "215bae611355f81a8ef61affaac8364b1f1e7439",
-      "shortSha": "215bae61",
-      "date": "2026-11-15T09:46:04Z",
-      "category": "villagers",
-      "title": "сенсор соседей и социальные встречи у колокола",
-      "url": "https://github.com/chunkwake/core/commit/215bae611355f81a8ef61affaac8364b1f1e7439"
-    },
-    {
-      "sha": "9ea314b4e371edb12a65496c4292be56cda2f906",
-      "shortSha": "9ea314b4",
-      "date": "2026-11-15T09:29:50Z",
-      "category": "villagers",
-      "title": "двери, сон с кулдауном и вставанием по кровати",
-      "url": "https://github.com/chunkwake/core/commit/9ea314b4e371edb12a65496c4292be56cda2f906"
-    },
-    {
-      "sha": "4e50f5c6c99d721eb9250d2bbb222e9f6bee1a13",
-      "shortSha": "4e50f5c6",
-      "date": "2026-11-15T08:50:39Z",
-      "category": "villagers",
-      "title": "сон в кровати, занятость и пробуждение",
-      "url": "https://github.com/chunkwake/core/commit/4e50f5c6c99d721eb9250d2bbb222e9f6bee1a13"
-    },
-    {
-      "sha": "c5b8a56333a7512065ea9b02ac0af30a33a47104",
-      "shortSha": "c5b8a563",
-      "date": "2026-11-15T08:26:56Z",
-      "category": "villagers",
-      "title": "расписание дня и прогулки к точкам интереса",
-      "url": "https://github.com/chunkwake/core/commit/c5b8a56333a7512065ea9b02ac0af30a33a47104"
-    },
-    {
-      "sha": "28ccaeeab68ebb765a23066f3c296fa63d00f2f5",
-      "shortSha": "28ccaeea",
-      "date": "2026-11-15T08:06:32Z",
+      "sha": "521df59912a9722283bb77b7f80401270b8d863b",
+      "shortSha": "521df599",
+      "date": "2026-11-20T17:34:34Z",
       "category": "core",
-      "title": "точные зачарования по EnchantmentHelper",
-      "url": "https://github.com/chunkwake/core/commit/28ccaeeab68ebb765a23066f3c296fa63d00f2f5"
+      "title": "Attribute/legacy enchants (EliteMobs), mob max health from attribute, applyComponentsAndValidate; bot runs /elitemobs; 79/82",
+      "url": "https://github.com/chunkwake/core/commit/521df59912a9722283bb77b7f80401270b8d863b"
     },
     {
-      "sha": "bc32d4745e0b65fe341b1bee4fbd2681d3424f46",
-      "shortSha": "bc32d474",
-      "date": "2026-11-15T07:46:54Z",
+      "sha": "c67e366d443bb9a7a711918130b68e1e48f1788d",
+      "shortSha": "c67e366d",
+      "date": "2026-11-20T17:05:09Z",
+      "category": "api",
+      "title": "EliteMobs/LevelledMobs/BetonQuest/ExecutableItems+SCore (numbers, bossbar, SynchedEntityData, ServerConnection.channels); bot runs /maintenance; 78/81",
+      "url": "https://github.com/chunkwake/core/commit/c67e366d443bb9a7a711918130b68e1e48f1788d"
+    },
+    {
+      "sha": "fdcd4bc4e25b4a0d6aee4a2523cebd25e55ecf72",
+      "shortSha": "fdcd4bc4",
+      "date": "2026-11-20T16:41:10Z",
+      "category": "api",
+      "title": "CommandAPI end-to-end (bootstrap Bukkit-null parity, NMS command stubs, MessageComponentSerializer, player identity); bot runs /cprobe -> CPROBE_OK; 74/76",
+      "url": "https://github.com/chunkwake/core/commit/fdcd4bc4e25b4a0d6aee4a2523cebd25e55ecf72"
+    },
+    {
+      "sha": "9e1e12a3f8df6907f52bff40df9e0babf08d96cd",
+      "shortSha": "9e1e12a3",
+      "date": "2026-11-20T15:32:55Z",
+      "category": "api",
+      "title": "CraftServer.syncCommands (PlugManX); documented 5 more plugins: 73/75, LibertyBans needs pre-fetched bans-download, FAWE isolated",
+      "url": "https://github.com/chunkwake/core/commit/9e1e12a3f8df6907f52bff40df9e0babf08d96cd"
+    },
+    {
+      "sha": "44fb070396285133ad40423e9d882877244794f9",
+      "shortSha": "44fb0703",
+      "date": "2026-11-20T15:15:14Z",
+      "category": "api",
+      "title": "TabTPS (Moonrise TickData), zMenu (real ArgumentTypes), DeluxeHub (SpigotConfig/commons-lang/item-nbt-api), CraftEngine classloader+ASM+version.json; expanded gate 69/71",
+      "url": "https://github.com/chunkwake/core/commit/44fb070396285133ad40423e9d882877244794f9"
+    },
+    {
+      "sha": "3caaa622f8c49db25440da3c6386f5d6d261eb6e",
+      "shortSha": "3caaa622",
+      "date": "2026-11-20T14:31:57Z",
       "category": "core",
-      "title": "карты исследователя у картографа",
-      "url": "https://github.com/chunkwake/core/commit/bc32d4745e0b65fe341b1bee4fbd2681d3424f46"
+      "title": "commit parallel chunk/region mob tick (par), mob_cells and Section::sample needed by HEAD; fixes CI build",
+      "url": "https://github.com/chunkwake/core/commit/3caaa622f8c49db25440da3c6386f5d6d261eb6e"
     },
     {
-      "sha": "ce3273d419039aebe5866207d7a47cc3292ae0ac",
-      "shortSha": "ce3273d4",
-      "date": "2026-11-15T07:11:32Z",
-      "category": "villagers",
-      "title": "сделки всех профессий и уровней по TradeSet",
-      "url": "https://github.com/chunkwake/core/commit/ce3273d419039aebe5866207d7a47cc3292ae0ac"
+      "sha": "62391a49bf77b7622a80511d74c5452bc249d152",
+      "shortSha": "62391a49",
+      "date": "2026-11-20T14:09:43Z",
+      "category": "api",
+      "title": "Emotecraft loads and enables (Paper connections/lifecycle/commands, Avatar+CraftEntity hierarchy, ServerConfiguration); expanded gate 64/66, LOADERR empty",
+      "url": "https://github.com/chunkwake/core/commit/62391a49bf77b7622a80511d74c5452bc249d152"
     },
     {
-      "sha": "9dcd48cc06b69739be70e6030d7a4b3a41a833ed",
-      "shortSha": "9dcd48cc",
-      "date": "2026-11-15T06:24:38Z",
+      "sha": "3bdee9655fe6b0f7493669b3cdbb616faeca2ec1",
+      "shortSha": "3bdee965",
+      "date": "2026-11-20T13:44:16Z",
+      "category": "api",
+      "title": "squaremap render works (Moonrise scheduler stubs, StainedGlassBlock); PNG tiles from live chunk loads and fullrender",
+      "url": "https://github.com/chunkwake/core/commit/3bdee9655fe6b0f7493669b3cdbb616faeca2ec1"
+    },
+    {
+      "sha": "67c2cc2f2e31f35c5425dac54a74cb8198d3aadc",
+      "shortSha": "67c2cc2f",
+      "date": "2026-11-20T11:58:10Z",
       "category": "core",
-      "title": "узоры ominous banner у знамени капитана",
-      "url": "https://github.com/chunkwake/core/commit/9dcd48cc06b69739be70e6030d7a4b3a41a833ed"
-    },
-    {
-      "sha": "d3b4715972566cdbc9bb43d0a25a4e61e9ff87f6",
-      "shortSha": "d3b47159",
-      "date": "2026-11-15T06:03:16Z",
-      "category": "villagers",
-      "title": "репутация (gossip) и подарки железного голема",
-      "url": "https://github.com/chunkwake/core/commit/d3b4715972566cdbc9bb43d0a25a4e61e9ff87f6"
-    },
-    {
-      "sha": "2577ce1d5c61927fdfedd73ce3364658116ba54f",
-      "shortSha": "2577ce1d",
-      "date": "2026-11-15T04:47:57Z",
-      "category": "core",
-      "title": "фазы полёта и дыхание по фазам",
-      "url": "https://github.com/chunkwake/core/commit/2577ce1d5c61927fdfedd73ce3364658116ba54f"
-    },
-    {
-      "sha": "3165fe0ee806bad1b902be2677096f0fde7437d3",
-      "shortSha": "3165fe0e",
-      "date": "2026-11-15T04:14:19Z",
-      "category": "core",
-      "title": "скидка в торговле и подарки жителей",
-      "url": "https://github.com/chunkwake/core/commit/3165fe0ee806bad1b902be2677096f0fde7437d3"
-    },
-    {
-      "sha": "060d7ed544408ba8ddb6648056073930862ea66d",
-      "shortSha": "060d7ed5",
-      "date": "2026-11-15T03:52:49Z",
-      "category": "core",
-      "title": "ездовые раввагеры и призыв vexes",
-      "url": "https://github.com/chunkwake/core/commit/060d7ed544408ba8ddb6648056073930862ea66d"
-    },
-    {
-      "sha": "c8384ab205160459624ac5e0e118c7ec33095fec",
-      "shortSha": "c8384ab2",
-      "date": "2026-11-14T17:29:10Z",
-      "category": "core",
-      "title": "знамя капитана, Bad Omen и лечение ведьмами",
-      "url": "https://github.com/chunkwake/core/commit/c8384ab205160459624ac5e0e118c7ec33095fec"
-    },
-    {
-      "sha": "c95bc8392b4793acd213e3e87918900f198f19a0",
-      "shortSha": "c95bc839",
-      "date": "2026-11-14T16:34:45Z",
-      "category": "core",
-      "title": "AreaEffectCloud и флакон dragon_breath",
-      "url": "https://github.com/chunkwake/core/commit/c95bc8392b4793acd213e3e87918900f198f19a0"
-    },
-    {
-      "sha": "b936200b8e1b7b334972c940a62e62d27f088a7e",
-      "shortSha": "b936200b",
-      "date": "2026-11-14T16:19:59Z",
-      "category": "core",
-      "title": "тьма и звуковой удар (sonic boom)",
-      "url": "https://github.com/chunkwake/core/commit/b936200b8e1b7b334972c940a62e62d27f088a7e"
-    },
-    {
-      "sha": "4afe15b8b306abf98d947ec6fe457d24cf367b0b",
-      "shortSha": "4afe15b8",
-      "date": "2026-11-14T15:47:32Z",
-      "category": "core",
-      "title": "группы разбойников и герой деревни",
-      "url": "https://github.com/chunkwake/core/commit/4afe15b8b306abf98d947ec6fe457d24cf367b0b"
-    },
-    {
-      "sha": "d8d6ce0000cdab59c65fdaec220f8bc3f52b6fbc",
-      "shortSha": "d8d6ce00",
-      "date": "2026-11-14T14:57:16Z",
-      "category": "core",
-      "title": "Скалк-визгун и страж",
-      "url": "https://github.com/chunkwake/core/commit/d8d6ce0000cdab59c65fdaec220f8bc3f52b6fbc"
-    },
-    {
-      "sha": "77e975e66ef33f1e6d12057f53798940912b1302",
-      "shortSha": "77e975e6",
-      "date": "2026-11-14T14:44:42Z",
-      "category": "core",
-      "title": "расползание скалка при смерти моба",
-      "url": "https://github.com/chunkwake/core/commit/77e975e66ef33f1e6d12057f53798940912b1302"
-    },
-    {
-      "sha": "cfa0890d6b906ecd72d9445ecf4a3bd8a2388251",
-      "shortSha": "cfa0890d",
-      "date": "2026-11-14T14:29:18Z",
-      "category": "commands",
-      "title": "advancement/recipe через resource_key (фикс краша клиента)",
-      "url": "https://github.com/chunkwake/core/commit/cfa0890d6b906ecd72d9445ecf4a3bd8a2388251"
-    },
-    {
-      "sha": "50c741d15cafaa98730b5e2e902f638e7f83a145",
-      "shortSha": "50c741d1",
-      "date": "2026-11-14T14:21:56Z",
-      "category": "core",
-      "title": "дыхание dragon_breath и лечение кристаллами",
-      "url": "https://github.com/chunkwake/core/commit/50c741d15cafaa98730b5e2e902f638e7f83a145"
-    },
-    {
-      "sha": "9129baa8f793e87e3f4af08bed0ca816ab563b42",
-      "shortSha": "9129baa8",
-      "date": "2026-11-14T14:08:25Z",
-      "category": "core",
-      "title": "полёт, контактный урон, босс-бар и анимация возрождения",
-      "url": "https://github.com/chunkwake/core/commit/9129baa8f793e87e3f4af08bed0ca816ab563b42"
-    },
-    {
-      "sha": "2081f8bd36f434d04d1f0fe3496dc0f2a6bc1224",
-      "shortSha": "2081f8bd",
-      "date": "2026-11-14T13:29:07Z",
-      "category": "core",
-      "title": "полёт, черепа, босс-бар и взрыв при смерти",
-      "url": "https://github.com/chunkwake/core/commit/2081f8bd36f434d04d1f0fe3496dc0f2a6bc1224"
-    },
-    {
-      "sha": "5a37d07970cd80ccb5c1a9c907b4528de051520d",
-      "shortSha": "5a37d079",
-      "date": "2026-11-14T12:28:45Z",
-      "category": "core",
-      "title": "метаданные окисления и превращение в статую",
-      "url": "https://github.com/chunkwake/core/commit/5a37d07970cd80ccb5c1a9c907b4528de051520d"
-    },
-    {
-      "sha": "48a04f5e3f0d84c14ff9d1158fc9f31e59d604eb",
-      "shortSha": "48a04f5e",
-      "date": "2026-11-14T12:04:18Z",
-      "category": "core",
-      "title": "вибрации по секциям, задержка, шерсть и частица vibration",
-      "url": "https://github.com/chunkwake/core/commit/48a04f5e3f0d84c14ff9d1158fc9f31e59d604eb"
-    },
-    {
-      "sha": "f09c7cfc2fedc2837fb4738ef797252853bc4d65",
-      "shortSha": "f09c7cfc",
-      "date": "2026-11-14T11:34:48Z",
-      "category": "core",
-      "title": "рамка, conduit_power и урон враждебным мобам",
-      "url": "https://github.com/chunkwake/core/commit/f09c7cfc2fedc2837fb4738ef797252853bc4d65"
-    },
-    {
-      "sha": "a16e6d3c70da2632124c7477c4688892135e3a11",
-      "shortSha": "a16e6d3c",
-      "date": "2026-11-14T11:13:31Z",
-      "category": "core",
-      "title": "босс-бар event.minecraft.raid и прогресс по здоровью волны",
-      "url": "https://github.com/chunkwake/core/commit/a16e6d3c70da2632124c7477c4688892135e3a11"
-    },
-    {
-      "sha": "2a27218e389b2e36e7ab261e4233a6f6f9db31b7",
-      "shortSha": "2a27218e",
-      "date": "2026-11-14T10:03:23Z",
-      "category": "core",
-      "title": "Bad Omen, волны разбойников и статистики raid_trigger/raid_win",
-      "url": "https://github.com/chunkwake/core/commit/2a27218e389b2e36e7ab261e4233a6f6f9db31b7"
-    },
-    {
-      "sha": "3de29d7b17930f3c0b1e542a5d9ace8ebecad22e",
-      "shortSha": "3de29d7b",
-      "date": "2026-11-14T09:41:13Z",
-      "category": "core",
-      "title": "окисление и порядок stats/advancements при входе",
-      "url": "https://github.com/chunkwake/core/commit/3de29d7b17930f3c0b1e542a5d9ace8ebecad22e"
-    },
-    {
-      "sha": "20059198858e62e75fc59fc28ccc690394091aa5",
-      "shortSha": "20059198",
-      "date": "2026-11-14T09:15:40Z",
-      "category": "core",
-      "title": "склейка основания голема и свойства в execute if block",
-      "url": "https://github.com/chunkwake/core/commit/20059198858e62e75fc59fc28ccc690394091aa5"
-    },
-    {
-      "sha": "647ca229c84463ae00b8201047b1e0dc0f24f767",
-      "shortSha": "647ca229",
-      "date": "2026-11-14T08:58:21Z",
-      "category": "core",
-      "title": "using_item для щита и корректный progress в update_advancements",
-      "url": "https://github.com/chunkwake/core/commit/647ca229c84463ae00b8201047b1e0dc0f24f767"
-    },
-    {
-      "sha": "edbd21ad964ec09052198481893750c37a245b70",
-      "shortSha": "edbd21ad",
-      "date": "2026-11-14T08:34:28Z",
-      "category": "core",
-      "title": "using_item для лука, еды, зелий и трезубца",
-      "url": "https://github.com/chunkwake/core/commit/edbd21ad964ec09052198481893750c37a245b70"
-    },
-    {
-      "sha": "1935591806c95bace154dba804b2859f435d859e",
-      "shortSha": "19355918",
-      "date": "2026-11-14T08:02:15Z",
-      "category": "core",
-      "title": "offsetX/Y/Z в conditions.location",
-      "url": "https://github.com/chunkwake/core/commit/1935591806c95bace154dba804b2859f435d859e"
-    },
-    {
-      "sha": "86472987d3a9691e54b9027a86ec4df0b8b11608",
-      "shortSha": "86472987",
-      "date": "2026-11-14T07:36:47Z",
-      "category": "core",
-      "title": "block.nbt в location-предикате",
-      "url": "https://github.com/chunkwake/core/commit/86472987d3a9691e54b9027a86ec4df0b8b11608"
-    },
-    {
-      "sha": "43293c2d2533a45511f0fb683a9efdc56961e79e",
-      "shortSha": "43293c2d",
-      "date": "2026-11-14T07:03:52Z",
-      "category": "core",
-      "title": "явный Верхний мир и чистое измерение после дракона",
-      "url": "https://github.com/chunkwake/core/commit/43293c2d2533a45511f0fb683a9efdc56961e79e"
-    },
-    {
-      "sha": "4d2609dc7b3a3b6b2db65375a50d5b0ad51cceeb",
-      "shortSha": "4d2609dc",
-      "date": "2026-11-14T06:35:12Z",
-      "category": "core",
-      "title": "block.state в location-предикате",
-      "url": "https://github.com/chunkwake/core/commit/4d2609dc7b3a3b6b2db65375a50d5b0ad51cceeb"
-    },
-    {
-      "sha": "cd1619881d411e9dd2bae231b0689a597425faf1",
-      "shortSha": "cd161988",
-      "date": "2026-11-14T05:45:11Z",
-      "category": "core",
-      "title": "using_item, looking_at и вид Parrot",
-      "url": "https://github.com/chunkwake/core/commit/cd1619881d411e9dd2bae231b0689a597425faf1"
-    },
-    {
-      "sha": "3cdd1f559bfa4b689dcb315909a7c05bf41a9d4c",
-      "shortSha": "3cdd1f55",
-      "date": "2026-11-13T18:24:53Z",
-      "category": "core",
-      "title": "возрождение дракона Края",
-      "url": "https://github.com/chunkwake/core/commit/3cdd1f559bfa4b689dcb315909a7c05bf41a9d4c"
+      "title": "squaremap render stack fixes (BlockState.CODEC, Strategy class, Registry codec, NMS render stubs); Paper JVM --add-opens restores PacketEvents; PNG tiles still absent",
+      "url": "https://github.com/chunkwake/core/commit/67c2cc2f2e31f35c5425dac54a74cb8198d3aadc"
     }
   ]
 }

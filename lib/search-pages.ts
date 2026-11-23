@@ -1,5 +1,6 @@
 import { copy } from '@/lib/dictionary';
 import { benchmarkPageMeta } from '@/lib/benchmark-meta';
+import { benchmarksData, labScenarios } from '@/lib/benchmarks';
 import changelog from '@/content/data/changelog.json';
 import { featureMatrix } from '@/lib/feature-matrix';
 import type { Lang } from '@/lib/i18n';
@@ -71,27 +72,38 @@ function homePages(locale: Lang): StaticSearchPage[] {
 }
 
 function benchmarkPages(locale: Lang): StaticSearchPage[] {
-  const ru = locale === 'ru';
   const meta = benchmarkPageMeta[locale];
+  const ab = benchmarksData.ab;
+  const abDate = ab?.date ?? '';
+  const rounds = ab?.rounds ?? 5;
+  const abText = (ab?.scenarios ?? [])
+    .map(
+      (scenario) =>
+        `${scenario.label?.[locale] ?? scenario.id}: p99 ${scenario.chunkwake.p99} / ${scenario.paper.p99} ${locale === 'ru' ? 'мс' : 'ms'}, ${scenario.delta?.ratio ?? ''}`,
+    )
+    .join('; ');
+
   return [
     page(
       locale,
       '/benchmarks',
       meta.title,
       meta.description,
-      ru
+      locale === 'ru'
         ? [
-            'Стенд: Ryzen 9 7945HX, Windows 11, release, плоский мир, обзор 2, Java 25 Temurin, 20 ботов, разминка 20 секунд, замер 45 секунд, два прогона.',
-            'Сценарии: одновременный вход, движение, исследование мира, редстоун на 128 лампах и проводах, 2500 коров. Сравниваются p95 входа, MSPT, TPS и память.',
-            'Память: private в простое, пик и состояние через 30 секунд. Хранилище: deflate 1/3/6/9, полный чанк 6.9 КБ против 8.7 КБ у ванили.',
-            'Оговорки: одна машина, два прогона, без пользовательских плагинов, AI коров ещё сверяется с ванилью, скорость не заменяет проверку поведения.',
+            'A/B p99: Ryzen 9 7945HX, release, один бот, обзор 8, плоский мир, 5 раундов по 15 секунд, плагин PerfProbe. ' + abText + '.',
+            'Лабораторный стенд: 20 ботов, разминка 20 секунд, замер 45 секунд, два прогона. Сценарии: вход, движение, исследование мира, редстоун и 2500 коров.',
+            `Память: пик и состояние через 30 секунд. Хранилище: deflate 1/3/6/9, чанк ${benchmarksData.storage?.chunkKb.chunkwake ?? '6.9'} КБ против ${benchmarksData.storage?.chunkKb.vanilla ?? '8.7'} КБ у ванили.`,
+            'Оговорки: одна машина, ограниченное число прогонов, служебный плагин PerfProbe, AI коров ещё сверяется с ванилью, скорость не заменяет проверку поведения.',
+            'Данные обновляются автоматически: A/B из benchmarks/ab-p99/results.md, лабораторный стенд из docs/perf.md.',
             'Воспроизведение: chunkwake-lab bench --profile all --bots 20 --warmup 20 --duration 45 --repetitions 2.',
           ]
         : [
-            'Bench: Ryzen 9 7945HX, Windows 11, release, flat world, view distance 2, Java 25 Temurin, 20 bots, 20 second warmup, 45 second measurement, two runs.',
-            'Scenarios: simultaneous join, movement, world exploration, redstone with 128 lamps and wires, 2500 cows. Join p95, MSPT, TPS and memory are compared.',
-            'Memory: private idle, peak and state after 30 seconds. Storage: deflate 1/3/6/9, a full chunk is 6.9 KB versus 8.7 KB for vanilla.',
-            'Caveats: one machine, two runs, no user plugins, cow AI is still being verified against vanilla, speed does not replace behaviour checks.',
+            `A/B p99: Ryzen 9 7945HX, release, one bot, view 8, flat world, 5 rounds of 15 seconds, PerfProbe plugin. ${abText}.`,
+            `Lab bench: 20 bots, 20 second warmup, 45 second measurement, two runs. Scenarios: join, movement, world exploration, redstone and 2500 cows. ${labScenarios.length} scenarios.`,
+            `Memory: peak and state after 30 seconds. Storage: deflate 1/3/6/9, a chunk is ${benchmarksData.storage?.chunkKb.chunkwake ?? '6.9'} KB versus ${benchmarksData.storage?.chunkKb.vanilla ?? '8.7'} KB for vanilla.`,
+            'Caveats: one machine, limited runs, the PerfProbe service plugin, cow AI is still being verified against vanilla, speed does not replace behaviour checks.',
+            `Data refreshes automatically: A/B from benchmarks/ab-p99/results.md (${abDate}, ${rounds} rounds), lab from docs/perf.md.`,
             'Reproduction: chunkwake-lab bench --profile all --bots 20 --warmup 20 --duration 45 --repetitions 2.',
           ],
     ),

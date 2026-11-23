@@ -1,0 +1,392 @@
+{
+  "source": "chunkwake/core",
+  "branch": "ver/26.3",
+  "coreSha": "8b3165d81046f196b2e5577b21fd0453950d7488",
+  "syncedAt": "2026-11-23T07:09:55.999Z",
+  "ab": {
+    "date": "2026-11-23",
+    "rounds": 5,
+    "scenarios": [
+      {
+        "id": "cows200",
+        "label": {
+          "ru": "200 коров",
+          "en": "200 cows"
+        },
+        "chunkwake": {
+          "ticks": "1505",
+          "avg": "0.684",
+          "p50": "0.680",
+          "p95": "0.867",
+          "p99": "0.966",
+          "p99Median": "0.960",
+          "max": "1.719",
+          "tps": "20.00"
+        },
+        "paper": {
+          "ticks": "1504",
+          "avg": "2.362",
+          "p50": "2.291",
+          "p95": "3.126",
+          "p99": "3.713",
+          "p99Median": "3.763",
+          "max": "7.261",
+          "tps": "19.99"
+        },
+        "delta": {
+          "p99Mean": "-2.638",
+          "p99Median": "-2.797",
+          "wins": "5/5",
+          "pBetter": "0.031",
+          "pPaperBetter": "1.000",
+          "ratio": "0.260x",
+          "tpsDelta": "0.01",
+          "tpsWins": "2/5",
+          "tpsPBetter": "0.875"
+        }
+      },
+      {
+        "id": "cows1000",
+        "label": {
+          "ru": "1000 коров",
+          "en": "1000 cows"
+        },
+        "chunkwake": {
+          "ticks": "1504",
+          "avg": "1.182",
+          "p50": "1.176",
+          "p95": "1.462",
+          "p99": "1.638",
+          "p99Median": "1.630",
+          "max": "2.626",
+          "tps": "19.99"
+        },
+        "paper": {
+          "ticks": "1504",
+          "avg": "8.478",
+          "p50": "8.293",
+          "p95": "10.815",
+          "p99": "12.018",
+          "p99Median": "10.645",
+          "max": "19.391",
+          "tps": "20.00"
+        },
+        "delta": {
+          "p99Mean": "-9.712",
+          "p99Median": "-9.046",
+          "wins": "5/5",
+          "pBetter": "0.031",
+          "pPaperBetter": "1.000",
+          "ratio": "0.136x",
+          "tpsDelta": "-0.01",
+          "tpsWins": "2/5",
+          "tpsPBetter": "0.500"
+        }
+      },
+      {
+        "id": "redstone",
+        "label": {
+          "ru": "1000 коров + redstone",
+          "en": "1000 cows + redstone"
+        },
+        "chunkwake": {
+          "ticks": "1621",
+          "avg": "1.197",
+          "p50": "1.181",
+          "p95": "1.498",
+          "p99": "1.650",
+          "p99Median": "1.646",
+          "max": "3.302",
+          "tps": "20.00"
+        },
+        "paper": {
+          "ticks": "1617",
+          "avg": "7.639",
+          "p50": "7.466",
+          "p95": "9.324",
+          "p99": "10.534",
+          "p99Median": "10.049",
+          "max": "21.017",
+          "tps": "19.99"
+        },
+        "delta": {
+          "p99Mean": "-8.827",
+          "p99Median": "-8.635",
+          "wins": "5/5",
+          "pBetter": "0.031",
+          "pPaperBetter": "1.000",
+          "ratio": "0.157x",
+          "tpsDelta": "0.01",
+          "tpsWins": "3/5",
+          "tpsPBetter": "0.812"
+        }
+      }
+    ],
+    "sourceUrl": "https://raw.githubusercontent.com/chunkwake/core/ver/26.3/benchmarks/ab-p99/results.md"
+  },
+  "lab": {
+    "date": "2026-11-10",
+    "head": "d3b74fd",
+    "startup": {
+      "chunkwake": "0.6–0.9",
+      "vanilla": "6.6–11.4"
+    },
+    "scenarios": [
+      {
+        "id": "join",
+        "label": {
+          "ru": "Одновременный вход",
+          "en": "Simultaneous join"
+        },
+        "chunkwake": {
+          "p95": "11.1–25.5",
+          "mspt": "0.4–0.5",
+          "memory": "187–188"
+        },
+        "vanilla": {
+          "p95": "845–860",
+          "mspt": "2.1–2.6",
+          "memory": "907–929"
+        }
+      },
+      {
+        "id": "movement",
+        "label": {
+          "ru": "Движение",
+          "en": "Movement"
+        },
+        "chunkwake": {
+          "p95": "16.4–47.1",
+          "mspt": "0.4–0.5",
+          "memory": "182–190"
+        },
+        "vanilla": {
+          "p95": "703–746",
+          "mspt": "2.7–3.1",
+          "memory": "860–864"
+        }
+      },
+      {
+        "id": "exploration",
+        "label": {
+          "ru": "Исследование мира",
+          "en": "World exploration"
+        },
+        "chunkwake": {
+          "p95": "25.2–30.4",
+          "mspt": "0.8",
+          "memory": "207–209"
+        },
+        "vanilla": {
+          "p95": "698–891",
+          "mspt": "3.4–4.3",
+          "memory": "868–877"
+        }
+      },
+      {
+        "id": "redstone",
+        "label": {
+          "ru": "Редстоун, 128 ламп и проводов",
+          "en": "Redstone, 128 lamps and wires"
+        },
+        "chunkwake": {
+          "p95": "16.1–16.2",
+          "mspt": "0.4–0.5",
+          "memory": "189–190"
+        },
+        "vanilla": {
+          "p95": "897–960",
+          "mspt": "3.4–3.5",
+          "memory": "845–859"
+        }
+      },
+      {
+        "id": "cows",
+        "label": {
+          "ru": "2500 коров",
+          "en": "2500 cows"
+        },
+        "chunkwake": {
+          "p95": "16.2",
+          "mspt": "3.9–5.6",
+          "memory": "230–236",
+          "tps": "20"
+        },
+        "vanilla": {
+          "p95": "682–925",
+          "mspt": "120–221",
+          "memory": "909–913",
+          "tps": "4.4–8.6"
+        }
+      }
+    ],
+    "sourceUrl": "https://raw.githubusercontent.com/chunkwake/core/ver/26.3/docs/perf.md"
+  },
+  "compression": [
+    {
+      "level": "1 (сейчас)",
+      "data": "124",
+      "sectors": "149",
+      "compress": "69–106",
+      "decompress": "40–59"
+    },
+    {
+      "level": "3",
+      "data": "90",
+      "sectors": "116",
+      "compress": "156–204",
+      "decompress": "38–67"
+    },
+    {
+      "level": "6 (ваниль)",
+      "data": "85",
+      "sectors": "113",
+      "compress": "257–340",
+      "decompress": "41–66"
+    },
+    {
+      "level": "9",
+      "data": "83",
+      "sectors": "110",
+      "compress": "2020",
+      "decompress": "38–67"
+    }
+  ],
+  "storage": {
+    "chunkKb": {
+      "chunkwake": "6.9",
+      "vanilla": "8.7"
+    }
+  },
+  "cpu": [
+    {
+      "label": {
+        "ru": "Случайные тики, 400 тиков при 4096",
+        "en": "Random ticks, 400 ticks at 4096"
+      },
+      "before": {
+        "ru": "56.7 с",
+        "en": "56.7 s"
+      },
+      "after": {
+        "ru": "32.5–33.5 с (ваниль 43 с)",
+        "en": "32.5–33.5 s (vanilla 43 s)"
+      },
+      "change": {
+        "ru": "виды состояний таблицей (`play/kinds.rs`); листва тикает, только когда распадается, `distance` пересчитывается отложенным тиком, как `LeavesBlock`",
+        "en": "state kinds in a table; leaves tick only when decaying; deferred `distance` recompute"
+      }
+    },
+    {
+      "label": {
+        "ru": "`/fill` 32×16×32 (`fill_16k`)",
+        "en": "`/fill` 32×16×32 (`fill_16k`)"
+      },
+      "before": {
+        "ru": "288 мс",
+        "en": "288 ms"
+      },
+      "after": {
+        "ru": "35 мс",
+        "en": "35 ms"
+      },
+      "change": {
+        "ru": "`set_blocks`: один замок мира, один проход света (`Engine::blocks_changed`), одна очередь рассылки на пачку",
+        "en": "one world lock, one light pass, one broadcast queue per batch"
+      }
+    },
+    {
+      "label": {
+        "ru": "Запись блока со светом",
+        "en": "Block write with light"
+      },
+      "before": {
+        "ru": "33.5 мкс",
+        "en": "33.5 µs"
+      },
+      "after": {
+        "ru": "~28 мкс",
+        "en": "~28 µs"
+      },
+      "change": {
+        "ru": "соседи читаются один раз на наблюдателей, огонь и листву",
+        "en": "neighbours are read once for observers, fire and leaves"
+      }
+    }
+  ],
+  "memory": {
+    "date": "2026-11-06",
+    "rows": [
+      {
+        "label": {
+          "ru": "A: обзор 10, исходная",
+          "en": "A: view 10, baseline"
+        },
+        "idle": "391.5",
+        "peak": "1317.3",
+        "after": "1003.9",
+        "view": "100.0 %"
+      },
+      {
+        "label": {
+          "ru": "A: обзор 10, общая Palette до mi_collect",
+          "en": "A: view 10, shared Palette before mi_collect"
+        },
+        "idle": "350.6",
+        "peak": "1233.0",
+        "after": "1008.6",
+        "view": "100.0 %"
+      },
+      {
+        "label": {
+          "ru": "A: обзор 10, итоговая normal",
+          "en": "A: view 10, final normal"
+        },
+        "idle": "348.7",
+        "peak": "1222.6",
+        "after": "965.2",
+        "view": "100.0 %"
+      },
+      {
+        "label": {
+          "ru": "B: обзор 32, исходная",
+          "en": "B: view 32, baseline"
+        },
+        "idle": "391.4",
+        "peak": "1991.3",
+        "after": "1330.5",
+        "view": "94.2 %"
+      },
+      {
+        "label": {
+          "ru": "B: обзор 32, общая Palette до mi_collect",
+          "en": "B: view 32, shared Palette before mi_collect"
+        },
+        "idle": "351.0",
+        "peak": "1859.6",
+        "after": "1216.5",
+        "view": "92.8 %"
+      },
+      {
+        "label": {
+          "ru": "B: обзор 32, итоговая normal",
+          "en": "B: view 32, final normal"
+        },
+        "idle": "351.1",
+        "peak": "1818.4",
+        "after": "1164.6",
+        "view": "92.5 %"
+      },
+      {
+        "label": {
+          "ru": "A: обзор 10, итоговая low",
+          "en": "A: view 10, final low"
+        },
+        "idle": "339.2",
+        "peak": "776.6",
+        "after": "445.2",
+        "view": "99.6 %"
+      }
+    ]
+  }
+}

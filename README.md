@@ -64,7 +64,7 @@
 | [`/ru/docs/migrating/`](https://chunkwake.github.io/ru/docs/migrating/) | миграция с Paper/Folia, Docker и интерактивный чеклист |
 | [`/ru/docs/feature-matrix/`](https://chunkwake.github.io/ru/docs/feature-matrix/) | матрица механик, синхронизируется из core |
 | [`/ru/docs/lab/`](https://chunkwake.github.io/ru/docs/lab/) | `chunkwake-lab`: сравнение с ванилью, профили, отчёты |
-| [`/ru/benchmarks/`](https://chunkwake.github.io/ru/benchmarks/) | железо, методика, таблицы, оговорки, воспроизведение |
+| [`/ru/benchmarks/`](https://chunkwake.github.io/ru/benchmarks/) | A/B p99, лабораторный стенд, память, хранилище; данные из core |
 | [`/ru/compatibility/`](https://chunkwake.github.io/ru/compatibility/) | проверенные плагины, версии, ограничения |
 | [`/ru/changelog/`](https://chunkwake.github.io/ru/changelog/) | коммиты ядра и журнал разработки |
 | [`/ru/status/`](https://chunkwake.github.io/ru/status/) | этапы M0–M10, текущий фокус, исследовательские направления |
@@ -98,7 +98,7 @@ pnpm install
 pnpm dev          # http://localhost:8500
 ```
 
-`predev` синхронизирует матрицу, команды, даты документации, релизы, commit core и журнал коммитов. `prebuild` делает то же самое и дополнительно собирает OG-картинки и PWA-иконки. Если сеть недоступна, используется последняя сохранённая копия.
+`predev` синхронизирует матрицу, команды, даты документации, релизы, commit core, замеры и журнал коммитов. `prebuild` делает то же самое и дополнительно собирает OG-картинки и PWA-иконки. Если сеть недоступна, используется последняя сохранённая копия.
 
 Workflow сайта проверяет `ver/26.3` раз в час и пересобирает страницы только когда commit или релиз изменились. Записи терминала обновляются отдельным workflow `record-terminal.yml`.
 
@@ -116,6 +116,7 @@ pnpm preview      # http://localhost:8500 поверх out/
 pnpm sync:matrix     # feature-matrix.md → content/data/feature-matrix.json
 pnpm sync:commands   # commands.md → content/data/commands.json
 pnpm sync:source     # commit ver/26.3 → content/data/source.json
+pnpm sync:benchmarks # A/B p99 и lab-стенд из core → content/data/benchmarks.json
 pnpm sync:changelog  # последние коммиты core → content/data/changelog.json
 pnpm terminal:record # перезаписать public/terminal/ с локального бинарника
 pnpm sync:docs       # даты последних изменений docs
@@ -180,6 +181,8 @@ lib/
 scripts/
 ├── sync-feature-matrix.mjs синхронизация фич-матрицы
 ├── sync-docs-meta.mjs      даты изменения документации
+├── sync-source.mjs         commit core и блок свежести
+├── sync-benchmarks.mjs     A/B p99, lab-стенд, память и хранилище
 ├── sync-releases.mjs       GitHub Releases и SHA-256
 ├── sync-changelog.mjs      последние коммиты core
 ├── generate-images.mjs     OG и PWA-иконки
@@ -265,12 +268,23 @@ flowchart LR
 | `sync-feature-matrix.mjs` | тянет `core/docs/feature-matrix.md`, разбирает таблицы в JSON | последний `content/data/feature-matrix.json` |
 | `sync-docs-meta.mjs` | собирает даты последних изменений MDX | mtime файла |
 | `sync-source.mjs` | `git ls-remote` → commit `ver/26.3` для гейта и блока свежести | последний `content/data/source.json` |
+| `sync-benchmarks.mjs` | `benchmarks/ab-p99/results.md` и `docs/perf.md` → p99/TPS, lab-таблицы, CPU, память, хранилище | последний `content/data/benchmarks.json` |
 | `sync-releases.mjs` | берёт последний Release, ассеты, размеры, SHA-256 из `digest` или `SHA256SUMS` | последний `content/data/release.json` |
 | `sync-changelog.mjs` | последние 80 коммитов `ver/26.3` через GitHub API | последний `content/data/changelog.json` |
 | `generate-images.mjs` | рисует OG-картинки и PWA-иконки | уже готовые файлы в `public/` |
 | `postbuild.mjs` | копирует `404.html` и создаёт `.nojekyll` | — |
 
 В dev-режиме скрипты запускаются с `--cache`, чтобы не дёргать GitHub на каждый перезапуск. В CI используется `GITHUB_TOKEN`, чтобы снизить риск rate limit.
+
+### Бенчмарки
+
+Страница замеров не содержит ручных чисел. `sync-benchmarks.mjs` разбирает:
+
+- `benchmarks/ab-p99/results.md` — сгенерированный отчёт A/B: pooled p50/p95/p99, TPS, парные дельты, число раундов;
+- `docs/ab-p99.md` — дата A/B-прогона;
+- `docs/perf.md` — лабораторная таблица, время запуска, CPU, память, сжатие и размер чанка.
+
+Каждая секция парсится отдельно: если core поменяет формат и разбор не удастся, эта секция останется из кэша, а сборка продолжится. Сырые samples и все 30 окон лежат в `benchmarks/ab-p99/`.
 
 ## Поиск
 
@@ -388,7 +402,7 @@ Chunkwake — независимый проект. Он не связан с Moj
 - **Output:** static export, deployed to GitHub Pages through Actions.
 - **Languages:** Russian is the default, English lives under `/en/`.
 - **Search:** fully client-side over a static index; no search server.
-- **Data:** the feature matrix and GitHub Releases are synced at build time with a cached fallback.
+- **Data:** the feature matrix, benchmarks, releases and the commit log are synced from core at build time with a cached fallback.
 - **No backend:** no accounts, databases, subscriptions or payment forms.
 
 ```bash

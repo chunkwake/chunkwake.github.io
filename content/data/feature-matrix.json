@@ -1,14 +1,14 @@
 {
   "source": "https://raw.githubusercontent.com/chunkwake/core/ver/26.3/docs/feature-matrix.md",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-18T07:06:11.715Z",
-  "sha256": "567cdef79b93b8b326ebb863535a0fac83c93e374432d57a513ca355d27da0e8",
+  "fetchedAt": "2026-11-23T07:09:51.675Z",
+  "sha256": "4f5d970d027bf50b08a7fab47affb139d49041ad0e18b023550a5a937b821327",
   "totals": {
     "ready": 70,
     "partial": 39,
     "missing": 3,
-    "unknown": 0,
-    "total": 112
+    "unknown": 33,
+    "total": 145
   },
   "sections": [
     {
@@ -896,6 +896,315 @@
           "status": "ready",
           "stage": "",
           "note": "BlueMap 5.29 включается, грузит ресурсы Mojang (`accept-download: true`), поднимает веб-сервер и **рендерит карту**: `Loaded!`, `maps/world/tiles` — 66 тайлов на 1.1 МБ. Свет блока и присед игрока отдаются из мира (`light x y z` в `world_request`, `Live::sneaking`), поэтому карта не чёрная. Тестовый плагин включается рядом"
+        }
+      ]
+    },
+    {
+      "id": "section-9",
+      "title": "Lock-order аудит тик-пути (перед region-тиком)",
+      "counts": {
+        "ready": 0,
+        "partial": 0,
+        "missing": 0,
+        "unknown": 9,
+        "total": 9
+      },
+      "rows": [
+        {
+          "id": "section-9-row-1",
+          "name": "держим",
+          "status": "unknown",
+          "stage": "функция",
+          "note": "раз"
+        },
+        {
+          "id": "section-9-row-2",
+          "name": "hub.players",
+          "status": "unknown",
+          "stage": "snapshot",
+          "note": "2"
+        },
+        {
+          "id": "section-9-row-3",
+          "name": "sim.mobs",
+          "status": "unknown",
+          "stage": "tick_arrows",
+          "note": "2"
+        },
+        {
+          "id": "section-9-row-4",
+          "name": "player_saves",
+          "status": "unknown",
+          "stage": "run",
+          "note": "1"
+        },
+        {
+          "id": "section-9-row-5",
+          "name": "sim.mobs",
+          "status": "unknown",
+          "stage": "tick_arrows",
+          "note": "1"
+        },
+        {
+          "id": "section-9-row-6",
+          "name": "hub.players",
+          "status": "unknown",
+          "stage": "session",
+          "note": "1"
+        },
+        {
+          "id": "section-9-row-7",
+          "name": "world_edit",
+          "status": "unknown",
+          "stage": "break_block",
+          "note": "1"
+        },
+        {
+          "id": "section-9-row-8",
+          "name": "hub.players",
+          "status": "unknown",
+          "stage": "scan_tripwires",
+          "note": "1"
+        },
+        {
+          "id": "section-9-row-9",
+          "name": "sim.mobs",
+          "status": "unknown",
+          "stage": "tick_mobs",
+          "note": "1"
+        }
+      ]
+    },
+    {
+      "id": "section-10",
+      "title": "Инверсии lock-order устранены (4 из 4)",
+      "counts": {
+        "ready": 0,
+        "partial": 0,
+        "missing": 0,
+        "unknown": 5,
+        "total": 5
+      },
+      "rows": [
+        {
+          "id": "section-10-row-1",
+          "name": "функция",
+          "status": "unknown",
+          "stage": "",
+          "note": "стало"
+        },
+        {
+          "id": "section-10-row-2",
+          "name": "tick_arrows",
+          "status": "unknown",
+          "stage": "",
+          "note": "достижения (`hurt_entity`, `killed_by_arrow`) откладываются в очередь и применяются после `drop(mobs)`; `live` читается уже без `sim.mobs`"
+        },
+        {
+          "id": "section-10-row-3",
+          "name": "break_block",
+          "status": "unknown",
+          "stage": "",
+          "note": "предмет в руке читается до `world_edit` (`held_shears`)"
+        },
+        {
+          "id": "section-10-row-4",
+          "name": "scan_tripwires",
+          "status": "unknown",
+          "stage": "",
+          "note": "игроки снимаются в `Vec` под `hub.players`, guard отпускается, затем `live`"
+        },
+        {
+          "id": "section-10-row-5",
+          "name": "tick_mobs",
+          "status": "unknown",
+          "stage": "",
+          "note": "снимок жителей (`villager_points`) берётся до `sim.mobs`"
+        }
+      ]
+    },
+    {
+      "id": "section-11",
+      "title": "Расширенная матрица плагинов (33 jar) и найденные дыры",
+      "counts": {
+        "ready": 0,
+        "partial": 0,
+        "missing": 0,
+        "unknown": 7,
+        "total": 7
+      },
+      "rows": [
+        {
+          "id": "section-11-row-1",
+          "name": "плагин",
+          "status": "unknown",
+          "stage": "",
+          "note": "итог"
+        },
+        {
+          "id": "section-11-row-2",
+          "name": "DreamDisplays 1.10.9",
+          "status": "unknown",
+          "stage": "",
+          "note": "включился (225 мс); lifecycle-команда падает на `CommandNode.requirement`"
+        },
+        {
+          "id": "section-11-row-3",
+          "name": "webcam 4.4.0",
+          "status": "unknown",
+          "stage": "",
+          "note": "включился (93 мс)"
+        },
+        {
+          "id": "section-11-row-4",
+          "name": "CustomDiscs 2.7.0",
+          "status": "unknown",
+          "stage": "",
+          "note": "не загрузился: нет классов PacketEvents при `Class.forName` main"
+        },
+        {
+          "id": "section-11-row-5",
+          "name": "NpcPlugin 3.6.4",
+          "status": "unknown",
+          "stage": "",
+          "note": "не включился: нужны NMS `commands.CommandBuildContext`"
+        },
+        {
+          "id": "section-11-row-6",
+          "name": "DeathAnnouncer 2.0.0",
+          "status": "unknown",
+          "stage": "",
+          "note": "включился (18 с — резолвинг 8 библиотек, JDA/Mongo/MySQL)"
+        },
+        {
+          "id": "section-11-row-7",
+          "name": "PacketEvents 2.14.0",
+          "status": "unknown",
+          "stage": "",
+          "note": "включился (зависимость CustomDiscs)"
+        }
+      ]
+    },
+    {
+      "id": "section-12",
+      "title": "A/B «чанки против 8x8-регионов»: 5 чередующихся пар, эффекта нет",
+      "counts": {
+        "ready": 0,
+        "partial": 0,
+        "missing": 0,
+        "unknown": 6,
+        "total": 6
+      },
+      "rows": [
+        {
+          "id": "section-12-row-1",
+          "name": "раунд",
+          "status": "unknown",
+          "stage": "regions p50",
+          "note": "дельта (regions-chunks) | chunks p95 | regions p95"
+        },
+        {
+          "id": "section-12-row-2",
+          "name": "1",
+          "status": "unknown",
+          "stage": "1.700",
+          "note": "-0.100 | 2.000 | 2.000"
+        },
+        {
+          "id": "section-12-row-3",
+          "name": "2",
+          "status": "unknown",
+          "stage": "2.100",
+          "note": "+0.600 | 1.700 | 2.200"
+        },
+        {
+          "id": "section-12-row-4",
+          "name": "3",
+          "status": "unknown",
+          "stage": "2.000",
+          "note": "+0.400 | 1.600 | 2.100"
+        },
+        {
+          "id": "section-12-row-5",
+          "name": "4",
+          "status": "unknown",
+          "stage": "1.700",
+          "note": "+0.100 | 2.100 | 1.900"
+        },
+        {
+          "id": "section-12-row-6",
+          "name": "5",
+          "status": "unknown",
+          "stage": "1.600",
+          "note": "+0.200 | 1.500 | 1.700"
+        }
+      ]
+    },
+    {
+      "id": "section-13",
+      "title": "CraftEngine-прокси: 195/504; /ei (ExecutableItems) проверен ботом",
+      "counts": {
+        "ready": 0,
+        "partial": 0,
+        "missing": 0,
+        "unknown": 2,
+        "total": 2
+      },
+      "rows": [
+        {
+          "id": "section-13-row-1",
+          "name": "[ExecutableItems] Invalid argument! Usage: /ei [ reload",
+          "status": "unknown",
+          "stage": "",
+          "note": "..."
+        },
+        {
+          "id": "section-13-row-2",
+          "name": "give",
+          "status": "unknown",
+          "stage": "giveslot",
+          "note": "drop | ... ]"
+        }
+      ]
+    },
+    {
+      "id": "section-14",
+      "title": "Multi-property custom-блоки: palm_stairs/palm_door + коллизии + A/B",
+      "counts": {
+        "ready": 0,
+        "partial": 0,
+        "missing": 0,
+        "unknown": 4,
+        "total": 4
+      },
+      "rows": [
+        {
+          "id": "section-14-row-1",
+          "name": "сценарий",
+          "status": "unknown",
+          "stage": "Paper",
+          "note": "delta (CW-Paper) | знаков"
+        },
+        {
+          "id": "section-14-row-2",
+          "name": "200 cows",
+          "status": "unknown",
+          "stage": "6.0/6.1/4.5/5.0/4.5",
+          "note": "avg +0.22 ms | 3/5 лучше"
+        },
+        {
+          "id": "section-14-row-3",
+          "name": "1000 cows",
+          "status": "unknown",
+          "stage": "11.0/12.3/10.5/11.5/12.2",
+          "note": "avg −3.40 ms | 5/5 лучше"
+        },
+        {
+          "id": "section-14-row-4",
+          "name": "1000 cows + redstone",
+          "status": "unknown",
+          "stage": "11.0/12.6/9.8/10.0/10.1",
+          "note": "avg −1.24 ms | 4/5 лучше"
         }
       ]
     }

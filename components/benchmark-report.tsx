@@ -1,202 +1,67 @@
 import { AlertTriangle, Cpu, Gauge, HardDrive, MemoryStick, Terminal } from 'lucide-react';
 import { CodeBlock } from '@/components/code-block';
+import {
+  abScenarioLabels,
+  abScenarios,
+  benchmarksData,
+  compressionRows,
+  cpuRows,
+  labScenarios,
+  memoryRows,
+} from '@/lib/benchmarks';
 import { links } from '@/lib/shared';
 
 type Lang = 'ru' | 'en';
 
-type Range = {
-  p95: string;
-  mspt: string;
-  memory: string;
-  tps?: string;
-};
-
-type Scenario = {
-  id: string;
-  label: { ru: string; en: string };
-  chunkwake: Range;
-  vanilla: Range;
-};
-
-const scenarios: Scenario[] = [
-  {
-    id: 'join',
-    label: { ru: 'Одновременный вход', en: 'Simultaneous join' },
-    chunkwake: { p95: '11.1–25.5', mspt: '0.4–0.5', memory: '187–188' },
-    vanilla: { p95: '845–860', mspt: '2.1–2.6', memory: '907–929' },
-  },
-  {
-    id: 'movement',
-    label: { ru: 'Движение', en: 'Movement' },
-    chunkwake: { p95: '16.4–47.1', mspt: '0.4–0.5', memory: '182–190' },
-    vanilla: { p95: '703–746', mspt: '2.7–3.1', memory: '860–864' },
-  },
-  {
-    id: 'exploration',
-    label: { ru: 'Исследование мира', en: 'World exploration' },
-    chunkwake: { p95: '25.2–30.4', mspt: '0.8', memory: '207–209' },
-    vanilla: { p95: '698–891', mspt: '3.4–4.3', memory: '868–877' },
-  },
-  {
-    id: 'redstone',
-    label: { ru: 'Редстоун, 128 ламп и проводов', en: 'Redstone, 128 lamps and wires' },
-    chunkwake: { p95: '16.1–16.2', mspt: '0.4–0.5', memory: '189–190' },
-    vanilla: { p95: '897–960', mspt: '3.4–3.5', memory: '845–859' },
-  },
-  {
-    id: 'cows',
-    label: { ru: '2500 коров', en: '2500 cows' },
-    chunkwake: { p95: '16.2', mspt: '3.9–5.6', memory: '230–236', tps: '20' },
-    vanilla: { p95: '682–925', mspt: '120–221', memory: '909–913', tps: '4.4–8.6' },
-  },
-];
-
-const cpuRows = [
-  {
-    label: { ru: 'Случайные тики, 400 тиков при 4096', en: 'Random ticks, 400 ticks at 4096' },
-    before: { ru: '56.7 с', en: '56.7 s' },
-    after: { ru: '32.5–33.5 с (ваниль 43 с)', en: '32.5–33.5 s (vanilla 43 s)' },
-    change: {
-      ru: 'виды состояний таблицей; листва тикает только при распаде; отложенный пересчёт `distance`',
-      en: 'state kinds in a table; leaves tick only when decaying; deferred `distance` recompute',
-    },
-  },
-  {
-    label: { ru: '`/fill` 32×16×32 (`fill_16k`)', en: '`/fill` 32×16×32 (`fill_16k`)' },
-    before: { ru: '288 мс', en: '288 ms' },
-    after: { ru: '35 мс', en: '35 ms' },
-    change: {
-      ru: 'один замок мира, один проход света, одна очередь рассылки на пачку',
-      en: 'one world lock, one light pass, one broadcast queue per batch',
-    },
-  },
-  {
-    label: { ru: 'Запись блока со светом', en: 'Block write with light' },
-    before: { ru: '33.5 мкс', en: '33.5 µs' },
-    after: { ru: '~28 мкс', en: '~28 µs' },
-    change: {
-      ru: 'соседи читаются один раз на наблюдателей, огонь и листву',
-      en: 'neighbours are read once for observers, fire and leaves',
-    },
-  },
-];
-
-const memoryRows = [
-  {
-    profile: { ru: 'A: обзор 10, исходная', en: 'A: view 10, baseline' },
-    idle: '391.5',
-    peak: '1317.3',
-    after: '1003.9',
-    view: '100.0 %',
-  },
-  {
-    profile: { ru: 'A: обзор 10, итоговая normal', en: 'A: view 10, final normal' },
-    idle: '348.7',
-    peak: '1222.6',
-    after: '965.2',
-    view: '100.0 %',
-  },
-  {
-    profile: { ru: 'B: обзор 32, исходная', en: 'B: view 32, baseline' },
-    idle: '391.4',
-    peak: '1991.3',
-    after: '1330.5',
-    view: '94.2 %',
-  },
-  {
-    profile: { ru: 'B: обзор 32, итоговая normal', en: 'B: view 32, final normal' },
-    idle: '351.1',
-    peak: '1818.4',
-    after: '1164.6',
-    view: '92.5 %',
-  },
-  {
-    profile: { ru: 'A: обзор 10, итоговая low', en: 'A: view 10, final low' },
-    idle: '339.2',
-    peak: '776.6',
-    after: '445.2',
-    view: '99.6 %',
-  },
-];
-
-const compressionRows = [
-  { level: '1', data: '124', sectors: '149', compress: '69–106', decompress: '40–59' },
-  { level: '3', data: '90', sectors: '116', compress: '156–204', decompress: '38–67' },
-  { level: '6', data: '85', sectors: '113', compress: '257–340', decompress: '41–66' },
-  { level: '9', data: '83', sectors: '110', compress: '2020', decompress: '38–67' },
-];
-
-const liveRows: { metric: Record<Lang, string>; chunkwake: Record<Lang, string>; paper: Record<Lang, string> }[] = [
-  {
-    metric: { ru: 'Время тика, среднее', en: 'Tick time, average' },
-    chunkwake: { ru: '1.2 мс', en: '1.2 ms' },
-    paper: { ru: '7.6 мс', en: '7.6 ms' },
-  },
-  {
-    metric: { ru: 'Хвост тика', en: 'Tick tail' },
-    chunkwake: { ru: 'не замерялся', en: 'not measured' },
-    paper: { ru: 'P95 9.5 · P99 10.8 мс', en: 'P95 9.5 · P99 10.8 ms' },
-  },
-  {
-    metric: { ru: 'TPS', en: 'TPS' },
-    chunkwake: { ru: '20.0', en: '20.0' },
-    paper: { ru: '20.0', en: '20.0' },
-  },
-  {
-    metric: { ru: 'Java и память', en: 'Java and memory' },
-    chunkwake: { ru: 'JVM не нужна', en: 'no JVM needed' },
-    paper: { ru: 'JDK 25, `-Xms2G -Xmx2G`', en: 'JDK 25, `-Xms2G -Xmx2G`' },
-  },
-];
-
-const copy = {
+const ui = {
   ru: {
     eyebrow: 'Замеры',
     title: 'Что показывает стенд',
     lead: 'Полная методика, железо, сырые числа и оговорки. Цифры ниже — не обещание для любого сервера, а сравнение одинаковых сценариев на одной машине.',
-    stats: [
-      { label: 'Запуск', value: '0.6–0.9', unit: 'с', note: 'у ванили 6.6–11.4 с' },
-      { label: 'Вход 20 ботов, p95', value: '11–26', unit: 'мс', note: 'у ванили 845–860 мс' },
-      { label: 'Пик памяти', value: '182–236', unit: 'МиБ', note: 'у ванили 845–929 МиБ' },
-      { label: 'Чанк на диске', value: '6.9', unit: 'КБ', note: 'deflate 6 · у ванили 8.7 КБ' },
-    ],
-    benchTitle: 'Стенд и методика',
-    benchNote:
-      'Релизная сборка, плоский мир, обзор 2, Java 25 (Temurin) с настройками JVM по умолчанию. По два прогона на сценарий: разминка 20 с, замер 45 с. MSPT — из `tick query`, TPS — по приращению `time query gametime`.',
-    hardware: [
-      ['CPU', 'Ryzen 9 7945HX'],
-      ['ОС', 'Windows 11'],
-      ['Сборка', '`release`, стенд 10.11.2026'],
-      ['Мир', 'плоский, обзор 2'],
-      ['Боты', '20'],
-      ['Разминка / замер', '20 с / 45 с'],
-      ['Повторы', '2 на сценарий'],
-      ['Java', 'Temurin 25, настройки по умолчанию'],
-    ],
-    scenarioTitle: 'Сквозные сценарии',
-    scenarioLead:
-      'Вход — p95 задержки подключения. MSPT и память — за тот же прогон. Ниже — лучше; для TPS ниже — хуже.',
-    columns: {
-      scenario: 'Сценарий',
-      p95: 'Вход p95',
-      mspt: 'MSPT',
-      memory: 'Память',
-      tps: 'TPS',
-    },
+    statStartup: 'Запуск',
+    statJoin: 'Вход 20 ботов, p95',
+    statCows: '1000 коров, p99',
+    statTps: 'TPS, 1000 коров',
+    vanillaNote: (value: string) => `у ванили ${value}`,
+    paperNote: (value: string) => `у Paper ${value}`,
+    methodTitle: 'Стенд и методика',
+    methodLead:
+      'Два независимых стенда. Лабораторный: 20 ботов, разминка 20 с, замер 45 с, по два прогона на сценарий. A/B: один бот, пять раундов по три 15-секундных окна, p99 по сырым тикам.',
+    dates: 'Даты и повторы',
+    datesValue: (lab: string, ab: string) => `лаборатория ${lab} · A/B ${ab}`,
+    labTitle: 'Лабораторный стенд',
+    labLead:
+      'Плоский мир, обзор 2, Java 25 (Temurin) с настройками по умолчанию. Вход — p95 задержки подключения; MSPT и память — из того же прогона. Ниже — лучше.',
+    labColumns: { scenario: 'Сценарий', p95: 'Вход p95', mspt: 'MSPT', memory: 'Память', tps: 'TPS' },
     chunkwake: 'Chunkwake',
     vanilla: 'Ваниль 26.3',
-    startup: 'Запуск сервера: Chunkwake 0.6–0.9 с, ваниль 6.6–11.4 с.',
-    liveTitle: '1000 мобов против Paper',
-    liveLead:
-      'Отдельный живой прогон на той же машине: плоский мир, `view-distance=5`, `simulation-distance=5`, 1000 коров с включённым AI, без плагинов.',
-    liveColumns: { metric: 'Показатель', chunkwake: 'Chunkwake release', paper: 'Paper 26.3' },
-    liveNote:
-      'Paper — build 253, JDK 25, `-Xms2G -Xmx2G`; Chunkwake — release-сборка без JVM, debug даёт 6.0 мс. Это ~6× меньше времени тика при одинаковом TPS; хвост у Chunkwake в этом прогоне не снимался.',
+    startup: (cw: string, vanilla: string) =>
+      `Запуск сервера: Chunkwake ${cw} с, ваниль ${vanilla} с.`,
+    abTitle: 'A/B: p99 и TPS',
+    abLead:
+      '5 независимых раундов на одном железе: свежие миры, release-сборка, один бот, `view-distance=8`, плоский мир, единственный плагин `PerfProbe` 1.2.',
+    abColumns: {
+      scenario: 'Сценарий',
+      cw: 'p99 Chunkwake',
+      paper: 'p99 Paper',
+      ratio: 'Отношение',
+      wins: 'Раунды',
+      p: 'p',
+      tps: 'TPS',
+    },
+    abAvg: (cw: string, paper: string) => `avg ${cw} / ${paper} мс`,
+    abNote:
+      'p99 посчитан pooled по всем сырым тикам; TPS — по `Server.getCurrentTick()`, а не по числу Java-событий. p — односторонний точный sign-test: 5/5 даёт минимально возможное 0.031. TPS у обеих сторон 20.00, разница в пределах ±0.01 тика/с.',
+    abCaveat:
+      'Это узкая заявка: один игрок, ванильные коровы с AI, плоский мир и один плагин. Она не доказывает преимущество на произвольных плагинах, мирах и схемах редстоуна.',
+    abSource: 'Сырые samples и все 30 окон',
     findingsTitle: 'Что нашли по ходу',
     findings: [
       'В плоском мире днём появлялись зомби, скелеты, криперы и пауки и убивали ботов: 172 смерти против 30 у ванили. Свет незагруженного столбца читался как 0, а не из шаблона; затемнение неба считалось не по `day.json`. После исправления обе проверки проходят, смертей нет.',
       'Цифры с коровами сняты ещё с лишними монстрами вокруг. Профиль «Простой» без ботов стенд отмечает ошибкой у обоих серверов — это недочёт стенда, а не сервера.',
     ],
+    archiveNote:
+      'Ниже — исторические раунды оптимизаций. Они объясняют, откуда взялись текущие цифры, но не заменяют замеры выше.',
     cpuTitle: 'CPU-оптимизации',
     cpuColumns: { what: 'Что', before: 'До', after: 'После', change: 'Правка' },
     memoryTitle: 'Память',
@@ -212,8 +77,8 @@ const copy = {
     memoryNote:
       'Живая куча после полёта при нуле столбцов: 480 → 417 МБ. Приватная память процесса всё равно втрое больше живой кучи: mimalloc удерживает страницы после пика. `arena_eager_commit=0` отклонён: в профиле A low он дал 504.1 МБ вместо 445.2 МБ.',
     storageTitle: 'Хранилище',
-    storageLead:
-      'Тот же полёт: 13 052 полных чанка. Полный чанк на уровне deflate 6 — 6.9 КБ против 8.7 КБ у ванили. Свободные сектора переиспользуются, повторный бэкап без изменений идёт по жёстким ссылкам.',
+    storageLead: (cw: string, vanilla: string) =>
+      `Тот же полёт: полный чанк на уровне deflate 6 — ${cw} КБ против ${vanilla} КБ у ванили. Свободные сектора переиспользуются, повторный бэкап без изменений идёт по жёстким ссылкам.`,
     compressionColumns: {
       level: 'deflate',
       data: 'Данные, МБ',
@@ -223,78 +88,74 @@ const copy = {
     },
     caveatsTitle: 'Оговорки',
     caveats: [
-      'Это одна машина и по два прогона на сценарий. Разброс между прогонами виден в диапазонах; не переносите разницу на любое железо.',
+      'Это одна машина и ограниченное число прогонов. Разброс между прогонами виден в диапазонах; не переносите разницу на любое железо.',
       'Профиль с коровами сравнивает нагрузку, а не одинаковую работу: AI коров в Chunkwake ещё сверяется с ванилью.',
       'Настройки мира, которые Chunkwake пока не применяет, нельзя считать эквивалентными ванили. Скорость не заменяет проверку поведения.',
       'Память — пик процесса под конкретным сценарием, а не рекомендация по `-Xmx` для JVM. Для плагинов всё ещё нужна Java 25+.',
-      'Это не результат с плагинами: стенд запускает ядро без пользовательских плагинов.',
+      'A/B-стенд запускает ядро с одним служебным плагином `PerfProbe`; это не результат с пользовательскими плагинами.',
     ],
     reproduceTitle: 'Воспроизведение',
     reproduceLead:
       'Соберите лабораторию и релизный сервер, затем повторите прогон. Лаборатория скачает `server.jar` по манифесту Mojang, если он не указан, и проверит Java 25+.',
+    labCodeTitle: 'chunkwake-lab bench',
     code: `cargo build -p chunkwake-lab
 cargo build --release -p chunkwake-server
 
 chunkwake-lab bench --chunkwake target/release/chunkwake \\
   --jar server.jar --accept-vanilla-eula \\
   --profile all --bots 20 --warmup 20 --duration 45 --repetitions 2`,
-    links: [
-      { label: 'docs/perf.md — сырые замеры', href: links.perf },
-      {
-        label: 'Лаборатория — как воспроизвести',
-        href: '/ru/docs/lab',
-      },
-    ],
-    sourceNote:
-      'Цифры взяты из `docs/perf.md` и `docs/lab.md` ветки `ver/26.3`. Если числа на этой странице расходятся с исходниками, верьте исходникам.',
+    abCodeTitle: 'A/B p99',
+    abCode: `powershell -ExecutionPolicy Bypass -File scripts/ab_p99.ps1 -Rounds 5 -SampleMs 15000
+py -3 scripts/analyze_ab_p99.py`,
+    sourceNote: 'Данные обновляются автоматически при сборке сайта.',
   },
   en: {
     eyebrow: 'Benchmarks',
     title: 'What the bench shows',
     lead: 'Full method, hardware, raw numbers and caveats. These figures are not a promise for every server: they compare identical scenarios on one machine.',
-    stats: [
-      { label: 'Startup', value: '0.6–0.9', unit: 's', note: 'vanilla 6.6–11.4 s' },
-      { label: '20 bots joining, p95', value: '11–26', unit: 'ms', note: 'vanilla 845–860 ms' },
-      { label: 'Peak memory', value: '182–236', unit: 'MiB', note: 'vanilla 845–929 MiB' },
-      { label: 'Chunk on disk', value: '6.9', unit: 'KB', note: 'deflate 6 · vanilla 8.7 KB' },
-    ],
-    benchTitle: 'Bench and method',
-    benchNote:
-      'Release build, flat world, view distance 2, Java 25 (Temurin) with default JVM settings. Two runs per scenario: 20 s warmup, 45 s measurement. MSPT comes from `tick query`; TPS from the `time query gametime` increment.',
-    hardware: [
-      ['CPU', 'Ryzen 9 7945HX'],
-      ['OS', 'Windows 11'],
-      ['Build', '`release`, bench of 2026-11-10'],
-      ['World', 'flat, view distance 2'],
-      ['Bots', '20'],
-      ['Warmup / measurement', '20 s / 45 s'],
-      ['Repetitions', '2 per scenario'],
-      ['Java', 'Temurin 25, default settings'],
-    ],
-    scenarioTitle: 'End-to-end scenarios',
-    scenarioLead:
-      'Join is p95 connection latency. MSPT and memory are from the same run. Lower is better; for TPS, higher is better.',
-    columns: {
-      scenario: 'Scenario',
-      p95: 'Join p95',
-      mspt: 'MSPT',
-      memory: 'Memory',
-      tps: 'TPS',
-    },
+    statStartup: 'Startup',
+    statJoin: '20 bots joining, p95',
+    statCows: '1000 cows, p99',
+    statTps: 'TPS, 1000 cows',
+    vanillaNote: (value: string) => `vanilla ${value}`,
+    paperNote: (value: string) => `Paper ${value}`,
+    methodTitle: 'Bench and method',
+    methodLead:
+      'Two independent benches. Lab: 20 bots, 20 s warmup, 45 s measurement, two runs per scenario. A/B: one bot, five rounds of three 15-second windows, p99 from raw ticks.',
+    dates: 'Dates and repeats',
+    datesValue: (lab: string, ab: string) => `lab ${lab} · A/B ${ab}`,
+    labTitle: 'Lab bench',
+    labLead:
+      'Flat world, view distance 2, Java 25 (Temurin) with default JVM settings. Join is p95 connection latency; MSPT and memory come from the same run. Lower is better.',
+    labColumns: { scenario: 'Scenario', p95: 'Join p95', mspt: 'MSPT', memory: 'Memory', tps: 'TPS' },
     chunkwake: 'Chunkwake',
     vanilla: 'Vanilla 26.3',
-    startup: 'Server startup: Chunkwake 0.6–0.9 s, vanilla 6.6–11.4 s.',
-    liveTitle: '1000 mobs versus Paper',
-    liveLead:
-      'A separate live run on the same machine: flat world, `view-distance=5`, `simulation-distance=5`, 1000 cows with AI enabled, no plugins.',
-    liveColumns: { metric: 'Metric', chunkwake: 'Chunkwake release', paper: 'Paper 26.3' },
-    liveNote:
-      'Paper is build 253 with JDK 25 and `-Xms2G -Xmx2G`; Chunkwake is a release build without a JVM, while a debug build gives 6.0 ms. That is about 6× less tick time at the same TPS; the tail was not sampled for Chunkwake in this run.',
+    startup: (cw: string, vanilla: string) => `Server startup: Chunkwake ${cw} s, vanilla ${vanilla} s.`,
+    abTitle: 'A/B: p99 and TPS',
+    abLead:
+      '5 independent rounds on one machine: fresh worlds, release build, one bot, `view-distance=8`, flat world, the only plugin is `PerfProbe` 1.2.',
+    abColumns: {
+      scenario: 'Scenario',
+      cw: 'p99 Chunkwake',
+      paper: 'p99 Paper',
+      ratio: 'Ratio',
+      wins: 'Rounds',
+      p: 'p',
+      tps: 'TPS',
+    },
+    abAvg: (cw: string, paper: string) => `avg ${cw} / ${paper} ms`,
+    abNote:
+      'p99 is pooled over every raw tick; TPS comes from `Server.getCurrentTick()`, not the number of Java tick events. p is a one-sided exact sign test: 5/5 gives the smallest possible 0.031. TPS is 20.00 on both sides, within ±0.01 tick/s.',
+    abCaveat:
+      'This is a narrow claim: one player, vanilla cows with AI, a flat world and one plugin. It does not prove an advantage on arbitrary plugins, worlds or redstone builds.',
+    abSource: 'Raw samples and all 30 windows',
     findingsTitle: 'What the runs found',
     findings: [
       'During the day, zombies, skeletons, creepers and spiders spawned in the flat world and killed bots: 172 deaths versus 30 for vanilla. Light in an unloaded flat-world column read as 0 instead of the template value, and sky darkening used the wrong timeline. After the fix both checks pass and Chunkwake has no deaths.',
       'The cow numbers were taken while extra monsters were still around. The botless "Simple" profile is reported as an error on both servers: that is a bench bug, not a server bug.',
     ],
+    archiveNote:
+      'Below are historical optimisation rounds. They explain where the current numbers come from, but do not replace the measurements above.',
     cpuTitle: 'CPU optimizations',
     cpuColumns: { what: 'What', before: 'Before', after: 'After', change: 'Change' },
     memoryTitle: 'Memory',
@@ -310,8 +171,8 @@ chunkwake-lab bench --chunkwake target/release/chunkwake \\
     memoryNote:
       'Live heap after flight with zero loaded columns: 480 → 417 MB. Process private memory is still three times the live heap: mimalloc keeps pages after the peak. `arena_eager_commit=0` was rejected: in profile A low it gave 504.1 MB instead of 445.2 MB.',
     storageTitle: 'Storage',
-    storageLead:
-      'Same flight: 13,052 full chunks. A full chunk at deflate 6 is 6.9 KB versus 8.7 KB for vanilla. Free sectors are reused, and a repeated backup with no changes uses hard links.',
+    storageLead: (cw: string, vanilla: string) =>
+      `Same flight: a full chunk at deflate 6 is ${cw} KB versus ${vanilla} KB for vanilla. Free sectors are reused, and a repeated backup with no changes uses hard links.`,
     compressionColumns: {
       level: 'deflate',
       data: 'Data, MB',
@@ -321,30 +182,26 @@ chunkwake-lab bench --chunkwake target/release/chunkwake \\
     },
     caveatsTitle: 'Caveats',
     caveats: [
-      'This is one machine and two runs per scenario. The spread is visible in the ranges; do not project the difference onto any hardware.',
+      'This is one machine and a limited number of runs. The spread is visible in the ranges; do not project the difference onto any hardware.',
       'The cow profile compares load, not identical work: cow AI in Chunkwake is still being verified against vanilla.',
       'World settings that Chunkwake does not apply yet cannot be considered equivalent to vanilla. Speed does not replace behaviour checks.',
       'Memory is the process peak under a specific scenario, not an `-Xmx` recommendation. Plugins still need Java 25+.',
-      'This is a core-only result: the bench runs without user plugins.',
+      'The A/B bench runs the core with one service plugin, `PerfProbe`; it is not a result with user plugins.',
     ],
     reproduceTitle: 'Reproduction',
     reproduceLead:
       'Build the lab and the release server, then repeat the run. The lab downloads `server.jar` from the Mojang manifest if it is not provided and checks for Java 25+.',
+    labCodeTitle: 'chunkwake-lab bench',
     code: `cargo build -p chunkwake-lab
 cargo build --release -p chunkwake-server
 
 chunkwake-lab bench --chunkwake target/release/chunkwake \\
   --jar server.jar --accept-vanilla-eula \\
   --profile all --bots 20 --warmup 20 --duration 45 --repetitions 2`,
-    links: [
-      { label: 'docs/perf.md — raw measurements', href: links.perf },
-      {
-        label: 'Laboratory — how to reproduce',
-        href: '/en/docs/lab',
-      },
-    ],
-    sourceNote:
-      'Figures come from `docs/perf.md` and `docs/lab.md` on `ver/26.3`. If this page disagrees with the sources, trust the sources.',
+    abCodeTitle: 'A/B p99',
+    abCode: `powershell -ExecutionPolicy Bypass -File scripts/ab_p99.ps1 -Rounds 5 -SampleMs 15000
+py -3 scripts/analyze_ab_p99.py`,
+    sourceNote: 'Data refreshes automatically when the site is built.',
   },
 } as const;
 
@@ -358,10 +215,54 @@ function renderInline(value: string) {
   );
 }
 
+function shortDate(value: string | null | undefined) {
+  if (!value) return '—';
+  const [year, month, day] = value.split('-');
+  return day ? `${day}.${month}.${year}` : value;
+}
+
 export function BenchmarkReport({ lang }: { lang: string }) {
   const locale: Lang = lang === 'en' ? 'en' : 'ru';
-  const t = copy[locale];
-  const units = locale === 'ru' ? { ms: 'мс', mib: 'МиБ', mb: 'МБ', kb: 'КБ' } : { ms: 'ms', mib: 'MiB', mb: 'MB', kb: 'KB' };
+  const t = ui[locale];
+  const units =
+    locale === 'ru'
+      ? { ms: 'мс', mib: 'МиБ', mb: 'МБ', kb: 'КБ' }
+      : { ms: 'ms', mib: 'MiB', mb: 'MB', kb: 'KB' };
+
+  const labDate = shortDate(benchmarksData.lab?.date);
+  const abDate = shortDate(benchmarksData.ab?.date);
+  const rounds = benchmarksData.ab?.rounds ?? 5;
+  const startup = benchmarksData.lab?.startup ?? { chunkwake: '0.6–0.9', vanilla: '6.6–11.4' };
+  const join = labScenarios.find((scenario) => scenario.id === 'join');
+  const cows = abScenarios.find((scenario) => scenario.id === 'cows1000');
+  const storage = benchmarksData.storage?.chunkKb ?? { chunkwake: '6.9', vanilla: '8.7' };
+
+  const stats = [
+    {
+      label: t.statStartup,
+      value: startup.chunkwake,
+      unit: locale === 'ru' ? 'с' : 's',
+      note: t.vanillaNote(`${startup.vanilla} ${locale === 'ru' ? 'с' : 's'}`),
+    },
+    {
+      label: t.statJoin,
+      value: join?.chunkwake.p95 ?? '—',
+      unit: units.ms,
+      note: t.vanillaNote(`${join?.vanilla.p95 ?? '—'} ${units.ms}`),
+    },
+    {
+      label: t.statCows,
+      value: cows?.chunkwake.p99 ?? '—',
+      unit: units.ms,
+      note: t.paperNote(`${cows?.paper.p99 ?? '—'} ${units.ms}`),
+    },
+    {
+      label: t.statTps,
+      value: cows?.chunkwake.tps ?? '—',
+      unit: 'TPS',
+      note: t.paperNote(cows?.paper.tps ?? '—'),
+    },
+  ];
 
   return (
     <div className="cw-bench-page">
@@ -372,7 +273,7 @@ export function BenchmarkReport({ lang }: { lang: string }) {
       </header>
 
       <div className="cw-bench-stats">
-        {t.stats.map((stat) => (
+        {stats.map((stat) => (
           <div className="cw-bench-stat" key={stat.label}>
             <span className="cw-bench-stat-label">{stat.label}</span>
             <strong>
@@ -386,26 +287,46 @@ export function BenchmarkReport({ lang }: { lang: string }) {
       <section className="cw-bench-section">
         <div className="cw-bench-section-head">
           <div>
-            <h2>{t.benchTitle}</h2>
-            <p>{renderInline(t.benchNote)}</p>
+            <h2>{t.methodTitle}</h2>
+            <p>{renderInline(t.methodLead)}</p>
           </div>
           <Cpu size={18} aria-hidden="true" />
         </div>
         <dl className="cw-bench-specs">
-          {t.hardware.map(([label, value]) => (
-            <div key={label}>
-              <dt>{label}</dt>
-              <dd>{renderInline(value)}</dd>
-            </div>
-          ))}
+          <div>
+            <dt>CPU</dt>
+            <dd>Ryzen 9 7945HX</dd>
+          </div>
+          <div>
+            <dt>{locale === 'ru' ? 'ОС' : 'OS'}</dt>
+            <dd>Windows 11</dd>
+          </div>
+          <div>
+            <dt>{locale === 'ru' ? 'Сборка' : 'Build'}</dt>
+            <dd>
+              <code>release</code>
+            </dd>
+          </div>
+          <div>
+            <dt>{locale === 'ru' ? 'Мир' : 'World'}</dt>
+            <dd>{locale === 'ru' ? 'плоский, обзор 2 / 8' : 'flat, view 2 / 8'}</dd>
+          </div>
+          <div>
+            <dt>{locale === 'ru' ? 'Java' : 'Java'}</dt>
+            <dd>Temurin 25</dd>
+          </div>
+          <div>
+            <dt>{t.dates}</dt>
+            <dd>{t.datesValue(labDate, abDate)}</dd>
+          </div>
         </dl>
       </section>
 
       <section className="cw-bench-section">
         <div className="cw-bench-section-head">
           <div>
-            <h2>{t.scenarioTitle}</h2>
-            <p>{t.scenarioLead}</p>
+            <h2>{t.abTitle}</h2>
+            <p>{renderInline(t.abLead)}</p>
           </div>
           <Gauge size={18} aria-hidden="true" />
         </div>
@@ -414,21 +335,85 @@ export function BenchmarkReport({ lang }: { lang: string }) {
           <table className="cw-table cw-bench-table">
             <thead>
               <tr>
-                <th rowSpan={2}>{t.columns.scenario}</th>
+                <th>{t.abColumns.scenario}</th>
+                <th>{t.abColumns.cw}</th>
+                <th>{t.abColumns.paper}</th>
+                <th>{t.abColumns.ratio}</th>
+                <th>{t.abColumns.wins}</th>
+                <th>{t.abColumns.p}</th>
+                <th>{t.abColumns.tps}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {abScenarios.map((scenario) => (
+                <tr key={scenario.id}>
+                  <td>
+                    <span className="cw-table-name">
+                      {scenario.label?.[locale] ?? abScenarioLabels[scenario.id]?.[locale] ?? scenario.id}
+                    </span>
+                    <span className="cw-bench-tps">{t.abAvg(scenario.chunkwake.avg, scenario.paper.avg)}</span>
+                  </td>
+                  <td>
+                    {scenario.chunkwake.p99} {units.ms}
+                  </td>
+                  <td>
+                    {scenario.paper.p99} {units.ms}
+                  </td>
+                  <td>{scenario.delta?.ratio ?? '—'}</td>
+                  <td>{scenario.delta?.wins ?? '—'}</td>
+                  <td>{scenario.delta?.pBetter ?? '—'}</td>
+                  <td>
+                    {scenario.chunkwake.tps} / {scenario.paper.tps}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="cw-bench-note">{renderInline(t.abNote)}</p>
+        <p className="cw-bench-note">{renderInline(t.abCaveat)}</p>
+        <div className="cw-bench-links">
+          {benchmarksData.ab?.sourceUrl ? (
+            <a href={benchmarksData.ab.sourceUrl} target="_blank" rel="noreferrer">
+              {t.abSource} ↗
+            </a>
+          ) : null}
+        </div>
+        <p className="cw-bench-startup">
+          {locale === 'ru'
+            ? `Раундов: ${rounds} · все 30 окон в results.md`
+            : `Rounds: ${rounds} · all 30 windows in results.md`}
+        </p>
+      </section>
+
+      <section className="cw-bench-section">
+        <div className="cw-bench-section-head">
+          <div>
+            <h2>{t.labTitle}</h2>
+            <p>{t.labLead}</p>
+          </div>
+          <Terminal size={18} aria-hidden="true" />
+        </div>
+
+        <div className="cw-table-wrap cw-bench-table-wrap">
+          <table className="cw-table cw-bench-table">
+            <thead>
+              <tr>
+                <th rowSpan={2}>{t.labColumns.scenario}</th>
                 <th colSpan={3}>{t.chunkwake}</th>
                 <th colSpan={3}>{t.vanilla}</th>
               </tr>
               <tr>
-                <th>{t.columns.p95}</th>
-                <th>{t.columns.mspt}</th>
-                <th>{t.columns.memory}</th>
-                <th>{t.columns.p95}</th>
-                <th>{t.columns.mspt}</th>
-                <th>{t.columns.memory}</th>
+                <th>{t.labColumns.p95}</th>
+                <th>{t.labColumns.mspt}</th>
+                <th>{t.labColumns.memory}</th>
+                <th>{t.labColumns.p95}</th>
+                <th>{t.labColumns.mspt}</th>
+                <th>{t.labColumns.memory}</th>
               </tr>
             </thead>
             <tbody>
-              {scenarios.map((scenario) => (
+              {labScenarios.map((scenario) => (
                 <tr key={scenario.id}>
                   <td>
                     <span className="cw-table-name">{scenario.label[locale]}</span>
@@ -438,49 +423,30 @@ export function BenchmarkReport({ lang }: { lang: string }) {
                       </span>
                     ) : null}
                   </td>
-                  <td>{scenario.chunkwake.p95} {units.ms}</td>
-                  <td>{scenario.chunkwake.mspt} {units.ms}</td>
-                  <td>{scenario.chunkwake.memory} {units.mib}</td>
-                  <td>{scenario.vanilla.p95} {units.ms}</td>
-                  <td>{scenario.vanilla.mspt} {units.ms}</td>
-                  <td>{scenario.vanilla.memory} {units.mib}</td>
+                  <td>
+                    {scenario.chunkwake.p95} {units.ms}
+                  </td>
+                  <td>
+                    {scenario.chunkwake.mspt} {units.ms}
+                  </td>
+                  <td>
+                    {scenario.chunkwake.memory} {units.mib}
+                  </td>
+                  <td>
+                    {scenario.vanilla.p95} {units.ms}
+                  </td>
+                  <td>
+                    {scenario.vanilla.mspt} {units.ms}
+                  </td>
+                  <td>
+                    {scenario.vanilla.memory} {units.mib}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p className="cw-bench-startup">{t.startup}</p>
-      </section>
-
-      <section className="cw-bench-section">
-        <div className="cw-bench-section-head">
-          <div>
-            <h2>{t.liveTitle}</h2>
-            <p>{renderInline(t.liveLead)}</p>
-          </div>
-          <Cpu size={18} aria-hidden="true" />
-        </div>
-        <div className="cw-table-wrap cw-bench-table-wrap">
-          <table className="cw-table cw-bench-table">
-            <thead>
-              <tr>
-                <th>{t.liveColumns.metric}</th>
-                <th>{t.liveColumns.chunkwake}</th>
-                <th>{t.liveColumns.paper}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {liveRows.map((row) => (
-                <tr key={row.metric.ru}>
-                  <td>{row.metric[locale]}</td>
-                  <td>{renderInline(row.chunkwake[locale])}</td>
-                  <td>{renderInline(row.paper[locale])}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="cw-bench-note">{renderInline(t.liveNote)}</p>
+        <p className="cw-bench-startup">{t.startup(startup.chunkwake, startup.vanilla)}</p>
       </section>
 
       <section className="cw-bench-section">
@@ -496,6 +462,8 @@ export function BenchmarkReport({ lang }: { lang: string }) {
           ))}
         </ul>
       </section>
+
+      <p className="cw-bench-note">{t.archiveNote}</p>
 
       <section className="cw-bench-section">
         <div className="cw-bench-section-head">
@@ -551,9 +519,15 @@ export function BenchmarkReport({ lang }: { lang: string }) {
               {memoryRows.map((row) => (
                 <tr key={row.profile.ru}>
                   <td>{row.profile[locale]}</td>
-                  <td>{row.idle} {units.mb}</td>
-                  <td>{row.peak} {units.mb}</td>
-                  <td>{row.after} {units.mb}</td>
+                  <td>
+                    {row.idle} {units.mb}
+                  </td>
+                  <td>
+                    {row.peak} {units.mb}
+                  </td>
+                  <td>
+                    {row.after} {units.mb}
+                  </td>
                   <td>{row.view}</td>
                 </tr>
               ))}
@@ -567,7 +541,7 @@ export function BenchmarkReport({ lang }: { lang: string }) {
         <div className="cw-bench-section-head">
           <div>
             <h2>{t.storageTitle}</h2>
-            <p>{t.storageLead}</p>
+            <p>{t.storageLead(storage.chunkwake, storage.vanilla)}</p>
           </div>
           <HardDrive size={18} aria-hidden="true" />
         </div>
@@ -619,17 +593,26 @@ export function BenchmarkReport({ lang }: { lang: string }) {
           </div>
           <Terminal size={18} aria-hidden="true" />
         </div>
-        <CodeBlock code={t.code} lang="bash" title="chunkwake-lab bench" badge="shell" />
+        <CodeBlock code={t.code} lang="bash" title={t.labCodeTitle} badge="shell" />
         <div className="cw-bench-links">
-          {t.links.map((link) => (
-            <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-              {link.label} ↗
-            </a>
-          ))}
+          <a href={`/${locale}/docs/lab`}>{locale === 'ru' ? 'Лаборатория' : 'Laboratory'} →</a>
+          <a href={links.perf} target="_blank" rel="noreferrer">
+            docs/perf.md ↗
+          </a>
+        </div>
+        <CodeBlock code={t.abCode} lang="powershell" title={t.abCodeTitle} badge="shell" />
+        <div className="cw-bench-links">
+          <a href={`${links.github}/tree/ver/26.3/benchmarks/ab-p99`} target="_blank" rel="noreferrer">
+            benchmarks/ab-p99 ↗
+          </a>
         </div>
       </section>
 
-      <p className="cw-bench-source">{renderInline(t.sourceNote)}</p>
+      <p className="cw-bench-source">
+        {renderInline(t.sourceNote)}{' '}
+        {locale === 'ru' ? 'Источники' : 'Sources'}: {labDate} (docs/perf.md), {abDate} (results.md)
+        {benchmarksData.coreSha ? ` · core ${benchmarksData.coreSha.slice(0, 8)}` : ''}.
+      </p>
     </div>
   );
 }

@@ -32,7 +32,7 @@ const ui = {
     vanilla: 'Ваниль 26.3',
     chunkwake: 'Chunkwake',
     method:
-      'Ryzen 9 7945HX, release, плоский мир, обзор 2, 20 ботов, разминка 20 с, замер 45 с, два прогона.',
+      'Ryzen 9 7945HX, release: лабораторный стенд на 20 ботах (обзор 2, разминка 20 с, замер 45 с) и A/B p99 на 1000 коровах (5 раундов, обзор 8).',
     source: 'Полная методика и сырые данные',
     replay: 'Проиграть заново',
     lower: 'Ниже — лучше',
@@ -45,7 +45,7 @@ const ui = {
     vanilla: 'Vanilla 26.3',
     chunkwake: 'Chunkwake',
     method:
-      'Ryzen 9 7945HX, release, flat world, view distance 2, 20 bots, 20 s warmup, 45 s measurement, two runs.',
+      'Ryzen 9 7945HX, release: the 20-bot lab bench (view 2, 20 s warmup, 45 s measurement) and the 1000-cow A/B p99 run (5 rounds, view 8).',
     source: 'Full method and raw data',
     replay: 'Replay',
     lower: 'Lower is better',
