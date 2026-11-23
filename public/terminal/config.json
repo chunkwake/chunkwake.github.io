@@ -197,11 +197,11 @@
       "at": 2570
     }
   ],
-  "capturedAt": "2026-11-16T13:06:45.894Z",
+  "capturedAt": "2026-11-23T15:20:17.906Z",
   "core": {
     "repo": "chunkwake/core",
     "branch": "ver/26.3",
-    "coreSha": "31168912abd052721c69aca1eeca9e5c60602bb7"
+    "coreSha": "8f4945b9b761e5ea55465dd875503d7957640f12"
   },
   "binary": {
     "version": "26.3",

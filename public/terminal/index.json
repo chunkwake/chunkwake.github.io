@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T13:07:01.099Z",
+  "generatedAt": "2026-11-23T15:20:29.085Z",
   "demos": [
     {
       "id": "cli-help",
@@ -13,11 +13,11 @@
         "ru": "Все команды установки, диагностики, бэкапов и наблюдения.",
         "en": "Setup, diagnostics, backups and observability in one place."
       },
-      "capturedAt": "2026-11-16T13:06:45.839Z",
+      "capturedAt": "2026-11-23T15:20:17.868Z",
       "core": {
         "repo": "chunkwake/core",
         "branch": "ver/26.3",
-        "coreSha": "31168912abd052721c69aca1eeca9e5c60602bb7"
+        "coreSha": "8f4945b9b761e5ea55465dd875503d7957640f12"
       },
       "binary": {
         "version": "26.3",
@@ -36,11 +36,11 @@
         "ru": "Что записано в server.properties и какие значения ждут своей очереди.",
         "en": "What is written to server.properties and which values are reserved."
       },
-      "capturedAt": "2026-11-16T13:06:45.894Z",
+      "capturedAt": "2026-11-23T15:20:17.906Z",
       "core": {
         "repo": "chunkwake/core",
         "branch": "ver/26.3",
-        "coreSha": "31168912abd052721c69aca1eeca9e5c60602bb7"
+        "coreSha": "8f4945b9b761e5ea55465dd875503d7957640f12"
       },
       "binary": {
         "version": "26.3",
@@ -59,11 +59,11 @@
         "ru": "Консоль принимает те же команды, что и чат, без слэша.",
         "en": "The console accepts the same commands as chat, without the slash."
       },
-      "capturedAt": "2026-11-16T13:06:51.017Z",
+      "capturedAt": "2026-11-23T15:20:21.475Z",
       "core": {
         "repo": "chunkwake/core",
         "branch": "ver/26.3",
-        "coreSha": "31168912abd052721c69aca1eeca9e5c60602bb7"
+        "coreSha": "8f4945b9b761e5ea55465dd875503d7957640f12"
       },
       "binary": {
         "version": "26.3",
@@ -82,11 +82,11 @@
         "ru": "Doctor проверяет порт, встроенные данные и Java для плагинов.",
         "en": "Doctor checks the port, embedded data and Java for plugins."
       },
-      "capturedAt": "2026-11-16T13:06:45.883Z",
+      "capturedAt": "2026-11-23T15:20:17.897Z",
       "core": {
         "repo": "chunkwake/core",
         "branch": "ver/26.3",
-        "coreSha": "31168912abd052721c69aca1eeca9e5c60602bb7"
+        "coreSha": "8f4945b9b761e5ea55465dd875503d7957640f12"
       },
       "binary": {
         "version": "26.3",
@@ -105,11 +105,11 @@
         "ru": "Две команды Chunkwake: короткая строка и полный снимок по подсистемам.",
         "en": "Two Chunkwake commands: a short line and a full breakdown by subsystem."
       },
-      "capturedAt": "2026-11-16T13:06:55.005Z",
+      "capturedAt": "2026-11-23T15:20:24.159Z",
       "core": {
         "repo": "chunkwake/core",
         "branch": "ver/26.3",
-        "coreSha": "31168912abd052721c69aca1eeca9e5c60602bb7"
+        "coreSha": "8f4945b9b761e5ea55465dd875503d7957640f12"
       },
       "binary": {
         "version": "26.3",
@@ -128,11 +128,11 @@
         "ru": "Ванильные команды на настоящем плоском мире, без подключённого клиента.",
         "en": "Vanilla commands against a real flat world, with no client attached."
       },
-      "capturedAt": "2026-11-16T13:07:01.079Z",
+      "capturedAt": "2026-11-23T15:20:28.845Z",
       "core": {
         "repo": "chunkwake/core",
         "branch": "ver/26.3",
-        "coreSha": "31168912abd052721c69aca1eeca9e5c60602bb7"
+        "coreSha": "8f4945b9b761e5ea55465dd875503d7957640f12"
       },
       "binary": {
         "version": "26.3",

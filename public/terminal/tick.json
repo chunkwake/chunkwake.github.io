@@ -19,91 +19,91 @@
     {
       "type": "output",
       "level": "info",
-      "text": "TPS: 20.0 MSPT: 0.0 interval: 49.4 ms",
+      "text": "TPS: 20.0 MSPT: 0.0 interval: 50.2 ms",
       "at": 140
     },
     {
       "type": "input",
       "text": "top",
-      "at": 671
+      "at": 672
     },
     {
       "type": "output",
       "level": "info",
       "text": "A Chunkwake Server · 26.3 up 00:00:01",
-      "at": 811
+      "at": 812
     },
     {
       "type": "output",
       "text": "",
-      "at": 891
+      "at": 892
     },
     {
       "type": "output",
       "text": "TICK",
-      "at": 971
+      "at": 972
     },
     {
       "type": "output",
       "text": "TPS  20.0 /  20.0 /  20.0 /  20.0  now 1m 5m 15m",
-      "at": 1051
+      "at": 1052
     },
     {
       "type": "output",
-      "text": "MSPT  0.02  p50  0.02  p99  0.07  max  0.07  avg p50 p99 worst",
-      "at": 1131
+      "text": "MSPT  0.01  p50  0.01  p99  0.04  max  0.04  avg p50 p99 worst",
+      "at": 1132
     },
     {
       "type": "output",
       "text": "CPU",
-      "at": 1211
+      "at": 1212
     },
     {
       "type": "output",
-      "text": "█████░░░░░░░░░░░░░░░ system   26%",
-      "at": 1291
+      "text": "░░░░░░░░░░░░░░░░░░░░ system    0%",
+      "at": 1292
     },
     {
       "type": "output",
-      "text": "  2  56   4  43",
-      "at": 1371
+      "text": "  1   0   1   0",
+      "at": 1372
     },
     {
       "type": "output",
       "text": "MEMORY",
-      "at": 1451
+      "at": 1452
     },
     {
       "type": "output",
-      "text": "rss 232.2 MiB  host 9%",
-      "at": 1531
+      "text": "rss 247.4 MiB  host 9%",
+      "at": 1532
     },
     {
       "type": "output",
       "text": "WORLD",
-      "at": 1611
+      "at": 1612
     },
     {
       "type": "output",
       "text": "players 0/20  mobs 0  items 0  chunks 0",
-      "at": 1691
+      "at": 1692
     },
     {
       "type": "output",
       "text": "NET",
-      "at": 1771
+      "at": 1772
     },
     {
       "type": "output",
       "text": "ping —",
-      "at": 1851
+      "at": 1852
     }
   ],
-  "capturedAt": "2026-11-16T13:06:55.005Z",
+  "capturedAt": "2026-11-23T15:20:24.159Z",
   "core": {
     "repo": "chunkwake/core",
     "branch": "ver/26.3",
-    "coreSha": "31168912abd052721c69aca1eeca9e5c60602bb7"
+    "coreSha": "8f4945b9b761e5ea55465dd875503d7957640f12"
   },
   "binary": {
     "version": "26.3",

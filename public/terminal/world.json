@@ -25,13 +25,13 @@
     {
       "type": "input",
       "text": "seed",
-      "at": 671
+      "at": 672
     },
     {
       "type": "output",
       "level": "info",
-      "text": "Seed: 2499441454137110516",
-      "at": 811
+      "text": "Seed: 1946149944394360307",
+      "at": 812
     },
     {
       "type": "input",
@@ -47,31 +47,31 @@
     {
       "type": "input",
       "text": "fill 0 64 0 2 64 2 glass",
-      "at": 2041
+      "at": 2016
     },
     {
       "type": "output",
       "level": "info",
       "text": "Successfully filled 9 block(s)",
-      "at": 2181
+      "at": 2156
     },
     {
       "type": "input",
       "text": "save-all",
-      "at": 2714
+      "at": 2689
     },
     {
       "type": "output",
       "level": "info",
       "text": "Saved the game",
-      "at": 2854
+      "at": 2829
     }
   ],
-  "capturedAt": "2026-11-16T13:07:01.079Z",
+  "capturedAt": "2026-11-23T15:20:28.845Z",
   "core": {
     "repo": "chunkwake/core",
     "branch": "ver/26.3",
-    "coreSha": "31168912abd052721c69aca1eeca9e5c60602bb7"
+    "coreSha": "8f4945b9b761e5ea55465dd875503d7957640f12"
   },
   "binary": {
     "version": "26.3",
