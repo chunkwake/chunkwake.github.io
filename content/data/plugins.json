@@ -1,7 +1,88 @@
 {
   "source": "chunkwake/core docs/feature-matrix.md",
-  "testedAt": "2026-11-18",
-  "coreSha": "302ffa4c",
+  "testedAt": "2026-11-23",
+  "coreSha": "8b3165d8",
+  "gate": {
+    "date": "2026-11-23",
+    "total": 81,
+    "enabled": 78,
+    "note": {
+      "ru": "Последний полный прогон расширенного стенда. На более ранней ревизии было 83/83; после последних правок полный гейт не перепрогонялся.",
+      "en": "The last full run of the extended gate. An earlier revision reached 83/83; the full gate has not been rerun after the latest changes."
+    },
+    "failures": [
+      {
+        "name": "MiniMOTD",
+        "version": "2.2.5",
+        "reason": {
+          "ru": "Сам отключается: version-gate считает сервер Spigot.",
+          "en": "Disables itself: its version gate treats the server as Spigot."
+        }
+      },
+      {
+        "name": "VoxyServerSide",
+        "version": "0.21.1",
+        "reason": {
+          "ru": "Сам отключается по `plugin.yml`: требует MC ниже 26.2.",
+          "en": "Disables itself through `plugin.yml`: it requires MC below 26.2."
+        }
+      },
+      {
+        "name": "LevelledMobs",
+        "version": "4.5.3.2",
+        "reason": {
+          "ru": "Не включается.",
+          "en": "Does not enable."
+        }
+      },
+      {
+        "name": "CraftEngine",
+        "version": "26.9.2",
+        "reason": {
+          "ru": "`LOADERR` в этом прогоне; после чистого API bundle включается, но content packs падают на NMS-стабах.",
+          "en": "`LOADERR` in this run; it enables on a clean API bundle, but content packs fail on NMS stubs."
+        }
+      },
+      {
+        "name": "ProtocolLib",
+        "version": "5.4.0",
+        "reason": {
+          "ru": "Нужен `network.EnumProtocol` из NMS.",
+          "en": "Needs `network.EnumProtocol` from NMS."
+        }
+      },
+      {
+        "name": "ImageFrame",
+        "version": "2026.1.5",
+        "reason": {
+          "ru": "Собственный `NMSWrapper` для 26.3 не создаётся.",
+          "en": "Its own `NMSWrapper` for 26.3 cannot be created."
+        }
+      }
+    ],
+    "verified": [
+      { "name": "Chunky", "version": "1.5.66" },
+      { "name": "WorldGuard", "version": "7.0.21" },
+      { "name": "TAB", "version": "6.2.1" },
+      { "name": "ajLeaderboards", "version": "2.11.0" },
+      { "name": "DeluxeMenus", "version": "1.14.1" },
+      { "name": "GriefPrevention", "version": "16.18.8" },
+      { "name": "ViaBackwards", "version": "5.12.3" },
+      { "name": "Simple Voice Chat", "version": "2.6.27" },
+      { "name": "GrimAC", "version": "2.3.75" },
+      { "name": "LibertyBans", "version": "1.2.0-M1" },
+      { "name": "Maintenance", "version": "5.1.1" },
+      { "name": "CommandAPI", "version": "12.1.0" },
+      { "name": "Multiverse-Core", "version": "5.8.2" },
+      { "name": "squaremap", "version": "1.4.4" },
+      { "name": "Geyser", "version": "2.12.1" },
+      { "name": "BentoBox", "version": "3.23.7" },
+      { "name": "ExcellentCrates", "version": "7.2.0" },
+      { "name": "EliteMobs", "version": "10.9.14" },
+      { "name": "BetonQuest", "version": "3.4.0-DEV-14" },
+      { "name": "SkinsRestorer", "version": "15.12.6" }
+    ]
+  },
   "plugins": [
     {
       "id": "bluemap",
@@ -241,6 +322,116 @@
       "limits": {
         "ru": ["Legacy/BungeeCord forwarding не поддерживается — только modern."],
         "en": ["Legacy/BungeeCord forwarding is not supported, only modern."]
+      }
+    },
+    {
+      "id": "craftengine",
+      "name": "CraftEngine",
+      "version": "26.9.2",
+      "status": "partial",
+      "kind": "content",
+      "url": "https://craftengine.dev/",
+      "summary": {
+        "ru": "Включается на чистом API bundle; кастомные блоки и часть контента работают, content packs пока нет.",
+        "en": "Enables on a clean API bundle; custom blocks and part of the content work, content packs do not yet."
+      },
+      "details": {
+        "ru": [
+          "Живой прогон: CraftEngine 26.9.2 включается, кастомные блоки регистрируются, состояния и дропы частично проверены.",
+          "`CustomShapes` берёт коллизию из carrier-состояния: stairs, door, slab, trapdoor, barrier и fence."
+        ],
+        "en": [
+          "Live run: CraftEngine 26.9.2 enables, custom blocks register, states and drops are partially verified.",
+          "`CustomShapes` takes collision from the carrier state: stairs, door, slab, trapdoor, barrier and fence."
+        ]
+      },
+      "limits": {
+        "ru": [
+          "Content packs падают на отсутствующих NMS-стабах: `MultiPackResourceManager`, `Item#useOn`, `CraftWorld#getUID`.",
+          "Не считать CraftEngine поддерживаемым: это частичный слой, а не полная совместимость."
+        ],
+        "en": [
+          "Content packs fail on missing NMS stubs: `MultiPackResourceManager`, `Item#useOn`, `CraftWorld#getUID`.",
+          "Do not treat CraftEngine as supported: this is a partial layer, not full compatibility."
+        ]
+      }
+    },
+    {
+      "id": "chunky",
+      "name": "Chunky",
+      "version": "1.5.66",
+      "status": "works",
+      "kind": "world",
+      "url": "https://modrinth.com/plugin/chunky",
+      "summary": {
+        "ru": "Включается, команды `/chunky` работают; `WorldBorder` больше не заглушка.",
+        "en": "Enables, `/chunky` commands work; `WorldBorder` is no longer a stub."
+      },
+      "details": {
+        "ru": [
+          "Живой прогон Paper/Folia-сборки: `Chunky enabled`.",
+          "`World.getWorldBorder()` реализован: размер, центр, зона урона и предупреждения."
+        ],
+        "en": [
+          "Live run of the Paper/Folia build: `Chunky enabled`.",
+          "`World.getWorldBorder()` is implemented: size, center, damage buffer and warnings."
+        ]
+      },
+      "limits": {
+        "ru": ["Генерация идёт через worldgen Chunkwake; нестандартные настройки мира проверяйте отдельно."],
+        "en": ["Generation goes through Chunkwake worldgen; test unusual world settings separately."]
+      }
+    },
+    {
+      "id": "worldguard",
+      "name": "WorldGuard",
+      "version": "7.0.21",
+      "status": "works",
+      "kind": "world",
+      "url": "https://enginehub.org/worldguard/",
+      "summary": {
+        "ru": "Включается, регионы загружаются, предупреждение про `WorldBorder` ушло.",
+        "en": "Enables, regions load, and the `WorldBorder` warning is gone."
+      },
+      "details": {
+        "ru": [
+          "Живой прогон: регионы загружаются без ошибок включения.",
+          "После реализации `WorldBorder` предупреждение `World.getWorldBorder is not implemented` исчезло."
+        ],
+        "en": [
+          "Live run: regions load without enable errors.",
+          "After `WorldBorder` was implemented, the `World.getWorldBorder is not implemented` warning disappeared."
+        ]
+      },
+      "limits": {
+        "ru": ["Флаги, которым нужны непокрытые API, могут не применяться; проверяйте свои регионы."],
+        "en": ["Flags that need uncovered APIs may not apply; test your own regions."]
+      }
+    },
+    {
+      "id": "tab",
+      "name": "TAB",
+      "version": "6.2.1",
+      "status": "works",
+      "kind": "api",
+      "url": "https://github.com/NEZNAMY/TAB",
+      "summary": {
+        "ru": "Инициализируется на Paper 26.3 и обновляет таб-лист.",
+        "en": "Initialises on Paper 26.3 and updates the tab list."
+      },
+      "details": {
+        "ru": [
+          "Для запуска добавлены `CraftPlayer` с `getHandle()` и Paper-детект через `ServerBuildInfo`.",
+          "Живой гейт после этих правок: 12 из 12 плагинов."
+        ],
+        "en": [
+          "`CraftPlayer` with `getHandle()` and Paper detection through `ServerBuildInfo` were added for it.",
+          "Live gate after those changes: 12 of 12 plugins."
+        ]
+      },
+      "limits": {
+        "ru": ["Проверьте свои анимации и плейсхолдеры: часть scoring/placeholder API может быть неполной."],
+        "en": ["Test your own animations and placeholders: part of the scoring/placeholder API may be incomplete."]
       }
     }
   ]

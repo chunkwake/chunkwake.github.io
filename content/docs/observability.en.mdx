@@ -9,6 +9,7 @@ The server samples load once per second and exposes it without external agents. 
 | Method | When to use it |
 |---|---|
 | `/top` in game | inspect load from chat without switching to the terminal |
+| `/mspt` in game | a short avg/min/max summary over 5 s, 10 s and 1 min, as on Paper |
 | `chunkwake top` | a one-off snapshot or `--watch` in another window |
 | `GET /` in a browser | live dashboard: 15-minute charts, cores, world, network |
 | `GET /metrics` | Prometheus and Grafana |
@@ -58,7 +59,7 @@ DNS rebinding is blocked: if the browser sends `Origin`, it must point at the sa
 
 ## What is measured
 
-**Tick.** An 18,000-tick ring buffer (15 minutes): TPS over 1/5/15-minute windows, average MSPT for the last minute, p50/p95/p99, the worst tick and the number of late ticks.
+**Tick.** An 18,000-tick ring buffer (15 minutes): TPS over 1/5/15-minute windows, average MSPT for the last minute, p50/p95/p99, the worst tick and the number of late ticks. Late ticks are caught up in a burst instead of being dropped: the counter shows how many there were, but no load is lost.
 
 **Process and machine.** Load per core, machine average, process share of one core, RSS and virtual memory, system memory.
 

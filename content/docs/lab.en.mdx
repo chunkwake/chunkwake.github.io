@@ -97,6 +97,17 @@ ECharts is loaded from a CDN, so charts need internet access. Tables, data and l
 
 The first comparative run requires `--accept-vanilla-eula`; the choice is remembered in the working directory. Read the [Minecraft EULA](https://www.minecraft.net/en-us/eula) before agreeing.
 
+## A/B p99
+
+A separate bench answers the "tick tail" question: `scripts/ab_p99.ps1` runs five rounds of three 15-second windows on Chunkwake and Paper, and `scripts/analyze_ab_p99.py` computes p50/p95/p99, TPS from `Server.getCurrentTick()` and paired comparisons.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/ab_p99.ps1 -Rounds 5 -SampleMs 15000
+py -3 scripts/analyze_ab_p99.py
+```
+
+Metrics come from the `java/perf-probe` plugin through `ServerTickEndEvent`; it is the only plugin on both sides. The result is `benchmarks/ab-p99/results.md`, all 30 windows and raw samples in `benchmarks/ab-p99/samples/`. These files are committed to core, and the site fetches them at build time: [benchmarks](/en/benchmarks).
+
 ## How to read the result
 
 Speed alone does not prove compatibility. World settings that Chunkwake does not apply yet cannot be treated as equivalent to vanilla, and behaviour differences matter more than an MSPT gap. That is why `Compare` checks both behaviour and persistence, while `Bench` answers only "how much does a tick cost".

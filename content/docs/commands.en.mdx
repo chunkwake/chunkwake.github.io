@@ -26,6 +26,22 @@ A short list of names for search and navigation; descriptions and differences ar
 - **Administration:** `op` / `deop`, `kick`, `whitelist`, `ban` / `ban-ip` / `banlist` / `pardon` / `pardon-ip`, `reload`, `tick`, `debug`, `perf`, `stop`, `version`, `save-all` / `save-off` / `save-on`, `publish` / `unpublish`, `transfer`, `setidletimeout`, `return`.
 - **Chunkwake extensions:** `tps`, `top`.
 
+`/execute` supports terminal `if entity` and `unless entity`: the server answers `Test passed` or `Test failed` with the correct count. `/tick query` prints `p50/p95/p99/max`, as Paper does.
+
+## Paper commands
+
+Besides the vanilla tree, the commands Paper users expect are available:
+
+| Command | What it does |
+|---|---|
+| `/plugins` | plugin list split into Paper and Bukkit sections, enabled and disabled, legacy plugins marked `*` |
+| `/version` | core version; with an argument, the plugin version, site and authors |
+| `/mspt` | average, minimum and maximum MSPT over 5 s, 10 s and 1 min |
+| `/help` | topics for every command, aliases and a per-plugin index |
+| `/bukkit:reload [confirm]` | reload plugins; refuses when a plugin registered a lifecycle handler |
+
+Permissions are `bukkit.command.*` with vanilla defaults. A plugin command overrides a vanilla command with the same name; the vanilla one stays available as `minecraft:<name>`.
+
 ## Permission levels
 
 Levels match vanilla. An operator receives level 3; the server owner receives level 4.

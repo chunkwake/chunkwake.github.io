@@ -2,7 +2,15 @@ import data from '@/content/data/plugins.json';
 import type { Lang } from './i18n';
 
 export type PluginStatus = 'works' | 'partial' | 'unsupported';
-export type PluginKind = 'map' | 'permissions' | 'world' | 'gameplay' | 'api' | 'protocol' | 'proxy';
+export type PluginKind =
+  | 'map'
+  | 'permissions'
+  | 'world'
+  | 'gameplay'
+  | 'api'
+  | 'protocol'
+  | 'proxy'
+  | 'content';
 
 export type LocalizedList = Record<Lang, string[]>;
 export type LocalizedText = Record<Lang, string>;
@@ -19,10 +27,20 @@ export type PluginEntry = {
   limits: LocalizedList;
 };
 
+export type PluginGate = {
+  date: string;
+  total: number;
+  enabled: number;
+  note: LocalizedText;
+  failures: { name: string; version: string; reason: LocalizedText }[];
+  verified: { name: string; version: string }[];
+};
+
 export type PluginData = {
   source: string;
   testedAt: string;
   coreSha: string;
+  gate?: PluginGate;
   plugins: PluginEntry[];
 };
 
@@ -42,6 +60,7 @@ export const pluginKindLabels: Record<PluginKind, Record<Lang, string>> = {
   api: { ru: 'API', en: 'API' },
   protocol: { ru: 'протокол', en: 'protocol' },
   proxy: { ru: 'прокси', en: 'proxy' },
+  content: { ru: 'контент', en: 'content' },
 };
 
 export function pluginTotals() {
@@ -54,3 +73,5 @@ export function pluginTotals() {
     proxies: plugins.filter((plugin) => plugin.kind === 'proxy').length,
   };
 }
+
+export const pluginGate = pluginData.gate;

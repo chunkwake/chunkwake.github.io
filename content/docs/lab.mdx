@@ -97,6 +97,17 @@ ECharts для графиков загружается с CDN, поэтому д
 
 Первый сравнительный запуск требует `--accept-vanilla-eula`; выбор запоминается в рабочем каталоге. Перед согласием прочитайте [Minecraft EULA](https://www.minecraft.net/en-us/eula).
 
+## A/B p99
+
+Отдельный стенд отвечает на вопрос «какой хвост тика»: `scripts/ab_p99.ps1` запускает пять раундов по три 15-секундных окна на Chunkwake и Paper, а `scripts/analyze_ab_p99.py` считает p50/p95/p99, TPS по `Server.getCurrentTick()` и парные сравнения.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/ab_p99.ps1 -Rounds 5 -SampleMs 15000
+py -3 scripts/analyze_ab_p99.py
+```
+
+Метрики снимает плагин `java/perf-probe` через `ServerTickEndEvent`; это единственный плагин на обеих сторонах. Результат — `benchmarks/ab-p99/results.md`, все 30 окон и сырые samples в `benchmarks/ab-p99/samples/`. Эти файлы коммитятся в core, а сайт забирает их при сборке: [замеры](/ru/benchmarks).
+
 ## Как читать результат
 
 Скорость сама по себе не доказывает совместимость. Настройки мира, которые Chunkwake пока не применяет, нельзя считать эквивалентными ванили, а различия в поведении важнее разницы в MSPT. Поэтому `Compare` проверяет и поведение, и сохранение, а `Bench` отвечает только на вопрос «сколько стоит тик».

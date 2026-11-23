@@ -1,8 +1,56 @@
 {
   "source": "chunkwake/core",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-23T07:09:57.789Z",
+  "fetchedAt": "2026-11-23T07:52:25.116Z",
   "items": [
+    {
+      "sha": "3ac3f18398b6136389f695fc8b04242d0b5e9aea",
+      "shortSha": "3ac3f183",
+      "date": "2026-11-23T07:46:24Z",
+      "category": "core",
+      "title": "RecipeMap typed recipe methods",
+      "url": "https://github.com/chunkwake/core/commit/3ac3f18398b6136389f695fc8b04242d0b5e9aea"
+    },
+    {
+      "sha": "0d24d31b3b00da35faf2251112bfb4b3559d802e",
+      "shortSha": "0d24d31b",
+      "date": "2026-11-23T07:45:42Z",
+      "category": "core",
+      "title": "не копить отсутствующие карты и экранировать ошибки команд",
+      "url": "https://github.com/chunkwake/core/commit/0d24d31b3b00da35faf2251112bfb4b3559d802e"
+    },
+    {
+      "sha": "10c39c0adf868da3fb7ec84fe19b8c5633af8d09",
+      "shortSha": "10c39c0a",
+      "date": "2026-11-23T07:39:38Z",
+      "category": "core",
+      "title": "ограничить вложенные стопки и грань действия",
+      "url": "https://github.com/chunkwake/core/commit/10c39c0adf868da3fb7ec84fe19b8c5633af8d09"
+    },
+    {
+      "sha": "a0759c0018492fedbd5bfea15e1ab12051496764",
+      "shortSha": "a0759c00",
+      "date": "2026-11-23T07:36:02Z",
+      "category": "core",
+      "title": "проверять досягаемость и каналы плагинов",
+      "url": "https://github.com/chunkwake/core/commit/a0759c0018492fedbd5bfea15e1ab12051496764"
+    },
+    {
+      "sha": "225e52b3f2996e9d7bf97be2c2804af0d9289177",
+      "shortSha": "225e52b3",
+      "date": "2026-11-23T07:25:07Z",
+      "category": "core",
+      "title": "IntProvider и RecipeMap add/remove/byKey",
+      "url": "https://github.com/chunkwake/core/commit/225e52b3f2996e9d7bf97be2c2804af0d9289177"
+    },
+    {
+      "sha": "6a73916740fad8f85d697c08a39c64556ccb6dc2",
+      "shortSha": "6a739167",
+      "date": "2026-11-23T07:05:51Z",
+      "category": "core",
+      "title": "IntProviders и RecipeMap fields",
+      "url": "https://github.com/chunkwake/core/commit/6a73916740fad8f85d697c08a39c64556ccb6dc2"
+    },
     {
       "sha": "8b3165d81046f196b2e5577b21fd0453950d7488",
       "shortSha": "8b3165d8",
@@ -594,54 +642,6 @@
       "category": "api",
       "title": "CommandAPI end-to-end (bootstrap Bukkit-null parity, NMS command stubs, MessageComponentSerializer, player identity); bot runs /cprobe -> CPROBE_OK; 74/76",
       "url": "https://github.com/chunkwake/core/commit/fdcd4bc4e25b4a0d6aee4a2523cebd25e55ecf72"
-    },
-    {
-      "sha": "9e1e12a3f8df6907f52bff40df9e0babf08d96cd",
-      "shortSha": "9e1e12a3",
-      "date": "2026-11-20T15:32:55Z",
-      "category": "api",
-      "title": "CraftServer.syncCommands (PlugManX); documented 5 more plugins: 73/75, LibertyBans needs pre-fetched bans-download, FAWE isolated",
-      "url": "https://github.com/chunkwake/core/commit/9e1e12a3f8df6907f52bff40df9e0babf08d96cd"
-    },
-    {
-      "sha": "44fb070396285133ad40423e9d882877244794f9",
-      "shortSha": "44fb0703",
-      "date": "2026-11-20T15:15:14Z",
-      "category": "api",
-      "title": "TabTPS (Moonrise TickData), zMenu (real ArgumentTypes), DeluxeHub (SpigotConfig/commons-lang/item-nbt-api), CraftEngine classloader+ASM+version.json; expanded gate 69/71",
-      "url": "https://github.com/chunkwake/core/commit/44fb070396285133ad40423e9d882877244794f9"
-    },
-    {
-      "sha": "3caaa622f8c49db25440da3c6386f5d6d261eb6e",
-      "shortSha": "3caaa622",
-      "date": "2026-11-20T14:31:57Z",
-      "category": "core",
-      "title": "commit parallel chunk/region mob tick (par), mob_cells and Section::sample needed by HEAD; fixes CI build",
-      "url": "https://github.com/chunkwake/core/commit/3caaa622f8c49db25440da3c6386f5d6d261eb6e"
-    },
-    {
-      "sha": "62391a49bf77b7622a80511d74c5452bc249d152",
-      "shortSha": "62391a49",
-      "date": "2026-11-20T14:09:43Z",
-      "category": "api",
-      "title": "Emotecraft loads and enables (Paper connections/lifecycle/commands, Avatar+CraftEntity hierarchy, ServerConfiguration); expanded gate 64/66, LOADERR empty",
-      "url": "https://github.com/chunkwake/core/commit/62391a49bf77b7622a80511d74c5452bc249d152"
-    },
-    {
-      "sha": "3bdee9655fe6b0f7493669b3cdbb616faeca2ec1",
-      "shortSha": "3bdee965",
-      "date": "2026-11-20T13:44:16Z",
-      "category": "api",
-      "title": "squaremap render works (Moonrise scheduler stubs, StainedGlassBlock); PNG tiles from live chunk loads and fullrender",
-      "url": "https://github.com/chunkwake/core/commit/3bdee9655fe6b0f7493669b3cdbb616faeca2ec1"
-    },
-    {
-      "sha": "67c2cc2f2e31f35c5425dac54a74cb8198d3aadc",
-      "shortSha": "67c2cc2f",
-      "date": "2026-11-20T11:58:10Z",
-      "category": "core",
-      "title": "squaremap render stack fixes (BlockState.CODEC, Strategy class, Registry codec, NMS render stubs); Paper JVM --add-opens restores PacketEvents; PNG tiles still absent",
-      "url": "https://github.com/chunkwake/core/commit/67c2cc2f2e31f35c5425dac54a74cb8198d3aadc"
     }
   ]
 }

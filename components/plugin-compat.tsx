@@ -2,6 +2,7 @@
 import type { Lang } from '@/lib/i18n';
 import {
   pluginData,
+  pluginGate,
   pluginKindLabels,
   pluginStatusLabels,
   pluginTotals,
@@ -13,11 +14,16 @@ const ui = {
   ru: {
     tested: 'проверено',
     works: 'работает',
+    partial: 'частично',
     unsupported: 'не работает',
     verifiedOn: 'Проверено на core',
     details: 'Что работает',
     limits: 'Ограничения',
     site: 'Сайт плагина',
+    gateTitle: 'Гейт плагинов',
+    gateEnabled: 'включилось',
+    gateFailures: 'Не включились',
+    gateVerified: 'Ещё проверено',
     noteTitle: 'Граница совместимости',
     note: 'Плагины, которые заходят во внутренности CraftBukkit, Netty или `ServerLevel`, могут работать не полностью. Полностью повторить Java-сервер без Java-сервера нельзя, и это не обещается: для каждого плагина в таблице указано, что именно проверено.',
     howTitle: 'Как проверяем',
@@ -34,11 +40,16 @@ const ui = {
   en: {
     tested: 'tested',
     works: 'works',
+    partial: 'partial',
     unsupported: 'unsupported',
     verifiedOn: 'Verified on core',
     details: 'What works',
     limits: 'Limits',
     site: 'Plugin site',
+    gateTitle: 'Plugin gate',
+    gateEnabled: 'enabled',
+    gateFailures: 'Did not enable',
+    gateVerified: 'Also verified',
     noteTitle: 'Compatibility boundary',
     note: 'Plugins that reach into CraftBukkit, Netty or `ServerLevel` internals may not work fully. Reimplementing a Java server without Java is not possible, and this is not promised: each row states what was actually verified.',
     howTitle: 'How we test',
@@ -142,6 +153,12 @@ export function PluginCompatibility({ lang }: { lang: Lang }) {
           <strong>{totals.works}</strong>
           <span>{t.works}</span>
         </div>
+        {totals.partial > 0 ? (
+          <div className="cw-compat-stat is-partial">
+            <strong>{totals.partial}</strong>
+            <span>{t.partial}</span>
+          </div>
+        ) : null}
         <div className="cw-compat-stat is-unsupported">
           <strong>{totals.unsupported}</strong>
           <span>{t.unsupported}</span>
@@ -153,6 +170,62 @@ export function PluginCompatibility({ lang }: { lang: Lang }) {
           </span>
         </div>
       </div>
+
+      {pluginGate ? (
+        <section className="cw-gate">
+          <div className="cw-gate-head">
+            <div>
+              <h2>{t.gateTitle}</h2>
+              <p>{pluginGate.note[lang]}</p>
+            </div>
+            <div className="cw-gate-count">
+              <strong>{pluginGate.enabled}</strong>
+              <span>
+                / {pluginGate.total} {t.gateEnabled}
+              </span>
+              <time dateTime={pluginGate.date}>{pluginGate.date}</time>
+            </div>
+          </div>
+
+          <div
+            className="cw-gate-bar"
+            role="img"
+            aria-label={`${pluginGate.enabled} / ${pluginGate.total}`}
+          >
+            <span
+              style={{ width: `${Math.round((pluginGate.enabled / pluginGate.total) * 100)}%` }}
+            />
+          </div>
+
+          <div className="cw-gate-cols">
+            <div>
+              <h3>{t.gateFailures}</h3>
+              <ul className="cw-gate-failures">
+                {pluginGate.failures.map((failure) => (
+                  <li key={failure.name}>
+                    <div>
+                      <strong>{failure.name}</strong>
+                      <span>{failure.version}</span>
+                    </div>
+                    <p>{renderInline(failure.reason[lang])}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3>{t.gateVerified}</h3>
+              <ul className="cw-gate-chips">
+                {pluginGate.verified.map((plugin) => (
+                  <li key={plugin.name}>
+                    {plugin.name}
+                    <span>{plugin.version}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <div className="cw-compat-grid">
         {pluginData.plugins.map((plugin) => (

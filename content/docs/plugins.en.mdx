@@ -19,7 +19,7 @@ main: dev.chunkwake.hello.HelloPlugin
 api-version: "26.3"
 ```
 
-Both `plugin.yml` and `paper-plugin.yml` are supported, including Maven `libraries:`, `loader` and `bootstrapper`. Libraries are resolved before the main class is created and cached in `libraries/` next to the server. Commands registered through the lifecycle event land in the shared `CommandMap`, which is how `/bluemap` works.
+Both `plugin.yml` and `paper-plugin.yml` are supported, including Maven `libraries:`, `loader` and `bootstrapper`. If both files are present, `paper-plugin.yml` wins. Libraries are resolved before the main class is created and cached in `libraries/` next to the server. Commands registered through the lifecycle event land in the shared `CommandMap`, which is how `/bluemap` works.
 
 ## Events
 
@@ -86,9 +86,27 @@ Ordinary plugins are not disabled as they are on Folia. Plugins with `folia-supp
 
 What has already been verified on a live server, with versions and limits, is on the [plugin compatibility page](/en/compatibility).
 
+## NMS and CraftEngine
+
+Plugins that need vanilla classes get a generated `net.minecraft.*` layer: registries, block states, packets, `CraftWorld`, `CraftPlayer`, registry events. It is not a complete copy of a Java server, only the classes and methods that live plugins actually reached for.
+
+That is enough for NMS plugins and part of CraftEngine. CraftEngine 26.9.2 starts on a clean API bundle, but its content packs still fail on missing NMS stubs (`MultiPackResourceManager`, `Item#useOn`, `CraftWorld#getUID`). ProtocolLib still does not load: it needs `network.EnumProtocol`, not individual stubs.
+
+## Plugin gate
+
+Compatibility is tested on a live gate: dozens of jars are put into `plugins/`, the server starts, then a bot runs the plugin commands. The last full run of the extended set was **78 of 81**; an earlier revision reached 83/83, but the full gate has not been rerun after the latest changes.
+
+- **MiniMOTD** disables itself: its version gate treats the server as Spigot.
+- **VoxyServerSide** disables itself through `plugin.yml` (it requires MC below 26.2).
+- **LevelledMobs** does not enable.
+- **CraftEngine** reported `LOADERR` in that run; it starts on a clean API bundle, but content packs do not work.
+
+Verified versions and exact limits are on the [compatibility page](/en/compatibility) and in the [feature matrix](/en/docs/feature-matrix).
+
 ## Debugging
 
 - `chunkwake doctor --dir ./server` checks Java and configuration.
+- `/plugins` shows what enabled, `/mspt` prints average, minimum and maximum MSPT over 5 s, 10 s and 1 min.
 - JVM and bridge logs go to the server log.
 - An unimplemented method does not kill `onEnable`: it returns an empty value of the right type and logs `api: <interface>.<method>` once. Those lines are the list of gaps.
 - `CHUNKWAKE_API_STRICT=1` enables strict mode: an exception is thrown instead of a soft value. It is meant for tests, not normal runs.

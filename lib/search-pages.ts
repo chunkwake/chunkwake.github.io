@@ -5,7 +5,7 @@ import changelog from '@/content/data/changelog.json';
 import { featureMatrix } from '@/lib/feature-matrix';
 import type { Lang } from '@/lib/i18n';
 import { milestones, statusPageMeta } from '@/lib/milestones';
-import { pluginData, pluginStatusLabels } from '@/lib/plugins';
+import { pluginData, pluginGate, pluginStatusLabels } from '@/lib/plugins';
 import { releaseData } from '@/lib/release';
 
 type StaticSearchPage = {
@@ -196,6 +196,13 @@ function compatibilityPages(locale: Lang): StaticSearchPage[] {
           (plugin) =>
             `${plugin.name} ${plugin.version}: ${pluginStatusLabels[plugin.status][locale]}. ${plugin.summary[locale]}`,
         ),
+        ...(pluginGate
+          ? [
+              locale === 'ru'
+                ? `Гейт плагинов: ${pluginGate.enabled} из ${pluginGate.total}. Не включились: ${pluginGate.failures.map((failure) => failure.name).join(', ')}.`
+                : `Plugin gate: ${pluginGate.enabled} of ${pluginGate.total}. Not enabled: ${pluginGate.failures.map((failure) => failure.name).join(', ')}.`,
+            ]
+          : []),
         ru
           ? 'Как проверяем: релизная сборка, реальный сервер с plugins/*.jar, лог включения, команды плагина и результат в мире.'
           : 'How we test: a release build, a real server with plugins/*.jar, the enable log, plugin commands and the result in the world.',
