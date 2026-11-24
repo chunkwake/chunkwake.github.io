@@ -199,8 +199,8 @@ function compatibilityPages(locale: Lang): StaticSearchPage[] {
         ...(pluginGate
           ? [
               locale === 'ru'
-                ? `Гейт плагинов: ${pluginGate.enabled} из ${pluginGate.total}. Не включились: ${pluginGate.failures.map((failure) => failure.name).join(', ')}.`
-                : `Plugin gate: ${pluginGate.enabled} of ${pluginGate.total}. Not enabled: ${pluginGate.failures.map((failure) => failure.name).join(', ')}.`,
+                ? `Гейт плагинов: ${pluginGate.enabled} из ${pluginGate.total}. Вне стенда: ${(pluginGate.excluded ?? []).map((item) => item.name).join(', ')}.`
+                : `Plugin gate: ${pluginGate.enabled} of ${pluginGate.total}. Outside the gate: ${(pluginGate.excluded ?? []).map((item) => item.name).join(', ')}.`,
             ]
           : []),
         ru

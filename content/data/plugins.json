@@ -1,62 +1,112 @@
 {
   "source": "chunkwake/core docs/feature-matrix.md",
-  "testedAt": "2026-11-23",
-  "coreSha": "8b3165d8",
+  "testedAt": "2026-11-24",
+  "coreSha": "2a2a420e",
   "gate": {
-    "date": "2026-11-23",
-    "total": 81,
-    "enabled": 78,
+    "date": "2026-11-24",
+    "total": 100,
+    "enabled": 100,
+    "jars": 104,
     "note": {
-      "ru": "Последний полный прогон расширенного стенда. На более ранней ревизии было 83/83; после последних правок полный гейт не перепрогонялся.",
-      "en": "The last full run of the extended gate. An earlier revision reached 83/83; the full gate has not been rerun after the latest changes."
+      "ru": "Восстановленный стенд 24.11.2026: 100 из 100 включились, 104 jar'а с библиотеками, без failed/loaderr/skipped/panics. Набор собран заново из доступных плагинов 26.3 и не совпадает побайтно со старым 83/83.",
+      "en": "The restored gate of 2026-11-24: 100 of 100 enabled, 104 jars including libraries, no failed/loaderr/skipped/panics. The set was rebuilt from available 26.3 plugins and is not byte-identical to the old 83/83."
     },
-    "failures": [
+    "failures": [],
+    "excluded": [
       {
-        "name": "MiniMOTD",
-        "version": "2.2.5",
+        "name": "journeymap",
+        "version": "",
         "reason": {
-          "ru": "Сам отключается: version-gate считает сервер Spigot.",
-          "en": "Disables itself: its version gate treats the server as Spigot."
+          "ru": "Клиентский мод, а не серверный плагин.",
+          "en": "A client mod, not a server plugin."
         }
       },
       {
-        "name": "VoxyServerSide",
-        "version": "0.21.1",
+        "name": "QuickShop-Hikari",
+        "version": "6.3.0.4",
         "reason": {
-          "ru": "Сам отключается по `plugin.yml`: требует MC ниже 26.2.",
-          "en": "Disables itself through `plugin.yml`: it requires MC below 26.2."
+          "ru": "Конфликт WorldEdit/FAWE: два разных загрузчика одного класса.",
+          "en": "WorldEdit/FAWE conflict: two loaders provide the same class."
         }
       },
       {
-        "name": "LevelledMobs",
-        "version": "4.5.3.2",
+        "name": "EconomyShopGUI",
+        "version": "7.3.4",
         "reason": {
-          "ru": "Не включается.",
-          "en": "Does not enable."
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
         }
       },
       {
-        "name": "CraftEngine",
-        "version": "26.9.2",
+        "name": "ClickVillagers",
+        "version": "",
         "reason": {
-          "ru": "`LOADERR` в этом прогоне; после чистого API bundle включается, но content packs падают на NMS-стабах.",
-          "en": "`LOADERR` in this run; it enables on a clean API bundle, but content packs fail on NMS stubs."
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
         }
       },
       {
-        "name": "ProtocolLib",
-        "version": "5.4.0",
+        "name": "FreedomChat",
+        "version": "",
         "reason": {
-          "ru": "Нужен `network.EnumProtocol` из NMS.",
-          "en": "Needs `network.EnumProtocol` from NMS."
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
         }
       },
       {
-        "name": "ImageFrame",
-        "version": "2026.1.5",
+        "name": "NexusCore",
+        "version": "",
         "reason": {
-          "ru": "Собственный `NMSWrapper` для 26.3 не создаётся.",
-          "en": "Its own `NMSWrapper` for 26.3 cannot be created."
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
+        }
+      },
+      {
+        "name": "NexusAuctionHouse",
+        "version": "",
+        "reason": {
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
+        }
+      },
+      {
+        "name": "DonutAuctionHouse",
+        "version": "",
+        "reason": {
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
+        }
+      },
+      {
+        "name": "BKCommonLib",
+        "version": "",
+        "reason": {
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
+        }
+      },
+      {
+        "name": "Sit",
+        "version": "",
+        "reason": {
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
+        }
+      },
+      {
+        "name": "CrazyEnchantments",
+        "version": "",
+        "reason": {
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
+        }
+      },
+      {
+        "name": "LagFixer",
+        "version": "",
+        "reason": {
+          "ru": "Не прошёл этот стенд.",
+          "en": "Did not pass this gate."
         }
       }
     ],
@@ -64,23 +114,29 @@
       { "name": "Chunky", "version": "1.5.66" },
       { "name": "WorldGuard", "version": "7.0.21" },
       { "name": "TAB", "version": "6.2.1" },
-      { "name": "ajLeaderboards", "version": "2.11.0" },
-      { "name": "DeluxeMenus", "version": "1.14.1" },
-      { "name": "GriefPrevention", "version": "16.18.8" },
+      { "name": "Skript", "version": "2.17.1" },
+      { "name": "ProtocolLib", "version": "5.4.0" },
+      { "name": "Pl3xMap", "version": "26.3-557" },
+      { "name": "GravesX", "version": "2026.4.9.3" },
+      { "name": "Orebfuscator", "version": "5.6.2" },
+      { "name": "AxiomPaper", "version": "6.0.1" },
+      { "name": "FAWE", "version": "2.16.3" },
+      { "name": "CommandAPI", "version": "12.1.0" },
       { "name": "ViaBackwards", "version": "5.12.3" },
       { "name": "Simple Voice Chat", "version": "2.6.27" },
       { "name": "GrimAC", "version": "2.3.75" },
       { "name": "LibertyBans", "version": "1.2.0-M1" },
       { "name": "Maintenance", "version": "5.1.1" },
-      { "name": "CommandAPI", "version": "12.1.0" },
       { "name": "Multiverse-Core", "version": "5.8.2" },
       { "name": "squaremap", "version": "1.4.4" },
       { "name": "Geyser", "version": "2.12.1" },
-      { "name": "BentoBox", "version": "3.23.7" },
+      { "name": "BentoBox", "version": "3.24.0" },
       { "name": "ExcellentCrates", "version": "7.2.0" },
       { "name": "EliteMobs", "version": "10.9.14" },
-      { "name": "BetonQuest", "version": "3.4.0-DEV-14" },
-      { "name": "SkinsRestorer", "version": "15.12.6" }
+      { "name": "BetonQuest", "version": "3.4.0-DEV-21" },
+      { "name": "SkinsRestorer", "version": "15.12.6" },
+      { "name": "ImageFrame", "version": "2026.1.5" },
+      { "name": "AdvancedPortals", "version": "2.8.1" }
     ]
   },
   "plugins": [
@@ -280,20 +336,30 @@
       "id": "protocollib",
       "name": "ProtocolLib",
       "version": "5.4.0",
-      "status": "unsupported",
+      "status": "works",
       "kind": "protocol",
       "url": "https://github.com/dmulloy2/ProtocolLib",
       "summary": {
-        "ru": "Не загружается: плагину нужны NMS-классы Mojang, которых в Chunkwake нет.",
-        "en": "Does not load: the plugin needs Mojang NMS classes that Chunkwake does not have."
+        "ru": "Включается и получает события пакетов; версия 26.3 распознаётся с информационным предупреждением.",
+        "en": "Enables and receives packet events; 26.3 is recognised with an informational warning."
       },
       "details": {
-        "ru": ["Ошибка: `Unable to find network.EnumProtocol`."],
-        "en": ["Error: `Unable to find network.EnumProtocol`."]
+        "ru": [
+          "В восстановленном гейте 24.11 ProtocolLib 5.4.0 входит в 100/100; ошибка `network.EnumProtocol` больше не возникает.",
+          "События пакетов работают: `set_equipment` перекодируется после изменения слота плагином; чат и другие пакеты идут через общий слой."
+        ],
+        "en": [
+          "In the restored gate of 24.11, ProtocolLib 5.4.0 is part of 100/100; the `network.EnumProtocol` error no longer occurs.",
+          "Packet events work: `set_equipment` is re-encoded after a plugin changes a slot; chat and other packets go through the shared layer."
+        ]
       },
       "limits": {
-        "ru": ["Это ожидаемое ограничение подхода без Java-сервера, а не ошибка конкретной сборки."],
-        "en": ["This is an expected limit of the no-Java-server approach, not a bug in a specific build."]
+        "ru": [
+          "Полный packet API не обещается: часть пакетов идёт raw-passthrough, сложные NMS-структуры могут отличаться."
+        ],
+        "en": [
+          "The full packet API is not promised: some packets use raw passthrough and complex NMS structures may differ."
+        ]
       }
     },
     {
@@ -328,31 +394,31 @@
       "id": "craftengine",
       "name": "CraftEngine",
       "version": "26.9.2",
-      "status": "partial",
+      "status": "works",
       "kind": "content",
       "url": "https://craftengine.dev/",
       "summary": {
-        "ru": "Включается на чистом API bundle; кастомные блоки и часть контента работают, content packs пока нет.",
-        "en": "Enables on a clean API bundle; custom blocks and part of the content work, content packs do not yet."
+        "ru": "Включается; data pack загружает 45 рецептов и 40 блоков, пробы проходят состояние, коллизию, дропы и сохранение.",
+        "en": "Enables; the data pack loads 45 recipes and 40 blocks, and probes pass state, collision, drops and persistence."
       },
       "details": {
         "ru": [
-          "Живой прогон: CraftEngine 26.9.2 включается, кастомные блоки регистрируются, состояния и дропы частично проверены.",
-          "`CustomShapes` берёт коллизию из carrier-состояния: stairs, door, slab, trapdoor, barrier и fence."
+          "`CEProbe`/`CEStateProbe`: `topaz_ore`, `palm_stairs`, `palm_door` — состояние, коллизия, дропы и сохранение после рестарта.",
+          "`BlockState.blockState()`, `ServerLevel$EntityCallbacks` и `CraftWorldBorder` закрыты; `CustomShapes` покрывает заборы, стены и кнопки."
         ],
         "en": [
-          "Live run: CraftEngine 26.9.2 enables, custom blocks register, states and drops are partially verified.",
-          "`CustomShapes` takes collision from the carrier state: stairs, door, slab, trapdoor, barrier and fence."
+          "`CEProbe`/`CEStateProbe`: `topaz_ore`, `palm_stairs`, `palm_door` pass state, collision, drops and persistence after restart.",
+          "`BlockState.blockState()`, `ServerLevel$EntityCallbacks` and `CraftWorldBorder` are covered; `CustomShapes` handles fences, walls and buttons."
         ]
       },
       "limits": {
         "ru": [
-          "Content packs падают на отсутствующих NMS-стабах: `MultiPackResourceManager`, `Item#useOn`, `CraftWorld#getUID`.",
-          "Не считать CraftEngine поддерживаемым: это частичный слой, а не полная совместимость."
+          "Полная parity произвольных content packs не доказана: новые моды могут найти новые NMS-стабы.",
+          "Это проверка загрузки и проб, а не всех возможностей CraftEngine."
         ],
         "en": [
-          "Content packs fail on missing NMS stubs: `MultiPackResourceManager`, `Item#useOn`, `CraftWorld#getUID`.",
-          "Do not treat CraftEngine as supported: this is a partial layer, not full compatibility."
+          "Full parity for arbitrary content packs is not proven: new mods may need new NMS stubs.",
+          "This covers loading and probes, not every CraftEngine feature."
         ]
       }
     },

@@ -88,18 +88,17 @@ What has already been verified on a live server, with versions and limits, is on
 
 ## NMS and CraftEngine
 
-Plugins that need vanilla classes get a generated `net.minecraft.*` layer: registries, block states, packets, `CraftWorld`, `CraftPlayer`, registry events. It is not a complete copy of a Java server, only the classes and methods that live plugins actually reached for.
+Plugins that need vanilla classes get a generated `net.minecraft.*` layer: registries, block states, packets, `CraftWorld`, `CraftPlayer`, registry events. It is not a complete copy of a Java server, only the classes and methods that live plugins actually reached for. The stub generator handles top-level and nested classes, so coverage grows from real failures instead of hand-written guesses.
 
-That is enough for NMS plugins and part of CraftEngine. CraftEngine 26.9.2 starts on a clean API bundle, but its content packs still fail on missing NMS stubs (`MultiPackResourceManager`, `Item#useOn`, `CraftWorld#getUID`). ProtocolLib still does not load: it needs `network.EnumProtocol`, not individual stubs.
+The layer now gets through CraftEngine 26.9.2: the data pack loads 45 recipes and 40 blocks, and `CEProbe`/`CEStateProbe` check state, collision, drops and persistence after restart. ProtocolLib 5.4.0 enables and receives packet events; Skript 2.17.1 and Pl3xMap 26.3 are also in the gate.
 
 ## Plugin gate
 
-Compatibility is tested on a live gate: dozens of jars are put into `plugins/`, the server starts, then a bot runs the plugin commands. The last full run of the extended set was **78 of 81**; an earlier revision reached 83/83, but the full gate has not been rerun after the latest changes.
+Compatibility is tested on a live gate: jars are put into `plugins/`, the server starts, then a bot runs the plugin commands. The restored run of 2026-11-24 was **100 of 100**, 104 jars including libraries, with no failed/loaderr/skipped/panics.
 
-- **MiniMOTD** disables itself: its version gate treats the server as Spigot.
-- **VoxyServerSide** disables itself through `plugin.yml` (it requires MC below 26.2).
-- **LevelledMobs** does not enable.
-- **CraftEngine** reported `LOADERR` in that run; it starts on a clean API bundle, but content packs do not work.
+The set was rebuilt from available 26.3 plugins and is not byte-identical to the old 83/83. Some plugins are not in it: `QuickShop-Hikari` conflicts with WorldEdit/FAWE, `journeymap` is a client mod, and a few others did not pass this gate. The list and reasons are on the [compatibility page](/en/compatibility).
+
+The gate checks loading, enabling and the absence of runtime errors. It does not prove full parity for arbitrary plugins.
 
 Verified versions and exact limits are on the [compatibility page](/en/compatibility) and in the [feature matrix](/en/docs/feature-matrix).
 

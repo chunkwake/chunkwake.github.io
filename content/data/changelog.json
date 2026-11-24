@@ -1,8 +1,200 @@
 {
   "source": "chunkwake/core",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-23T12:31:05.274Z",
+  "fetchedAt": "2026-11-24T12:22:27.405Z",
   "items": [
+    {
+      "sha": "2a2a420e4646cc9eb75b02de25e71aad3da1d143",
+      "shortSha": "2a2a420e",
+      "date": "2026-11-24T11:39:08Z",
+      "category": "core",
+      "title": "p99 0.194x/0.061x/0.066x vs Paper",
+      "url": "https://github.com/chunkwake/core/commit/2a2a420e4646cc9eb75b02de25e71aad3da1d143"
+    },
+    {
+      "sha": "1470a76521614721991d715ee3f8a27c53e0a4c2",
+      "shortSha": "1470a765",
+      "date": "2026-11-24T11:01:04Z",
+      "category": "core",
+      "title": "getEntities, load(false) without generation",
+      "url": "https://github.com/chunkwake/core/commit/1470a76521614721991d715ee3f8a27c53e0a4c2"
+    },
+    {
+      "sha": "ebed7cbc9f5b051d1efe2f1ac17970c257c6602c",
+      "shortSha": "ebed7cbc",
+      "date": "2026-11-24T09:52:19Z",
+      "category": "core",
+      "title": "p99 0.223x/0.056x/0.069x vs Paper",
+      "url": "https://github.com/chunkwake/core/commit/ebed7cbc9f5b051d1efe2f1ac17970c257c6602c"
+    },
+    {
+      "sha": "c13f0e11b12d63dfe00e581d9f0570b13b197f48",
+      "shortSha": "c13f0e11",
+      "date": "2026-11-24T09:02:12Z",
+      "category": "core",
+      "title": "verify World.getChunkAt/Chunk.load loads columns",
+      "url": "https://github.com/chunkwake/core/commit/c13f0e11b12d63dfe00e581d9f0570b13b197f48"
+    },
+    {
+      "sha": "4d53372ba3616b2c7f90c5c0b016505d5367e653",
+      "shortSha": "4d53372b",
+      "date": "2026-11-24T09:01:35Z",
+      "category": "core",
+      "title": "isChunkLoaded sees loaded columns; docs",
+      "url": "https://github.com/chunkwake/core/commit/4d53372ba3616b2c7f90c5c0b016505d5367e653"
+    },
+    {
+      "sha": "1193add17b4cd541d857afeb206f525503917d2b",
+      "shortSha": "1193add1",
+      "date": "2026-11-24T08:53:10Z",
+      "category": "core",
+      "title": "sync World.save, chunk load, piston/block-tick restore",
+      "url": "https://github.com/chunkwake/core/commit/1193add17b4cd541d857afeb206f525503917d2b"
+    },
+    {
+      "sha": "141928340b3248925cd202f99bc7c1ae10c91a0d",
+      "shortSha": "14192834",
+      "date": "2026-11-24T06:52:30Z",
+      "category": "core",
+      "title": "12 cow drops и chunk-ticket сценарий",
+      "url": "https://github.com/chunkwake/core/commit/141928340b3248925cd202f99bc7c1ae10c91a0d"
+    },
+    {
+      "sha": "f11e2a72323d583d006051f7f1ae8295af2a9f92",
+      "shortSha": "f11e2a72",
+      "date": "2026-11-24T06:46:03Z",
+      "category": "core",
+      "title": "forceload bridge",
+      "url": "https://github.com/chunkwake/core/commit/f11e2a72323d583d006051f7f1ae8295af2a9f92"
+    },
+    {
+      "sha": "4ae4eb50721b3f65c3dcd245d8f7964bb4956f6c",
+      "shortSha": "4ae4eb50",
+      "date": "2026-11-24T06:43:31Z",
+      "category": "core",
+      "title": "chunk tickets, redstone/fluids parity",
+      "url": "https://github.com/chunkwake/core/commit/4ae4eb50721b3f65c3dcd245d8f7964bb4956f6c"
+    },
+    {
+      "sha": "1620a2a5f3939067d57e59d898678089e4b031c3",
+      "shortSha": "1620a2a5",
+      "date": "2026-11-24T06:16:24Z",
+      "category": "core",
+      "title": "финальный 100/100 с GravesX",
+      "url": "https://github.com/chunkwake/core/commit/1620a2a5f3939067d57e59d898678089e4b031c3"
+    },
+    {
+      "sha": "c54b620a96131158d110b7e822a0734f68707d41",
+      "shortSha": "c54b620a",
+      "date": "2026-11-24T06:08:27Z",
+      "category": "core",
+      "title": "финальный 5x3 на aee780b",
+      "url": "https://github.com/chunkwake/core/commit/c54b620a96131158d110b7e822a0734f68707d41"
+    },
+    {
+      "sha": "aee780be124287d3f2c6c8736447f16afa15be46",
+      "shortSha": "aee780be",
+      "date": "2026-11-24T05:33:15Z",
+      "category": "core",
+      "title": "Material.values без LEGACY_*, 127/127",
+      "url": "https://github.com/chunkwake/core/commit/aee780be124287d3f2c6c8736447f16afa15be46"
+    },
+    {
+      "sha": "83e7bbcc00f75ee344bc0e76f3348d7ed7f0b7bb",
+      "shortSha": "83e7bbcc",
+      "date": "2026-11-24T05:10:03Z",
+      "category": "core",
+      "title": "финальный 5x3 на 172406d",
+      "url": "https://github.com/chunkwake/core/commit/83e7bbcc00f75ee344bc0e76f3348d7ed7f0b7bb"
+    },
+    {
+      "sha": "172406d8c75fa83019ccf64200ef8c1e3b3a8a0f",
+      "shortSha": "172406d8",
+      "date": "2026-11-24T04:33:46Z",
+      "category": "core",
+      "title": "Paper-порядок NBT в serializeAsBytes (121 B)",
+      "url": "https://github.com/chunkwake/core/commit/172406d8c75fa83019ccf64200ef8c1e3b3a8a0f"
+    },
+    {
+      "sha": "02136f30314685e075566cac87595b1d1a995f70",
+      "shortSha": "02136f30",
+      "date": "2026-11-24T04:08:15Z",
+      "category": "core",
+      "title": "commandmap 219/219 и формат CraftEnchantment",
+      "url": "https://github.com/chunkwake/core/commit/02136f30314685e075566cac87595b1d1a995f70"
+    },
+    {
+      "sha": "f4b5f05f1accca001fb1a1a559f5e8cf76c3da71",
+      "shortSha": "f4b5f05f",
+      "date": "2026-11-24T03:49:17Z",
+      "category": "core",
+      "title": "финальный 5x3 p99/TPS на 5f386ee",
+      "url": "https://github.com/chunkwake/core/commit/f4b5f05f1accca001fb1a1a559f5e8cf76c3da71"
+    },
+    {
+      "sha": "5f386eecf9bdaef93e22afdafe9d2a1144c5f6cc",
+      "shortSha": "5f386eec",
+      "date": "2026-11-24T03:02:20Z",
+      "category": "core",
+      "title": "vanilla command map, DataVersion и Paper cache для A/B",
+      "url": "https://github.com/chunkwake/core/commit/5f386eecf9bdaef93e22afdafe9d2a1144c5f6cc"
+    },
+    {
+      "sha": "2e60b4fbfb3b3c0f7ab16430c1b1eb20d8ae4e44",
+      "shortSha": "2e60b4fb",
+      "date": "2026-11-23T18:22:44Z",
+      "category": "core",
+      "title": "mannequin NPC/skin parts и sign-text 4 строки",
+      "url": "https://github.com/chunkwake/core/commit/2e60b4fbfb3b3c0f7ab16430c1b1eb20d8ae4e44"
+    },
+    {
+      "sha": "1945763d4a68d1f253985e1804ddc5bfc39afee5",
+      "shortSha": "1945763d",
+      "date": "2026-11-23T18:08:01Z",
+      "category": "core",
+      "title": "Skript/ProtocolLib/Orebfuscator/Axiom + vanilla diff",
+      "url": "https://github.com/chunkwake/core/commit/1945763d4a68d1f253985e1804ddc5bfc39afee5"
+    },
+    {
+      "sha": "98e1c184e29f6e59134a76a9ae50fc72c3fa642e",
+      "shortSha": "98e1c184",
+      "date": "2026-11-23T16:51:19Z",
+      "category": "core",
+      "title": "финальный 5x3 p99/TPS A/B и gate 96/96",
+      "url": "https://github.com/chunkwake/core/commit/98e1c184e29f6e59134a76a9ae50fc72c3fa642e"
+    },
+    {
+      "sha": "ecc980177df5ddcd75958de03a0118c3199851f5",
+      "shortSha": "ecc98017",
+      "date": "2026-11-23T16:16:16Z",
+      "category": "core",
+      "title": "закрыть BlockState.blockState и entity world tracking",
+      "url": "https://github.com/chunkwake/core/commit/ecc980177df5ddcd75958de03a0118c3199851f5"
+    },
+    {
+      "sha": "797a3c0fbffa9cd82768339e31e093b6475f2ff1",
+      "shortSha": "797a3c0f",
+      "date": "2026-11-23T15:55:38Z",
+      "category": "core",
+      "title": "включить CommandAPI и Pl3xMap, закрыть WorldEdit/FAWE конфликт",
+      "url": "https://github.com/chunkwake/core/commit/797a3c0fbffa9cd82768339e31e093b6475f2ff1"
+    },
+    {
+      "sha": "8f4945b9b761e5ea55465dd875503d7957640f12",
+      "shortSha": "8f4945b9",
+      "date": "2026-11-23T14:01:13Z",
+      "category": "core",
+      "title": "добавить PackFormat и json-simple parseWithException",
+      "url": "https://github.com/chunkwake/core/commit/8f4945b9b761e5ea55465dd875503d7957640f12"
+    },
+    {
+      "sha": "ea3aa2639904340690edb42ab27782d808e848d0",
+      "shortSha": "ea3aa263",
+      "date": "2026-11-23T13:44:03Z",
+      "category": "core",
+      "title": "закрыть recipe/proxy-дыры, добавить стены и кнопки в CustomShapes",
+      "url": "https://github.com/chunkwake/core/commit/ea3aa2639904340690edb42ab27782d808e848d0"
+    },
     {
       "sha": "e4fff76430b166529b7838667d84fb0d40ee8d91",
       "shortSha": "e4fff764",
@@ -450,198 +642,6 @@
       "category": "core",
       "title": "rebuild drop index only when chunk membership changes; tick/mobs -4.8% median in A/B (4/5 runs, p<0.05); gates 79/82, base 26/27",
       "url": "https://github.com/chunkwake/core/commit/389e46896c49babd2314ec02b0d03966937bd9da"
-    },
-    {
-      "sha": "c806a4891abe3c327cfc693d5e90c86ab91dc8e5",
-      "shortSha": "c806a489",
-      "date": "2026-11-21T12:08:14Z",
-      "category": "api",
-      "title": "CraftEngine proxy member batch (RESOLVABLE_PROFILE, soundEvent aliases, LootData); bench: block_read -9.4%, block_write -7.5%, idle +3%; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/c806a4891abe3c327cfc693d5e90c86ab91dc8e5"
-    },
-    {
-      "sha": "2e8917b30f6ad88736df16f9e342c9d43c2888a6",
-      "shortSha": "2e8917b3",
-      "date": "2026-11-21T12:01:22Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 259->261/504 (UseItemOn ctor order, SynchedEntityData.set/packAll, EntityDataSerializers fields); bot verifies /libertybans; tick bench 56.4ns idle (no gain); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/2e8917b30f6ad88736df16f9e342c9d43c2888a6"
-    },
-    {
-      "sha": "c319d38b0e7da266753760d68f697963dfd94150",
-      "shortSha": "c319d38b",
-      "date": "2026-11-21T11:47:55Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 257->259/504 (full Pose enum, BlockStateParser+BlockResult, TeamColor/DataSlot/RecipeType, typed event factory); bot verifies /viaversion; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/c319d38b0e7da266753760d68f697963dfd94150"
-    },
-    {
-      "sha": "944bfc781fd1306672ff88bab797e3ddcc3bdd3c",
-      "shortSha": "944bfc78",
-      "date": "2026-11-21T11:41:12Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 255->257/504 (PositionPath, UpdateAttributes packet, passenger/equipment setters, block-event packets); bot verifies /ess; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/944bfc781fd1306672ff88bab797e3ddcc3bdd3c"
-    },
-    {
-      "sha": "e91a1f1b20e395460a43e7aa52908ec8f43b0b2b",
-      "shortSha": "e91a1f1b",
-      "date": "2026-11-21T11:29:28Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 252->255/504 (Pose enum, chunk unsaved/dimension, CraftBlockStates, Entity/LivingEntity members); bot verifies /tabtps; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/e91a1f1b20e395460a43e7aa52908ec8f43b0b2b"
-    },
-    {
-      "sha": "d76edf2ed05932a16f1134a3a7565679641047c1",
-      "shortSha": "d76edf2e",
-      "date": "2026-11-21T11:21:37Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 248->252/504 (CraftInventory/Merchant wrappers, LoginPacket, ServerCommonPacketListener, Advancements packet); bot verifies /ajlb; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/d76edf2ed05932a16f1134a3a7565679641047c1"
-    },
-    {
-      "sha": "e150cf8f0d457e3124b9e294d2ee32643058aa99",
-      "shortSha": "e150cf8f",
-      "date": "2026-11-21T11:13:34Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 243->248/504 (CraftChunk/Block/EventFactory/MagicNumbers, ByteBufCodecs.trackDepth, Hashed classes); bot verifies /sr; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/e150cf8f0d457e3124b9e294d2ee32643058aa99"
-    },
-    {
-      "sha": "98aea770f355899691672faa6c130d0e7925c4c1",
-      "shortSha": "98aea770",
-      "date": "2026-11-21T11:06:39Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 232->243/504 (advancements/display/chat-type/translatable classes); bot verifies /holograms; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/98aea770f355899691672faa6c130d0e7925c4c1"
-    },
-    {
-      "sha": "2101628c0c568c4429f8d1e020d64e00a33879e5",
-      "shortSha": "2101628c",
-      "date": "2026-11-21T11:00:14Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 225->232/504 (map/light/chunk-update/book/tags packets, MapId, PDC.put); bot verifies /grim; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/2101628c0c568c4429f8d1e020d64e00a33879e5"
-    },
-    {
-      "sha": "1b37b9b97586e4e170c148836a9e21fa2737aa8a",
-      "shortSha": "1b37b9b9",
-      "date": "2026-11-21T10:46:47Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 213->225/504 (sound/take-item/resourcepack/creative/login packets + SoundSource/MobEffectInstance); bot verifies /plan; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/1b37b9b97586e4e170c148836a9e21fa2737aa8a"
-    },
-    {
-      "sha": "8e5c9f2d048d2b4679fe5647fdea85cbbc3776b7",
-      "shortSha": "8e5c9f2d",
-      "date": "2026-11-21T10:39:40Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 209->213/504 (MoveEntity/Teleport/Respawn/PlayerTeam packets); bot verifies /chunky; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/8e5c9f2d048d2b4679fe5647fdea85cbbc3776b7"
-    },
-    {
-      "sha": "14ed659340fd7a1218c35f0143cd879b8a6bffdb",
-      "shortSha": "14ed6593",
-      "date": "2026-11-21T10:30:18Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 199->209/504 (title/actionbar/health/book/chat packets, MobEffect); bot verifies /imageframe; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/14ed659340fd7a1218c35f0143cd879b8a6bffdb"
-    },
-    {
-      "sha": "6d8b4e225ed4938adf897074ace081b04088a6bc",
-      "shortSha": "6d8b4e22",
-      "date": "2026-11-21T10:21:31Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 195->199/504 (EntityType/ArmorStand/Orientation/MapItemSavedData, Pose/Level/Chunk members); bot verifies /bq; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/6d8b4e225ed4938adf897074ace081b04088a6bc"
-    },
-    {
-      "sha": "ed01d90e34d1c5c294e4a0020a008398915363a8",
-      "shortSha": "ed01d90e",
-      "date": "2026-11-21T10:06:23Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 192->195/504 (ClientInformation, WorldlyContainer/ResultContainer, Pose/SoundEvent/menu members); bot verifies /ei; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/ed01d90e34d1c5c294e4a0020a008398915363a8"
-    },
-    {
-      "sha": "a6a0506f836cf3e01a99e799e3bd4f03df6db2b7",
-      "shortSha": "a6a0506f",
-      "date": "2026-11-21T09:49:22Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 183->192/504 (container/open-screen/event packets, ClientInformation); bot verifies /dm list; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/a6a0506f836cf3e01a99e799e3bd4f03df6db2b7"
-    },
-    {
-      "sha": "4b6fca333cf80ca8669bcf1c3c351fdbe026812a",
-      "shortSha": "4b6fca33",
-      "date": "2026-11-21T09:36:49Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 180->183/504 (BundlePacket/PacketSendListener/ByteBufCodecs); bot verifies /papi list (27 hooks); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/4b6fca333cf80ca8669bcf1c3c351fdbe026812a"
-    },
-    {
-      "sha": "8f70029a12fe0d3605624f1f543cd33f891239e2",
-      "shortSha": "8f70029a",
-      "date": "2026-11-21T09:28:35Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 169->180/504 (HolderOwner/HolderGetter chain, DataComponentGetter, registry/packet members); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/8f70029a12fe0d3605624f1f543cd33f891239e2"
-    },
-    {
-      "sha": "96396f585316739628b3fcf441e26cc0db36ab83",
-      "shortSha": "96396f58",
-      "date": "2026-11-21T09:19:25Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 165->169/504 (packets, Container, registries, recipe/attribute members); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/96396f585316739628b3fcf441e26cc0db36ab83"
-    },
-    {
-      "sha": "b8d62d479cd629a1d118bf75806f9ceb7b18a115",
-      "shortSha": "b8d62d47",
-      "date": "2026-11-21T09:08:49Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 161->165/504 (chat/sign packets, Fluid/Fluids, registries/packets fields); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/b8d62d479cd629a1d118bf75806f9ceb7b18a115"
-    },
-    {
-      "sha": "49fc12884ceef86fb0b759efe4c1e97e74a626dd",
-      "shortSha": "49fc1288",
-      "date": "2026-11-21T09:01:15Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 157->161/504 (Inventory/DyeColor/ImposterProtoChunk/PalettedContainer + members); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/49fc12884ceef86fb0b759efe4c1e97e74a626dd"
-    },
-    {
-      "sha": "c737a58468dea0f117b4386f9c134a3d2d4f3b82",
-      "shortSha": "c737a584",
-      "date": "2026-11-21T08:52:46Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 149->157/504 (Registry/Slot/Chunk/Generator/DimensionType/BlockHitResult members); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/c737a58468dea0f117b4386f9c134a3d2d4f3b82"
-    },
-    {
-      "sha": "22eb7b8f4cdf831034625c72e94994691cc29452",
-      "shortSha": "22eb7b8f",
-      "date": "2026-11-21T08:44:47Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 143->149/504 (Holder.is, ChunkPos/Level/Vec3/AABB, Slot/Player/ServerLevel/Scoreboard members); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/22eb7b8f4cdf831034625c72e94994691cc29452"
-    },
-    {
-      "sha": "e5125bb1bb71d660001d047a4960ec3d81417adb",
-      "shortSha": "e5125bb1",
-      "date": "2026-11-21T08:25:28Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 135->143/504 (particles, chat Style/CODEC, DamageSource, Item/Player/Slot members); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/e5125bb1bb71d660001d047a4960ec3d81417adb"
-    },
-    {
-      "sha": "6ad7b0a16e0dab8d78f39c244d5230812d339619",
-      "shortSha": "6ad7b0a1",
-      "date": "2026-11-21T08:18:30Z",
-      "category": "api",
-      "title": "CraftEngine proxy coverage 132->135/504 (MutableBlockPos, StreamCodec.unit, TagKey.create + more members); bot verifies WorldEdit /we version; 79/82",
-      "url": "https://github.com/chunkwake/core/commit/6ad7b0a16e0dab8d78f39c244d5230812d339619"
     }
   ]
 }

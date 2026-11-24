@@ -12,10 +12,11 @@ import {
 
 const ui = {
   ru: {
-    tested: 'проверено',
+    tested: 'подробно',
     works: 'работает',
     partial: 'частично',
     unsupported: 'не работает',
+    gateStat: 'гейт',
     verifiedOn: 'Проверено на core',
     details: 'Что работает',
     limits: 'Ограничения',
@@ -23,6 +24,7 @@ const ui = {
     gateTitle: 'Гейт плагинов',
     gateEnabled: 'включилось',
     gateFailures: 'Не включились',
+    gateExcluded: 'Не входят в стенд',
     gateVerified: 'Ещё проверено',
     noteTitle: 'Граница совместимости',
     note: 'Плагины, которые заходят во внутренности CraftBukkit, Netty или `ServerLevel`, могут работать не полностью. Полностью повторить Java-сервер без Java-сервера нельзя, и это не обещается: для каждого плагина в таблице указано, что именно проверено.',
@@ -38,10 +40,11 @@ const ui = {
     about: 'О запуске плагинов',
   },
   en: {
-    tested: 'tested',
+    tested: 'detailed',
     works: 'works',
     partial: 'partial',
     unsupported: 'unsupported',
+    gateStat: 'gate',
     verifiedOn: 'Verified on core',
     details: 'What works',
     limits: 'Limits',
@@ -49,6 +52,7 @@ const ui = {
     gateTitle: 'Plugin gate',
     gateEnabled: 'enabled',
     gateFailures: 'Did not enable',
+    gateExcluded: 'Not in the gate',
     gateVerified: 'Also verified',
     noteTitle: 'Compatibility boundary',
     note: 'Plugins that reach into CraftBukkit, Netty or `ServerLevel` internals may not work fully. Reimplementing a Java server without Java is not possible, and this is not promised: each row states what was actually verified.',
@@ -141,6 +145,13 @@ function PluginCard({ plugin, locale }: { plugin: PluginEntry; locale: Lang }) {
 export function PluginCompatibility({ lang }: { lang: Lang }) {
   const t = ui[lang];
   const totals = pluginTotals();
+  const gateIssues = pluginGate
+    ? pluginGate.failures.length > 0
+      ? pluginGate.failures
+      : (pluginGate.excluded ?? [])
+    : [];
+  const gateIssuesLabel =
+    pluginGate && pluginGate.failures.length > 0 ? t.gateFailures : t.gateExcluded;
 
   return (
     <div className="cw-compat">
@@ -153,15 +164,9 @@ export function PluginCompatibility({ lang }: { lang: Lang }) {
           <strong>{totals.works}</strong>
           <span>{t.works}</span>
         </div>
-        {totals.partial > 0 ? (
-          <div className="cw-compat-stat is-partial">
-            <strong>{totals.partial}</strong>
-            <span>{t.partial}</span>
-          </div>
-        ) : null}
-        <div className="cw-compat-stat is-unsupported">
-          <strong>{totals.unsupported}</strong>
-          <span>{t.unsupported}</span>
+        <div className="cw-compat-stat">
+          <strong>{pluginGate ? `${pluginGate.enabled}/${pluginGate.total}` : '—'}</strong>
+          <span>{t.gateStat}</span>
         </div>
         <div className="cw-compat-stat">
           <strong>{pluginData.testedAt}</strong>
@@ -199,13 +204,13 @@ export function PluginCompatibility({ lang }: { lang: Lang }) {
 
           <div className="cw-gate-cols">
             <div>
-              <h3>{t.gateFailures}</h3>
+              <h3>{gateIssuesLabel}</h3>
               <ul className="cw-gate-failures">
-                {pluginGate.failures.map((failure) => (
+                {gateIssues.map((failure) => (
                   <li key={failure.name}>
                     <div>
                       <strong>{failure.name}</strong>
-                      <span>{failure.version}</span>
+                      {failure.version ? <span>{failure.version}</span> : null}
                     </div>
                     <p>{renderInline(failure.reason[lang])}</p>
                   </li>

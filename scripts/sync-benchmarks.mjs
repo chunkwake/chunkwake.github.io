@@ -173,7 +173,7 @@ function parseAb(resultsText, docText) {
 
   if (scenarios.length === 0) throw new Error('A/B scenarios not found');
 
-  const dateMatch = docText.match(/\((\d{2})\.(\d{2})\.(\d{4})\)/);
+  const dateMatch = docText.match(/(\d{2})\.(\d{2})\.(\d{4})/);
   const date = dateMatch ? `${dateMatch[3]}-${dateMatch[2]}-${dateMatch[1]}` : null;
 
   return { date, rounds, scenarios, sourceUrl: urls.abResults };

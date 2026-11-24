@@ -31,8 +31,10 @@ export type PluginGate = {
   date: string;
   total: number;
   enabled: number;
+  jars?: number;
   note: LocalizedText;
   failures: { name: string; version: string; reason: LocalizedText }[];
+  excluded?: { name: string; version: string; reason: LocalizedText }[];
   verified: { name: string; version: string }[];
 };
 

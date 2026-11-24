@@ -37,16 +37,16 @@ Networking, the world and worldgen live in Rust. The JVM does not own the tick: 
 
 Vanilla `net.minecraft.*` classes are not copied wholesale. The layer is built from stubs, proxies and real wrappers for what plugins actually request: registries, block states, packets, `CraftWorld`, `CraftPlayer`, registry events. The code lives in `java/api-impl` and `crates/bridge`, and a live plugin gate checks it.
 
-The boundary shows up in failures: ProtocolLib looks for `network.EnumProtocol`, CraftEngine content packs for missing stubs. This is not "everything is supported", but a list of specific places that are not covered yet.
+The boundary shows up in failures: content packs for new mods and complex packet APIs may still need new stubs. This is not "everything is supported", but a list of specific places that are not covered yet.
 
 ## Parity with vanilla
 
 - Mechanics are implemented from `server.jar` and Paper bytecode, not from the wiki.
-- The command tree is checked against `reports/commands.json`, packets against `reports/packets.json`.
-- Terrain and world hashes are compared with vanilla.
+- The command tree is checked against `reports/commands.json`, packets against `reports/packets.json`; the command map is 219/219 and `Material.values` without `LEGACY_*` is 127/127.
+- Terrain and world hashes are compared with vanilla; the fixed-tick diff covers cow drops, chunk tickets, redstone and fluids.
 - `chunkwake-lab` runs scenarios on both servers and builds a diff report.
-- A/B p99 with 1000 cows: 1.638 ms versus 12.018 ms for Paper, 5/5 rounds, p=0.031; TPS is 20 on both.
-- Plugin gate: 78 of 81 in the last full run; details are on the compatibility page.
+- A/B p99 with 1000 cows: 0.786 ms versus 12.949 ms for Paper, 5/5 rounds, p=0.031; TPS is 20 on both.
+- Plugin gate: 100 of 100 in the restored run of 24.11; details are on the compatibility page.
 
 ## Plans
 
