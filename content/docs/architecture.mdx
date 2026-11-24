@@ -6,15 +6,7 @@ icon: Boxes
 
 ## Верхний уровень
 
-```
-client 26.3  ←→  net (Rust, tokio)
-                    │
-                    ├── world, worldgen, redstone, mobs
-                    │
-                    └── JNI bridge  ←→  JVM (paper-api + api-impl)
-                                              │
-                                              └── plugins/*.jar
-```
+<DocsArchitecture lang="ru" />
 
 Сеть, мир и генерация живут в Rust. JVM не управляет тиком: она получает события и запросы через мост. Если слушателей нет, событие остаётся в Rust.
 

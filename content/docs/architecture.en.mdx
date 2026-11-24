@@ -6,15 +6,7 @@ icon: Boxes
 
 ## Top level
 
-```
-client 26.3  ←→  net (Rust, tokio)
-                    │
-                    ├── world, worldgen, redstone, mobs
-                    │
-                    └── JNI bridge  ←→  JVM (paper-api + api-impl)
-                                              │
-                                              └── plugins/*.jar
-```
+<DocsArchitecture lang="en" />
 
 Networking, the world and worldgen live in Rust. The JVM does not own the tick: it receives events and requests through the bridge. If there are no listeners, the event stays in Rust.
 

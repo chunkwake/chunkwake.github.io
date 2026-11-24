@@ -1,6 +1,7 @@
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
 import { CommandsReference } from './commands-reference';
+import { DocsArchitecture } from './docs-architecture';
 import { FeatureMatrix } from './feature-matrix';
 import { LangIcon } from './lang-icon';
 import { MatrixTotals } from './matrix-totals';
@@ -11,6 +12,7 @@ export function getMDXComponents(components?: MDXComponents) {
   return {
     ...defaultMdxComponents,
     CommandsReference,
+    DocsArchitecture,
     FeatureMatrix,
     LangIcon,
     MatrixTotals,

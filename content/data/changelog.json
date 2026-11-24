@@ -1,8 +1,72 @@
 {
   "source": "chunkwake/core",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-24T12:22:27.405Z",
+  "fetchedAt": "2026-11-24T12:48:20.739Z",
   "items": [
+    {
+      "sha": "af3eefcd16028edc40b0fb6ca80696a8934f2093",
+      "shortSha": "af3eefcd",
+      "date": "2026-11-24T12:16:29Z",
+      "category": "core",
+      "title": "rustfmt для последних правок",
+      "url": "https://github.com/chunkwake/core/commit/af3eefcd16028edc40b0fb6ca80696a8934f2093"
+    },
+    {
+      "sha": "27f917f9aab0d73101ba947d448caf4144a9bd04",
+      "shortSha": "27f917f9",
+      "date": "2026-11-24T12:08:19Z",
+      "category": "core",
+      "title": "писать и читать строки как Java modified UTF-8",
+      "url": "https://github.com/chunkwake/core/commit/27f917f9aab0d73101ba947d448caf4144a9bd04"
+    },
+    {
+      "sha": "5fca70549983f5bdae3517fc8424cb5462f7ae72",
+      "shortSha": "5fca7054",
+      "date": "2026-11-24T12:04:33Z",
+      "category": "core",
+      "title": "getTileEntities bridge + predicate filter",
+      "url": "https://github.com/chunkwake/core/commit/5fca70549983f5bdae3517fc8424cb5462f7ae72"
+    },
+    {
+      "sha": "c9150befd1a0da50093b6290609044d51b0b682c",
+      "shortSha": "c9150bef",
+      "date": "2026-11-24T12:04:16Z",
+      "category": "core",
+      "title": "отклонять NaN и бесконечность в движении транспорта",
+      "url": "https://github.com/chunkwake/core/commit/c9150befd1a0da50093b6290609044d51b0b682c"
+    },
+    {
+      "sha": "888dee8f4d78ef023c20d7b2e2bd093ef14ee304",
+      "shortSha": "888dee8f",
+      "date": "2026-11-24T12:02:17Z",
+      "category": "core",
+      "title": "не выпускать level-name за каталог сервера",
+      "url": "https://github.com/chunkwake/core/commit/888dee8f4d78ef023c20d7b2e2bd093ef14ee304"
+    },
+    {
+      "sha": "279b746ed6c971ccdb6e4ad8fbd6047ce78d4ff1",
+      "shortSha": "279b746e",
+      "date": "2026-11-24T11:53:10Z",
+      "category": "core",
+      "title": "не уводить вход по ссылке с обратным слэшем",
+      "url": "https://github.com/chunkwake/core/commit/279b746ed6c971ccdb6e4ad8fbd6047ce78d4ff1"
+    },
+    {
+      "sha": "25a6fd00521cdadeb167075dd8727d5b1c9aa0b0",
+      "shortSha": "25a6fd00",
+      "date": "2026-11-24T11:50:38Z",
+      "category": "core",
+      "title": "отклонять NaN и бесконечность в движении игрока",
+      "url": "https://github.com/chunkwake/core/commit/25a6fd00521cdadeb167075dd8727d5b1c9aa0b0"
+    },
+    {
+      "sha": "ea97fee4b04ee6bffdad147093222027e79d38ca",
+      "shortSha": "ea97fee4",
+      "date": "2026-11-24T11:46:50Z",
+      "category": "core",
+      "title": "закрыть DNS rebinding дашборда без токена",
+      "url": "https://github.com/chunkwake/core/commit/ea97fee4b04ee6bffdad147093222027e79d38ca"
+    },
     {
       "sha": "2a2a420e4646cc9eb75b02de25e71aad3da1d143",
       "shortSha": "2a2a420e",
@@ -578,70 +642,6 @@
       "category": "perf",
       "title": "reproducible A/B vs Paper 26.3 (flat, bot, 200/1000 cows + redstone): Chunkwake 4.5-4.7/6.6-7.7/7.8-8.9 ms vs Paper 5.0-5.9/11.0-15.8/10.3-10.4; add /mspt command and bot CMD_FILE/wait/HOLD_MS harness",
       "url": "https://github.com/chunkwake/core/commit/9cdb871317cbec08bba70cacfb7bebd643529d0e"
-    },
-    {
-      "sha": "20cce204e874238877a1c8b3c67955ce205a308a",
-      "shortSha": "20cce204",
-      "date": "2026-11-21T15:30:59Z",
-      "category": "core",
-      "title": "mob scoreboard tags + persistent data container (NBT Tags/BukkitValues, Entity API), verified across restart; fix in-game /stop actually shutting down; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/20cce204e874238877a1c8b3c67955ce205a308a"
-    },
-    {
-      "sha": "6f290078c2ab994d8b20ff710be91e5aac2931a5",
-      "shortSha": "6f290078",
-      "date": "2026-11-21T15:01:22Z",
-      "category": "core",
-      "title": "instrument component + MusicInstrumentMeta (dynamic registry from RegistryData::SYNCHRONIZED) and ItemFactory.createItemStack via Rust item parser; bot+NBT verified; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/6f290078c2ab994d8b20ff710be91e5aac2931a5"
-    },
-    {
-      "sha": "9428afe5f1e8d2d948868ee1409507da5cde7158",
-      "shortSha": "9428afe5",
-      "date": "2026-11-21T14:43:34Z",
-      "category": "core",
-      "title": "potion_contents and fireworks components end-to-end (PotionMeta base type, FireworkMeta effects/power), NBT+bot verified; instrument blocked by dynamic registry; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/9428afe5f1e8d2d948868ee1409507da5cde7158"
-    },
-    {
-      "sha": "682012f2ea29412afe1eab7c3e2be2942832da11",
-      "shortSha": "682012f2",
-      "date": "2026-11-21T14:15:54Z",
-      "category": "core",
-      "title": "block solidity from Rust for Typed.isSolid; item_model/tooltip_style/tooltip_display/glint/item_name components end-to-end (NBT verified); commit bench+world_setup; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/682012f2ea29412afe1eab7c3e2be2942832da11"
-    },
-    {
-      "sha": "a39b7476209db3ce2cee280c749fde60d55f5af5",
-      "shortSha": "a39b7476",
-      "date": "2026-11-21T13:47:12Z",
-      "category": "core",
-      "title": "implement UnsafeValues.getMainLevelName, ItemFactory.getDefaultLeatherColor, Plugin.getDefaultWorldGenerator; document Typed.isSolid recursion (reverted); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/a39b7476209db3ce2cee280c749fde60d55f5af5"
-    },
-    {
-      "sha": "3aa5587fec7ed08fee1fa7f6f6892b3ad8d94468",
-      "shortSha": "3aa5587f",
-      "date": "2026-11-21T13:29:08Z",
-      "category": "core",
-      "title": "real World PVP/difficulty/weather/spawn + stored enchantments (Paper API), bot /worldstate verifies; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/3aa5587fec7ed08fee1fa7f6f6892b3ad8d94468"
-    },
-    {
-      "sha": "2c2a7197b51d97aabc9797cfd8edcdb71b2dba11",
-      "shortSha": "2c2a7197",
-      "date": "2026-11-21T13:14:13Z",
-      "category": "api",
-      "title": "CraftEngine proxies 261->263 (BonemealSource/BonemealableBlock 26.3, WorldlyContainerHolder); DataComponents 26.3 + OminousBottleAmplifier fixes EconomyShopGUI ominous WARN; gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/2c2a7197b51d97aabc9797cfd8edcdb71b2dba11"
-    },
-    {
-      "sha": "389e46896c49babd2314ec02b0d03966937bd9da",
-      "shortSha": "389e4689",
-      "date": "2026-11-21T12:40:04Z",
-      "category": "core",
-      "title": "rebuild drop index only when chunk membership changes; tick/mobs -4.8% median in A/B (4/5 runs, p<0.05); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/389e46896c49babd2314ec02b0d03966937bd9da"
     }
   ]
 }

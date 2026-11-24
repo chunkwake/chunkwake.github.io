@@ -1101,6 +1101,20 @@ button {
   min-height: 0;
 }
 
+.cw-arch-docs {
+  margin: 10px 0 20px;
+}
+
+.cw-arch-docs .cw-flow {
+  height: 340px;
+}
+
+@media (max-width: 640px) {
+  .cw-arch-docs .cw-flow {
+    height: 300px;
+  }
+}
+
 .cw-flow {
   height: 390px;
   background: var(--bg-code);
