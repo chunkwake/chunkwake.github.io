@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';import {
+import { useState } from 'react';import {
   Background,
   BackgroundVariant,
   Handle,
@@ -62,19 +62,6 @@ const edgeStyle = { stroke: '#454542', strokeWidth: 1.2 };
 const markerEnd = { type: MarkerType.ArrowClosed, color: '#555550', width: 12, height: 12 };
 
 export function ArchitectureFlow({ nodes: copyNodes }: { nodes: SiteCopy['architecture']['nodes'] }) {
-  useEffect(() => {
-    // The graph can mount before its container has a measured size (docs and
-    // late-hydrated sections). A few resize passes after layout make ReactFlow
-    // compute edge paths instead of drawing only the nodes.
-    const fire = () => window.dispatchEvent(new Event('resize'));
-    const frame = requestAnimationFrame(fire);
-    const timers = [120, 400].map((ms) => window.setTimeout(fire, ms));
-    return () => {
-      cancelAnimationFrame(frame);
-      timers.forEach((timer) => window.clearTimeout(timer));
-    };
-  }, []);
-
   const nodes: ArchNode[] = [
     {
       id: 'client',

@@ -24,22 +24,31 @@ export function LazyArchitectureFlow({
     const element = host.current;
     if (!element) return;
 
+    const reveal = () => setVisible(true);
+
     if (!('IntersectionObserver' in window)) {
-      setVisible(true);
+      reveal();
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-        setVisible(true);
+        reveal();
         observer.disconnect();
       },
       { rootMargin: '500px 0px' },
     );
 
     observer.observe(element);
-    return () => observer.disconnect();
+    // Background tabs can throttle IntersectionObserver indefinitely. The
+    // fallback keeps the diagram from staying a placeholder forever.
+    const fallback = window.setTimeout(reveal, 1500);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   return (

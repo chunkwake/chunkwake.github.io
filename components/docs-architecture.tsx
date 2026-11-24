@@ -1,15 +1,7 @@
 'use client';
 
-import dynamic from 'next/dynamic';
+import { LazyArchitectureFlow } from './lazy-architecture-flow';
 import { copy } from '@/lib/dictionary';
-
-const ArchitectureFlow = dynamic(
-  () => import('./architecture-flow').then((module) => module.ArchitectureFlow),
-  {
-    ssr: false,
-    loading: () => <div className="cw-flow cw-flow-placeholder" aria-hidden="true" />,
-  },
-);
 
 export function DocsArchitecture({ lang }: { lang: 'ru' | 'en' }) {
   const c = copy[lang].architecture;
@@ -26,7 +18,7 @@ export function DocsArchitecture({ lang }: { lang: 'ru' | 'en' }) {
           <span className="cw-window-title">runtime graph</span>
           <span className="cw-window-lang">{c.hoverHint}</span>
         </div>
-        <ArchitectureFlow nodes={c.nodes} />
+        <LazyArchitectureFlow nodes={c.nodes} />
         <div className="cw-flow-note">{c.footnote}</div>
       </div>
     </div>

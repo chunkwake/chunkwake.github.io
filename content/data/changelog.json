@@ -1,8 +1,48 @@
 {
   "source": "chunkwake/core",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-24T13:17:37.082Z",
+  "fetchedAt": "2026-11-24T13:33:14.282Z",
   "items": [
+    {
+      "sha": "4e05769e662ac876d016ab3f882d7f2cb841d9c2",
+      "shortSha": "4e05769e",
+      "date": "2026-11-24T13:27:06Z",
+      "category": "core",
+      "title": "читать эмодзи из миров прежних сборок",
+      "url": "https://github.com/chunkwake/core/commit/4e05769e662ac876d016ab3f882d7f2cb841d9c2"
+    },
+    {
+      "sha": "75c257403057142e9e4f70e83d816dc27e576fd3",
+      "shortSha": "75c25740",
+      "date": "2026-11-24T13:21:11Z",
+      "category": "core",
+      "title": "не резать суррогатную пару в NBT-строке",
+      "url": "https://github.com/chunkwake/core/commit/75c257403057142e9e4f70e83d816dc27e576fd3"
+    },
+    {
+      "sha": "bd51da53dcb9e433d5cccc29e04cbc9f4cf02b1d",
+      "shortSha": "bd51da53",
+      "date": "2026-11-24T12:49:23Z",
+      "category": "docs",
+      "title": "обновить матрицу по боссам и мирным мобам",
+      "url": "https://github.com/chunkwake/core/commit/bd51da53dcb9e433d5cccc29e04cbc9f4cf02b1d"
+    },
+    {
+      "sha": "880aee6f224bdf1e40f2f5a243a088a4ede677f5",
+      "shortSha": "880aee6f",
+      "date": "2026-11-24T12:29:18Z",
+      "category": "core",
+      "title": "быстрый путь для ASCII-строк",
+      "url": "https://github.com/chunkwake/core/commit/880aee6f224bdf1e40f2f5a243a088a4ede677f5"
+    },
+    {
+      "sha": "2947f9382c0cda0c9de3a2c3450922500e67a494",
+      "shortSha": "2947f938",
+      "date": "2026-11-24T12:26:17Z",
+      "category": "core",
+      "title": "не печатать velocity-secret и metrics-token",
+      "url": "https://github.com/chunkwake/core/commit/2947f9382c0cda0c9de3a2c3450922500e67a494"
+    },
     {
       "sha": "af3eefcd16028edc40b0fb6ca80696a8934f2093",
       "shortSha": "af3eefcd",
@@ -602,46 +642,6 @@
       "category": "docs",
       "title": "scoped BlockStateBase experiment (proxy bound up to CollisionContext/getShape, then missing VoxelShape/pathfinder NMS types) reverted; CraftEngine blocker confirmed at NMS-subsystem level",
       "url": "https://github.com/chunkwake/core/commit/ab8fd88d1a9c90d6eb9a36ccd7bb014f83cbee76"
-    },
-    {
-      "sha": "acaed0f6a416b20e8ac0a02b5e4e3c99aac7d6ac",
-      "shortSha": "acaed0f6",
-      "date": "2026-11-21T17:12:44Z",
-      "category": "docs",
-      "title": "rerun gates after VanillaArgumentProvider/entity-save changes (expanded 79/82, base 26/27, panics 0, P2 263/241), no regressions",
-      "url": "https://github.com/chunkwake/core/commit/acaed0f6a416b20e8ac0a02b5e4e3c99aac7d6ac"
-    },
-    {
-      "sha": "ee433a619f350a07eaa2a7fac121966e58ac4616",
-      "shortSha": "ee433a61",
-      "date": "2026-11-21T17:08:39Z",
-      "category": "docs",
-      "title": "CraftEngine BlockBehaviour\\ documented as hard NMS blocker (80 proxy methods, 27 cache fields); dist OK, P2 263/241; heavy gates deferred",
-      "url": "https://github.com/chunkwake/core/commit/ee433a619f350a07eaa2a7fac121966e58ac4616"
-    },
-    {
-      "sha": "042f6ae05e016c728de245504da58bba163c1a2a",
-      "shortSha": "042f6ae0",
-      "date": "2026-11-21T17:07:15Z",
-      "category": "api",
-      "title": "real VanillaArgumentProvider player/players/playerProfiles (Bukkit-based resolver, limit/distance options), generated via GenProviders; entity-save gate numbers recorded (fmt/clippy 0, 953 tests)",
-      "url": "https://github.com/chunkwake/core/commit/042f6ae05e016c728de245504da58bba163c1a2a"
-    },
-    {
-      "sha": "661ade43d1b7a4389e01658b25214b6ab8ca22b2",
-      "shortSha": "661ade43",
-      "date": "2026-11-21T17:04:19Z",
-      "category": "core",
-      "title": "save per dimension, clear stale entity chunks, dedupe UUIDs on load (44/44 unique after restart, tags/PDC kept); fmt+clippy green",
-      "url": "https://github.com/chunkwake/core/commit/661ade43d1b7a4389e01658b25214b6ab8ca22b2"
-    },
-    {
-      "sha": "9cdb871317cbec08bba70cacfb7bebd643529d0e",
-      "shortSha": "9cdb8713",
-      "date": "2026-11-21T16:57:05Z",
-      "category": "perf",
-      "title": "reproducible A/B vs Paper 26.3 (flat, bot, 200/1000 cows + redstone): Chunkwake 4.5-4.7/6.6-7.7/7.8-8.9 ms vs Paper 5.0-5.9/11.0-15.8/10.3-10.4; add /mspt command and bot CMD_FILE/wait/HOLD_MS harness",
-      "url": "https://github.com/chunkwake/core/commit/9cdb871317cbec08bba70cacfb7bebd643529d0e"
     }
   ]
 }
