@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import {
+import { useEffect, useState } from 'react';import {
   Background,
   BackgroundVariant,
   Handle,
@@ -124,7 +123,7 @@ export function ArchitectureFlow({ nodes: copyNodes }: { nodes: SiteCopy['archit
         tipPosition: Position.Top,
       },
     },
-  ];
+  ] as ArchNode[];
 
   const edges: Edge[] = [
     { id: 'c-n', source: 'client', target: 'net' },
