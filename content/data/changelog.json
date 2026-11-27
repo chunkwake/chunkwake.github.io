@@ -1,647 +1,647 @@
 {
   "source": "chunkwake/core",
   "branch": "ver/26.3",
-  "fetchedAt": "2026-11-24T13:33:14.282Z",
+  "fetchedAt": "2026-11-27T05:41:54.156Z",
   "items": [
     {
-      "sha": "4e05769e662ac876d016ab3f882d7f2cb841d9c2",
-      "shortSha": "4e05769e",
-      "date": "2026-11-24T13:27:06Z",
+      "sha": "86965f1d538f455fd079cf315fcffa066a886154",
+      "shortSha": "86965f1d",
+      "date": "2026-11-27T05:32:25Z",
       "category": "core",
-      "title": "читать эмодзи из миров прежних сборок",
-      "url": "https://github.com/chunkwake/core/commit/4e05769e662ac876d016ab3f882d7f2cb841d9c2"
+      "title": "bee nests contain natural occupants",
+      "url": "https://github.com/chunkwake/core/commit/86965f1d538f455fd079cf315fcffa066a886154"
     },
     {
-      "sha": "75c257403057142e9e4f70e83d816dc27e576fd3",
-      "shortSha": "75c25740",
-      "date": "2026-11-24T13:21:11Z",
+      "sha": "012a7b52c397ecd9c4e868a95e2c9bfcdb17797a",
+      "shortSha": "012a7b52",
+      "date": "2026-11-27T05:27:08Z",
       "category": "core",
-      "title": "не резать суррогатную пару в NBT-строке",
-      "url": "https://github.com/chunkwake/core/commit/75c257403057142e9e4f70e83d816dc27e576fd3"
+      "title": "tropical fish variants",
+      "url": "https://github.com/chunkwake/core/commit/012a7b52c397ecd9c4e868a95e2c9bfcdb17797a"
     },
     {
-      "sha": "bd51da53dcb9e433d5cccc29e04cbc9f4cf02b1d",
-      "shortSha": "bd51da53",
-      "date": "2026-11-24T12:49:23Z",
+      "sha": "76f34a52b656997dea622681601bf35708446a3d",
+      "shortSha": "76f34a52",
+      "date": "2026-11-27T05:18:53Z",
+      "category": "core",
+      "title": "bees return to hives and die after stinging",
+      "url": "https://github.com/chunkwake/core/commit/76f34a52b656997dea622681601bf35708446a3d"
+    },
+    {
+      "sha": "77daf245f41f6028fed546ff233fa11e5fac2c6c",
+      "shortSha": "77daf245",
+      "date": "2026-11-27T05:11:40Z",
+      "category": "core",
+      "title": "bee pollination and crop growth",
+      "url": "https://github.com/chunkwake/core/commit/77daf245f41f6028fed546ff233fa11e5fac2c6c"
+    },
+    {
+      "sha": "c354974ec26ad7fb91e26ec3b8f2e67247494834",
+      "shortSha": "c354974e",
+      "date": "2026-11-27T05:02:38Z",
+      "category": "core",
+      "title": "fix bat metadata and sprint-aware dolphin grace",
+      "url": "https://github.com/chunkwake/core/commit/c354974ec26ad7fb91e26ec3b8f2e67247494834"
+    },
+    {
+      "sha": "c1a9dad260be3f92d4fef87ba8876f8cd023d999",
+      "shortSha": "c1a9dad2",
+      "date": "2026-11-27T04:51:51Z",
+      "category": "core",
+      "title": "dolphin grace for swimming players",
+      "url": "https://github.com/chunkwake/core/commit/c1a9dad260be3f92d4fef87ba8876f8cd023d999"
+    },
+    {
+      "sha": "de8b494674ee30716c18a0d6fee7cbcb19c0796e",
+      "shortSha": "de8b4946",
+      "date": "2026-11-27T04:40:52Z",
+      "category": "core",
+      "title": "pufferfish puff state and poison sting",
+      "url": "https://github.com/chunkwake/core/commit/de8b494674ee30716c18a0d6fee7cbcb19c0796e"
+    },
+    {
+      "sha": "6f45e8894253defd8b8ffcaad918d807a08a0dd8",
+      "shortSha": "6f45e889",
+      "date": "2026-11-27T04:29:08Z",
+      "category": "core",
+      "title": "axolotl species, amphibious navigation and spawn rules",
+      "url": "https://github.com/chunkwake/core/commit/6f45e8894253defd8b8ffcaad918d807a08a0dd8"
+    },
+    {
+      "sha": "be76a6b1fe956992e54f8001257da100a3001522",
+      "shortSha": "be76a6b1",
+      "date": "2026-11-27T04:23:39Z",
+      "category": "core",
+      "title": "pufferfish species and water navigation",
+      "url": "https://github.com/chunkwake/core/commit/be76a6b1fe956992e54f8001257da100a3001522"
+    },
+    {
+      "sha": "c889b91a90c03ba7531d44951f2d7f9e24e979bc",
+      "shortSha": "c889b91a",
+      "date": "2026-11-27T04:19:05Z",
+      "category": "core",
+      "title": "tropical fish species and water navigation",
+      "url": "https://github.com/chunkwake/core/commit/c889b91a90c03ba7531d44951f2d7f9e24e979bc"
+    },
+    {
+      "sha": "56c475589e2a84e2149d9777d1383922c4ab65d5",
+      "shortSha": "56c47558",
+      "date": "2026-11-27T04:14:20Z",
+      "category": "core",
+      "title": "dolphin species and breaching water navigation",
+      "url": "https://github.com/chunkwake/core/commit/56c475589e2a84e2149d9777d1383922c4ab65d5"
+    },
+    {
+      "sha": "353c5adaad7a7b434b7af0d2c89f58bec6379842",
+      "shortSha": "353c5ada",
+      "date": "2026-11-27T04:07:22Z",
+      "category": "core",
+      "title": "squid species and water navigation",
+      "url": "https://github.com/chunkwake/core/commit/353c5adaad7a7b434b7af0d2c89f58bec6379842"
+    },
+    {
+      "sha": "4da07bdfee49deb1b0ce1fc25ece95291e799a3c",
+      "shortSha": "4da07bdf",
+      "date": "2026-11-26T17:42:25Z",
+      "category": "core",
+      "title": "initialize banner patterns before base color round-trip",
+      "url": "https://github.com/chunkwake/core/commit/4da07bdfee49deb1b0ce1fc25ece95291e799a3c"
+    },
+    {
+      "sha": "9a2d54d20a317e9ddd7a1e4a8653e2afef46a7a7",
+      "shortSha": "9a2d54d2",
+      "date": "2026-11-26T17:42:13Z",
+      "category": "core",
+      "title": "send view distance radius to client",
+      "url": "https://github.com/chunkwake/core/commit/9a2d54d20a317e9ddd7a1e4a8653e2afef46a7a7"
+    },
+    {
+      "sha": "62b842b2c2496680acf46844e3fd6b6e11bc8447",
+      "shortSha": "62b842b2",
+      "date": "2026-11-26T17:42:01Z",
+      "category": "core",
+      "title": "bees, anger and hive release",
+      "url": "https://github.com/chunkwake/core/commit/62b842b2c2496680acf46844e3fd6b6e11bc8447"
+    },
+    {
+      "sha": "d3ebfe48cff23028a8c4fb2e82bc9befdb1a0529",
+      "shortSha": "d3ebfe48",
+      "date": "2026-11-26T16:58:55Z",
+      "category": "core",
+      "title": "recompute paths when blocks change",
+      "url": "https://github.com/chunkwake/core/commit/d3ebfe48cff23028a8c4fb2e82bc9befdb1a0529"
+    },
+    {
+      "sha": "0c398ed833c258c44805df31d27d4922435e95e0",
+      "shortSha": "0c398ed8",
+      "date": "2026-11-26T16:48:12Z",
+      "category": "core",
+      "title": "amphibious path navigation for drowned",
+      "url": "https://github.com/chunkwake/core/commit/0c398ed833c258c44805df31d27d4922435e95e0"
+    },
+    {
+      "sha": "8456c13105ff5329ce2cf717ac64f55043a71d8b",
+      "shortSha": "8456c131",
+      "date": "2026-11-26T16:25:56Z",
+      "category": "core",
+      "title": "flying path navigation for bat and phantom",
+      "url": "https://github.com/chunkwake/core/commit/8456c13105ff5329ce2cf717ac64f55043a71d8b"
+    },
+    {
+      "sha": "1076e225c9d62bc9865be3698eabecaa56baba8c",
+      "shortSha": "1076e225",
+      "date": "2026-11-26T16:04:38Z",
+      "category": "core",
+      "title": "water-bound path navigation for fish",
+      "url": "https://github.com/chunkwake/core/commit/1076e225c9d62bc9865be3698eabecaa56baba8c"
+    },
+    {
+      "sha": "bcb11106d5bb47a8610091bc2d4163b59803d6dd",
+      "shortSha": "bcb11106",
+      "date": "2026-11-26T15:28:36Z",
+      "category": "core",
+      "title": "bad respawn point damage cause",
+      "url": "https://github.com/chunkwake/core/commit/bcb11106d5bb47a8610091bc2d4163b59803d6dd"
+    },
+    {
+      "sha": "783e50e391d6e76d9aa3ae47a8b5d8a4719e7a04",
+      "shortSha": "783e50e3",
+      "date": "2026-11-26T15:12:36Z",
+      "category": "core",
+      "title": "apply entity_data component",
+      "url": "https://github.com/chunkwake/core/commit/783e50e391d6e76d9aa3ae47a8b5d8a4719e7a04"
+    },
+    {
+      "sha": "ed7bb9754a9b1c8c610702779efc0d3004007461",
+      "shortSha": "ed7bb975",
+      "date": "2026-11-26T14:45:47Z",
+      "category": "core",
+      "title": "salmon and glow squid water categories",
+      "url": "https://github.com/chunkwake/core/commit/ed7bb9754a9b1c8c610702779efc0d3004007461"
+    },
+    {
+      "sha": "2e0c9048a42eba628a2bfc1104e4c2c29968329d",
+      "shortSha": "2e0c9048",
+      "date": "2026-11-26T14:33:46Z",
+      "category": "core",
+      "title": "ambient and water creature categories",
+      "url": "https://github.com/chunkwake/core/commit/2e0c9048a42eba628a2bfc1104e4c2c29968329d"
+    },
+    {
+      "sha": "af42cafcfdf117f401d05cd5719d96d59a8d9495",
+      "shortSha": "af42cafc",
+      "date": "2026-11-26T14:11:58Z",
+      "category": "core",
+      "title": "local per-player caps and biome spawn costs",
+      "url": "https://github.com/chunkwake/core/commit/af42cafcfdf117f401d05cd5719d96d59a8d9495"
+    },
+    {
+      "sha": "f74a737b36a3e60d3771cf58cc942ffd8488bd57",
+      "shortSha": "f74a737b",
+      "date": "2026-11-26T13:51:11Z",
+      "category": "core",
+      "title": "sync component over network",
+      "url": "https://github.com/chunkwake/core/commit/f74a737b36a3e60d3771cf58cc942ffd8488bd57"
+    },
+    {
+      "sha": "3c297ab4ca606858a118ccc5fc0a954552888d25",
+      "shortSha": "3c297ab4",
+      "date": "2026-11-26T13:38:59Z",
+      "category": "core",
+      "title": "place items with stored NBT",
+      "url": "https://github.com/chunkwake/core/commit/3c297ab4ca606858a118ccc5fc0a954552888d25"
+    },
+    {
+      "sha": "5b7a104433367c3c5acc3f62174bfad6598d254a",
+      "shortSha": "5b7a1044",
+      "date": "2026-11-26T13:20:25Z",
+      "category": "core",
+      "title": "support lock and container_loot components",
+      "url": "https://github.com/chunkwake/core/commit/5b7a104433367c3c5acc3f62174bfad6598d254a"
+    },
+    {
+      "sha": "75da08e08a4ed09310d3ee87abe8ae3e57071d50",
+      "shortSha": "75da08e0",
+      "date": "2026-11-26T12:59:25Z",
+      "category": "core",
+      "title": "keep rarity through block entity",
+      "url": "https://github.com/chunkwake/core/commit/75da08e08a4ed09310d3ee87abe8ae3e57071d50"
+    },
+    {
+      "sha": "11e655766415d8481fac0bb3370706c4b09f99c0",
+      "shortSha": "11e65576",
+      "date": "2026-11-26T12:55:39Z",
+      "category": "core",
+      "title": "group-wide zombie baby roll",
+      "url": "https://github.com/chunkwake/core/commit/11e655766415d8481fac0bb3370706c4b09f99c0"
+    },
+    {
+      "sha": "98a3bfd616d77203a02c371cba21eb19d408106a",
+      "shortSha": "98a3bfd6",
+      "date": "2026-11-26T12:51:29Z",
       "category": "docs",
-      "title": "обновить матрицу по боссам и мирным мобам",
-      "url": "https://github.com/chunkwake/core/commit/bd51da53dcb9e433d5cccc29e04cbc9f4cf02b1d"
+      "title": "play_record stat is already implemented",
+      "url": "https://github.com/chunkwake/core/commit/98a3bfd616d77203a02c371cba21eb19d408106a"
     },
     {
-      "sha": "880aee6f224bdf1e40f2f5a243a088a4ede677f5",
-      "shortSha": "880aee6f",
-      "date": "2026-11-24T12:29:18Z",
+      "sha": "a339fb9025002e6dd8e7e8909b0bb12386c800c9",
+      "shortSha": "a339fb90",
+      "date": "2026-11-26T12:50:54Z",
       "category": "core",
-      "title": "быстрый путь для ASCII-строк",
-      "url": "https://github.com/chunkwake/core/commit/880aee6f224bdf1e40f2f5a243a088a4ede677f5"
+      "title": "baby animals and chunk-group age",
+      "url": "https://github.com/chunkwake/core/commit/a339fb9025002e6dd8e7e8909b0bb12386c800c9"
     },
     {
-      "sha": "2947f9382c0cda0c9de3a2c3450922500e67a494",
-      "shortSha": "2947f938",
-      "date": "2026-11-24T12:26:17Z",
+      "sha": "9461314a7e531f6afb62fa88a6359aea7d104c32",
+      "shortSha": "9461314a",
+      "date": "2026-11-26T12:44:25Z",
       "category": "core",
-      "title": "не печатать velocity-secret и metrics-token",
-      "url": "https://github.com/chunkwake/core/commit/2947f9382c0cda0c9de3a2c3450922500e67a494"
+      "title": "support the rarity component",
+      "url": "https://github.com/chunkwake/core/commit/9461314a7e531f6afb62fa88a6359aea7d104c32"
     },
     {
-      "sha": "af3eefcd16028edc40b0fb6ca80696a8934f2093",
-      "shortSha": "af3eefcd",
-      "date": "2026-11-24T12:16:29Z",
+      "sha": "c6b0fb007a6ee10880fe12f5d2be3529b8dfad2d",
+      "shortSha": "c6b0fb00",
+      "date": "2026-11-26T12:33:43Z",
       "category": "core",
-      "title": "rustfmt для последних правок",
-      "url": "https://github.com/chunkwake/core/commit/af3eefcd16028edc40b0fb6ca80696a8934f2093"
+      "title": "exact 6x9x6 damage box",
+      "url": "https://github.com/chunkwake/core/commit/c6b0fb007a6ee10880fe12f5d2be3529b8dfad2d"
     },
     {
-      "sha": "27f917f9aab0d73101ba947d448caf4144a9bd04",
-      "shortSha": "27f917f9",
-      "date": "2026-11-24T12:08:19Z",
+      "sha": "0c04ddc88dbb782642116b74362aff6bd1122d6f",
+      "shortSha": "0c04ddc8",
+      "date": "2026-11-26T12:28:40Z",
       "category": "core",
-      "title": "писать и читать строки как Java modified UTF-8",
-      "url": "https://github.com/chunkwake/core/commit/27f917f9aab0d73101ba947d448caf4144a9bd04"
+      "title": "exit podium and first-kill egg",
+      "url": "https://github.com/chunkwake/core/commit/0c04ddc88dbb782642116b74362aff6bd1122d6f"
     },
     {
-      "sha": "5fca70549983f5bdae3517fc8424cb5462f7ae72",
-      "shortSha": "5fca7054",
-      "date": "2026-11-24T12:04:33Z",
+      "sha": "38d3c22346bf702ed9c30a6b6a76201d4be6d8e7",
+      "shortSha": "38d3c223",
+      "date": "2026-11-26T12:20:16Z",
       "category": "core",
-      "title": "getTileEntities bridge + predicate filter",
-      "url": "https://github.com/chunkwake/core/commit/5fca70549983f5bdae3517fc8424cb5462f7ae72"
+      "title": "send rocket item stack for star particles",
+      "url": "https://github.com/chunkwake/core/commit/38d3c22346bf702ed9c30a6b6a76201d4be6d8e7"
     },
     {
-      "sha": "c9150befd1a0da50093b6290609044d51b0b682c",
-      "shortSha": "c9150bef",
-      "date": "2026-11-24T12:04:16Z",
+      "sha": "2aa30a85f286c76824840c612b8dec9fcb81f4f4",
+      "shortSha": "2aa30a85",
+      "date": "2026-11-26T12:09:27Z",
       "category": "core",
-      "title": "отклонять NaN и бесконечность в движении транспорта",
-      "url": "https://github.com/chunkwake/core/commit/c9150befd1a0da50093b6290609044d51b0b682c"
+      "title": "area damage and fireworks death cause",
+      "url": "https://github.com/chunkwake/core/commit/2aa30a85f286c76824840c612b8dec9fcb81f4f4"
     },
     {
-      "sha": "888dee8f4d78ef023c20d7b2e2bd093ef14ee304",
-      "shortSha": "888dee8f",
-      "date": "2026-11-24T12:02:17Z",
+      "sha": "1a0941006334de7908a96012afdf20adae1508f3",
+      "shortSha": "1a094100",
+      "date": "2026-11-26T11:57:41Z",
       "category": "core",
-      "title": "не выпускать level-name за каталог сервера",
-      "url": "https://github.com/chunkwake/core/commit/888dee8f4d78ef023c20d7b2e2bd093ef14ee304"
+      "title": "projectiles knock items off",
+      "url": "https://github.com/chunkwake/core/commit/1a0941006334de7908a96012afdf20adae1508f3"
     },
     {
-      "sha": "279b746ed6c971ccdb6e4ad8fbd6047ce78d4ff1",
-      "shortSha": "279b746e",
-      "date": "2026-11-24T11:53:10Z",
+      "sha": "5b6354dbd1ff198d0c43905e21fe3a399b217ec2",
+      "shortSha": "5b6354db",
+      "date": "2026-11-26T11:46:44Z",
       "category": "core",
-      "title": "не уводить вход по ссылке с обратным слэшем",
-      "url": "https://github.com/chunkwake/core/commit/279b746ed6c971ccdb6e4ad8fbd6047ce78d4ff1"
+      "title": "apply NBT to boats and minecarts",
+      "url": "https://github.com/chunkwake/core/commit/5b6354dbd1ff198d0c43905e21fe3a399b217ec2"
     },
     {
-      "sha": "25a6fd00521cdadeb167075dd8727d5b1c9aa0b0",
-      "shortSha": "25a6fd00",
-      "date": "2026-11-24T11:50:38Z",
+      "sha": "c52590865d141d6cba034f8a9a37bd102450c950",
+      "shortSha": "c5259086",
+      "date": "2026-11-26T11:36:45Z",
       "category": "core",
-      "title": "отклонять NaN и бесконечность в движении игрока",
-      "url": "https://github.com/chunkwake/core/commit/25a6fd00521cdadeb167075dd8727d5b1c9aa0b0"
+      "title": "place shulker boxes in front",
+      "url": "https://github.com/chunkwake/core/commit/c52590865d141d6cba034f8a9a37bd102450c950"
     },
     {
-      "sha": "ea97fee4b04ee6bffdad147093222027e79d38ca",
-      "shortSha": "ea97fee4",
-      "date": "2026-11-24T11:46:50Z",
+      "sha": "63d6d82cd360330ec436a53138931d28cbce83d4",
+      "shortSha": "63d6d82c",
+      "date": "2026-11-26T11:32:22Z",
       "category": "core",
-      "title": "закрыть DNS rebinding дашборда без токена",
-      "url": "https://github.com/chunkwake/core/commit/ea97fee4b04ee6bffdad147093222027e79d38ca"
+      "title": "skull and pumpkin rituals before equipment",
+      "url": "https://github.com/chunkwake/core/commit/63d6d82cd360330ec436a53138931d28cbce83d4"
     },
     {
-      "sha": "2a2a420e4646cc9eb75b02de25e71aad3da1d143",
-      "shortSha": "2a2a420e",
-      "date": "2026-11-24T11:39:08Z",
+      "sha": "660d7767f4952c13dfb0daa353169abfc9b29f0e",
+      "shortSha": "660d7767",
+      "date": "2026-11-26T11:24:02Z",
       "category": "core",
-      "title": "p99 0.194x/0.061x/0.066x vs Paper",
-      "url": "https://github.com/chunkwake/core/commit/2a2a420e4646cc9eb75b02de25e71aad3da1d143"
+      "title": "equip armor onto armor stands",
+      "url": "https://github.com/chunkwake/core/commit/660d7767f4952c13dfb0daa353169abfc9b29f0e"
     },
     {
-      "sha": "1470a76521614721991d715ee3f8a27c53e0a4c2",
-      "shortSha": "1470a765",
-      "date": "2026-11-24T11:01:04Z",
+      "sha": "ec60b44c66d4959099da7ecf29ba8bc22c7408d1",
+      "shortSha": "ec60b44c",
+      "date": "2026-11-26T11:19:02Z",
       "category": "core",
-      "title": "getEntities, load(false) without generation",
-      "url": "https://github.com/chunkwake/core/commit/1470a76521614721991d715ee3f8a27c53e0a4c2"
+      "title": "mob bucket water and fish spawn",
+      "url": "https://github.com/chunkwake/core/commit/ec60b44c66d4959099da7ecf29ba8bc22c7408d1"
     },
     {
-      "sha": "ebed7cbc9f5b051d1efe2f1ac17970c257c6602c",
-      "shortSha": "ebed7cbc",
-      "date": "2026-11-24T09:52:19Z",
+      "sha": "20a2f5cbdec5f07530aa47b6a56a697608389876",
+      "shortSha": "20a2f5cb",
+      "date": "2026-11-26T11:05:12Z",
       "category": "core",
-      "title": "p99 0.223x/0.056x/0.069x vs Paper",
-      "url": "https://github.com/chunkwake/core/commit/ebed7cbc9f5b051d1efe2f1ac17970c257c6602c"
+      "title": "play custom player head sounds",
+      "url": "https://github.com/chunkwake/core/commit/20a2f5cbdec5f07530aa47b6a56a697608389876"
     },
     {
-      "sha": "c13f0e11b12d63dfe00e581d9f0570b13b197f48",
-      "shortSha": "c13f0e11",
-      "date": "2026-11-24T09:02:12Z",
+      "sha": "54f0afc59cc0d4c0411c0a5ffe7359f1e10bbe2f",
+      "shortSha": "54f0afc5",
+      "date": "2026-11-26T10:35:48Z",
       "category": "core",
-      "title": "verify World.getChunkAt/Chunk.load loads columns",
-      "url": "https://github.com/chunkwake/core/commit/c13f0e11b12d63dfe00e581d9f0570b13b197f48"
+      "title": "push players with set_entity_motion",
+      "url": "https://github.com/chunkwake/core/commit/54f0afc59cc0d4c0411c0a5ffe7359f1e10bbe2f"
     },
     {
-      "sha": "4d53372ba3616b2c7f90c5c0b016505d5367e653",
-      "shortSha": "4d53372b",
-      "date": "2026-11-24T09:01:35Z",
+      "sha": "644f4d415c86eefdc3dca45b570f23b4f19f9860",
+      "shortSha": "644f4d41",
+      "date": "2026-11-26T10:22:23Z",
       "category": "core",
-      "title": "isChunkLoaded sees loaded columns; docs",
-      "url": "https://github.com/chunkwake/core/commit/4d53372ba3616b2c7f90c5c0b016505d5367e653"
+      "title": "copy item name and tooltip components",
+      "url": "https://github.com/chunkwake/core/commit/644f4d415c86eefdc3dca45b570f23b4f19f9860"
     },
     {
-      "sha": "1193add17b4cd541d857afeb206f525503917d2b",
-      "shortSha": "1193add1",
-      "date": "2026-11-24T08:53:10Z",
+      "sha": "ade03e5c5b9e66ec356282f3282a48a732503b7c",
+      "shortSha": "ade03e5c",
+      "date": "2026-11-26T10:13:32Z",
       "category": "core",
-      "title": "sync World.save, chunk load, piston/block-tick restore",
-      "url": "https://github.com/chunkwake/core/commit/1193add17b4cd541d857afeb206f525503917d2b"
+      "title": "shield decoration and base color component",
+      "url": "https://github.com/chunkwake/core/commit/ade03e5c5b9e66ec356282f3282a48a732503b7c"
     },
     {
-      "sha": "141928340b3248925cd202f99bc7c1ae10c91a0d",
-      "shortSha": "14192834",
-      "date": "2026-11-24T06:52:30Z",
+      "sha": "38d1176a5c61d9b4246e7bc049e829fdc99d87ea",
+      "shortSha": "38d1176a",
+      "date": "2026-11-26T09:50:30Z",
       "category": "core",
-      "title": "12 cow drops и chunk-ticket сценарий",
-      "url": "https://github.com/chunkwake/core/commit/141928340b3248925cd202f99bc7c1ae10c91a0d"
+      "title": "seen advancements tab",
+      "url": "https://github.com/chunkwake/core/commit/38d1176a5c61d9b4246e7bc049e829fdc99d87ea"
     },
     {
-      "sha": "f11e2a72323d583d006051f7f1ae8295af2a9f92",
-      "shortSha": "f11e2a72",
-      "date": "2026-11-24T06:46:03Z",
+      "sha": "3f88664b68e2fe1b407d6292e438eb342bb111a5",
+      "shortSha": "3f88664b",
+      "date": "2026-11-26T09:43:45Z",
       "category": "core",
-      "title": "forceload bridge",
-      "url": "https://github.com/chunkwake/core/commit/f11e2a72323d583d006051f7f1ae8295af2a9f92"
+      "title": "ignore projectile damage in the second phase",
+      "url": "https://github.com/chunkwake/core/commit/3f88664b68e2fe1b407d6292e438eb342bb111a5"
     },
     {
-      "sha": "4ae4eb50721b3f65c3dcd245d8f7964bb4956f6c",
-      "shortSha": "4ae4eb50",
-      "date": "2026-11-24T06:43:31Z",
+      "sha": "a6973447ff2331be354caae652fc80e132e619d9",
+      "shortSha": "a6973447",
+      "date": "2026-11-26T09:38:58Z",
       "category": "core",
-      "title": "chunk tickets, redstone/fluids parity",
-      "url": "https://github.com/chunkwake/core/commit/4ae4eb50721b3f65c3dcd245d8f7964bb4956f6c"
+      "title": "ping response and game rule sync",
+      "url": "https://github.com/chunkwake/core/commit/a6973447ff2331be354caae652fc80e132e619d9"
     },
     {
-      "sha": "1620a2a5f3939067d57e59d898678089e4b031c3",
-      "shortSha": "1620a2a5",
-      "date": "2026-11-24T06:16:24Z",
+      "sha": "f83ecfd6c70b2be56fc3ac2d9cff79f1db80a2f6",
+      "shortSha": "f83ecfd6",
+      "date": "2026-11-26T09:33:10Z",
       "category": "core",
-      "title": "финальный 100/100 с GravesX",
-      "url": "https://github.com/chunkwake/core/commit/1620a2a5f3939067d57e59d898678089e4b031c3"
+      "title": "difficulty change and lock",
+      "url": "https://github.com/chunkwake/core/commit/f83ecfd6c70b2be56fc3ac2d9cff79f1db80a2f6"
     },
     {
-      "sha": "c54b620a96131158d110b7e822a0734f68707d41",
-      "shortSha": "c54b620a",
-      "date": "2026-11-24T06:08:27Z",
+      "sha": "35788267b15146fac10096d19b0f32bcb6e5792a",
+      "shortSha": "35788267",
+      "date": "2026-11-26T09:27:33Z",
       "category": "core",
-      "title": "финальный 5x3 на aee780b",
-      "url": "https://github.com/chunkwake/core/commit/c54b620a96131158d110b7e822a0734f68707d41"
+      "title": "entity tag query (F3+I)",
+      "url": "https://github.com/chunkwake/core/commit/35788267b15146fac10096d19b0f32bcb6e5792a"
     },
     {
-      "sha": "aee780be124287d3f2c6c8736447f16afa15be46",
-      "shortSha": "aee780be",
-      "date": "2026-11-24T05:33:15Z",
+      "sha": "8e7729df43560d119f23c3d5fa7fae72c3ee2c05",
+      "shortSha": "8e7729df",
+      "date": "2026-11-26T09:22:48Z",
       "category": "core",
-      "title": "Material.values без LEGACY_*, 127/127",
-      "url": "https://github.com/chunkwake/core/commit/aee780be124287d3f2c6c8736447f16afa15be46"
+      "title": "block entity tag query (F3+I)",
+      "url": "https://github.com/chunkwake/core/commit/8e7729df43560d119f23c3d5fa7fae72c3ee2c05"
     },
     {
-      "sha": "83e7bbcc00f75ee344bc0e76f3348d7ed7f0b7bb",
-      "shortSha": "83e7bbcc",
-      "date": "2026-11-24T05:10:03Z",
+      "sha": "9be11437da2e396c25be76fc3568b8d57e4b56a5",
+      "shortSha": "9be11437",
+      "date": "2026-11-26T09:17:54Z",
       "category": "core",
-      "title": "финальный 5x3 на 172406d",
-      "url": "https://github.com/chunkwake/core/commit/83e7bbcc00f75ee344bc0e76f3348d7ed7f0b7bb"
+      "title": "spectator teleport to entity",
+      "url": "https://github.com/chunkwake/core/commit/9be11437da2e396c25be76fc3568b8d57e4b56a5"
     },
     {
-      "sha": "172406d8c75fa83019ccf64200ef8c1e3b3a8a0f",
-      "shortSha": "172406d8",
-      "date": "2026-11-24T04:33:46Z",
+      "sha": "a4ba606caa0f3a2b40d00d1d91488086d03a4df7",
+      "shortSha": "a4ba606c",
+      "date": "2026-11-26T09:09:39Z",
       "category": "core",
-      "title": "Paper-порядок NBT в serializeAsBytes (121 B)",
-      "url": "https://github.com/chunkwake/core/commit/172406d8c75fa83019ccf64200ef8c1e3b3a8a0f"
+      "title": "drop a wither rose when a skull kills a mob",
+      "url": "https://github.com/chunkwake/core/commit/a4ba606caa0f3a2b40d00d1d91488086d03a4df7"
     },
     {
-      "sha": "02136f30314685e075566cac87595b1d1a995f70",
-      "shortSha": "02136f30",
-      "date": "2026-11-24T04:08:15Z",
+      "sha": "80520be4af796d52ee8a682d39603bf3652530ed",
+      "shortSha": "80520be4",
+      "date": "2026-11-26T09:04:26Z",
       "category": "core",
-      "title": "commandmap 219/219 и формат CraftEnchantment",
-      "url": "https://github.com/chunkwake/core/commit/02136f30314685e075566cac87595b1d1a995f70"
+      "title": "vanilla loot modifiers",
+      "url": "https://github.com/chunkwake/core/commit/80520be4af796d52ee8a682d39603bf3652530ed"
     },
     {
-      "sha": "f4b5f05f1accca001fb1a1a559f5e8cf76c3da71",
-      "shortSha": "f4b5f05f",
-      "date": "2026-11-24T03:49:17Z",
+      "sha": "0903c47dfa6b61e57b06f89c3e4570f1bb2620d5",
+      "shortSha": "0903c47d",
+      "date": "2026-11-26T08:38:24Z",
       "category": "core",
-      "title": "финальный 5x3 p99/TPS на 5f386ee",
-      "url": "https://github.com/chunkwake/core/commit/f4b5f05f1accca001fb1a1a559f5e8cf76c3da71"
+      "title": "exact precipitation tick and snow rules",
+      "url": "https://github.com/chunkwake/core/commit/0903c47dfa6b61e57b06f89c3e4570f1bb2620d5"
     },
     {
-      "sha": "5f386eecf9bdaef93e22afdafe9d2a1144c5f6cc",
-      "shortSha": "5f386eec",
-      "date": "2026-11-24T03:02:20Z",
+      "sha": "2234c9e8f11fa12f787db193f34eb8cfd40ac5c3",
+      "shortSha": "2234c9e8",
+      "date": "2026-11-26T08:03:50Z",
       "category": "core",
-      "title": "vanilla command map, DataVersion и Paper cache для A/B",
-      "url": "https://github.com/chunkwake/core/commit/5f386eecf9bdaef93e22afdafe9d2a1144c5f6cc"
+      "title": "projectile shooter, Tameable and ExperienceOrb",
+      "url": "https://github.com/chunkwake/core/commit/2234c9e8f11fa12f787db193f34eb8cfd40ac5c3"
     },
     {
-      "sha": "2e60b4fbfb3b3c0f7ab16430c1b1eb20d8ae4e44",
-      "shortSha": "2e60b4fb",
-      "date": "2026-11-23T18:22:44Z",
+      "sha": "bb37ea06c4de3e5a3560b40d62ae5948ba561846",
+      "shortSha": "bb37ea06",
+      "date": "2026-11-26T07:35:36Z",
       "category": "core",
-      "title": "mannequin NPC/skin parts и sign-text 4 строки",
-      "url": "https://github.com/chunkwake/core/commit/2e60b4fbfb3b3c0f7ab16430c1b1eb20d8ae4e44"
+      "title": "live container inventories",
+      "url": "https://github.com/chunkwake/core/commit/bb37ea06c4de3e5a3560b40d62ae5948ba561846"
     },
     {
-      "sha": "1945763d4a68d1f253985e1804ddc5bfc39afee5",
-      "shortSha": "1945763d",
-      "date": "2026-11-23T18:08:01Z",
+      "sha": "024b4e74b1b74e5f11db0a2c5a2f4ad19c718e1e",
+      "shortSha": "024b4e74",
+      "date": "2026-11-26T07:12:04Z",
       "category": "core",
-      "title": "Skript/ProtocolLib/Orebfuscator/Axiom + vanilla diff",
-      "url": "https://github.com/chunkwake/core/commit/1945763d4a68d1f253985e1804ddc5bfc39afee5"
+      "title": "fix warnings for CI",
+      "url": "https://github.com/chunkwake/core/commit/024b4e74b1b74e5f11db0a2c5a2f4ad19c718e1e"
     },
     {
-      "sha": "98e1c184e29f6e59134a76a9ae50fc72c3fa642e",
-      "shortSha": "98e1c184",
-      "date": "2026-11-23T16:51:19Z",
+      "sha": "69c0785595a117d8798755eb6eeb75c0ecdeee75",
+      "shortSha": "69c07855",
+      "date": "2026-11-26T07:07:24Z",
       "category": "core",
-      "title": "финальный 5x3 p99/TPS A/B и gate 96/96",
-      "url": "https://github.com/chunkwake/core/commit/98e1c184e29f6e59134a76a9ae50fc72c3fa642e"
+      "title": "full window slots for plugins",
+      "url": "https://github.com/chunkwake/core/commit/69c0785595a117d8798755eb6eeb75c0ecdeee75"
     },
     {
-      "sha": "ecc980177df5ddcd75958de03a0118c3199851f5",
-      "shortSha": "ecc98017",
-      "date": "2026-11-23T16:16:16Z",
+      "sha": "4ccb8c56b939b27dc8bf4cc7e7caee79f5195067",
+      "shortSha": "4ccb8c56",
+      "date": "2026-11-26T06:45:54Z",
       "category": "core",
-      "title": "закрыть BlockState.blockState и entity world tracking",
-      "url": "https://github.com/chunkwake/core/commit/ecc980177df5ddcd75958de03a0118c3199851f5"
+      "title": "container contents and legacy ItemMeta",
+      "url": "https://github.com/chunkwake/core/commit/4ccb8c56b939b27dc8bf4cc7e7caee79f5195067"
     },
     {
-      "sha": "797a3c0fbffa9cd82768339e31e093b6475f2ff1",
-      "shortSha": "797a3c0f",
-      "date": "2026-11-23T15:55:38Z",
+      "sha": "b5411a2c8d47b1e6ea66c6f6f45f1b3fd1fbb218",
+      "shortSha": "b5411a2c",
+      "date": "2026-11-26T06:45:41Z",
       "category": "core",
-      "title": "включить CommandAPI и Pl3xMap, закрыть WorldEdit/FAWE конфликт",
-      "url": "https://github.com/chunkwake/core/commit/797a3c0fbffa9cd82768339e31e093b6475f2ff1"
+      "title": "format workspace for CI",
+      "url": "https://github.com/chunkwake/core/commit/b5411a2c8d47b1e6ea66c6f6f45f1b3fd1fbb218"
     },
     {
-      "sha": "8f4945b9b761e5ea55465dd875503d7957640f12",
-      "shortSha": "8f4945b9",
-      "date": "2026-11-23T14:01:13Z",
+      "sha": "bca85d65c0e69371cb339c892ea01d52d9ff8f49",
+      "shortSha": "bca85d65",
+      "date": "2026-11-26T05:08:23Z",
       "category": "core",
-      "title": "добавить PackFormat и json-simple parseWithException",
-      "url": "https://github.com/chunkwake/core/commit/8f4945b9b761e5ea55465dd875503d7957640f12"
+      "title": "tab list header and footer",
+      "url": "https://github.com/chunkwake/core/commit/bca85d65c0e69371cb339c892ea01d52d9ff8f49"
     },
     {
-      "sha": "ea3aa2639904340690edb42ab27782d808e848d0",
-      "shortSha": "ea3aa263",
-      "date": "2026-11-23T13:44:03Z",
+      "sha": "5b6ece53f7ef98b4c4f179d3619a68f5e5d43d1f",
+      "shortSha": "5b6ece53",
+      "date": "2026-11-26T04:58:14Z",
       "category": "core",
-      "title": "закрыть recipe/proxy-дыры, добавить стены и кнопки в CustomShapes",
-      "url": "https://github.com/chunkwake/core/commit/ea3aa2639904340690edb42ab27782d808e848d0"
+      "title": "allow flight and flying state",
+      "url": "https://github.com/chunkwake/core/commit/5b6ece53f7ef98b4c4f179d3619a68f5e5d43d1f"
     },
     {
-      "sha": "e4fff76430b166529b7838667d84fb0d40ee8d91",
-      "shortSha": "e4fff764",
-      "date": "2026-11-23T11:31:24Z",
+      "sha": "5fb3d6af5e0262dbe579309495c304960c68d365",
+      "shortSha": "5fb3d6af",
+      "date": "2026-11-26T04:48:34Z",
       "category": "core",
-      "title": "Расширить gate Folia-плагинами и зафиксировать CE WorldBorder/CraftEntity фиксы",
-      "url": "https://github.com/chunkwake/core/commit/e4fff76430b166529b7838667d84fb0d40ee8d91"
+      "title": "entity visibility for plugins",
+      "url": "https://github.com/chunkwake/core/commit/5fb3d6af5e0262dbe579309495c304960c68d365"
     },
     {
-      "sha": "fdea9c065c7076c4e236151c749b9a878ce3da8d",
-      "shortSha": "fdea9c06",
-      "date": "2026-11-23T11:13:04Z",
-      "category": "docs",
-      "title": "CE data pack восстановлен",
-      "url": "https://github.com/chunkwake/core/commit/fdea9c065c7076c4e236151c749b9a878ce3da8d"
-    },
-    {
-      "sha": "89d777b74e10e06ff048d1db1e7f4a382fd07d15",
-      "shortSha": "89d777b7",
-      "date": "2026-11-23T11:12:36Z",
-      "category": "core",
-      "title": "восстановить data pack через генератор NMS-стабов",
-      "url": "https://github.com/chunkwake/core/commit/89d777b74e10e06ff048d1db1e7f4a382fd07d15"
-    },
-    {
-      "sha": "65b7bd0b3e9250dd043ea87d2d24a23aa3da37d1",
-      "shortSha": "65b7bd0b",
-      "date": "2026-11-23T08:50:25Z",
-      "category": "core",
-      "title": "сгенерировать ShapedRecipePattern",
-      "url": "https://github.com/chunkwake/core/commit/65b7bd0b3e9250dd043ea87d2d24a23aa3da37d1"
-    },
-    {
-      "sha": "31e27820dab926cd0a5a2fa0d3ebaab08d6f1a1c",
-      "shortSha": "31e27820",
-      "date": "2026-11-23T08:42:33Z",
-      "category": "core",
-      "title": "Восстановить 83/83 plugin gate и добавить NMS-генератор",
-      "url": "https://github.com/chunkwake/core/commit/31e27820dab926cd0a5a2fa0d3ebaab08d6f1a1c"
-    },
-    {
-      "sha": "2d530a5bf7fe8161965ef256a339ca90ae30a5ab",
-      "shortSha": "2d530a5b",
-      "date": "2026-11-23T08:03:41Z",
-      "category": "core",
-      "title": "Добавить сканер NMS-ссылок плагинов",
-      "url": "https://github.com/chunkwake/core/commit/2d530a5bf7fe8161965ef256a339ca90ae30a5ab"
-    },
-    {
-      "sha": "3ac3f18398b6136389f695fc8b04242d0b5e9aea",
-      "shortSha": "3ac3f183",
-      "date": "2026-11-23T07:46:24Z",
-      "category": "core",
-      "title": "RecipeMap typed recipe methods",
-      "url": "https://github.com/chunkwake/core/commit/3ac3f18398b6136389f695fc8b04242d0b5e9aea"
-    },
-    {
-      "sha": "0d24d31b3b00da35faf2251112bfb4b3559d802e",
-      "shortSha": "0d24d31b",
-      "date": "2026-11-23T07:45:42Z",
-      "category": "core",
-      "title": "не копить отсутствующие карты и экранировать ошибки команд",
-      "url": "https://github.com/chunkwake/core/commit/0d24d31b3b00da35faf2251112bfb4b3559d802e"
-    },
-    {
-      "sha": "10c39c0adf868da3fb7ec84fe19b8c5633af8d09",
-      "shortSha": "10c39c0a",
-      "date": "2026-11-23T07:39:38Z",
-      "category": "core",
-      "title": "ограничить вложенные стопки и грань действия",
-      "url": "https://github.com/chunkwake/core/commit/10c39c0adf868da3fb7ec84fe19b8c5633af8d09"
-    },
-    {
-      "sha": "a0759c0018492fedbd5bfea15e1ab12051496764",
-      "shortSha": "a0759c00",
-      "date": "2026-11-23T07:36:02Z",
-      "category": "core",
-      "title": "проверять досягаемость и каналы плагинов",
-      "url": "https://github.com/chunkwake/core/commit/a0759c0018492fedbd5bfea15e1ab12051496764"
-    },
-    {
-      "sha": "225e52b3f2996e9d7bf97be2c2804af0d9289177",
-      "shortSha": "225e52b3",
-      "date": "2026-11-23T07:25:07Z",
-      "category": "core",
-      "title": "IntProvider и RecipeMap add/remove/byKey",
-      "url": "https://github.com/chunkwake/core/commit/225e52b3f2996e9d7bf97be2c2804af0d9289177"
-    },
-    {
-      "sha": "6a73916740fad8f85d697c08a39c64556ccb6dc2",
-      "shortSha": "6a739167",
-      "date": "2026-11-23T07:05:51Z",
-      "category": "core",
-      "title": "IntProviders и RecipeMap fields",
-      "url": "https://github.com/chunkwake/core/commit/6a73916740fad8f85d697c08a39c64556ccb6dc2"
-    },
-    {
-      "sha": "8b3165d81046f196b2e5577b21fd0453950d7488",
-      "shortSha": "8b3165d8",
-      "date": "2026-11-23T06:56:36Z",
-      "category": "core",
-      "title": "BlockStateProvider codec и RecipeMap constructors",
-      "url": "https://github.com/chunkwake/core/commit/8b3165d81046f196b2e5577b21fd0453950d7488"
-    },
-    {
-      "sha": "dd27ab447ae2840e9097b2472478fe61e32c79ec",
-      "shortSha": "dd27ab44",
-      "date": "2026-11-23T06:45:09Z",
-      "category": "core",
-      "title": "не ограничивать общий кэш компонентов предметов",
-      "url": "https://github.com/chunkwake/core/commit/dd27ab447ae2840e9097b2472478fe61e32c79ec"
-    },
-    {
-      "sha": "5f499e620e405c828430e4c97a4d7552a38a3e8a",
-      "shortSha": "5f499e62",
-      "date": "2026-11-23T06:44:07Z",
-      "category": "core",
-      "title": "не читать gzip-NBT больше предела в память",
-      "url": "https://github.com/chunkwake/core/commit/5f499e620e405c828430e4c97a4d7552a38a3e8a"
-    },
-    {
-      "sha": "723ba4991750e688e8b68b22893e3ef346238a6b",
-      "shortSha": "723ba499",
-      "date": "2026-11-23T06:41:40Z",
-      "category": "core",
-      "title": "проверить слоты креатива и ограничить кэш компонентов",
-      "url": "https://github.com/chunkwake/core/commit/723ba4991750e688e8b68b22893e3ef346238a6b"
-    },
-    {
-      "sha": "687c5aa4e59116493434253ba68c5d3f207739a8",
-      "shortSha": "687c5aa4",
-      "date": "2026-11-23T06:41:31Z",
-      "category": "core",
-      "title": "закрыть zip-slip и распаковку NBT без предела",
-      "url": "https://github.com/chunkwake/core/commit/687c5aa4e59116493434253ba68c5d3f207739a8"
-    },
-    {
-      "sha": "cd2c418e4d4b5e021333916b003f2fbae33843dd",
-      "shortSha": "cd2c418e",
-      "date": "2026-11-23T06:39:27Z",
-      "category": "core",
-      "title": "BlockStateProvider.CODEC",
-      "url": "https://github.com/chunkwake/core/commit/cd2c418e4d4b5e021333916b003f2fbae33843dd"
-    },
-    {
-      "sha": "3f09fe7c95c5c9615224035ce43871d9fc5047b2",
-      "shortSha": "3f09fe7c",
-      "date": "2026-11-23T06:29:54Z",
-      "category": "core",
-      "title": "WeightedList.nonEmptyCodec",
-      "url": "https://github.com/chunkwake/core/commit/3f09fe7c95c5c9615224035ce43871d9fc5047b2"
-    },
-    {
-      "sha": "d26a39457b985a2fe527f99bc6e274b47e529516",
-      "shortSha": "d26a3945",
-      "date": "2026-11-23T06:23:24Z",
-      "category": "core",
-      "title": "ExtraCodecs, WeightedList, RecipeMap и поля RecipeManager",
-      "url": "https://github.com/chunkwake/core/commit/d26a39457b985a2fe527f99bc6e274b47e529516"
-    },
-    {
-      "sha": "38f19e94ecf5c4ac791139c128ef01b8bc27d4a9",
-      "shortSha": "38f19e94",
-      "date": "2026-11-23T06:12:43Z",
+      "sha": "463f83471e1ee31cb430247b8fce290824afc84a",
+      "shortSha": "463f8347",
+      "date": "2026-11-26T04:38:38Z",
       "category": "core",
-      "title": "BlockStateProvider и RecipeManager proxy methods",
-      "url": "https://github.com/chunkwake/core/commit/38f19e94ecf5c4ac791139c128ef01b8bc27d4a9"
+      "title": "velocity get/set for mobs, non-mobs and players",
+      "url": "https://github.com/chunkwake/core/commit/463f83471e1ee31cb430247b8fce290824afc84a"
     },
     {
-      "sha": "ba6bf12171b7fc1a93c4dd5851da6959bbdd8f5f",
-      "shortSha": "ba6bf121",
-      "date": "2026-11-23T06:01:12Z",
+      "sha": "c2f39ebd9228b391b6705e60693424ac22dbd7e7",
+      "shortSha": "c2f39ebd",
+      "date": "2026-11-26T04:26:51Z",
       "category": "core",
-      "title": "placement filter/biome, sound type и SoundEvent#getLocation",
-      "url": "https://github.com/chunkwake/core/commit/ba6bf12171b7fc1a93c4dd5851da6959bbdd8f5f"
+      "title": "spawnParticle for plugins and players",
+      "url": "https://github.com/chunkwake/core/commit/c2f39ebd9228b391b6705e60693424ac22dbd7e7"
     },
     {
-      "sha": "469b2e83a72a5595a6cf699832d311655c416726",
-      "shortSha": "469b2e83",
-      "date": "2026-11-23T05:39:06Z",
+      "sha": "e90a90182c9849de47d0616df19fa96cfa5f291c",
+      "shortSha": "e90a9018",
+      "date": "2026-11-26T04:09:22Z",
       "category": "core",
-      "title": "PlacementContext и ItemCost stream codec/fields",
-      "url": "https://github.com/chunkwake/core/commit/469b2e83a72a5595a6cf699832d311655c416726"
+      "title": "legacy data byte and chunk PDC",
+      "url": "https://github.com/chunkwake/core/commit/e90a90182c9849de47d0616df19fa96cfa5f291c"
     },
     {
-      "sha": "e3bfa5c1eb0f87261dcc146bdebee5fd974b0f59",
-      "shortSha": "e3bfa5c1",
-      "date": "2026-11-23T05:21:38Z",
+      "sha": "967953ea06ad0ddcb1ace6cc36d4d65bf4d9e7fb",
+      "shortSha": "967953ea",
+      "date": "2026-11-26T04:05:58Z",
       "category": "core",
-      "title": "PlacementFilter и ItemCost constructor",
-      "url": "https://github.com/chunkwake/core/commit/e3bfa5c1eb0f87261dcc146bdebee5fd974b0f59"
+      "title": "real PlayerTextures for player profiles",
+      "url": "https://github.com/chunkwake/core/commit/967953ea06ad0ddcb1ace6cc36d4d65bf4d9e7fb"
     },
     {
-      "sha": "9b09fa0bbdeedc989306a78b39953cf85eca0684",
-      "shortSha": "9b09fa0b",
-      "date": "2026-11-23T05:14:56Z",
+      "sha": "e78dc60ec50a58a20fc36f94f2b819d5e862e8f4",
+      "shortSha": "e78dc60e",
+      "date": "2026-11-26T04:03:30Z",
       "category": "core",
-      "title": "добавить NMS-стабы loot/feature/item cost",
-      "url": "https://github.com/chunkwake/core/commit/9b09fa0bbdeedc989306a78b39953cf85eca0684"
+      "title": "refresh inventory and add block/world helpers",
+      "url": "https://github.com/chunkwake/core/commit/e78dc60ec50a58a20fc36f94f2b819d5e862e8f4"
     },
     {
-      "sha": "ebef72a5f6cda3f7106e47d09fa31139d4f65e6a",
-      "shortSha": "ebef72a5",
-      "date": "2026-11-23T04:24:28Z",
+      "sha": "013327d2fb095f6dde07f3bb13021e8f25200ceb",
+      "shortSha": "013327d2",
+      "date": "2026-11-26T03:45:13Z",
       "category": "core",
-      "title": "Release+Burst A/B, точный tick counter, CE-стабы и fence collision",
-      "url": "https://github.com/chunkwake/core/commit/ebef72a5f6cda3f7106e47d09fa31139d4f65e6a"
+      "title": "lightning, explosions and arrows for plugins",
+      "url": "https://github.com/chunkwake/core/commit/013327d2fb095f6dde07f3bb13021e8f25200ceb"
     },
     {
-      "sha": "ae9275e004bcea3c72a6dbd891f4144d5e842605",
-      "shortSha": "ae9275e0",
-      "date": "2026-11-22T15:46:14Z",
+      "sha": "de37fbe6b86ca55459581d0dfa9d30db269f5df5",
+      "shortSha": "de37fbe6",
+      "date": "2026-11-25T17:57:02Z",
       "category": "core",
-      "title": "Добавить p99/TPS A/B и терминальные execute-условия",
-      "url": "https://github.com/chunkwake/core/commit/ae9275e004bcea3c72a6dbd891f4144d5e842605"
+      "title": "play and stop sounds for plugins",
+      "url": "https://github.com/chunkwake/core/commit/de37fbe6b86ca55459581d0dfa9d30db269f5df5"
     },
     {
-      "sha": "0156d3555be2909bfcd9db5c43b4d99c943e07b7",
-      "shortSha": "0156d355",
-      "date": "2026-11-22T14:04:16Z",
-      "category": "docs",
-      "title": "clarify FoliaProbe is integrated into test plugin",
-      "url": "https://github.com/chunkwake/core/commit/0156d3555be2909bfcd9db5c43b4d99c943e07b7"
-    },
-    {
-      "sha": "1030cf74083fa573b5fcf4eaef62fffa21cee178",
-      "shortSha": "1030cf74",
-      "date": "2026-11-22T14:03:41Z",
-      "category": "core",
-      "title": "count Folia global/region/async completions; gate with Chunky Folia build",
-      "url": "https://github.com/chunkwake/core/commit/1030cf74083fa573b5fcf4eaef62fffa21cee178"
-    },
-    {
-      "sha": "999e4e56417e4638ff1bfdd38977a2d06abf60ec",
-      "shortSha": "999e4e56",
-      "date": "2026-11-22T13:56:37Z",
-      "category": "core",
-      "title": "shape multiplayer CE blocks by carrier state and add Paper registry event provider",
-      "url": "https://github.com/chunkwake/core/commit/999e4e56417e4638ff1bfdd38977a2d06abf60ec"
-    },
-    {
-      "sha": "56d8071e3cad3a470e9f15f8175a3cbf565e5bca",
-      "shortSha": "56d8071e",
-      "date": "2026-11-22T13:04:31Z",
-      "category": "core",
-      "title": "persist full CraftEngine custom block states (facing/lit) across restarts; verify table_lamp parity",
-      "url": "https://github.com/chunkwake/core/commit/56d8071e3cad3a470e9f15f8175a3cbf565e5bca"
-    },
-    {
-      "sha": "6d98948173f3eec6ceca0d0160023b243a3c0288",
-      "shortSha": "6d989481",
-      "date": "2026-11-22T12:54:54Z",
+      "sha": "fd6447260a55dde8971905963052473c3cb5da56",
+      "shortSha": "fd644726",
+      "date": "2026-11-25T17:33:46Z",
       "category": "core",
-      "title": "load CE block states/properties and reach topaz_ore placement, drops and persistence parity",
-      "url": "https://github.com/chunkwake/core/commit/6d98948173f3eec6ceca0d0160023b243a3c0288"
+      "title": "expose IP bans from banned-ips.json",
+      "url": "https://github.com/chunkwake/core/commit/fd6447260a55dde8971905963052473c3cb5da56"
     },
     {
-      "sha": "2eda3d0c47ff1a815627c86e5327051af1f3fd62",
-      "shortSha": "2eda3d0c",
-      "date": "2026-11-22T10:20:13Z",
+      "sha": "98ab579c4868f288379f2fcd51da55b9cf12124f",
+      "shortSha": "98ab579c",
+      "date": "2026-11-25T17:33:12Z",
       "category": "core",
-      "title": "CraftEngine 26.9.2 now loads and enables on Chunkwake (83/83); populate item/particle/trim/feature stubs and make Bukkit ItemStack a CraftItemStack; content packs still fail at item wrapping",
-      "url": "https://github.com/chunkwake/core/commit/2eda3d0c47ff1a815627c86e5327051af1f3fd62"
+      "title": "spawn and enumerate non-mob entities for plugins",
+      "url": "https://github.com/chunkwake/core/commit/98ab579c4868f288379f2fcd51da55b9cf12124f"
     },
     {
-      "sha": "d9588ea424cda124a70e6f54c1935326223a36ca",
-      "shortSha": "d9588ea4",
-      "date": "2026-11-22T09:33:39Z",
+      "sha": "e502b3328df97dcb665c4b7a65ada3c28eb2df6d",
+      "shortSha": "e502b332",
+      "date": "2026-11-25T17:12:33Z",
       "category": "core",
-      "title": "advance CraftEngine load through blocks/recipes/packets and registry layers; add Paper-vs-Chunkwake CEProbe parity evidence; CE still fails at vanilla item registry",
-      "url": "https://github.com/chunkwake/core/commit/d9588ea424cda124a70e6f54c1935326223a36ca"
+      "title": "file-backed BanList for names and IPs",
+      "url": "https://github.com/chunkwake/core/commit/e502b3328df97dcb665c4b7a65ada3c28eb2df6d"
     },
     {
-      "sha": "1e64c18fc8d9ca2422e8f56c1d6843e4e4b616ed",
-      "shortSha": "1e64c18f",
-      "date": "2026-11-22T07:34:43Z",
+      "sha": "edebb71d7d2e10f73378310802408dca5e6e1fa7",
+      "shortSha": "edebb71d",
+      "date": "2026-11-25T17:07:58Z",
       "category": "core",
-      "title": "complete block-state/registry/entity surface so CraftEngine 26.9.2 loads; expanded gate 82/82, base 27/27, no LOADERR",
-      "url": "https://github.com/chunkwake/core/commit/1e64c18fc8d9ca2422e8f56c1d6843e4e4b616ed"
+      "title": "read operators and whitelisted players from access files",
+      "url": "https://github.com/chunkwake/core/commit/edebb71d7d2e10f73378310802408dca5e6e1fa7"
     },
     {
-      "sha": "6d939264b29704bb37a8fc2595dda151fbb1d857",
-      "shortSha": "6d939264",
-      "date": "2026-11-22T06:03:52Z",
+      "sha": "991aa25ea54cba70d0df270d5c3f201c5f3d37f9",
+      "shortSha": "991aa25e",
+      "date": "2026-11-25T17:03:57Z",
       "category": "core",
-      "title": "real 26.3 block-state surface, version.json, cause-chain logging; gates 82/82 and 27/27, CraftEngine still needs full BlockStateBase proxy surface",
-      "url": "https://github.com/chunkwake/core/commit/6d939264b29704bb37a8fc2595dda151fbb1d857"
+      "title": "adapt BaseItemStack back to Bukkit ItemStack",
+      "url": "https://github.com/chunkwake/core/commit/991aa25ea54cba70d0df270d5c3f201c5f3d37f9"
     },
     {
-      "sha": "e31ec61be0a1da7afbc6c7e3da484a1e277f1172",
-      "shortSha": "e31ec61b",
-      "date": "2026-11-22T05:23:20Z",
+      "sha": "52b5c1774e24ba7b73146d4b80ce386ac93bf386",
+      "shortSha": "52b5c177",
+      "date": "2026-11-25T17:03:21Z",
       "category": "core",
-      "title": "prefer paper-plugin.yml, isolate plugin resources, add geantyref and Bukkit legacy enum aliases; expanded gate 82/82, base 27/27",
-      "url": "https://github.com/chunkwake/core/commit/e31ec61be0a1da7afbc6c7e3da484a1e277f1172"
+      "title": "main scoreboard backed by Rust",
+      "url": "https://github.com/chunkwake/core/commit/52b5c1774e24ba7b73146d4b80ce386ac93bf386"
     },
     {
-      "sha": "60f5cd51aa2aae647e3897664ae60be84967415e",
-      "shortSha": "60f5cd51",
-      "date": "2026-11-22T04:38:55Z",
-      "category": "docs",
-      "title": "Paper 26.3 oracle run - MiniMOTD/LevelledMobs enable on Paper but fail on Chunkwake; EntityType.valueOf(ENDER_CRYSTAL) works only with Paper runtime-patched API, public paper-api jars (209/248) lack it",
-      "url": "https://github.com/chunkwake/core/commit/60f5cd51aa2aae647e3897664ae60be84967415e"
-    },
-    {
-      "sha": "828010c1846a1c8da0832dd56a2d7d2959bcf073",
-      "shortSha": "828010c1",
-      "date": "2026-11-22T04:22:29Z",
+      "sha": "7aa128f0a30082b1df5d28f101c815115250c376",
+      "shortSha": "7aa128f0",
+      "date": "2026-11-25T16:19:57Z",
       "category": "core",
-      "title": "Typed.isOccluding via Rust full-cube flags; VanillaArgumentProvider.rotation/resource via Bukkit RegistryAccess; no api 'is not implemented' warnings left in gate; 79/82, base 26/27, 59 java tests",
-      "url": "https://github.com/chunkwake/core/commit/828010c1846a1c8da0832dd56a2d7d2959bcf073"
+      "title": "read and update whitelist/ban files",
+      "url": "https://github.com/chunkwake/core/commit/7aa128f0a30082b1df5d28f101c815115250c376"
     },
     {
-      "sha": "c7fcfa9b32e6cac7b183b3a826bb4806082c7dc0",
-      "shortSha": "c7fcfa9b",
-      "date": "2026-11-22T04:04:24Z",
+      "sha": "55b66a756c48f5e6c63f8b97d55f6aa544a1fafa",
+      "shortSha": "55b66a75",
+      "date": "2026-11-25T16:14:56Z",
       "category": "core",
-      "title": "World.isChunkLoaded/getEntitiesByClasses via Rust chunkloaded; CE blocker confirmed external (BlockReflections needs BlockStateBase.is(Block), absent in 26.3); gates 79/82, base 26/27",
-      "url": "https://github.com/chunkwake/core/commit/c7fcfa9b32e6cac7b183b3a826bb4806082c7dc0"
-    },
-    {
-      "sha": "a21d2bf622775f3ce29c283487efd7ffe6747f88",
-      "shortSha": "a21d2bf6",
-      "date": "2026-11-21T17:28:43Z",
-      "category": "docs",
-      "title": "BlockStateBase scoped layer iterated to is\\/getLightBlock; CE proxy set targets a different NMS version (members missing/ambiguous in 26.3), stubs reverted, dist green",
-      "url": "https://github.com/chunkwake/core/commit/a21d2bf622775f3ce29c283487efd7ffe6747f88"
-    },
-    {
-      "sha": "20bd05a194f733ea381df327d05a105ca15c76ac",
-      "shortSha": "20bd05a1",
-      "date": "2026-11-21T17:24:08Z",
-      "category": "docs",
-      "title": "scoped BlockStateBase layer bound up to BlockStateBaseProxy#is\\; 26.3 signature mismatch (is(TagKey,Predicate) vs is(Object)), stubs reverted, dist green",
-      "url": "https://github.com/chunkwake/core/commit/20bd05a194f733ea381df327d05a105ca15c76ac"
-    },
-    {
-      "sha": "ab8fd88d1a9c90d6eb9a36ccd7bb014f83cbee76",
-      "shortSha": "ab8fd88d",
-      "date": "2026-11-21T17:18:41Z",
-      "category": "docs",
-      "title": "scoped BlockStateBase experiment (proxy bound up to CollisionContext/getShape, then missing VoxelShape/pathfinder NMS types) reverted; CraftEngine blocker confirmed at NMS-subsystem level",
-      "url": "https://github.com/chunkwake/core/commit/ab8fd88d1a9c90d6eb9a36ccd7bb014f83cbee76"
+      "title": "adapt ItemStack for block interactions",
+      "url": "https://github.com/chunkwake/core/commit/55b66a756c48f5e6c63f8b97d55f6aa544a1fafa"
     }
   ]
 }

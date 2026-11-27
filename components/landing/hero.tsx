@@ -58,11 +58,7 @@ export function Hero({ lang, copy }: { lang: string; copy: SiteCopy }) {
 
             <div className="cw-window-body">
               {copy.terminal.lines.map((line, index) => (
-                <div
-                  key={index}
-                  className={`cw-term-line cw-term-${line.kind}`}
-                  style={{ animationDelay: `${0.35 + index * 0.1}s` }}
-                >
+                <div key={index} className={`cw-term-line cw-term-${line.kind}`}>
                   {line.kind === 'prompt' ? <span className="cw-term-prompt">$</span> : null}
                   <span>{line.text}</span>
                 </div>

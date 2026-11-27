@@ -3317,6 +3317,13 @@ button {
   animation: cw-term-in 0.32s var(--cw-ease) both;
 }
 
+/* Hero terminal is above the fold and must paint with the first frame: a
+   staggered entrance here is what kept mobile Speed Index above 5 s. */
+.cw-hero .cw-term-line,
+.cw-hero .cw-term-cursor {
+  animation: none;
+}
+
 .cw-term-cursor {
   animation: cw-rise 0.4s var(--cw-ease) 1.05s both;
 }
