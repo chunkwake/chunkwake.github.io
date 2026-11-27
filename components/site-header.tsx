@@ -14,9 +14,15 @@ export function SiteHeader({ lang, copy }: { lang: string; copy: SiteCopy }) {
         </Link>
 
         <nav className="cw-nav" aria-label={copy.nav.menu}>
-          <Link href={`/${lang}/docs`}>{copy.nav.docs}</Link>
-          <Link href={`/${lang}/docs/migrating`}>{copy.nav.migration}</Link>
-          <Link href={`/${lang}/docs/plugins`}>{copy.nav.plugins}</Link>
+          <Link href={`/${lang}/docs`} prefetch={false}>
+            {copy.nav.docs}
+          </Link>
+          <Link href={`/${lang}/docs/migrating`} prefetch={false}>
+            {copy.nav.migration}
+          </Link>
+          <Link href={`/${lang}/docs/plugins`} prefetch={false}>
+            {copy.nav.plugins}
+          </Link>
           <Link href={`/${lang}/download`}>{copy.nav.download}</Link>
           <Link href={`/${lang}/support`}>{copy.nav.support}</Link>
           <a href={links.github} target="_blank" rel="noreferrer">

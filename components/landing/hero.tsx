@@ -32,7 +32,11 @@ export function Hero({ lang, copy }: { lang: string; copy: SiteCopy }) {
           <CommandLine command={copy.hero.command}  />
 
           <div className="cw-hero-actions">
-            <Link className="cw-btn cw-btn-primary" href={`/${lang}/docs/getting-started`}>
+            <Link
+              className="cw-btn cw-btn-primary"
+              href={`/${lang}/docs/getting-started`}
+              prefetch={false}
+            >
               {copy.hero.primary}
               <span aria-hidden="true">→</span>
             </Link>
